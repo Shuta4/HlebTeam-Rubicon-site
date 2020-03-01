@@ -1,0 +1,107 @@
+@import url("./normalize.css");
+body, 
+.page {
+  text-decoration: none;
+    width: 100%;
+    height: 100%;
+}
+.header-main{
+    top: 0;
+    position: relative;
+    width: 100%;
+    height: 950px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    background: url('https://look.com.ua/pic/201306/1920x1080/look.com.ua-71395.jpg') no-repeat;
+}
+.img22b{
+  background: rgb(0, 0, 0);
+  background-size: 100%;
+  border-radius: 10%;
+  -moz-box-shadow:0 0 15px black; box-shadow:0 0 10px black;
+  margin: 30px;
+  padding: 30px;
+  text-align: center;
+  color: rgb(255, 208, 0);
+  position:relative; 
+  left: 650px;
+  top: -150px;
+  transition: all 400ms ease;
+  font-size: 20px;
+}
+.img22b:hover{
+  background: rgba(41, 40, 40, 0.514);
+  border-radius: 50%;
+  -moz-box-shadow:0 0 15px rgba(0, 0, 0, 0.507); box-shadow:0 0 10px rgba(0, 0, 0, 0.479);
+  text-align: center;
+  color: rgb(255, 255, 255);
+  transition: all 500ms ease;
+  
+}
+.img22b::before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  padding-top: 100%;
+}
+.img22gb{
+  background: black;
+  background-size: 100%;
+  border-radius: 150%;
+  -moz-box-shadow:0 0 15px rgb(0, 0, 0); box-shadow:0 0 10px rgb(0, 0, 0);
+  margin: 30px;
+  padding: 40px;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  position:relative; 
+  left: 650px;
+  top: -150px;
+  transition: all 600ms ease;
+  font-size: 20px;
+}
+.img22gb:hover{
+  background: rgba(128, 128, 128, 0.534);
+  border-radius: 20%;
+  -moz-box-shadow:0 0 15px rgba(255, 255, 255, 0.507); box-shadow:0 0 10px rgb(0, 0, 0);
+  transform: translate(400%);
+  text-align: center;
+  color: rgb(255, 208, 0);
+  transition: all 400ms ease;
+}
+.privet{
+  position: relative;
+  text-align: center;
+  top: -1000px;
+ font-size: 100px;
+ color: rgb(255, 255, 255);
+ -webkit-text-stroke-width: 2px;
+   -webkit-text-stroke-color: black;
+   font-family: 'Comic Sans MS', cursive;
+}
+.privett{
+  background: rgb(255, 255, 255);
+  border-radius: 10px;
+  position: relative;
+  text-align: center;
+  top: -1000px;
+  left: 550px;
+ font-size: 25px;
+ width: 800px;
+ color: rgb(0, 0, 0);
+ -webkit-text-stroke-width: 1px;
+   -webkit-text-stroke-color: rgba(0, 0, 0, 0.425);
+   font-family: 'Comic Sans MS', cursive;
+}
+.ah{
+  width: 1920px;
+  height: 700px;
+  background: white no-repeat;
+  color: rgb(0, 0, 0);
+  text-align: center;
+}
+.text_1{
+  color: rgb(255, 208, 0);
+}
