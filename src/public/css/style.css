@@ -1,4 +1,4 @@
-@import url("./normalize.css");
+@import url("./public/styles/normalize.css");
 body, 
 .page {
   text-decoration: none;
@@ -97,11 +97,58 @@ body,
 }
 .ah{
   width: 1920px;
-  height: 700px;
-  background: white no-repeat;
+  height: 450px;
+  background: rgb(255, 255, 255) no-repeat;
   color: rgb(0, 0, 0);
   text-align: center;
 }
+
+.ah2{
+  width: 1920px;
+  height: 450px;
+  background: black;
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
+
+.ah_text{
+ color:rgb(255, 208, 0) ;
+ font-size: 20px;
+}
+.ah_text:hover{
+  color:rgb(0, 255, 136) ;
+ }
+
 .text_1{
   color: rgb(255, 208, 0);
 }
+.otl{
+background-color: rgb(0, 217, 255);
+position: relative;
+width: 100%;
+height: 1000px;
+}
+
+.foto{
+position: relative;
+top: 60px;
+width: 1000px;
+height: 900px;
+left: 470px;
+}
+.foto_2{
+  position: relative;
+  width: 450px;
+  height: 250px;
+  margin: 20px;
+  transition: all 400ms ease;
+  border: 2px solid rgb(255, 208, 0);
+  -moz-box-shadow:0 0 15px rgba(255, 255, 255, 0.507); box-shadow:0 0 10px rgb(0, 0, 0);
+  }
+  .foto_2:hover{
+    width: 480px;
+    height: 280px;
+    margin: 20px;
+    transition: all 400ms ease;
+    border: 2px solid rgb(0, 255, 136);
+    }
