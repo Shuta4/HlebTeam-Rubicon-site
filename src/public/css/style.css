@@ -1,12 +1,18 @@
 @import url("./normalize.css");
+@import url("./fonts.css");
+
 html,
 body, 
 .page {
+  /* Variables */
+  --header-text-font: 'Roboto';
+  --common-text-font: 'Roboto Slab'; 
   text-decoration: none;
   width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
+  font-family: var(--common-text-font);
 }
 a {
   text-decoration: inherit;
@@ -14,11 +20,9 @@ a {
 /* Header main */
 .header-main{
   width: 100%;
-  height: 950px;
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
-  background: url('../img/workshop_ship_bg.jpg') no-repeat center;
 }
 /* Header main navigation */
 .header-main__navigation {
@@ -35,7 +39,7 @@ a {
   justify-content: center;
   align-content: center;
 }
-.header-main__navigation_item, .header-main__navigation_item_main {
+.header-main__navigation_item {
   background: rgb(255, 255, 255);
   background-size: 100%;
   -moz-box-shadow:0 0 15px black; box-shadow:0 0 10px black;
@@ -43,7 +47,7 @@ a {
   padding: 5px;
   position: relative;
 }
-.header-main__navigation_item__href, .header-main__navigation_item_main__href {
+.header-main__navigation_item__href {
   width: 100%;
   height: 100%;
   text-align: center;
@@ -63,56 +67,47 @@ a {
   transition: all 300ms ease;
   color: rgb(255, 208, 0);
 }
-.header-main__navigation_item_main{
-  background: rgb(0, 0, 0);
-  border: 2px solid rgb(0, 255, 136);
-  transition: all 300ms ease;
-  color: rgb(0, 255, 136);
+/*Content*/
+.content {
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
-.header-main__navigation_item_main:hover{
-  border: 2px solid rgb(255, 208, 0);
-  -moz-box-shadow:0 0 15px rgba(0, 0, 0, 0.507); box-shadow:0 0 15px rgb(0, 0, 0);
-  transition: all 300ms ease;
-  color: rgb(255, 208, 0);
-}
-/* Header main text */
-.header-main__text {
+/* Top element */
+.content__top-element {
   width: 100%;
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
   align-content: center;
   justify-content: center;
+  height: 100vh;
+  background: url('../img/workshop_ship_bg.jpg') no-repeat center;
 }
-.header-main__text__title {
+.content__top-element__title {
   position: relative;
-  top: 100px;
+  margin: 100px 0;
   text-align: center;
-  font-family: 'Comic Sans MS', cursive;
+  font-family: var(--header-text-font);
   -webkit-text-stroke-color: rgb(0, 255, 136);
   display: block;
   font-size: 100px;
-  color: rgba(31, 31, 31, 0.685);
+  color: #000000;
   -webkit-text-stroke-width: 2px;
 }
-.header-main__text__text {
-  position: relative;
-  top: 100px;
+.content__top-element__text {
   background: rgba(0, 0, 0, 0.541);
   border-radius: 10px;
   font-size: 25px;
   width: 800px;
-  -webkit-text-stroke-color: rgb(255, 255, 255);
-  color: rgba(0, 89, 255, 0.158);
-  -webkit-text-stroke-width: 1px;
+  color: #ffffff;
   align-self: center;
 }
-/*Content*/
 /* Central element "tips" */
 /* Authors */
 .content__authors_item {
-  width: 99%;
-  height: 450px;
+  width: 100%;
+  height: 44vh;;
   text-align: center;
   padding: 10px;
 }
@@ -179,27 +174,23 @@ a {
   }
 }
 @media(max-width: 810px) {
-  .header-main__text__text {
+  .content__top-element__text {
     top: 60px;
-    -webkit-text-stroke-color: rgb(0, 0, 0);
-    background: rgba(255, 255, 255, 0.445);
     border-radius: 10px;
     font-size: 20px;
     width: 90%;
-    color: rgba(0, 0, 0, 0);
-    -webkit-text-stroke-width: 1px;
     align-self: center;
   }
 }
 @media(max-width: 720px) {
-  .header-main__navigation_item, .header-main__navigation_item_main {
+  .header-main__navigation_item {
     width: 25%;
     height: 25px;
     margin: 5px;
     padding: 5px;
     text-align: center;
   }
-  .header-main__navigation_item__href, .header-main__navigation_item_main__href {
+  .header-main__navigation_item__href {
     font-size: 20px;
   }
   .header-main__navigation_item{
@@ -213,25 +204,11 @@ a {
     color: rgb(255, 208, 0);
     
   }
-  .header-main__navigation_item_main{
-    transition: none;
-  }
-  .header-main__navigation_item_main:hover{
-    border: 2px solid rgb(255, 208, 0);
-    -moz-box-shadow:0 0 15px rgba(0, 0, 0, 0.507); box-shadow:0 0 15px rgb(0, 0, 0);
-    transition: all 300ms ease;
-    color: rgb(255, 208, 0);
-  }
 }
 @media(max-width: 600px) {
-  .header-main__text__title {
-    top: 80px;
+  .content__top-element__title {
     text-align: center;
-    font-family: 'Comic Sans MS', cursive;
-    -webkit-text-stroke-color: rgb(0, 255, 128);
     display: block;
     font-size: 60px;
-    color: rgba(0, 0, 0, 0.596);
-    -webkit-text-stroke-width: 2px;
   }
 }
