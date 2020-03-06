@@ -92,17 +92,18 @@ a {
   -webkit-text-stroke-color: rgb(0, 255, 136);
   display: block;
   font-size: 100px;
-  color: rgb(31, 31, 31);
+  color: rgba(31, 31, 31, 0.685);
   -webkit-text-stroke-width: 2px;
 }
 .header-main__text__text {
   position: relative;
   top: 100px;
-  background: rgb(255, 255, 255);
+  background: rgba(0, 0, 0, 0.541);
   border-radius: 10px;
   font-size: 25px;
   width: 800px;
-  color: rgb(0, 0, 0);
+  -webkit-text-stroke-color: rgb(255, 255, 255);
+  color: rgba(0, 89, 255, 0.158);
   -webkit-text-stroke-width: 1px;
   align-self: center;
 }
@@ -159,7 +160,6 @@ a {
 
 @media (max-width: 862px) {
   .content__authors_item__favourite-works__preview {
-    
     width: 80%;
     margin: 20px;
     transition: none;
@@ -180,11 +180,13 @@ a {
 }
 @media(max-width: 810px) {
   .header-main__text__text {
-    background: rgb(255, 255, 255);
+    top: 60px;
+    -webkit-text-stroke-color: rgb(0, 0, 0);
+    background: rgba(255, 255, 255, 0.445);
     border-radius: 10px;
-    font-size: 25px;
-    width: 80%;
-    color: rgb(0, 0, 0);
+    font-size: 20px;
+    width: 90%;
+    color: rgba(0, 0, 0, 0);
     -webkit-text-stroke-width: 1px;
     align-self: center;
   }
@@ -223,12 +225,13 @@ a {
 }
 @media(max-width: 600px) {
   .header-main__text__title {
+    top: 80px;
     text-align: center;
     font-family: 'Comic Sans MS', cursive;
-    -webkit-text-stroke-color: black;
+    -webkit-text-stroke-color: rgb(0, 255, 128);
     display: block;
     font-size: 60px;
-    color: rgb(255, 255, 255);
+    color: rgba(0, 0, 0, 0.596);
     -webkit-text-stroke-width: 2px;
   }
 }
