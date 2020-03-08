@@ -1,13 +1,16 @@
 const express = require('express');
 
 const port = 4000;
-const server = express();
+const app = express();
 
-server.use(express.static(__dirname + '/public'));
-server.get("/", function(req, res) {
-  console.log("Something was catched!" + req.method);
+app.set("view engine", "ejs");
+app.use(express.static(__dirname + '/public'));
+app.set('views', __dirname + '/views');
+app.get("/", function(req, res) {
   res.sendFile('public/pages/index.html', {root: __dirname });
 });
-
-server.listen(port)
+app.get("/ejs", (req, res) => {
+  res.render("index");
+})
+app.listen(port);
 console.log("Server are running on port: " + port);

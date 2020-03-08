@@ -1,0 +1,14 @@
+Sites
+	deadpool.kikoriki.space
+	ftw.kikoriki.space
+	hlebteam.kikoriki.space
+	villafoods.kikoriki.space
+
+Users
+	deadpool
+	ftw
+	hlebteam
+	villafoods
+
+Password
+	erK2pF27
