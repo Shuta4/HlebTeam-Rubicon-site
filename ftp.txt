@@ -1,7 +1,7 @@
 Sites
 	deadpool.kikoriki.space
 	ftw.kikoriki.space
-	hlebteam.kikoriki.space
+	hleb-team.kikoriki.space
 	villafoods.kikoriki.space
 
 Users

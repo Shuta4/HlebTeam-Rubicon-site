@@ -10,7 +10,7 @@ app.get("/", function(req, res) {
   res.sendFile('public/pages/index.html', {root: __dirname });
 });
 app.get("/ejs", (req, res) => {
-  res.render("index");
+  res.render("./pages/index");
 })
 app.listen(port);
 console.log("Server are running on port: " + port);

@@ -1,12 +1,19 @@
 @import url('./style.css');
+.content {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
 .content__author {
-    margin-top: 100px;
+    /* margin-top: 100px; */
     text-align: center;
 }
 .content__author__about{ 
     width: 100%;
-    height: 400px;
-background: black;
+    height: 300px;
+    background: black;
+    position: relative;
+    top: 100px;
 }
 .content__author__about__text{
     position: relative;
@@ -22,8 +29,8 @@ background: black;
     position: relative;
     text-align: left;
     margin: 20px;
-    width: 45px;
-    height: 45px;
+    width: 100px;
+    height: 100px;
     border: 2px solid rgb(0, 255, 136);
     border-radius: 50%;
     background: rgb(0, 255, 136);
@@ -31,4 +38,19 @@ background: black;
   .header-main__navigation_item__href__images:hover{
     border: 2px solid rgb(255, 208, 0);
     background: rgb(255, 208, 0);
+  }
+  .content__author{
+    width: 100%;
+    align-content: center;
+    justify-content: center;
+    height: 100vh;
+    background: url('../img/glav.jpg') no-repeat center;
+  }
+  .header-main__navigation_itemms{
+      background: center;
+      width: 200px;
+      background: rgb(0, 0, 0);
+      border: 2px solid rgb(0, 255, 136);
+      transition: all 300ms ease;
+      color: rgb(0, 255, 136);
   }
