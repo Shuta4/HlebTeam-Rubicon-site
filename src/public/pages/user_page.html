@@ -10,11 +10,10 @@
 <body>
     <div class="page">
             <header class="header-main">
+                
                     <nav>
                         <ul class="header-main__navigation">
-                            <li class="header-main__navigation_item"><a href="../pages/index.html" class="header-main__navigation_item__href">Главная</a></li>
-                            <li class="header-main__navigation_item"><a href="../pages/index.html" class="header-main__navigation_item__href">Подписки</a></li>
-                            <li class="header-main__navigation_item"><a href="../pages/index.html" class="header-main__navigation_item__href">О сайте</a></li>
+                            <a href="../pages/index.html"class="header-main__navigation_items"></a>
                             <li class="header-main__navigation_item no-background"><a href="" class="header-main__navigation_item__href"><img src="../img/donation.png" alt="Донат" class="header-main__navigation_item__href__image"></a></li>
                         </ul>
                     </nav>
@@ -25,16 +24,55 @@
                     <div class="content__author__about__content">
                         <a href="" class="header-main__navigation_item__href"><img alt="Профиль" class="header-main__navigation_item__href__images" src="https://image.flaticon.com/icons/png/512/64/64572.png" ></a>   
                         <a class="content__author__about__text">Информация об авторе</a>
-                
-                        <p class="header-main__navigation_itemms"><a class="header-main__navigation_item__href">Подписчики:</a></p>
+                <p class="p">
+                        <a  class="header-main__navigation_itemms" class="header-main__navigation_item__href">Подписчики: <b>0</b></a>
+                         <a  class="header-main__navigation_itemms" class="header-main__navigation_item__href">Подписки: <b>0</b></a>
+                        </p>
+
                     </div>
                 </div>
+                <div class="content__authors">
+                    <div class='content__authors_item not-even'>
+                        <div class="content__authors_item__author">
+                            <h2 class="content__authors_item__author__name">Работы Николая Карасёва</h3>
+                            <a href="#" class="content__authors_item__author__link" >Подробнее</a>                           
+                        </div>
+                        <div class="content__authors_item__favourite-works">
+                            <a href='#' class="content__authors_item__favourite-works_plus">+</a>
+                        </div>
+                    </div>
                 <div class="content__author__portfolio">
-                    <div class="content__author__works"></div></div>               
+                    <div class="content__author__works">
+                    </div>
+                </div>               
                 </div>
             </div>
         </main>        
         <footer class="footer-main"></footer>
+        <a id="button">^</a>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script>
+  
+    jQuery(document).ready(function() {
+      
+      var btn = $('#button');
+    
+      $(window).scroll(function() {
+        if ($(window).scrollTop() > 300) {
+          btn.addClass('show');
+        } else {
+          btn.removeClass('show');
+        }
+      });
+    
+      btn.on('click', function(e) {
+        e.preventDefault();
+        $('html, body').animate({scrollTop:0}, '300');
+      });
+    
+    });
+    
+    </script>
     </div>
 </body>
 </html>

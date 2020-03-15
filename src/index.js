@@ -9,5 +9,8 @@ app.set('views', __dirname + '/views');
 app.get("/", (req, res) => {
   res.render("./pages/index");
 })
+app.get("/userpage", (req, res) => {
+  res.render("./pages/user_page")
+})
 app.listen(port);
 console.log("Server are running on port: " + port);
