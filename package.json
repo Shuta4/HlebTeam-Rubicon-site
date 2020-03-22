@@ -3,9 +3,8 @@
   "version": "0.0.1",
   "description": "HlebTeam site from Rubicon",
   "scripts": {
-    "server": "node ./src/index.js",
-    "server_nodemon": "nodemon ./src/index.js",
-    "startdb": "C:/PROGRA~1/MongoDB/Server/4.2/bin/mongod.exe"
+    "start": "node ./src/index.js",
+    "nodemon": "nodemon ./src/index.js"
   },
   "repository": {
     "type": "git",
