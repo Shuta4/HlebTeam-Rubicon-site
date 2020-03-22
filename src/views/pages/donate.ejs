@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <%- include("../parts/head.ejs", {title: "Главная страница", style_href: "/css/donate.css"}) %>
+<body>
+    <div class="page">
+        <%- include("../parts/header.ejs") %>
+        <main class="content">
+            <div class="content__donate">
+                <h2 class="content__donate__title">
+                    Задонатьте нам!
+                </h2>
+                <p class="content__donate__text">
+                    Текст про донат
+                </p>
+                <ul class="content__donate__list">
+                    <li class="content__donate__list"><a href="" class="content__donate__list__href">WebMoney</a></li>
+                    <li class="content__donate__list"><a href="" class="content__donate__list__href">Yandex.Деньги</a></li>
+                    <li class="content__donate__list"><a href="" class="content__donate__list__href">Patron</a></li>
+                    <li class="content__donate__list"><a href="" class="content__donate__list__href">Sberbank</a></li>
+                </ul>
+            </div>
+        </main>
+        <%- include("../parts/footer.ejs") %>
+    </div>
+</body>
+</html>

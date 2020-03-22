@@ -22,5 +22,9 @@ app.get("/userpage", (req, res, next) => {
   res.render("./pages/user_page");
   next();
 });
+app.get("/donate", (req, res, next) => {
+  res.render("./pages/donate");
+  next();
+});
 app.listen(port);
 console.log("Server are running on port: " + port);

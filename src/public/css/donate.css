@@ -1,0 +1,43 @@
+@import url("./style.css");
+
+.content__donate {
+    widows: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    height: 100vh;
+}
+.content__donate__title {
+    position: relative;
+    margin: 100px 0;
+    text-align: center;
+    font-family: var(--header-text-font);
+    -webkit-text-stroke-color: rgb(0, 255, 136);
+    display: block;
+    font-size: 100px;
+    color: #000000;
+    -webkit-text-stroke-width: 2px;
+}
+.content__donate__text {
+    position: relative;
+    display: block;
+    font-size: 20px;
+    text-align: center;
+}
+.content__donate__list {
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    margin: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+@media(max-width: 550px) {
+    .content__donate__title {
+        font-size: 66px;
+    }
+}
