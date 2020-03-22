@@ -4,12 +4,12 @@ const Works = require('./db/Tables/Works.js')
 const port = 4000;
 const app = express();
 
-const sql = require('./db/connection')
+// const sql = require('./db/connection')
 
-sql.connect();
-sql.end();
+// sql.connect();
+// sql.end();
 
-Works();
+// Works();
 
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + '/public'));

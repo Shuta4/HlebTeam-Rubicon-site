@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<%- include("../parts/head.ejs", {title: "Главная страница"}) %>
+<%- include("../parts/head.ejs", {title: "Главная страница", style_href: "/css/style.css"}) %>
 <body>
     <div class="page">
         <%- include("../parts/header.ejs") %>
@@ -37,7 +37,6 @@
             </div>
         </main>        
         <%- include("../parts/footer.ejs") %>
-        <%- include("../parts/button_up.ejs") %>
     </div>
     <script src="/js/phoneMenu.js"></script>
 </body>

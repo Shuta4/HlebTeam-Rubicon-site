@@ -10,16 +10,38 @@
 <body>
     <div class="page">
         <header class="header-main">
+            <a id="button">^</a>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script>
+  
+    jQuery(document).ready(function() {
+      
+      var btn = $('#button');
+    
+      $(window).scroll(function() {
+        if ($(window).scrollTop() > 300) {
+          btn.addClass('show');
+        } else {
+          btn.removeClass('show');
+        }
+      });
+    
+      btn.on('click', function(e) {
+        e.preventDefault();
+        $('html, body').animate({scrollTop:0}, '300');
+      });
+    
+    });
+    
+    </script>
             <nav>
                 <ul class="header-main__navigation">
-                    <li class="header-main__navigation_item"><a href="../pages/index.html" class="header-main__navigation_item__href">Главная</a></li>
-                    <li class="header-main__navigation_item"><a href="../pages/index.html" class="header-main__navigation_item__href">Помощь</a></li>
-                    <li class="header-main__navigation_item"><a href="../pages/index.html" class="header-main__navigation_item__href">О сайте</a></li>
+                    <!-- <li class="header-main__navigation_item"><a href="../pages/index.html" class="header-main__navigation_item__href">Главная</a></li> -->
                     <li class="header-main__navigation_item no-background"><a href="" class="header-main__navigation_item__href"><img src="../img/donation.png" alt="Донат" class="header-main__navigation_item__href__image"></a></li>
-                    <li class="header-main__navigation_item no-background profile"><a href="../pages/user_page.html" class="header-main__navigation_item__href"><img alt="Профиль" class="header-main__navigation_item__href__image" src="https://image.flaticon.com/icons/png/512/64/64572.png" ></a></li>
+                    <li class="header-main__navigation_item no-background profile"><a href="./user_page.html" class="header-main__navigation_item__href"><img alt="Профиль" class="header-main__navigation_item__href__image" src="https://image.flaticon.com/icons/png/512/64/64572.png" ></a></li>
                 </ul>
             </nav>
-        </header>
+        </header>       
         <main class="content">
             <div class="content__top-element">
                 <h2 class="content__top-element__title">Добро пожаловать</h2>
@@ -38,6 +60,8 @@
                     <div class="content__authors_item__favourite-works">
                         <a class='content__authors_item__favourite-works__preview'><img class='content__authors_item__favourite-works__preview__image' src="../img/site-apple-temp.jpg" alt=""></a>
                         <a class='content__authors_item__favourite-works__preview'><img class='content__authors_item__favourite-works__preview__image' src="../img/site-bonpass-temp.jpg" alt=""></a>
+                        <div class="content__authors_item__favourite-works">
+                        </div>
                     </div>
                 </div>
                 <div class='content__authors_item even'>
@@ -50,9 +74,30 @@
                         <a class='content__authors_item__favourite-works__preview'><img class='content__authors_item__favourite-works__preview__image' src="../img/site-bonpass-temp.jpg" alt=""></a>
                     </div>
                 </div>
-            </div>
-        </main>        
+                <section id="services">
+                    <div class="container">
+                        <div class="title">
+                            <h2>
+                                HlebTeam
+                            </h2>
+                        </div>
+                        <div class="title_text">
+                            Не важно кто ты, важно кого ты!                      
+                            <div class="title_info">
+                                <p>
+                                    <a href=""><img src='../img/mail.png' class="title_text_foto" alt=""></a>
+                                    <a href=""><img src='https://logosklad.ru/UserFiles/image/army_russia/army-russia.png' class="title_text_foto" alt=""></a>
+                                    <a href=""><img src='https://b1.filmpro.ru/c/811384.1200xp.jpg' class="title_text_foto" alt=""></a>
+                                    <a href=""><img src='https://lh3.googleusercontent.com/proxy/Dydu8FwYM3SZpUZgOgDsPrXkis1Ef4ljGku3fnYSXPI_LfZJNcGS1HeWV9_1WBVOjZUWPBd1X9_Pn4JRh8nLdeKDnQq9bSEaolPyCdSDB0Xdcho' class="title_text_foto" alt=""></a>
+                                    <a href=""><img src='https://www.meme-arsenal.com/memes/e1e83425ee51a4b5d34c2e34e80ceefe.jpg' class="title_text_foto" alt=""></a>
+                                </p>
+                                Год создания 2020
+                            </div>
+                        </div>
+                    </div>
+        </main>               
         <footer class="footer-main"></footer>
+        <script src="../js/phoneMenu.js"></script>
     </div>
 </body>
 </html>
