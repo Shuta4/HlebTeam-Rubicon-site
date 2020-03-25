@@ -1,22 +1,4 @@
 <header class="header-main">
-    <a id="button">^</a>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script>
-    jQuery(document).ready(function() {   
-      var btn = $('#button');
-      $(window).scroll(function() {
-        if ($(window).scrollTop() > 300) {
-          btn.addClass('show');
-        } else {
-          btn.removeClass('show');
-        }
-      });
-      btn.on('click', function(e) {
-        e.preventDefault();
-        $('html, body').animate({scrollTop:0}, '300');
-      });
-    });
-    </script>
     <nav>
         <ul class="header-main__navigation">
             <li class="header-main__navigation_item background-home"><a href="/" class="header-main__navigation_item__href" alt="На главную"></a></li>
