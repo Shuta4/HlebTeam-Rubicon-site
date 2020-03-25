@@ -18,6 +18,9 @@ body,
 a {
   text-decoration: inherit;
 }
+ul {
+  list-style: none;
+}
 .container {
 	width: 95%;
 	margin: 0 auto;

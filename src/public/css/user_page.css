@@ -1,92 +1,58 @@
 @import url('./style.css');
 .content {
-    width: 100%;
-    height: 100%;
-    margin: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
 }
 .content__author {
-    /* margin-top: 100px; */
-    text-align: center;
+  /* margin-top: 100px; */
+  text-align: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  color: #000000;
+  background: #FFFFFF;
 }
 .content__author__about{ 
-    width: 100%;
-    height: 300px;
-    background: black;
-    position: relative;
-    top: 100px;
+  width: 100%;
+  height: 50vh;
+  position: relative;
+  top: 100px;
 }
-.content__author__about__text{
-    position: relative;
-    margin: 10px;
-    text-align: center;
-    font-family: var(--header-text-font);
-    display: block;
-    font-size: 30px;
-    color: #ffffff;
-    -webkit-text-stroke-width: 2px;
+.content__author__about__name{
+  position: relative;
+  margin: 10px;
+  text-align: center;
+  font-family: var(--header-text-font);
+  display: block;
+  font-size: 30px;
+  color: #000000;
 }
-.header-main__navigation_item__href__images {
-    position: relative;
-    text-align: left;
-    margin: 20px;
-    width: 100;
-    height: 100px;
-    border: 2px solid rgb(0, 255, 136);
-    border-radius: 50%;
-    background: rgb(0, 255, 136);
-  }
-  .header-main__navigation_item__href__images:hover{
-    border: 2px solid rgb(255, 208, 0);
-    background: rgb(255, 208, 0);
-  }
-
-  
-  .content__author{
-    width: 100%;
-    align-content: center;
-    justify-content: center;
-    height: 100vh;
-    background: url('../img/glav.jpg') no-repeat center;
-  }
-  .header-main__navigation_itemms{
-      position: relative;
-      background: center;
-      top: 20px;
-      margin: 5px;
-      padding: 5px;
-      background: rgb(0, 0, 0);
-      border: 2px solid rgb(0, 255, 136);
-      transition: all 300ms ease;
-      color: rgb(0, 255, 136);
-  }
-  .content__authors_item__favourite-works_plus{
-    margin: 100px;
-    transition: all 400ms ease;
-    width: 250px;
-    height: 250px;
-    border: 5px solid rgb(0, 255, 136);
-    border-radius: 50%;
-    text-align: center;
-    font-size: 200px;
-    color: rgb(0, 255, 136);
-    }
-    .content__authors_item__favourite-works_plus:hover{
-      transition: all 400ms ease;
-      width: 260px;
-      height: 260px;
-      border: 5px solid rgb(255, 208, 0);
-      color: rgb(255, 208, 0);
-      border-radius: 30%;
-      text-align: center;
-      font-size: 210px;
-      }
-      .header-main__navigation_items{
-        background: url('../img/home.png')no-repeat;
-        width: 60px;
-        height: 64px;
-        border-radius: 50%;
-      }
-      .header-main__navigation_items:hover{
-        background-image: url('../img/home2.png');
-      }
-      
+.content__author__about__avatar {
+  position: relative;
+  margin: 20px;
+  width: 100px;
+  height: 100px;
+  border: 2px solid #00ff88;
+  border-radius: 50%;
+}
+.content__author__about__statistics {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.content__author__about__statistics__item {
+  position: relative;
+  min-width: 100px;
+  top: 20px;
+  margin: 5px;
+  padding: 5px;
+  background: #000000;
+  border: 2px solid #00ff88;
+  color: #00ff88;
+}
