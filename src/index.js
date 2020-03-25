@@ -15,7 +15,7 @@ app.set("view engine", "ejs");
 app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views');
 
-app.use("/", require("./api.js"));
+app.use("/api", require("./api.js"));
 app.use("/", require("./pages.js"));
 
 app.listen(port);
