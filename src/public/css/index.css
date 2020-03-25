@@ -1,0 +1,206 @@
+@import url("./style.css");
+
+.container {
+	width: 95%;
+	margin: 0 auto;
+}
+/*Content styles*/
+.content__authors_item__favourite-works_plus{
+  margin: 100px;
+  transition: all 400ms ease;
+  width: 285px;
+  height: 285px;
+  border: 5px solid rgb(0, 255, 136);
+  border-radius: 50%;
+  text-align: center;
+  font-size: 230px;
+  color: rgb(0, 255, 136);
+  }
+.content__authors_item__favourite-works_plus:hover{
+	transition: all 400ms ease;
+	width: 300px;
+	height: 300px;
+	border: 5px solid rgb(255, 208, 0);
+	color: rgb(255, 208, 0);
+	border-radius: 30%;
+	text-align: center;
+	font-size: 250px;
+}
+
+#button {
+  display: inline-block;
+  background-color: rgb(0, 255, 136);
+  width: 55px;
+  height: 55px;
+  text-align: center;
+  border-radius: 40px;
+  position: fixed;
+  bottom: 30px;
+  right: 50px;
+  transition: background-color .3s, 
+  	opacity .5s, visibility .5s;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1000;
+  transition: all 500ms ease;
+  color: rgb(0, 0, 0);
+  -moz-box-shadow:0 0 10px rgba(0, 0, 0, 0.507); box-shadow:0 0 10px black;
+  font-size: 4em;
+}
+#button:hover {
+  cursor: pointer;
+  background-color: rgb(255, 208, 0);
+  transition: all 500ms ease;
+  color: rgb(0, 0, 0);
+  border: 1px solid rgb(255, 208, 0);
+-moz-box-shadow:0 0 20px rgba(0, 0, 0, 0.507); box-shadow:0 0 30px rgb(255, 208, 0);
+}
+
+#button:active {
+  background-color: #555;
+}
+#button.show {
+  opacity: 1;
+  visibility: visible;
+}
+/* Top element */
+.content__top-element {
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  height: 100vh;
+  background: url('../img/glav.jpg') no-repeat center;
+}
+.content__top-element__title {
+  position: relative;
+  margin: 100px 0;
+  text-align: center;
+  font-family: var(--header-text-font);
+  -webkit-text-stroke-color: rgb(0, 255, 136);
+  display: block;
+  font-size: 100px;
+  color: #000000;
+  -webkit-text-stroke-width: 2px;
+}
+.content__top-element__text {
+  background: rgba(0, 0, 0, 0.541);
+  border-radius: 10px;
+  font-size: 25px;
+  width: 800px;
+  color: #ffffff;
+  align-self: center;
+}
+/* Central element "tips" */
+/* Authors */
+.content__authors_item {
+  width: 100%;
+  height: 98vh;;
+  text-align: center;
+  padding: 10px;
+}
+.content__authors_item.even {
+  background: black;
+  color: rgb(255, 255, 255);
+}
+.content__authors_item.not-even {
+  background: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+}
+
+.content__authors_item__author__link{
+  color:rgb(255, 208, 0);
+  font-size: 20px;
+}
+.content__authors_item__author__link:hover{
+  color:rgb(0, 255, 136);
+}
+.content__authors_item__favourite-works {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+.content__authors_item__favourite-works__preview {
+  width: 450px;
+  margin: 20px;
+  transition: all 400ms ease;
+  border: 2px solid rgb(255, 208, 0);
+  -moz-box-shadow:0 0 15px rgba(255, 255, 255, 0.507); box-shadow:0 0 10px rgb(0, 0, 0);
+}
+.content__authors_item__favourite-works__preview:hover {
+  transition: all 400ms ease;
+  border: 2px solid rgb(0, 255, 136);
+  opacity:0.6;
+-moz-opacity:0.6;
+filter: alpha(opacity=60) black;
+-khtml-opacity: 0.6;
+background-color:#000;
+}
+.content__authors_item__favourite-works__preview__image {
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 862px) {
+  .content__authors_item__favourite-works__preview {
+    width: 90%;
+    transition: none;
+    border: 2px solid rgb(255, 208, 0);
+    -moz-box-shadow:0 0 15px rgba(255, 255, 255, 0.507); box-shadow:0 0 10px rgb(0, 0, 0);
+  }
+  .content__authors_item__favourite-works__preview:hover {
+    width: 90%;
+    transition: none;
+    border: 2px solid rgb(0, 255, 136);
+  }
+  .content__authors_item__favourite-works {
+    flex-direction: column;
+  }
+  .content__authors_item {
+    height: unset;
+  }
+}
+@media(max-width: 810px) {
+  .content__top-element__text {
+    top: 60px;
+    border-radius: 10px;
+    font-size: 15px;
+    width: 90%;
+    align-self: center;
+    background: center;
+  }
+}
+@media(max-width: 600px) {
+  .title_text{
+    text-align: center;
+  }
+  .title {
+    padding-top: 50px; 
+  }
+  
+  .title h2 {
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 0;
+  }
+  
+  .title p {
+    color: #777777;
+    text-align: center;
+    font-size: 16px;
+    margin-top: 5px;
+  }
+  .content__top-element__title {
+    text-align: center;
+    display: block;
+    font-size: 40px;
+    background: center;
+  }
+}
