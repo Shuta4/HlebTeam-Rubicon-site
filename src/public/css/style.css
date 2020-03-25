@@ -72,82 +72,36 @@ a {
   align-items: center;
 }
 .header-main__navigation_item {
-  text-align: center;
-  width: 120px;
-  height: 30px;
-  -moz-box-shadow:0 0 15px black; box-shadow:0 0 10px black;
-  margin: 10px;
-  padding: 5px;
-  position: relative;
-  background: rgb(0, 0, 0);
-  transition: all 300ms ease;
-  color: rgb(0, 255, 136);
-  left: 50px;
-}
-.header-main__navigation_item__href {
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  font-size: 25px;
-  color: inherit;
-}
-
-.header-main__navigation_item{
-  background: rgb(0, 0, 0);
-  transition: all 300ms ease;
-  color: rgb(0, 255, 136);
-}
-.header-main__navigation_item.no-background {
   background-size: 100%;
   width: 80px;
   height: 90px;
-  -moz-box-shadow: none; box-shadow: none;
   margin: 0px;
   padding: 0px;
-  background: none;
-  border: none;
-  transition: none;
   color: rgb(0, 255, 136);
   left: 0px;
-}
-.header-main__navigation_item:hover{
-  background: rgb(0, 0, 0);
-  border: 2px solid rgb(255, 208, 0);
-  -moz-box-shadow: 0 0 15px rgb(0, 0, 0); box-shadow:0 0 15px rgb(0, 0, 0);
-  transition: all 300ms ease;
-  color: rgb(255, 208, 0);
-}
-.header-main__navigation_item.no-background:hover {
-  background: none;
-  border: none;
-  transition: none; 
-  -moz-box-shadow: none; box-shadow: none;
-}
-.header-main__navigation_item__href__image {
-  margin: 15px;
-  width: 60px;
-  height: 60px;
-  border: 2px solid rgb(0, 255, 136);
-  border-radius: 50%;
-  background: rgb(0, 255, 136);
-}
-.header-main__navigation_item__href__image:hover{
-  border: 2px solid rgb(255, 208, 0);
-  background: rgb(255, 208, 0);
-}
-.header-main__navigation_item-background-house{
-  background: url('../img/home.png')no-repeat;
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-}
-.header-main__navigation_item-background-house:hover{
-  background-image: url('../img/home2.png');
 }
 .header-main__navigation_item__href {
   display: block;
   width: 100%;
   height: 100%;
+}
+.background-home {
+  background: no-repeat center url("/img/house-green.svg");
+}
+.background-home:hover {
+  background: no-repeat center url("/img/house-yellow.svg");
+}
+.background-donate {
+  background: no-repeat center url("/img/donate-green.svg");
+}
+.background-donate:hover {
+  background: no-repeat center url("/img/donate-yellow.svg");
+}
+.background-userpage {
+  background: no-repeat center url("/img/profile-green.svg");
+}
+.background-userpage:hover {
+  background: no-repeat center url("/img/profile-yellow.svg");
 }
 /*Footer styles*/
 .footer-main {
