@@ -40,13 +40,9 @@
 .content__top-element__title {
   position: relative;
   margin: 100px 0;
-  text-align: center;
-  font-family: var(--header-text-font);
-  -webkit-text-stroke-color: rgb(0, 255, 136);
   display: block;
   font-size: 100px;
   color: #000000;
-  -webkit-text-stroke-width: 2px;
 }
 .content__top-element__text {
   background: rgba(0, 0, 0, 0.541);
@@ -73,11 +69,7 @@
   color: rgb(0, 0, 0);
 }
 .content__authors_item__author__link{
-  color:rgb(255, 208, 0);
   font-size: 20px;
-}
-.content__authors_item__author__link:hover{
-  color:rgb(0, 255, 136);
 }
 .content__authors_item__favourite-works {
   display: flex;
