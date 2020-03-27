@@ -1,7 +1,11 @@
 @import url('./style.css');
+@import url("./work_preview.css");
 .content__author {
   margin-top: 90px;
   width: 100%;
+}
+.content__author__works__title {
+  margin: 5px;
 }
 .content__author__about{ 
   width: 100%;
@@ -66,47 +70,12 @@
   justify-content: center;
   align-items: center;
 }
-.work-preview {
-  background: #000000;
-  color: #ffffff;
-  width: 450px;
-  margin: 20px;
-  transition: all 400ms ease;
-  border: 2px solid #ffd000;
-  box-shadow: 0 0 10px #000000;
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: column;
+.content__author__works__list {
   justify-content: center;
   align-items: center;
-}
-.work-preview:hover {
-  border: 2px solid #00ff88;
-}
-.work-preview__content {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
-}
-.work-preview__content__links {
   display: flex;
   flex-direction: row;
-}
-.work-preview__content__links__item {
-  margin: 5px;
-}
-.work-preview__footer__buttons {
-  display: flex;
-  flex-direction: row;
-}
-.work-preview__footer__creation-date {
-  float: right;
-}
-.work-preview__content__preview-img {
-  width: 400px;
-  max-height: 700px;
+  flex-wrap: wrap;
 }
 @media (max-width: 720px) {
   .content__author {

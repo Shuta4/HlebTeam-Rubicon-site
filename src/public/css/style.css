@@ -26,8 +26,7 @@ ul {
 }
 .button {
   min-width: 100px;
-  top: 20px;
-  margin: 5px;
+  min-height: 40px;
   padding: 5px;
   background: #000000;
   border: 2px solid #00ff88;
@@ -49,6 +48,13 @@ ul {
   font-family: var(--header-text-font);
   -webkit-text-stroke-color: rgb(0, 255, 136);
   -webkit-text-stroke-width: 2px;
+}
+.input-text {
+  border: 2px solid #00ff88;
+  min-height: 40px;
+}
+.input-text:hover {
+  border: 2px solid #ffd000;
 }
 /* Header main */
 .header-main{

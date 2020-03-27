@@ -1,11 +1,27 @@
 @import url("./style.css");
+@import url("./work_preview.css");
 
 .content {
 	display: flex;
 	justify-content: center;
+	flex-direction: column;
+}
+.content__form-find-users {
+	margin-top: 100px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 	align-items: center;
 }
-
-.content__form-find-user {
-	margin-top: 100px;
+.content__form-find-users__title {
+	margin: 10px;
+}
+.content__form-find-users__wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+}
+.content__form-find-users__wrapper input {
+	margin: 5px;
 }
