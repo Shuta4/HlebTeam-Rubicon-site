@@ -1,9 +1,9 @@
 @import url("./style.css");
-@import url("./work_preview.css");
+@import url("./user_preview.css");
 
 .content {
 	display: flex;
-	justify-content: center;
+	justify-content: top;
 	flex-direction: column;
 }
 .content__form-find-users {
@@ -24,4 +24,8 @@
 }
 .content__form-find-users__wrapper input {
 	margin: 5px;
+}
+.content__results__item {
+	margin-top: 5px;
+	padding: 10px
 }
