@@ -1,17 +1,14 @@
 const express = require('express');
-const Works = require('./db/Tables/Works.js')
+const Works = require('./db/Tables/Works.js');
+const Images = require('./db/Tables/Images.js');
 
 const port = 4000;
 const app = express();
 
 const sql = require('./db/connection')
 
-connection = sql.connection();
-
-sql.connect(connection);
-sql.end(connection);
-
 Works();
+Images();
 
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + '/public'));

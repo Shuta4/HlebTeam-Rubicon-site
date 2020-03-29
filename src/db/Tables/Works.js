@@ -6,6 +6,11 @@ const Works = function() {
 	connection.query(`CREATE TABLE IF NOT EXISTS works (
 			id int(12) NOT NULL PRIMARY KEY AUTO_INCREMENT,
 			title varchar(100) NOT NULL,
+			description varchar(1000),
+			preview_img varchar(20),
+			images_arr varchar(1000),
+			links_arr varchar(1000),
+			download_link varchar(100),
 			created_at datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
 			last_modified datetime
 		);`, (err, res) => {
