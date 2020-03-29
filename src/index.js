@@ -6,8 +6,10 @@ const app = express();
 
 const sql = require('./db/connection')
 
-sql.connect();
-sql.end();
+connection = sql.connection();
+
+sql.connect(connection);
+sql.end(connection);
 
 Works();
 
