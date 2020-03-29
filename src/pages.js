@@ -24,5 +24,9 @@ router.get("/donate", (req, res, next) => {
   res.render("./pages/donate");
   next();
 });
+router.get("/twork", (req, res, next) => {
+	res.render("./pages/work_page");
+	next();
+});
 
 module.exports = router;

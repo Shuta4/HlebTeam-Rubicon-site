@@ -1,0 +1,25 @@
+@import url("./style.css");
+
+.content__work {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	margin-top: 60px;
+	width: 100%;
+}
+.content__work__title {
+	font-size: 60px;
+}
+.content__work__description {
+  background: rgba(0, 0, 0, 0.541);
+  border-radius: 10px;
+  font-size: 18px;
+  width: 800px;
+  color: #ffffff;
+  align-self: center;
+  text-align: center;
+}
+img {
+	width: 400px;
+}
