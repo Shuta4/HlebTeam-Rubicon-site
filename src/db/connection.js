@@ -9,16 +9,22 @@ var sql = {
 		  database: 'hlebteam'
 		});
 	},
-	connect: function(conn) {
-			conn.connect((err) => {
-			console.log("Error with connecting to db!");
-			console.log("ERROR: " + err);
+	connect: function(connection) {
+		connection.connect((err) => {
+			if (err) {
+				console.log("Error with connecting to db!");
+				console.log("ERROR: " + err);
+			}
+			else console.log("Successfully connected!")
 		})
 	},
-	end: function(conn) {
-			conn.end((err) => {
-			console.log("Error with ending connection to db!");
-			console.log("ERROR: " + err);
+	end: function(connection) {
+		connection.end((err) => {
+			if (err) {
+				console.log("Error with ending connection to db!");
+				console.log("ERROR: " + err);
+			}
+			else console.log("Successfully ended connection!")
 		})
 	}
 }
