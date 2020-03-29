@@ -10,7 +10,7 @@ const Works = function() {
 			last_modified datetime
 		);`, (err, res) => {
 			if(err) console.log("Error with creating table!\n" + err);
-			else console.log("Table 'works' was successfully created!");
+			else console.log("Table 'works' was successfully created or already exists!");
 		});
 	sql.end(connection);
 }
