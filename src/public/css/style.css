@@ -117,6 +117,12 @@ ul {
 .background-userpage:hover {
   background: no-repeat center url("/img/profile-yellow.svg");
 }
+.background-find-user {
+  background: no-repeat center url("/img/find-user-green.svg");
+}
+.background-find-user:hover {
+  background: no-repeat center url("/img/find-user-yellow.svg");
+}
 /*Footer styles*/
 .footer-main {
   background: rgba(0, 255, 136, 0.226);
