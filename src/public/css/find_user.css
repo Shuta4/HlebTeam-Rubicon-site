@@ -29,3 +29,85 @@
 	margin-top: 5px;
 	padding: 10px
 }
+.content__form-find-users__input-name{
+width: 80vw;
+}
+.content__form-find-users__find-button{
+width: 10vw;
+}
+.content__form-find-users__input-name{
+border: 3px solid #00ff88;
+border-radius: 15px;
+transition: all 400ms;
+}
+.content__form-find-users__input-name:hover{
+	border: 3px solid #ffd000;
+	border-radius: 0px;
+	}
+	.content__form-find-users__find-button{
+		border: 3px solid #00ff88;
+		border-radius: 15px;
+		transition: all 400ms;
+		height: 50px;
+		width: 130px;
+
+	}
+	.content__form-find-users__find-button:hover{
+		border: 3px solid #ffd000;
+		border-radius: 0px;
+		transition: all 400ms;
+		height: 50px;
+		width: 170px;
+	}
+@media(max-width: 700px) {
+    .content__donate__title {
+        font-size: 66px;
+	}
+	.content__form-find-users__input-name{
+		width: 50vw;
+		}
+		.content__form-find-users__find-button{
+		width: 5vw;
+		}
+}
+@media(max-width: 400px) {
+    .content__donate__title {
+        font-size: 66px;
+	}
+	.content__form-find-users__input-name{
+		width: 250px;
+		}
+		.content__form-find-users__find-button{
+		width: 5vw;
+		}
+}
+@media(max-width: 360px) {
+    .content__donate__title {
+        font-size: 66px;
+	}
+	.content__form-find-users__input-name{
+		width: 300px;
+		border: 3px solid #00ff88;
+		border-radius: 15px;
+		transition: all 400ms;
+		}
+		.content__form-find-users__input-name:hover{
+			border: 3px solid #ffd000;
+			border-radius: 0px;
+			}
+			.content__form-find-users__find-button{
+				border: 3px solid #00ff88;
+				border-radius: 15px;
+				transition: all 400ms;
+				height: 50px;
+				width: 90px;
+		
+			}
+			.content__form-find-users__find-button:hover{
+				border: 3px solid #ffd000;
+				border-radius: 0px;
+				transition: all 400ms;
+				height: 50px;
+				width: 120px;
+			}
+}
