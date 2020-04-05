@@ -7,11 +7,52 @@ router.get("/", (req, res, next) => {
   next();
 });
 
-/*
-	Получение пользователя по id,
-	Поиск пользователей по имени,
-	Загрузка и выгрузка пользовательских фотографий,
-	Создание, удаление, редактирование, удаление пользователей и работ.
-*/
+router.router.post("/user/", (req, res, next)=> {
+	res.send("Создание пользователя");
+	next();
+});
+router.router.get("/user/find/:name", (req, res, next)=> {
+	res.send("Поиск пользователей по имени (дает краткую инфу (user-preview))");
+	next();
+});
+router.router.get("/user/:id", (req, res, next)=> {
+	res.send("Получение информации о 1 пользователе по id. Дает полную информацию (user-page)");
+	next();
+});
+router.router.put("/user/:id", (req, res, next)=> {
+	res.send("Изменение информации о пользователе (в req.body дается объект с информацией которую нужно изменить!)");
+	next();
+});
+router.router.delete("/user/:id", (req, res, next)=> {
+	res.send("Удаление пользователя (только по id)");
+	next();
+});
+
+router.router.post("/work/", (req, res, next)=> {
+	res.send("Создание работы");
+	next();
+});
+//Возможно нужны альтернативные способы поиска работ
+router.router.get("/work/:id", (req, res, next)=> {
+	res.send("Получение информации о 1 работе по id. Дает полную информацию (work-page)");
+	next();
+});
+router.router.put("/work/:id", (req, res, next)=> {
+	res.send("Изменение информации о работе (в req.body дается объект с информацией которую нужно изменить!)");
+	next();
+});
+router.router.delete("/work/:id", (req, res, next)=> {
+	res.send("Удаление работы (только по id)");
+	next();
+});
+
+router.router.post("/img/", (req, res, next)=> {
+	res.send("Загрузка фотографии на сервер");
+	next();
+});
+router.router.get("/img/:id", (req, res, next)=> {
+	res.send("Получение картинки"); // Возможно нужно больше способов получения
+	next();
+});
 
 module.exports = router;
