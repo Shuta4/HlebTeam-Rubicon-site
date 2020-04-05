@@ -16,10 +16,10 @@ body,
 }
 a {
   text-decoration: none;
-  color: #ffd000;
+  color: #00ff88;
 }
 a:hover {
-  color: #00ff88
+  color: #ffd000
 }
 ul {
   list-style: none;
@@ -133,6 +133,14 @@ right: 50px;
 .background-find-user:hover {
   background: no-repeat center url("/img/find-user-yellow.svg");
 }
+.header-main__navigation_item_background-info{
+font-size: 90px;
+color: #00ff88;
+margin: 0px;
+}
+.header-main__navigation_item_background-info:hover{
+  color: #ffd000;
+  }
 /*Footer styles*/
 .footer-main {
   background: rgba(0, 255, 136, 0.226);

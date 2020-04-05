@@ -4,7 +4,7 @@
   max-width: 550px;
   margin: 25px;
   transition: all 400ms ease;
-  border: 3px solid #ffd000;
+  border: 3px solid #00ff88;
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
@@ -12,7 +12,7 @@
   align-items: center;
 }
 .work-preview:hover {
-  border: 3px solid #00ff88;
+  border: 3px solid #ffd000;
 }
 .work-preview__header__title {
   font-size: 20px;
