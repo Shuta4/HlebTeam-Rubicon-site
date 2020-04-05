@@ -5,6 +5,7 @@
 	display: flex;
 	justify-content: top;
 	flex-direction: column;
+	background: url('') rgb(7, 6, 49) no-repeat;
 }
 .content__form-find-users {
 	margin-top: 100px;
@@ -26,8 +27,9 @@
 	margin: 5px;
 }
 .content__results__item {
+	background: #00ff8875;
 	margin-top: 5px;
-	padding: 10px
+	padding: 10px;
 }
 .content__form-find-users__input-name{
 width: 80vw;

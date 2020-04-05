@@ -9,7 +9,7 @@
 }
 .content__author__about{ 
   width: 100%;
-  min-height: 40vh;
+  height: 46vh;
   position: relative;
   background: rgb(0, 0, 0);
   display: flex;

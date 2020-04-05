@@ -1,6 +1,7 @@
 @import url("./style.css");
 
 .content__donate {
+    background: url('/img/donat-back.jpg') no-repeat;
     widows: 100%;
     display: flex;
     flex-wrap: nowrap;
@@ -11,7 +12,8 @@
 }
 .content__donate__title {
     position: relative;
-    margin: 100px 0;
+    margin: 0px;
+    top: 20px;
     text-align: center;
     font-family: var(--header-text-font);
     -webkit-text-stroke-color: rgb(0, 255, 136);
@@ -35,9 +37,48 @@
     justify-content: center;
     align-items: center;
 }
+.footer-main__bottom-wrapper__container__list__item__images{
+    position: relative;
+    top: 30px;
+    width: 100px;
+    height: 100px;
+    border: 3px solid #00ff88;
+    border-radius: 100px;
+    margin: 30px;
+    transition: all 400ms;
+}
+.footer-main__bottom-wrapper__container__list__item__images:hover{
+    position: relative;
+    top: 30px;
+    width: 100px;
+    height: 100px;
+    border: 3px solid #ffd000;
+    border-radius: 10px;
+    margin: 30px;
+    transition: all 400ms;
+}
+.content__donate__title__lin{
+    position: relative;
+    border: 2px solid #ffd000;
+}
+@media(max-width: 1080px) {
+    .content__donate__title {
+        font-size: 80px;
+    }
+    .content__donate {
+        position: relative;
+        background: url('/img/donat-back.jpg') no-repeat;
+        width: 100%;
+    }
+}
+
 
 @media(max-width: 550px) {
     .content__donate__title {
-        font-size: 66px;
+        font-size: 50px;
+    }
+    .content__donate {
+        background: url('/img/donat-back.jpg') no-repeat;
+        width: 100%;
     }
 }
