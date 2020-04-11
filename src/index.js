@@ -30,8 +30,7 @@ reg("test", "test2@test.com", "gergege");
 app.use("/api", require("./api.js"));
 app.use("/", require("./pages.js"));
 
-app.use((req, res, next) => {
-  res.render('notFound')
-});
+// Обработка 404
+
 app.listen(port, () => console.log("Server are running on port: " + port));
 

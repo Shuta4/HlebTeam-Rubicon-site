@@ -23,3 +23,5 @@ function register_handler(event) {
 	else if (form.password.value != form.confirm_password.value) console.log("Can't register because password and confirm password don't match");
 	else register(form);
 }
+
+document.querySelector(".register-popup__form").addEventListener("submit", register_handler);
