@@ -7,8 +7,10 @@ router.get("/", (req, res, next) => {
   next();
 });
 
+// Registration of a new user!
 router.post("/user/", (req, res, next)=> {
-	res.send("Создание пользователя");
+	obj = req.body;
+	res.send(obj);
 	next();
 });
 router.get("/user/find/:name", (req, res, next)=> {

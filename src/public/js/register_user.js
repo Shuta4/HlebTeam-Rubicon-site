@@ -14,6 +14,7 @@ function register(form) {
 }
 function register_handler(event) {
 	event.PreventDefault();
+	form = event.target;
 	if (form.login == "") console.log("Can't register because login field is empty!");
 	else if (form.email == "") console.log("Can't register because email field is empty!"); 
 	else if (form.password == "") console.log("Can't register because password field is empty!");

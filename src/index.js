@@ -1,26 +1,37 @@
 const express = require('express');
-const Works = require('./db/Tables/Works.js');
-const Images = require('./db/Tables/Images.js');
-const Users = require('./db/Tables/Users.js');
 const cookieParser = require('cookie-parser');
-const cookie = require('express-session')
+const cookie = require('express-session');
+const session = require('express-session');
+const bodyParser = require('body-parser');
+const path = require('path');
 
 const port = 4000;
 const app = express();
 
 const sql = require('./db/connection');
 
-Users();
-Works();
-Images();
-
-app.use(cookieParser());
 app.set("view engine", "ejs");
-app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views');
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(cookieParser())
+app.use(express.static(path.join(__dirname, 'public')))
+app.use(session({
+  cookie: { maxAge: 60000 },
+  secret: 'codeworkrsecret',
+  saveUninitialized: false,
+  resave: false
+}));
+
+const reg = require('./db/actions/register.js');
+reg("test", "test2@test.com", "gergege");
 
 app.use("/api", require("./api.js"));
 app.use("/", require("./pages.js"));
 
-app.listen(port);
-console.log("Server are running on port: " + port);
+app.use((req, res, next) => {
+  res.render('notFound')
+});
+app.listen(port, () => console.log("Server are running on port: " + port));
+
