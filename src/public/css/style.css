@@ -1,5 +1,6 @@
 @import url("./normalize.css");
 @import url("./fonts.css");
+@import url("./register_popup.css");
 
 html,
 body, 
@@ -60,7 +61,7 @@ right: 50px;
 }
 .input-text {
   position: relative;
-  left: 50px;
+  /*left: 50px; Переставь в класс элемента для конкретной страницы */
   border: 2px solid #00ff88;
   min-height: 40px;
 }
@@ -132,6 +133,12 @@ right: 50px;
 }
 .background-find-user:hover {
   background: no-repeat center url("/img/find-user-yellow.svg");
+}
+.background-info {
+  background: no-repeat center url("/img/info-question-green.svg");
+}
+.background-info:hover {
+  background: no-repeat center url("/img/info-question-yellow.svg");
 }
 .header-main__navigation_item_background-info{
 font-size: 90px;

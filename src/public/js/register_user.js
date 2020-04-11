@@ -5,17 +5,14 @@ function register(form) {
 		password: form.password.value
 	}
 	fetch("/user", {
-	    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+	    method: 'POST',
 	    headers: {
 	      'Content-Type': 'application/json'
-	      // 'Content-Type': 'application/x-www-form-urlencoded',
 	    },
 	    body: JSON.stringify(new_user) // body data type must match "Content-Type" header
   	}).then((res)=> res.json()).then((res)=> console.log(res));
 }
-
-form = document.querySelector(".register-popup__form");
-form.addEventListener("submit", (event) => {
+function register_handler(event) {
 	event.PreventDefault();
 	if (form.login == "") console.log("Can't register because login field is empty!");
 	else if (form.email == "") console.log("Can't register because email field is empty!"); 
@@ -23,4 +20,4 @@ form.addEventListener("submit", (event) => {
 	else if (form.confirm_password == "") console.log("Can't register because confirm password field is empty!");
 	else if (form.password.value != form.confirm_password.value) console.log("Can't register because password and confirm password don't match");
 	else register(form);
-});
+}

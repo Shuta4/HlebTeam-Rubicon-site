@@ -28,5 +28,9 @@ router.get("/twork", (req, res, next) => {
 	res.render("./pages/work_page");
 	next();
 });
+router.get("/about", (req, res, next) => {
+	res.render("./pages/about");
+	next();
+});
 
 module.exports = router;

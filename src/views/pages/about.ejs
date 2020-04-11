@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<%- include("../parts/head.ejs", {title: "Главная страница", style_href: "/css/about_page.css"}) %>
+<body>
+        <%- include("../parts/header.ejs") %>
+        <main class="content">
+            <div class="content__about">
+                <h2 class="content__about__title">
+                    HlebTeam
+                </h2>
+                <p class="content__about__text">Где вы можете нас найти:</p>
+                <div class="center">
+                    <p class="content__about__info">
+                        <a href="" class="content__about__info__item">
+                            <img src='/img/vk-icon.jpg' class="content__about__info__item__image" alt="Вк">
+                        </a>
+                        <a href="" class="content__about__info__item">
+                            <img src='/img/youtube.jpg' class="content__about__info__item__image" alt="YouTube">
+                        </a>
+                        <a href="" class="content__about__info__item">
+                            <img src='/img/GitHub.png' class="content__about__info__item__image" alt="GitHub">
+                        </a>
+                        <a href="" class="content__about__info__item">
+                            <img src='/img/insta.jpg' class="content__about__info__item__image" alt="Instagram">
+                        </a>    
+                    </p> 
+                </div>                 
+            </div>
+        </main>        
+        <%- include("../parts/footer.ejs") %>
+    </div>
+</body>
+</html>
