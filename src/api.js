@@ -22,7 +22,8 @@ router.post("/user", async (req, res, next) => {
 		const result = Joi.validate(req.body, registerValidation)
 		if (result.error) {
 			// Отправка ошибки
-			res.json({"ok": false})
+			console.log(error)
+			res.json({"ok": false, error: result.error})
 			return
 		}
 		// Проверка пользователя на существование, если пользователь уже существует - отмена!
@@ -37,7 +38,8 @@ router.post("/user", async (req, res, next) => {
 		res.json({"ok": true})
 		next();
 	} catch (error) {
-		res.json({"ok": false})
+		res.json({"ok": false, error: error});
+		console.log(error)
 		next(error)
 	}
 	next();
