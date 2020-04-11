@@ -1,6 +1,6 @@
 var register = function(form) {
 	new_user = {
-		login: form.login.value,
+		username: form.login.value,
 		email: form.email.value,
 		password: form.password.value,
 		password_confirmation: form.confirm_password.value
