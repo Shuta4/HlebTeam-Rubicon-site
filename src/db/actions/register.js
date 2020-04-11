@@ -6,6 +6,7 @@ module.exports = function(username, email, password) {
 	connection.query("INSERT INTO `users`(`username`, `email`, `password`) VALUES ('" + username + "', '" + email + "', '" + password + "')", function(err) {
 	  if (err) {
 	  	console.log("Error has occured during creation of user " + username);
+	  	console.log("Error: \n" + err + "\n");
 	  	return
 	  }
 	  console.log("Succesfully created user " + username);
