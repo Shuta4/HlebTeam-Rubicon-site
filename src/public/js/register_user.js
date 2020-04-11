@@ -2,7 +2,8 @@ function register(form) {
 	new_user = {
 		login: form.login.value,
 		email: form.email.value,
-		password: form.password.value
+		password: form.password.value,
+		password_confirmation: form.confirm_password.value
 	}
 	fetch("/user", {
 	    method: 'POST',

@@ -1,16 +1,45 @@
 /* Файл, где будут все обращения к базе данных и т.п. */
 const express = require('express');
 const router = express.Router();
+const register = require("./db/actions/register.js");
+const Joi = require("joi");
 
 router.get("/", (req, res, next) => {
   res.send("API of HlebTeam site!")
   next();
 });
 
+const registerValidation = Joi.object().keys({
+  email: Joi.string().email().required(),
+  username: Joi.string().required(),
+  password: Joi.string().regex(/^[a-zA-Z0-9]{6,30}$/).required(),
+  password_confirmation: Joi.any().valid(Joi.ref('password')).required()
+})
+
 // Registration of a new user!
-router.post("/user/", (req, res, next)=> {
-	obj = req.body;
-	res.send(obj);
+router.post("/user/", async (req, res, next) => {
+	try {
+		const result = Joi.validate(req.body, registerValidation)
+		if (result.error) {
+			// Отправка ошибки
+			res.send({ok: false})
+			return
+		}
+		// Проверка пользователя на существование, если пользователь уже существует - отмена!
+
+		// Хеширование пароля
+		const hash = await User.hashPassword(result.value.password)
+
+		delete result.value.confirmationPassword
+		result.value.password = hash
+		// Если все ок, то регистрируем пользователя в бд
+		register(result.value.username, result.value.email, result.value.password);
+		res.send({ok: true})
+		next();
+	} catch (error) {
+		res.send({ok: false})
+		next(error)
+	}
 	next();
 });
 router.get("/user/find/:name", (req, res, next)=> {
