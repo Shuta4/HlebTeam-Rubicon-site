@@ -1,11 +1,11 @@
 <div class="popup register-popup">
 	<button class="register_popup__close button close_popup">X</button>
-	<form class="register-popup__form" onsubmit="register_handler()">
+	<form class="register-popup__form" onsubmit="register_handler(event)">
 		<input type="text" name="login" class="register-popup__form__input input-text register_login" placeholder="Введите логин">
 		<input type="email" name="email" class="register-popup__form__input input-text register_email" placeholder="Введите email">
 		<input type="password" name="password" class="register-popup__form__input input-text register_password" placeholder="Введите пароль">
 		<input type="password" name="confirm_password" class="register-popup__form__input input-text register_confirm_password" placeholder="Подтвердите пароль">
-		<input type="submits" class="register-popup__form__input button register_submit" value="Зарегестрироваться">
+		<input type="submit" class="register-popup__form__input button register_submit" value="Зарегестрироваться">
 	</form>
 </div>
 <script src="/js/register_user.js" type="text/javascript"></script>
