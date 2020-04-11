@@ -17,12 +17,12 @@ const registerValidation = Joi.object().keys({
 })
 
 // Registration of a new user!
-router.post("/user/", async (req, res, next) => {
+router.post("/user", async (req, res, next) => {
 	try {
 		const result = Joi.validate(req.body, registerValidation)
 		if (result.error) {
 			// Отправка ошибки
-			res.send({ok: false})
+			res.json({"ok": false})
 			return
 		}
 		// Проверка пользователя на существование, если пользователь уже существует - отмена!
@@ -34,10 +34,10 @@ router.post("/user/", async (req, res, next) => {
 		result.value.password = hash
 		// Если все ок, то регистрируем пользователя в бд
 		register(result.value.username, result.value.email, result.value.password);
-		res.send({ok: true})
+		res.json({"ok": true})
 		next();
 	} catch (error) {
-		res.send({ok: false})
+		res.json({"ok": false})
 		next(error)
 	}
 	next();

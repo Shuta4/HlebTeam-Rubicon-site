@@ -24,9 +24,6 @@ app.use(session({
   resave: false
 }));
 
-const reg = require('./db/actions/register.js');
-reg("test", "test2@test.com", "gergege");
-
 app.use("/api", require("./api.js"));
 app.use("/", require("./pages.js"));
 
