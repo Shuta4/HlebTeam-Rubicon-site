@@ -22,14 +22,14 @@ router.post("/user", async (req, res, next) => {
 		const result = Joi.validate(req.body, registerValidation)
 		if (result.error) {
 			// Отправка ошибки
-			console.log(error)
+			console.log(result.error)
 			res.json({"ok": false, error: result.error})
 			return
 		}
 		// Проверка пользователя на существование, если пользователь уже существует - отмена!
 
 		// Хеширование пароля
-		const hash = await User.hashPassword(result.value.password)
+		const hash = result.value.password;
 
 		delete result.value.confirmationPassword
 		result.value.password = hash
