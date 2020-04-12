@@ -16,8 +16,8 @@ const registerValidation = Joi.object().keys({
   password_confirmation: Joi.any().valid(Joi.ref('password')).required()
 });
 const loginValidation = Joi.object().keys({
-  email: Joi.string().email().required(),
-  username: Joi.string().required(),
+  email: Joi.string().email(),
+  username: Joi.string(),
   password: Joi.string().regex(/^[a-zA-Z0-9]{6,30}$/).required()
 })
 

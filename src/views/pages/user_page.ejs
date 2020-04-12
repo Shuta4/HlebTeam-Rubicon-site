@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
     <%- include("../parts/head.ejs", {title: "Вася Пупкин - страница пользователя", style_href: "/css/user_page.css"}) %>
-<body>
-    <div id="progressbar"></div>
-    <div id="scrollPatch"></div>  
+<body>  
     <div class="page">
         <%- include("../parts/header.ejs") %>
         <main class="content">
+            <%- include("../parts/register_popup.ejs") %>
             <div class="content__author">
                 <div class="content__author__about">
                     <img alt="Аватар" class="content__author__about__avatar" src="https://image.flaticon.com/icons/png/512/64/64572.png">  
@@ -130,6 +129,5 @@
         </main>
         <%- include("../parts/footer.ejs") %>
     </div>
-    <script src="/js/jscode.js"></script>
 </body>
 </html>
