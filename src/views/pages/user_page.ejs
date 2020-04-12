@@ -2,10 +2,11 @@
 <html>
     <%- include("../parts/head.ejs", {title: "Вася Пупкин - страница пользователя", style_href: "/css/user_page.css"}) %>
 <body>
+    <div id="progressbar"></div>
+    <div id="scrollPatch"></div>  
     <div class="page">
         <%- include("../parts/header.ejs") %>
         <main class="content">
-            <%- include("../parts/register_popup.ejs") %>
             <div class="content__author">
                 <div class="content__author__about">
                     <img alt="Аватар" class="content__author__about__avatar" src="https://image.flaticon.com/icons/png/512/64/64572.png">  
@@ -23,7 +24,7 @@
                             <button class="content__author__about__buttons__item__button button button_contact">Связаться</button>                           
                         </li>
                         <li class="content__author__about__buttons__item">
-                            <button class="content__author__about__buttons__item__button button button_report">Пожаловаться</button>                           
+                            <button class="content__author__about__buttons__item__button button button_report">Совершить донос</button>                           
                         </li>                        
                     </ul>
                 </div>
@@ -32,12 +33,13 @@
                         <li class="content__author__works__list__item work-preview">            
                             <div class="work-preview__content">
                                 <a href="">
-                                <img class="work-preview__content__preview-img" src="/img/site-bonpass-temp.jpg">                               
-                                <header class="work-preview__header">
-                                    <h4 class="work-preview__header__title">Название работы</h4>                                   
-                                </header>
-                                </a>
+                                    <img class="work-preview__content__preview-img" src="/img/site-bonpass-temp.jpg">                               
+                                    <header class="work-preview__header">
+                                        <h4 class="work-preview__header__title">Название работы</h4>                                   
+                                    </header>
+                                    </a>
                             </div>                        
+                            </footer>
                         </li>
                         <li class="content__author__works__list__item work-preview">            
                             <div class="work-preview__content">
@@ -48,6 +50,7 @@
                                     </header>
                                     </a>
                             </div>                        
+                            </footer>
                         </li>
                         <li class="content__author__works__list__item work-preview">            
                             <div class="work-preview__content">
@@ -58,6 +61,7 @@
                                     </header>
                                     </a>
                             </div>                        
+                            </footer>
                         </li>
                         <li class="content__author__works__list__item work-preview">            
                             <div class="work-preview__content">
@@ -66,8 +70,9 @@
                                     <header class="work-preview__header">
                                         <h4 class="work-preview__header__title">Название работы</h4>                                   
                                     </header>
-                                </a>
+                                    </a>
                             </div>                        
+                            </footer>
                         </li>
                         <li class="content__author__works__list__item work-preview">            
                             <div class="work-preview__content">
@@ -76,8 +81,9 @@
                                     <header class="work-preview__header">
                                         <h4 class="work-preview__header__title">Название работы</h4>                                   
                                     </header>
-                                </a>
+                                    </a>
                             </div>                        
+                            </footer>
                         </li>
                         <li class="content__author__works__list__item work-preview">            
                             <div class="work-preview__content">
@@ -86,18 +92,9 @@
                                     <header class="work-preview__header">
                                         <h4 class="work-preview__header__title">Название работы</h4>                                   
                                     </header>
-                                </a>
+                                    </a>
                             </div>                        
-                         </li>
-                        <li class="content__author__works__list__item work-preview">            
-                            <div class="work-preview__content">
-                                <a href="">
-                                    <img class="work-preview__content__preview-img" src="/img/site-bonpass-temp.jpg">                               
-                                    <header class="work-preview__header">
-                                        <h4 class="work-preview__header__title">Название работы</h4>                                   
-                                    </header>
-                                </a>
-                            </div>                        
+                            </footer>
                         </li>
                         <li class="content__author__works__list__item work-preview">            
                             <div class="work-preview__content">
@@ -106,14 +103,33 @@
                                     <header class="work-preview__header">
                                         <h4 class="work-preview__header__title">Название работы</h4>                                   
                                     </header>
-                                </a>
+                                    </a>
                             </div>                        
+                            </footer>
                         </li>
+                        <li class="content__author__works__list__item work-preview">            
+                            <div class="work-preview__content">
+                                <a href="">
+                                    <img class="work-preview__content__preview-img" src="/img/site-bonpass-temp.jpg">                               
+                                    <header class="work-preview__header">
+                                        <h4 class="work-preview__header__title">Название работы</h4>                                   
+                                    </header>
+                                    </a>
+                            </div>                        
+                            </footer>
+                        </li>         
+                                <div class="work-preview__content">
+                                    <a href='' class="work-preview__content__plus"><h3 class="work-preview__content__plus__text">+</h3></a>  
+                            </div>                        
+                            </footer>
+                        </li>
+                        
                     </ul>
                 </div>                    
-            </div>
+            </div>   
         </main>
         <%- include("../parts/footer.ejs") %>
     </div>
+    <script src="/js/jscode.js"></script>
 </body>
 </html>

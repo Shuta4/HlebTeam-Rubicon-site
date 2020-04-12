@@ -11,8 +11,8 @@ body{
   margin: 5px;
 }
 .content__author__about{ 
-  width: 100%;
-  height: 46vh;
+  width: 99.5%;
+  height: 460px;
   position: relative;
   background: rgb(0, 0, 0);
   display: flex;
@@ -69,7 +69,6 @@ body{
   margin: 5px;
 }
 .content__author__works {
-  position: relative;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -79,6 +78,7 @@ body{
   align-items: center;
 }
 .content__author__works__list {
+  width: 99%;
   justify-content: center;
   align-items: center;
   display: flex;
@@ -86,7 +86,8 @@ body{
   flex-wrap: wrap;
 }
 .work-preview__content__plus{
-background: black;
+background: #00ff88;
+color: white;
 text-align: center;
 width: 200px;
 height: 200px;
@@ -97,16 +98,69 @@ transition: all 400ms;
 margin: 50px;
 }
 .work-preview__content__plus:hover{
-  background: rgb(255, 255, 255);
+  background: #ffd000;
   border: 4px solid #ffd000;
   border-radius: 20%;
   font-size: 70px;
   transition: all 400ms;
+  color: white;
   }
   .work-preview__content__plus__text{
     position: relative;
     top: -38px;
   }
+   
+   #scrollPatch{
+     position: fixed;
+     top: 0;
+     right: 0;
+     width: 10px;
+     height: 100%;
+     background: rgba(255, 255, 255, 0.05);
+   }
+   #progressbar{
+     position: fixed;
+     top: 0;
+     right: 0;
+     width: 10px;
+     background: linear-gradient(to top, #008aff, #00ffe7);
+     animation: animate 5s linear infinite;
+   }
+   ::-webkit-scrollbar{
+     width: 0;
+   }
+   @keyframes animate
+   {
+     0%,100%
+     {
+       filter: hue-rotate(0deg)
+     }
+     50%
+     {
+       filter: hue-rotate(360deg)
+     }
+   }
+   #progressbar:before{
+   content: '';
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background: linear-gradient(to top, #008aff, #00ffe7);
+   filter: blur(10px);
+   }
+   
+   #progressbar:after{
+     content: '';
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background: linear-gradient(to top, #008aff, #00ffe7);
+     filter: blur(30px);
+     }
 @media (max-width: 720px) {
   .content__author {
     margin-top: 80px;

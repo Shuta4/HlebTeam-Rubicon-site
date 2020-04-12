@@ -14,6 +14,11 @@ const registerValidation = Joi.object().keys({
   username: Joi.string().required(),
   password: Joi.string().regex(/^[a-zA-Z0-9]{6,30}$/).required(),
   password_confirmation: Joi.any().valid(Joi.ref('password')).required()
+});
+const loginValidation = Joi.object().keys({
+  email: Joi.string().email().required(),
+  username: Joi.string().required(),
+  password: Joi.string().regex(/^[a-zA-Z0-9]{6,30}$/).required()
 })
 
 // Registration of a new user!
@@ -44,6 +49,33 @@ router.post("/user", async (req, res, next) => {
 	}
 	next();
 });
+router.get("/user/login"), async (req, res, next) => {
+	try {
+		const result = Joi.validate(req.body, loginValidation)
+		if (result.error) {
+			// Отправка ошибки
+			console.log(result.error)
+			res.json({"ok": false, error: result.error})
+			return
+		}
+		// Проверка пользователя на существование, если пользователь уже существует - отмена!
+
+		// Хеширование пароля
+		const hash = result.value.password;
+
+		delete result.value.confirmationPassword
+		result.value.password = hash
+		// Если все ок, то регистрируем пользователя в бд
+		register(result.value.username, result.value.email, result.value.password);
+		res.json({"ok": true})
+		next();
+	} catch (error) {
+		res.json({"ok": false, error: error});
+		console.log(error)
+		next(error)
+	}
+	next();
+}
 router.get("/user/find/:name", (req, res, next)=> {
 	res.send("Поиск пользователей по имени (дает краткую инфу (user-preview))");
 	next();
