@@ -32,9 +32,9 @@ ul {
   min-height: 40px;
   padding: 5px;
   background: #000000;
-  border: 2px solid #00ff88;
+  border: 2px solid #00ff6a;
   border-radius: 10px;
-  color: #00ff88;
+  color: #00ff6a;
   transition: border-radius 0.25s ease-in;
 }
 .button:hover {
@@ -62,15 +62,14 @@ right: 50px;
 .input-text {
   outline:none;
   position: relative;
-  /*left: 50px; Переставь в класс элемента для конкретной страницы */
-  border: 2px solid #00ff88;
+   /*Переставь в класс элемента для конкретной страницы */
   min-height: 40px;
 }
 .input-text:active,:focus{
   outline:none;
 }
 .input-text:hover {
-  border: 2px solid #ffd000;
+  
 }
 /* Header main */
 .header-main{
