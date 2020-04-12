@@ -96,10 +96,16 @@ router.get("/user/login"), async (req, res, next) => {
 
 		user.password = hash
 		// Если все ок, то регистрируем пользователя в бд
-		login(user.username, user.email, user.password);
-		req.session.user = 
-		res.json({"ok": true})
-		next();
+		logged_user = login(user.username, user.email, user.password);
+		if (logged_user == false) {
+			console.log("User login failed!");
+			res.json({"ok": false});
+			next();
+		} else {
+			req.session.user = logged_user.result;
+			res.json({"ok": true})
+			next();
+		}
 	} catch (error) {
 		res.json({"ok": false, error: error});
 		console.log(error)
