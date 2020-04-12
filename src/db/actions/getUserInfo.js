@@ -1,7 +1,7 @@
 const sql = require("../connection.js");
 
 module.exports = function(username="", email="") {
-	if(username = "" && email = "") {
+	if(username == "" && email == "") {
 		console.log("Check user fail because no parametrs to check!");
 		return {
 			ok: false,
