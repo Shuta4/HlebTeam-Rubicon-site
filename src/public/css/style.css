@@ -60,10 +60,14 @@ position: relative;
 right: 50px;
 }
 .input-text {
+  outline:none;
   position: relative;
   /*left: 50px; Переставь в класс элемента для конкретной страницы */
   border: 2px solid #00ff88;
   min-height: 40px;
+}
+.input-text:active,:focus{
+  outline:none;
 }
 .input-text:hover {
   border: 2px solid #ffd000;
