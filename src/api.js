@@ -3,6 +3,9 @@ const express = require('express');
 const router = express.Router();
 const register = require("./db/actions/register.js");
 const Joi = require("joi");
+const getUserInfo = require("./db/actions/getUserInfo.js");
+const login = require("./db/actions/login.js")
+
 
 router.get("/", (req, res, next) => {
   res.send("API of HlebTeam site!")
@@ -15,12 +18,6 @@ const registerValidation = Joi.object().keys({
   password: Joi.string().regex(/^[a-zA-Z0-9]{6,30}$/).required(),
   password_confirmation: Joi.any().valid(Joi.ref('password')).required()
 });
-const loginValidation = Joi.object().keys({
-  email: Joi.string().email(),
-  username: Joi.string(),
-  password: Joi.string().regex(/^[a-zA-Z0-9]{6,30}$/).required()
-})
-
 // Registration of a new user!
 router.post("/user", async (req, res, next) => {
 	try {
@@ -32,7 +29,27 @@ router.post("/user", async (req, res, next) => {
 			return
 		}
 		// Проверка пользователя на существование, если пользователь уже существует - отмена!
-
+		userInfo = getUserInfo();
+		if (!userInfo.ok) {
+			console.log("Error with getting user info.\n Error: " + userInfo.error);
+			res.json({
+				"ok": false,
+				"error": userInfo.error,
+				"email": result.value.email,
+				"username": result.value.username
+			})
+			return
+		}
+		if (userInfo.exist) {
+			console.log("Tried to create existing user in registration with username: " + result.value.username);
+			res.json({
+				"ok": false, 
+				"error": "There are somebody with this username: " + result.value.username + "or email: " + result.value.email,
+				"email": result.value.email,
+				"username": result.value.username
+			});
+			return
+		}
 		// Хеширование пароля
 		const hash = result.value.password;
 
@@ -47,26 +64,40 @@ router.post("/user", async (req, res, next) => {
 		console.log(error)
 		next(error)
 	}
-	next();
 });
+// Login
 router.get("/user/login"), async (req, res, next) => {
 	try {
-		const result = Joi.validate(req.body, loginValidation)
-		if (result.error) {
-			// Отправка ошибки
-			console.log(result.error)
-			res.json({"ok": false, error: result.error})
+		user = req.body;
+		// Проверка пользователя на существование, если пользователь не существует - отмена!
+		userInfo = getUserInfo();
+		if (!userInfo.ok) {
+			console.log("Error with getting user info.\n Error: " + userInfo.error);
+			res.json({
+				"ok": false,
+				"error": userInfo.error,
+				"email": user.email,
+				"username": user.username
+			})
 			return
 		}
-		// Проверка пользователя на существование, если пользователь уже существует - отмена!
-
+		if (!userInfo.exist) {
+			console.log("Tried to login not existing user in login with username: " + user.username);
+			res.json({
+				"ok": false, 
+				"error": "There are no users with this username: " + user.username + "or email: " + user.email,
+				"email": user.email,
+				"username": user.username
+			});
+			return
+		}
 		// Хеширование пароля
-		const hash = result.value.password;
+		const hash = user.password;
 
-		delete result.value.confirmationPassword
-		result.value.password = hash
+		user.password = hash
 		// Если все ок, то регистрируем пользователя в бд
-		register(result.value.username, result.value.email, result.value.password);
+		login(user.username, user.email, user.password);
+		req.session.user = 
 		res.json({"ok": true})
 		next();
 	} catch (error) {
