@@ -1,0 +1,20 @@
+<div class="authentication-form">
+	<form class="authentication-form__form register_form">
+		<input type="text" name="username" class="authentication-form__form__input input-text register_username" placeholder="Имя">
+		<input type="email" name="email" class="authentication-form__form__input input-text register_email" placeholder="Введите email">
+		<input type="password" name="password" class="authentication-form__form__input input-text register_password" placeholder="Введите пароль">
+		<input type="password" name="confirm_password" class="authentication-form__form__input input-text register_confirm_password" placeholder="Подтвердите пароль">
+		<input type="submit" class="authentication-form__form__input button register_submit" value="Зарегестрироваться">
+	</form>
+	<form class="authentication-form__form login_form">
+		<input type="text" name="username" class="authentication-form__form__input input-text login_username" placeholder="Введите имя или электронную почту">
+		<input type="password" name="password" class="authentication-form__form__input input-text login_password" placeholder="Введите пароль">
+		<input type="submit" class="authentication-form__form__input button login_submit" value="Войти">
+	</form>
+	<div class="authentication-form__buttons">
+		<button class="authentication-form__button button close_popup">Закрыть</button>
+		<button class="authentication-form__button button register_button">Регистрация</button>
+		<button class="authentication-form__button button login_button">Войти в аккаунт</button>
+	</div>
+</div>
+<script src="/js/authenticate_user.js" type="text/javascript"></script>

@@ -53,7 +53,7 @@ router.post("/user", async (req, res, next) => {
 		// Хеширование пароля
 		const hash = result.value.password;
 
-		delete result.value.confirmationPassword
+		delete result.value.password_confirmation;
 		result.value.password = hash
 		// Если все ок, то регистрируем пользователя в бд
 		register(result.value.username, result.value.email, result.value.password);
@@ -76,7 +76,6 @@ router.get("/user/login"), async (req, res, next) => {
 			res.json({
 				"ok": false,
 				"error": userInfo.error,
-				"email": user.email,
 				"username": user.username
 			})
 			return
@@ -85,8 +84,7 @@ router.get("/user/login"), async (req, res, next) => {
 			console.log("Tried to login not existing user in login with username: " + user.username);
 			res.json({
 				"ok": false, 
-				"error": "There are no users with this username: " + user.username + "or email: " + user.email,
-				"email": user.email,
+				"error": "There are no users with this username: " + user.username,
 				"username": user.username
 			});
 			return
@@ -96,7 +94,7 @@ router.get("/user/login"), async (req, res, next) => {
 
 		user.password = hash
 		// Если все ок, то регистрируем пользователя в бд
-		logged_user = login(user.username, user.email, user.password);
+		logged_user = login(user.username, user.username, user.password);
 		if (logged_user == false) {
 			console.log("User login failed!");
 			res.json({"ok": false});
@@ -113,11 +111,11 @@ router.get("/user/login"), async (req, res, next) => {
 	}
 	next();
 }
-router.get("/user/find/:name", (req, res, next)=> {
+router.get("/user/search/:name", (req, res, next)=> {
 	res.send("Поиск пользователей по имени (дает краткую инфу (user-preview))");
 	next();
 });
-router.get("/user/:id", (req, res, next)=> {
+router.get("/user/get/:id", (req, res, next)=> {
 	res.send("Получение информации о 1 пользователе по id. Дает полную информацию (user-page)");
 	next();
 });
