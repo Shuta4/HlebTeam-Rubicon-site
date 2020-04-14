@@ -13,7 +13,7 @@ module.exports = function(username, email) {
 	connection = sql.connection();
 	sql.connect(connection);
 	var result = connection.query('SELECT * FROM users WHERE users.email = "' + email + '" OR users.username = "' + username + '" ', function(err, rows, fields) {
-		if (err) {
+		if (err != undefined || err != null) {
 			console.log("Error has occured during checking of user " + username + " - " + email);
 			console.log("Error: \n" + err + "\n");
 			return {
