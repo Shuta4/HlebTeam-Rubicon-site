@@ -69,11 +69,11 @@ router.post("/user/register", async (req, res, next) => {
 router.post("/user/login", async (req, res, next) => {
 	try {
 		var user = req.body;
-		console.log(user)
 		// Проверка пользователя на существование, если пользователь не существует - отмена!
 		const userInfo = await getUserInfo(user.username, user.username);
 		if (!userInfo.ok) {
-			console.log("Error with getting user info.\n Error: " + userInfo.error);
+			console.log(userInfo);
+			console.log("Error with getting user info.\nError: " + userInfo.error);
 			res.json({
 				"ok": false,
 				"error": userInfo.error,
