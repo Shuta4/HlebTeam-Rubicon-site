@@ -47,5 +47,5 @@ module.exports = async function(username, email) {
 	});
 	await console.log("Succesfully checked user " + username + " - " + email + ". Result is " + result);
 	await sql.end(connection);
-	return result;
+	return await result;
 }

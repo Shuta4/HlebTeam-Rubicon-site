@@ -29,7 +29,7 @@ router.post("/user/register", async (req, res, next) => {
 			return
 		}
 		// Проверка пользователя на существование, если пользователь уже существует - отмена!
-		userInfo = getUserInfo(result.value.username, result.value.email);
+		userInfo = await getUserInfo(result.value.username, result.value.email);
 		if (!userInfo.ok) {
 			console.log("Error with getting user info.\n Error: " + userInfo.error);
 			res.json({
