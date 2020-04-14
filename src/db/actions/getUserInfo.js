@@ -10,9 +10,9 @@ module.exports = async function(username, email) {
 			error: "No parametrs"
 		};
 	}
-	connection = sql.connection();
-	sql.connect(connection);
 	var result;
+	connection = sql.connection();
+	await sql.connect(connection);
 	await connection.query('SELECT * FROM users WHERE users.email = "' + email + '" OR users.username = "' + username + '"', function(err, rows, fields) {
 		if (err) {
 			console.log("Error has occured during checking of user " + username + " - " + email);
@@ -47,7 +47,7 @@ module.exports = async function(username, email) {
 			}	
 		}
 	});
-	console.log("Succesfully checked user " + username + " - " + email + ". Result is " + result);
-	sql.end(connection);
+	await console.log("Succesfully checked user " + username + " - " + email + ". Result is " + result);
+	await sql.end(connection);
 	return result;
 }
