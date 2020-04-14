@@ -66,7 +66,7 @@ router.post("/user/register", async (req, res, next) => {
 	}
 });
 // Login
-router.post("/user/login", async (req, res, next) => {
+router.post("/user/login", (req, res, next) => {
 	try {
 		var user = req.body;
 		console.log(user)
