@@ -70,7 +70,7 @@ router.post("/user/login", async (req, res, next) => {
 	try {
 		var user = req.body;
 		// Проверка пользователя на существование, если пользователь не существует - отмена!
-		userInfo = getUserInfo();
+		const userInfo = getUserInfo();
 		if (!userInfo.ok) {
 			console.log("Error with getting user info.\n Error: " + userInfo.error);
 			res.json({
@@ -94,7 +94,7 @@ router.post("/user/login", async (req, res, next) => {
 
 		user.password = hash
 		// Если все ок, то регистрируем пользователя в бд
-		logged_user = login(user.username, user.password);
+		const logged_user = login(user.username, user.password);
 		if (logged_user == false) {
 			console.log("User login failed!");
 			res.json({"ok": false});
