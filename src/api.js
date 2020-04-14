@@ -68,7 +68,7 @@ router.post("/user/register", async (req, res, next) => {
 // Login
 router.post("/user/login", async (req, res, next) => {
 	try {
-		user = req.body;
+		var user = req.body;
 		// Проверка пользователя на существование, если пользователь не существует - отмена!
 		userInfo = getUserInfo();
 		if (!userInfo.ok) {
