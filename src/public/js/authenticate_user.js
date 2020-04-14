@@ -15,7 +15,7 @@ var register = function(form) {
 		password: form.password.value,
 		password_confirmation: form.confirm_password.value
 	}
-	fetch("/api/user", {
+	fetch("/api/user/register", {
 	    method: 'POST',
 	    headers: {
 	      'Content-Type': 'application/json'

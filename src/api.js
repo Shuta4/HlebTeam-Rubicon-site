@@ -19,7 +19,7 @@ const registerValidation = Joi.object().keys({
   password_confirmation: Joi.any().valid(Joi.ref('password')).required()
 });
 // Registration of a new user!
-router.post("/user", async (req, res, next) => {
+router.post("/user/register", async (req, res, next) => {
 	try {
 		const result = Joi.validate(req.body, registerValidation)
 		if (result.error) {
@@ -60,13 +60,13 @@ router.post("/user", async (req, res, next) => {
 		res.json({"ok": true})
 		next();
 	} catch (error) {
-		res.json({"ok": false, error: error});
+		res.json({"ok": false, "error": error});
 		console.log(error)
 		next(error)
 	}
 });
 // Login
-router.get("/user/login"), async (req, res, next) => {
+router.post("/user/login", async (req, res, next) => {
 	try {
 		user = req.body;
 		// Проверка пользователя на существование, если пользователь не существует - отмена!
@@ -105,12 +105,12 @@ router.get("/user/login"), async (req, res, next) => {
 			next();
 		}
 	} catch (error) {
-		res.json({"ok": false, error: error});
+		res.json({"ok": false, "error": error});
 		console.log(error)
 		next(error)
 	}
 	next();
-}
+});
 router.get("/user/search/:name", (req, res, next)=> {
 	res.send("Поиск пользователей по имени (дает краткую инфу (user-preview))");
 	next();
@@ -119,11 +119,11 @@ router.get("/user/get/:id", (req, res, next)=> {
 	res.send("Получение информации о 1 пользователе по id. Дает полную информацию (user-page)");
 	next();
 });
-router.put("/user/:id", (req, res, next)=> {
+router.put("/user/update/:id", (req, res, next)=> {
 	res.send("Изменение информации о пользователе (в req.body дается объект с информацией которую нужно изменить!)");
 	next();
 });
-router.delete("/user/:id", (req, res, next)=> {
+router.delete("/user/delete/:id", (req, res, next)=> {
 	res.send("Удаление пользователя (только по id)");
 	next();
 });
