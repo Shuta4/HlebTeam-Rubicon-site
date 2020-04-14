@@ -1,6 +1,6 @@
 const sql = require("../connection.js");
 
-module.exports = function(username, email) {
+module.exports = async function(username, email) {
 	if(username == "" && email == "" || username == undefined && email == undefined) {
 		console.log("Check user fail because no parametrs!");
 		return {
@@ -12,12 +12,11 @@ module.exports = function(username, email) {
 	}
 	connection = sql.connection();
 	sql.connect(connection);
-	var result = null;
-	connection.query('SELECT * FROM users WHERE users.email = "' + email + '" OR users.username = "' + username + '" ', function(err, rows, fields) {
+	var result = await connection.query('SELECT * FROM users WHERE users.email = "' + email + '" OR users.username = "' + username + '" ', function(err, rows, fields) {
 		if (err) {
 			console.log("Error has occured during checking of user " + username + " - " + email);
 			console.log("Error: \n" + err + "\n");
-			result = {
+			return {
 				ok: false,
 				exist: false,
 				result: null,
@@ -25,20 +24,20 @@ module.exports = function(username, email) {
 			};
 		}
 		try {
-			if (rows) result = {
+			if (rows) return {
 				ok: true,
 				exist: true,
 				result: rows[0],
 				error: null
 			};
-			else result = {
+			else return {
 				ok: true,
 				exist: false,
 				result: null,
 				error: null
 			};		
 		} catch (err) {
-			result = {
+			return {
 				ok: false,
 				exist: false,
 				result: null,
