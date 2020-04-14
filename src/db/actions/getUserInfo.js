@@ -36,13 +36,14 @@ module.exports = function(username, email) {
 				result: null,
 				error: null
 			};		
-		} catch result = {
-			ok: false,
-			exist: false,
-			result: null,
-			error: "Unexprected error"
+		} catch (err) {
+			result = {
+				ok: false,
+				exist: false,
+				result: null,
+				error: "Unexprected error"
+			}	
 		}
-
 		console.log("Succesfully checked user " + username + " - " + email + ". Result is " + result.exist);
 		console.log(rows)
 	});
