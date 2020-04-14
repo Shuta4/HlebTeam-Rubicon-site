@@ -23,19 +23,20 @@ module.exports = function(username, email) {
 				error: err
 			};
 		}
-		if (rows[0].id) result = {
-				ok: true,
-				exist: true,
-				result: rows[0],
-				error: null
-			};
-		else result = {
-				ok: true,
-				exist: false,
-				result: null,
-				error: null
-			};
-		console.log("Succesfully checked user " + username + " - " + email + ". Result is " + result.exist);
+		// if (rows[0].id) result = {
+		// 		ok: true,
+		// 		exist: true,
+		// 		result: rows[0],
+		// 		error: null
+		// 	};
+		// else result = {
+		// 		ok: true,
+		// 		exist: false,
+		// 		result: null,
+		// 		error: null
+		// 	};
+		//console.log("Succesfully checked user " + username + " - " + email + ". Result is " + result.exist);
+		console.log(rows[0])
 	});
 	sql.end(connection);
 	return result;
