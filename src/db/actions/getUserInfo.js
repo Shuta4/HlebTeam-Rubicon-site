@@ -10,15 +10,9 @@ module.exports = function(username, email) {
 			error: "No parametrs"
 		};
 	}
-	var result = {
-		ok: false,
-		exist: false,
-		result: null,
-		error: null	
-	}
 	connection = sql.connection();
 	sql.connect(connection);
-	connection.query('SELECT * FROM users WHERE users.email = "' + email + '" OR users.username = "' + username + '" ', function(err, rows, fields) {
+	var result = connection.query('SELECT * FROM users WHERE users.email = "' + email + '" OR users.username = "' + username + '" ', function(err, rows, fields) {
 		if (err) {
 			console.log("Error has occured during checking of user " + username + " - " + email);
 			console.log("Error: \n" + err + "\n");
@@ -50,9 +44,9 @@ module.exports = function(username, email) {
 				error: "Unexprected error"
 			}	
 		}
-		console.log("Succesfully checked user " + username + " - " + email + ". Result is " + result.exist);
-		console.log(rows)
 	});
+	console.log("Succesfully checked user " + username + " - " + email + ". Result is " + result);
+	console.log(rows);
 	sql.end(connection);
 	return result;
 }
