@@ -24,20 +24,20 @@ module.exports = function(username, email) {
 			};
 		}
 		try {
-			if (rows) result = {
+			if (rows) return {
 				ok: true,
 				exist: true,
 				result: rows[0],
 				error: null
 			};
-			else result = {
+			else return {
 				ok: true,
 				exist: false,
 				result: null,
 				error: null
 			};		
 		} catch (err) {
-			result = {
+			return {
 				ok: false,
 				exist: false,
 				result: null,
