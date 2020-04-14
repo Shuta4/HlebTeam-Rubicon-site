@@ -13,7 +13,7 @@ module.exports = async function(username, email) {
 	connection = sql.connection();
 	sql.connect(connection);
 	var result;
-	await connection.query('SELECT * FROM users WHERE users.email = "' + email + '" OR users.username = "' + username + '" ', function(err, rows, fields) {
+	await connection.query('SELECT * FROM users WHERE users.email = "' + email + '" OR users.username = "' + username + '"', function(err, rows, fields) {
 		if (err) {
 			console.log("Error has occured during checking of user " + username + " - " + email);
 			console.log("Error: \n" + err + "\n");
@@ -26,7 +26,7 @@ module.exports = async function(username, email) {
 		}
 		console.log(rows[0]);
 		try {
-			if (rows) result = {
+			if (rows[0]) result = {
 				ok: true,
 				exist: true,
 				result: rows[0],
@@ -47,7 +47,7 @@ module.exports = async function(username, email) {
 			}	
 		}
 	});
-	await console.log("Succesfully checked user " + username + " - " + email + ". Result is " + result);
-	await sql.end(connection);
-	return await result;
+	console.log("Succesfully checked user " + username + " - " + email + ". Result is " + result);
+	sql.end(connection);
+	return result;
 }
