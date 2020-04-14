@@ -12,11 +12,12 @@ module.exports = async function(username, email) {
 	}
 	connection = sql.connection();
 	sql.connect(connection);
-	var result = await connection.query('SELECT * FROM users WHERE users.email = "' + email + '" OR users.username = "' + username + '" ', function(err, rows, fields) {
+	var result;
+	await connection.query('SELECT * FROM users WHERE users.email = "' + email + '" OR users.username = "' + username + '" ', function(err, rows, fields) {
 		if (err) {
 			console.log("Error has occured during checking of user " + username + " - " + email);
 			console.log("Error: \n" + err + "\n");
-			return {
+			result = {
 				ok: false,
 				exist: false,
 				result: null,
@@ -24,20 +25,20 @@ module.exports = async function(username, email) {
 			};
 		}
 		try {
-			if (rows) return {
+			if (rows) result = {
 				ok: true,
 				exist: true,
 				result: rows[0],
 				error: null
 			};
-			else return {
+			else result = {
 				ok: true,
 				exist: false,
 				result: null,
 				error: null
 			};		
 		} catch (err) {
-			return {
+			result = {
 				ok: false,
 				exist: false,
 				result: null,
