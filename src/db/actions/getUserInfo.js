@@ -23,22 +23,29 @@ module.exports = function(username, email) {
 				error: err
 			};
 		}
-		// if (rows[0].id) result = {
-		// 		ok: true,
-		// 		exist: true,
-		// 		result: rows[0],
-		// 		error: null
-		// 	};
-		// else result = {
-		// 		ok: true,
-		// 		exist: false,
-		// 		result: null,
-		// 		error: null
-		// 	};
-		//console.log("Succesfully checked user " + username + " - " + email + ". Result is " + result.exist);
+		try {
+			if (rows) result = {
+				ok: true,
+				exist: true,
+				result: rows[0],
+				error: null
+			};
+			else result = {
+				ok: true,
+				exist: false,
+				result: null,
+				error: null
+			};		
+		} catch result = {
+			ok: false,
+			exist: false,
+			result: null,
+			error: "Unexprected error"
+		}
+
+		console.log("Succesfully checked user " + username + " - " + email + ". Result is " + result.exist);
 		console.log(rows)
 	});
 	sql.end(connection);
-	result = {ok: true}
 	return result;
 }
