@@ -24,7 +24,7 @@ module.exports = async function(username, email) {
 				error: err
 			};
 		}
-		console.log(rows);
+		console.log(rows[0]);
 		try {
 			if (rows) result = {
 				ok: true,
