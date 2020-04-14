@@ -36,8 +36,9 @@ module.exports = function(username, email) {
 		// 		error: null
 		// 	};
 		//console.log("Succesfully checked user " + username + " - " + email + ". Result is " + result.exist);
-		console.log(rows[0])
+		console.log(rows)
 	});
 	sql.end(connection);
+	result = {ok: true}
 	return result;
 }
