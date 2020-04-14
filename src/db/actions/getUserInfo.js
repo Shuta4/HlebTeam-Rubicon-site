@@ -10,7 +10,7 @@ module.exports = function(username, email) {
 			error: "No parametrs"
 		};
 	}
-	const result = {
+	var result = {
 		ok: false,
 		exist: false,
 		result: null,
