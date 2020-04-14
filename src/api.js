@@ -29,27 +29,27 @@ router.post("/user/register", async (req, res, next) => {
 			return
 		}
 		// Проверка пользователя на существование, если пользователь уже существует - отмена!
-		userInfo = getUserInfo();
-		if (!userInfo.ok) {
-			console.log("Error with getting user info.\n Error: " + userInfo.error);
-			res.json({
-				"ok": false,
-				"error": userInfo.error,
-				"email": result.value.email,
-				"username": result.value.username
-			})
-			return
-		}
-		if (userInfo.exist) {
-			console.log("Tried to create existing user in registration with username: " + result.value.username);
-			res.json({
-				"ok": false, 
-				"error": "There are somebody with this username: " + result.value.username + "or email: " + result.value.email,
-				"email": result.value.email,
-				"username": result.value.username
-			});
-			return
-		}
+		// userInfo = getUserInfo();
+		// if (!userInfo.ok) {
+		// 	console.log("Error with getting user info.\n Error: " + userInfo.error);
+		// 	res.json({
+		// 		"ok": false,
+		// 		"error": userInfo.error,
+		// 		"email": result.value.email,
+		// 		"username": result.value.username
+		// 	})
+		// 	return
+		// }
+		// if (userInfo.exist) {
+		// 	console.log("Tried to create existing user in registration with username: " + result.value.username);
+		// 	res.json({
+		// 		"ok": false, 
+		// 		"error": "There are somebody with this username: " + result.value.username + "or email: " + result.value.email,
+		// 		"email": result.value.email,
+		// 		"username": result.value.username
+		// 	});
+		// 	return
+		// }
 		// Хеширование пароля
 		const hash = result.value.password;
 
