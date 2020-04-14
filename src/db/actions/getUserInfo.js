@@ -10,6 +10,12 @@ module.exports = function(username, email) {
 			error: "No parametrs"
 		};
 	}
+	const result = {
+		ok: false,
+		exist: false,
+		result: null,
+		error: null	
+	}
 	connection = sql.connection();
 	sql.connect(connection);
 	connection.query('SELECT * FROM users WHERE users.email = "' + email + '" OR users.username = "' + username + '" ', function(err, rows, fields) {
