@@ -24,7 +24,7 @@ module.exports = async function(username, email) {
 				error: err
 			};
 		}
-		console.log(rows[0]);
+		console.log(rows[0].RowDataPacket);
 		try {
 			if (rows) result = {
 				ok: true,
