@@ -223,11 +223,12 @@ margin: 0px;
   align-items: center;
   border-radius: 20px;
   border: 4px solid #00ff6a;
+  top:-50px;
 }
 .authentication-form__form__input {
   width: 450px;
   display: block;
-  margin: 7px;
+  margin: 4px;
   padding-left: 10px;
   padding: 5px;
   background: #ffffff;
@@ -235,7 +236,6 @@ margin: 0px;
   color: black;
   border-radius: 50px;
   transition: all 400ms;
-  
 }
 .authentication-form__form__input:hover{
   width: 450px;
@@ -245,12 +245,50 @@ margin: 0px;
   box-shadow: 0 0 5px black;
   color: rgb(0, 0, 0);
 }
+.authentication-form_register .authentication-form__form__input{
+  display: none;
+}
 .authentication-form__buttons {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100%;
+}
+.authentication-form_register{
+  background:  #ffd000;
+  position: absolute;
+  right: 680px;
+  width: 30px;
+  height: 380px;
+  border: 3px solid  #ffd000;
+  border-radius: 17px; 
+  transition: all 400ms;
+  overflow: hidden;
+  top: 225px;
+}
+.authentication-form_register:hover{
+  background: #ffd000;
+  width: 570px;
+  height: 380px;
+  border: 3px solid #ffd000;
+  border-radius: 17px; 
+  transition: all 700ms;
+}
+.authentication-form_register:hover>input{
+  position: relative;
+  top: 50px;
+  left: 40px;
+  margin: 15px;
+  display: block;
+  border: 3px solid #ffffff;
+}
+
+.authentication-form_register_text{
+  font-size: 25px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  margin: 2px;
+  text-align: center;
 }
 
 @media(max-width: 720px) {
