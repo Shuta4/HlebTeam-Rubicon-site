@@ -66,12 +66,12 @@ router.post("/user/register", async (req, res, next) => {
 	}
 });
 // Login
-router.post("/user/login", (req, res, next) => {
+router.post("/user/login", async (req, res, next) => {
 	try {
 		var user = req.body;
 		console.log(user)
 		// Проверка пользователя на существование, если пользователь не существует - отмена!
-		const userInfo = getUserInfo(user.username, user.username);
+		const userInfo = await getUserInfo(user.username, user.username);
 		if (!userInfo.ok) {
 			console.log("Error with getting user info.\n Error: " + userInfo.error);
 			res.json({
