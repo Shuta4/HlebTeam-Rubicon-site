@@ -1,7 +1,7 @@
 const sql = require("../connection.js");
 
 module.exports = function(username, email) {
-	if(username == "" && email == "") {
+	if(username == "" && email == "" || username == undefined && email == undefined) {
 		console.log("Check user fail because no parametrs!");
 		return {
 			ok: false,
@@ -46,7 +46,6 @@ module.exports = function(username, email) {
 		}
 	});
 	console.log("Succesfully checked user " + username + " - " + email + ". Result is " + result);
-	console.log(rows);
 	sql.end(connection);
 	return result;
 }

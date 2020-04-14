@@ -29,7 +29,7 @@ router.post("/user/register", async (req, res, next) => {
 			return
 		}
 		// Проверка пользователя на существование, если пользователь уже существует - отмена!
-		userInfo = getUserInfo();
+		userInfo = getUserInfo(result.value.username, result.value.email);
 		if (!userInfo.ok) {
 			console.log("Error with getting user info.\n Error: " + userInfo.error);
 			res.json({
@@ -71,7 +71,7 @@ router.post("/user/login", (req, res, next) => {
 		var user = req.body;
 		console.log(user)
 		// Проверка пользователя на существование, если пользователь не существует - отмена!
-		const userInfo = getUserInfo();
+		const userInfo = getUserInfo(user.username, user.username);
 		if (!userInfo.ok) {
 			console.log("Error with getting user info.\n Error: " + userInfo.error);
 			res.json({
