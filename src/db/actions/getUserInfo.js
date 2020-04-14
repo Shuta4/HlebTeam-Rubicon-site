@@ -45,7 +45,7 @@ module.exports = async function(username, email) {
 			}	
 		}
 	});
-	console.log("Succesfully checked user " + username + " - " + email + ". Result is " + result);
-	sql.end(connection);
-	return result;
+	await console.log("Succesfully checked user " + username + " - " + email + ". Result is " + result);
+	await sql.end(connection);
+	await return result;
 }
