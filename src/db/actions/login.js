@@ -1,8 +1,8 @@
 const sql = require("../connection.js");
 
-module.exports = function(username, email, password) {
-	if ((username || email) && password) {
-		user = getUserInfo(username, email);
+module.exports = function(username, password) {
+	if (username && password) {
+		var user = getUserInfo(username, username);
 		if (!user.exist || !user.ok) return false;
 		if (user.result.password == password) return user.result;
 		else return false;

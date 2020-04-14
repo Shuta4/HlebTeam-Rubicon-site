@@ -94,7 +94,7 @@ router.post("/user/login", async (req, res, next) => {
 
 		user.password = hash
 		// Если все ок, то регистрируем пользователя в бд
-		logged_user = login(user.username, user.username, user.password);
+		logged_user = login(user.username, user.password);
 		if (logged_user == false) {
 			console.log("User login failed!");
 			res.json({"ok": false});
