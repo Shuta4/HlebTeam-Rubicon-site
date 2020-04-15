@@ -4,7 +4,8 @@ const router = express.Router();
 const register = require("./db/actions/register.js");
 const Joi = require("joi");
 const getUserInfo = require("./db/actions/getUserInfo.js");
-const login = require("./db/actions/login.js")
+const login = require("./db/actions/login.js");
+const sql = require("./db/connection.js");
 
 
 router.get("/", (req, res, next) => {
@@ -18,49 +19,69 @@ const registerValidation = Joi.object().keys({
   password: Joi.string().regex(/^[a-zA-Z0-9]{6,30}$/).required(),
   password_confirmation: Joi.any().valid(Joi.ref('password')).required()
 });
-// Registration of a new user!
+// Registration of a new user
 router.post("/user/register", async (req, res, next) => {
 	try {
 		const result = Joi.validate(req.body, registerValidation)
 		if (result.error) {
-			// Отправка ошибки
 			console.log(result.error)
-			res.json({"ok": false, error: result.error})
-			return
-		}
-		// Проверка пользователя на существование, если пользователь уже существует - отмена!
-		userInfo = await getUserInfo(result.value.username, result.value.email);
-		if (!userInfo.ok) {
-			console.log("Error with getting user info.\n Error: " + userInfo.error);
 			res.json({
 				"ok": false,
-				"error": userInfo.error,
-				"email": result.value.email,
-				"username": result.value.username
+				error: result.error
 			})
 			return
 		}
-		if (userInfo.exist) {
-			console.log("Tried to create existing user in registration with username: " + result.value.username);
-			res.json({
-				"ok": false, 
-				"error": "There are somebody with this username: " + result.value.username + "or email: " + result.value.email,
-				"email": result.value.email,
-				"username": result.value.username
-			});
-			return
+		var user = {
+			username: result.value.username,
+			email: result.value.email,
+			password: result.value.password
 		}
-		// Хеширование пароля
-		const hash = result.value.password;
+		connection = sql.connection();
+		sql.connect(connection);
+		connection.query('SELECT * FROM users WHERE users.email = "' + user.email + '" OR users.username = "' + user.username + '"', function(err, rows, fields) {
+			if (err) {
+				console.log("Error has occured during checking of user " + user.username + " - " + user.email);
+				console.log("Error: \n" + err + "\n");
+				res.json({
+					"ok": false,
+					"error": err
+				});
+				return
+			}
+			try {
+				if (rows[0] == undefined) {
+					// Хеширование пароля
+					const hash = user.password;
 
-		delete result.value.password_confirmation;
-		result.value.password = hash
-		// Если все ок, то регистрируем пользователя в бд
-		register(result.value.username, result.value.email, result.value.password);
-		res.json({"ok": true})
-		next();
+					user.password = hash
+					// Если все ок, то регистрируем пользователя в бд
+					register(user.username, user.email, user.password);
+					res.json({
+						"ok": true
+					})
+					next();
+				} else {
+					console.log("Tried to create existing user in registration with username: " + user.username);
+					res.json({
+						"ok": false,
+						"error": "There are somebody with this username: " + user.username + "or email: " + user.email
+					});
+					return
+				}
+			} catch (err) {
+				res.json({
+					"ok": false,
+					"error": err
+				});
+				return
+			}
+		});
+		sql.end(connection);
 	} catch (error) {
-		res.json({"ok": false, "error": error});
+		res.json({
+			"ok": false,
+			"error": error
+		});
 		console.log(error)
 		next(error)
 	}
@@ -69,8 +90,60 @@ router.post("/user/register", async (req, res, next) => {
 router.post("/user/login", async (req, res, next) => {
 	try {
 		var user = req.body;
+		connection = sql.connection();
+		sql.connect(connection);
+		connection.query('SELECT * FROM users WHERE users.email = "' + user.email + '" OR users.username = "' + user.username + '"', function(err, rows, fields) {
+			if (err) {
+				console.log("Error has occured during checking of user " + user.username + " - " + user.email);
+				console.log("Error: \n" + err + "\n");
+				res.json({
+					"ok": false,
+					"error": err
+				});
+				return
+			}
+			try {
+				if (rows[0] == undefined) {
+					// Хеширование пароля
+					const hash = user.password;
+
+					user.password = hash
+					// Если все ок, то регистрируем пользователя в бд
+					register(user.username, user.email, user.password);
+					res.json({
+						"ok": true
+					})
+					next();
+				} else {
+					console.log("Tried to create existing user in registration with username: " + user.username);
+					res.json({
+						"ok": false,
+						"error": "There are somebody with this username: " + user.username + "or email: " + user.email
+					});
+					return
+				}
+			} catch (err) {
+				res.json({
+					"ok": false,
+					"error": err
+				});
+				return
+			}
+		});
+		sql.end(connection);
+	} catch (error) {
+		res.json({
+			"ok": false,
+			"error": error
+		});
+		console.log(error)
+		next(error)
+	}
+	try {
+		var user = req.body;
 		// Проверка пользователя на существование, если пользователь не существует - отмена!
-		const userInfo = await getUserInfo(user.username, user.username);
+		const PromiseUserInfo = await getUserInfo(user.username, user.username);
+		const userInfo = await PromiseUserInfo.resolve;
 		if (!userInfo.ok) {
 			console.log(userInfo);
 			console.log("Error with getting user info.\nError: " + userInfo.error);
