@@ -92,9 +92,9 @@ router.post("/user/login", async (req, res, next) => {
 		var user = req.body;
 		connection = sql.connection();
 		sql.connect(connection);
-		connection.query('SELECT * FROM users WHERE users.email = "' + user.email + '" OR users.username = "' + user.username + '"', function(err, rows, fields) {
+		connection.query('SELECT * FROM users WHERE users.email = "' + user.username + '" OR users.username = "' + user.username + '"', function(err, rows, fields) {
 			if (err) {
-				console.log("Error has occured during checking of user " + user.username + " - " + user.email);
+				console.log("Error has occured during checking of user " + user.username);
 				console.log("Error: \n" + err + "\n");
 				res.json({
 					"ok": false,
@@ -104,23 +104,47 @@ router.post("/user/login", async (req, res, next) => {
 			}
 			try {
 				if (rows[0] == undefined) {
+					console.log("Tried to login non existing user in login with username: " + user.username);
+					res.json({
+						"ok": false,
+						"error": "There are no users with this username: " + user.username + " or email: " + user.email
+					});
+					return
+				} else {
 					// Хеширование пароля
 					const hash = user.password;
 
-					user.password = hash
+					user.password = hash;
 					// Если все ок, то регистрируем пользователя в бд
-					register(user.username, user.email, user.password);
-					res.json({
-						"ok": true
-					})
-					next();
-				} else {
-					console.log("Tried to create existing user in registration with username: " + user.username);
-					res.json({
-						"ok": false,
-						"error": "There are somebody with this username: " + user.username + "or email: " + user.email
+					connection = sql.connection();
+					sql.connect(connection);
+					connection.query('SELECT * FROM users WHERE users.email = "' + user.username + '" OR users.username = "' + user.username + '"', function(err, rows, fields) {
+						if (err) {
+							console.log("Error has occured during loginning of user " + user.username);
+							console.log("Error: \n" + err + "\n");
+							res.json({
+								"ok": false,
+								"error": err
+							})
+							return false
+						} 
+						if (rows[0] != undefined) {
+							if (rows[0].password == user.password) {
+								req.session.user = rows[0];
+								res.json({
+									"ok": true
+								})
+							} else {
+								console.log("Password for user " + user.username + " is incorrect!");
+								res.json({
+									"ok": false,
+									"error": "Password is incorrect"
+								});
+							}
+						}
 					});
-					return
+					sql.end(connection);
+					//login(user.username, user.password);
 				}
 			} catch (err) {
 				res.json({
@@ -139,51 +163,6 @@ router.post("/user/login", async (req, res, next) => {
 		console.log(error)
 		next(error)
 	}
-	try {
-		var user = req.body;
-		// Проверка пользователя на существование, если пользователь не существует - отмена!
-		const PromiseUserInfo = await getUserInfo(user.username, user.username);
-		const userInfo = await PromiseUserInfo.resolve;
-		if (!userInfo.ok) {
-			console.log(userInfo);
-			console.log("Error with getting user info.\nError: " + userInfo.error);
-			res.json({
-				"ok": false,
-				"error": userInfo.error,
-				"username": user.username
-			})
-			return
-		}
-		if (!userInfo.exist) {
-			console.log("Tried to login not existing user in login with username: " + user.username);
-			res.json({
-				"ok": false, 
-				"error": "There are no users with this username: " + user.username,
-				"username": user.username
-			});
-			return
-		}
-		// Хеширование пароля
-		const hash = user.password;
-
-		user.password = hash
-		// Если все ок, то регистрируем пользователя в бд
-		const logged_user = login(user.username, user.password);
-		if (logged_user == false) {
-			console.log("User login failed!");
-			res.json({"ok": false});
-			next();
-		} else {
-			req.session.user = logged_user.result;
-			res.json({"ok": true})
-			next();
-		}
-	} catch (error) {
-		res.json({"ok": false, "error": error});
-		console.log(error)
-		next(error)
-	}
-	next();
 });
 router.get("/user/search/:name", (req, res, next)=> {
 	res.send("Поиск пользователей по имени (дает краткую инфу (user-preview))");
