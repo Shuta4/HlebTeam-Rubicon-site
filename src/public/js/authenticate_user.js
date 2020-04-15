@@ -43,6 +43,6 @@ var login = function(form) {
 	    body: JSON.stringify(user) // body data type must match "Content-Type" header
   	}).then((res)=> res.json()).then((res) => console.log(res));
 }
-document.querySelector(".register_form").addEventListener("submit", register_handler);
-document.querySelector(".login_form").addEventListener("submit", login_handler);
+document.querySelector(".register-form").addEventListener("submit", register_handler);
+document.querySelector(".login-form").addEventListener("submit", login_handler);
 
