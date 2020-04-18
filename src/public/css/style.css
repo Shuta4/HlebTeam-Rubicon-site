@@ -207,28 +207,50 @@ margin: 0px;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  z-index: 5;
+  z-index: 10;
   background: rgb(0, 0, 0);
 }
-
 .authentication-form__form {
   position: absolute;
   top: 50%;
-  left: 50%;
   transform: translate(-50%, -50%);
-  width: 550px;
-  height: 350px;
+  width: 30px;
+  height: 450px;
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column; 
   justify-content: center;
   align-items: center;
   border-radius: 20px;
-  border: 4px solid #00ff6a;
+  transition: all 400ms;
+  overflow: hidden;
+  z-index: 5;
 }
-.authentication-form__form__input {
-  width: 450px;
+.active>.authentication-form__form__input {
   display: block;
+}
+.register-form {
+  left: calc(50% - 300px);
+  background: #00ff6a;
+  border: 3px solid #00ff6a;
+}
+.login-form {
+  left: calc(50% + 300px);
+  background:  #ffd000;
+  border: 3px solid  #ffd000;
+}
+.active {
+  left: 50%;
+  width: 600px;
+  border-radius: 20px;
+  transition: all 700ms;
+  z-index: 3;
+}
+.authentication-form__form__input{
+  display: none;
+  position: relative;
+  border: 3px solid #ffffff;
+  width: 450px;
   margin: 4px;
   padding-left: 10px;
   padding: 5px;
@@ -245,41 +267,7 @@ margin: 0px;
   box-shadow: 0 0 5px black;
   color: rgb(0, 0, 0);
 }
-.register-form {
-  background: #00ff6a;
-}
-.login-form .authentication-form__form__input{
-  display: none;
-}
-.login-form {
-  left: calc(50% + 275px);
-  position: absolute;
-  background:  #ffd000;
-  width: 30px;
-  height: 380px;
-  border: 3px solid  #ffd000;
-  border-radius: 17px; 
-  transition: all 400ms;
-  overflow: hidden;
-}
-.login-form:hover{
-  left: 50%;
-  background: #ffd000;
-  width: 570px;
-  height: 380px;
-  border: 3px solid #ffd000;
-  border-radius: 17px; 
-  transition: all 700ms;
-  transition-duration: 0.15s;
-}
-.login-form:hover>input{
-  position: relative;
-  margin: 15px;
-  display: block;
-  border: 3px solid #ffffff;
-}
-
-.login-form__text{
+.login-form__text, .authentication-form_register_text{
   font-size: 25px;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   margin: 2px;
@@ -319,64 +307,48 @@ margin: 0px;
     font-size: 50px;
     background: center;
   }
+}
+@media(max-width: 650px) {
   .authentication-form__form {
-    position: absolute;
-    top: 50%;
-    left: 50%;
     transform: translate(-50%, -50%);
-    width: 330px;
-    height: 350px;
+    width: 350px;
+    height: 40px;
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column; 
     justify-content: center;
     align-items: center;
     border-radius: 20px;
-    border: 4px solid #00ff6a;
+    transition: all 400ms;
+    overflow: hidden;
+    z-index: 5;
   }
-  .authentication-form__form__input {
-    width: 300px;
-    display: block;
-    margin: 4px;
-    padding-left: 10px;
+  .register-form {
+    left: 50%;
+    top: calc(50% + 225px);
+  }
+  .login-form {
+    left: 50%;
+    top: calc(50% - 250px);
+  }
+  .active {
+    top: 50%;
+    left: 50%;
+    height: 450px;
+    width: 350px;
+    border-radius: 20px;
+    transition: all 700ms;
+    z-index: 3;
+  }
+  .authentication-form__form__input{
+    margin: 4px 0;
+    border: 3px solid #ffffff;
+    width: 330px;
     padding: 5px;
     background: #ffffff;
     border: 2.5px solid #00ff6a;
     color: black;
     border-radius: 50px;
     transition: all 400ms;
-  }
-  .register-form {
-    background: #00ff6a;
-  }
-  .login-form .authentication-form__form__input{
-    display: none;
-  }
-  .login-form {
-    left: calc(50% + 190px);
-    position: absolute;
-    background:  #ffd000;
-    width: 30px;
-    height: 380px;
-    border: 3px solid  #ffd000;
-    border-radius: 17px; 
-    transition: all 400ms;
-    overflow: hidden;
-  }
-  .login-form:hover{
-    left: 50%;
-    background: #ffd000;
-    width: 360px;
-    height: 380px;
-    border: 3px solid #ffd000;
-    border-radius: 17px; 
-    transition: all 700ms;
-    transition-duration: 0.15s;
-  }
-  .login-form:hover>input{
-    position: relative;
-    margin: 15px;
-    display: block;
-    border: 3px solid #ffffff;
   }
 }

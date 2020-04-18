@@ -1,6 +1,9 @@
+const registerForm = document.querySelector(".register-form");
+const loginForm = document.querySelector(".login-form");
+
 var register_handler = function(event) {
 	event.preventDefault();
-	form = event.target;
+	form = registerForm;
 	if (form.username.value == "") console.log("Can't register because username field is empty!");
 	else if (form.email.value == "") console.log("Can't register because email field is empty!"); 
 	else if (form.password.value == "") console.log("Can't register because password field is empty!");
@@ -25,9 +28,9 @@ var register = function(form) {
 }
 var login_handler = function(event) {
 	event.preventDefault();
-	form = event.target;
-	if (form.username.value == "") console.log("Can't register because username field is empty!");
-	else if (form.password.value == "") console.log("Can't register because password field is empty!");
+	form = loginForm;
+	if (form.username.value == "") console.log("Can't login because username field is empty!");
+	else if (form.password.value == "") console.log("Can't login because password field is empty!");
 	else login(form);
 }
 var login = function(form) {
@@ -43,6 +46,29 @@ var login = function(form) {
 	    body: JSON.stringify(user) // body data type must match "Content-Type" header
   	}).then((res)=> res.json()).then((res) => console.log(res));
 }
-document.querySelector(".register-form").addEventListener("submit", register_handler);
-document.querySelector(".login-form").addEventListener("submit", login_handler);
-
+var formClick_handler = function(event) {
+	event.preventDefault();
+	if (event.target == registerForm.submit) {
+		register_handler(event);
+		return	
+	}
+	if (event.target == loginForm.submit) {
+		login_handler(event);
+		return	
+	}
+	form = event.target == registerForm || event.target == loginForm ? event.target 
+		: event.target.parentElement == registerForm || event.target.parentElement == loginForm ? event.target.parentElement : null;
+	if (form == null) {
+		console.log("ERROR form is null!");
+		return;
+	} 
+	if (!form.classList.contains('active')) {
+		other_form = form == registerForm ? loginForm : registerForm;
+		form.classList.toggle('active');
+		other_form.classList.toggle('active');
+	}
+}
+registerForm.addEventListener("submit", register_handler);
+registerForm.addEventListener("click", formClick_handler);
+loginForm.addEventListener("submit", login_handler);
+loginForm.addEventListener("click", formClick_handler);

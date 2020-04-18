@@ -1,22 +1,35 @@
 <div class="authentication-form">
-	<form class="authentication-form__form register-form"><p class="authentication-form_register_text">Регистрация</p>
+	<form class="authentication-form__form register-form">
+		<p class="authentication-form_register_text">
+			Р
+			е
+			г
+			и
+			с
+			т
+			р
+			а
+			ц
+			и
+			я
+		</p>
 		<input type="text" name="username" class="authentication-form__form__input input-text register_username" placeholder="Логин">
 		<input type="email" name="email" class="authentication-form__form__input input-text register_email" placeholder="Введите email">
 		<input type="password" name="password" class="authentication-form__form__input input-text register_password" placeholder="Введите пароль">
 		<input type="password" name="confirm_password" class="authentication-form__form__input input-text register_confirm_password" placeholder="Подтвердите пароль">
-		<input type="submit" class="authentication-form__form__input button register_submit" value="Зарегестрироваться">
+		<input type="submit" name="submit" class="authentication-form__form__input button register_submit" value="Зарегестрироваться">
 	</form>
-	<form class="authentication-form__form login-form">
-			<p class="login-form__text">
-				В 
-				х
-				о
-				д
-			</p>
-		<input type="text" name="username" class="authentication-form__form__input input-text register_username" placeholder="Логин">
-		<input type="password" name="password" class="authentication-form__form__input input-text register_password" placeholder="Введите пароль">
-		<input type="submit" class="authentication-form__form__input button register_submit" value="Войти">
-		<input type="button" class="authentication-form__form__input button register_submit" value="Забыли пароль?">
+	<form class="authentication-form__form login-form active">
+		<p class="login-form__text">
+			В
+			х
+			о
+			д
+		</p>
+		<input type="text" name="username" class="authentication-form__form__input input-text login_username" placeholder="Логин">
+		<input type="password" name="password" class="authentication-form__form__input input-text login_password" placeholder="Введите пароль">
+		<input type="submit" name="submit" class="authentication-form__form__input button login_submit" value="Войти">
+		<input type="button" name="forgot_password" class="authentication-form__form__input button login_forgot_password" value="Забыли пароль?">
 	</form>
 </div>
 <script src="/js/authenticate_user.js" type="text/javascript"></script>
