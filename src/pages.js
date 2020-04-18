@@ -13,7 +13,7 @@ router.get("/userpage", (req, res, next) => {
 router.get("/userpage/:id", (req, res, next) => {
 	if (req.params.id == "im") {
 		// Берем из бд пользователя сессии (если нету сессии, то )
-		if(req.params.user) {
+		if(req.session.user) {
 			res.render("./pages/user_page", {
 				need_login: false,
 				username: "Вася пупкин"
