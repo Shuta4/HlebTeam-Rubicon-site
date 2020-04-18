@@ -15,11 +15,13 @@ router.get("/userpage/:id", (req, res, next) => {
 		// Берем из бд пользователя сессии (если нету сессии, то )
 		if(req.params.user) {
 			res.render("./pages/user_page", {
-				need_login: false
+				need_login: false,
+				username: "Вася пупкин"
 			})
 		} else {
 			res.render("./pages/user_page", {
-				need_login: true
+				need_login: true,
+				username: "Вася пупкин"
 			});	
 		}
 	}
@@ -27,7 +29,8 @@ router.get("/userpage/:id", (req, res, next) => {
 		//Берем пользователя по id
 
 		res.render("./pages/user_page", {
-			need_login: false
+			need_login: false,
+			username: "Вася пупкин"
 		});
 	}
   	next();
