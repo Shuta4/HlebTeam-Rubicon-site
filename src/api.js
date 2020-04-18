@@ -3,9 +3,8 @@ const express = require('express');
 const router = express.Router();
 const register = require("./db/actions/register.js");
 const Joi = require("joi");
-const getUserInfo = require("./db/actions/getUserInfo.js");
-const login = require("./db/actions/login.js");
 const sql = require("./db/connection.js");
+const createWork = require("./db/actions/createWork.js");
 
 
 router.get("/", (req, res, next) => {
@@ -182,19 +181,34 @@ router.delete("/user/delete/:id", (req, res, next)=> {
 });
 
 router.post("/work/", (req, res, next)=> {
-	res.send("Создание работы");
+	var work = req.body;
+	if (work.owner_id != req.session.user.id) {
+		res.json({
+			"ok": false,
+			"error": "Access denied because user not matches"
+		});
+		return;
+	}
+	createWork(work.owner_id, work.title, work.description, work.preview_img, work.download_link);
+	res.json({
+		"ok": true
+	});
 	next();
 });
 //Возможно нужны альтернативные способы поиска работ
-router.get("/work/:id", (req, res, next)=> {
+router.get("/work/get/:id", (req, res, next)=> {
 	res.send("Получение информации о 1 работе по id. Дает полную информацию (work-page)");
 	next();
 });
-router.put("/work/:id", (req, res, next)=> {
+router.get("/work/user/:id", (req, res, next)=> {
+	res.send("Получение информации о работах которые принадлежат пользователю. (work-preview)");
+	next();
+});
+router.put("/work/update/:id", (req, res, next)=> {
 	res.send("Изменение информации о работе (в req.body дается объект с информацией которую нужно изменить!)");
 	next();
 });
-router.delete("/work/:id", (req, res, next)=> {
+router.delete("/work/delete/:id", (req, res, next)=> {
 	res.send("Удаление работы (только по id)");
 	next();
 });
