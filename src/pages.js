@@ -16,22 +16,26 @@ router.get("/userpage/:id", (req, res, next) => {
 		if(req.session.user) {
 			res.render("./pages/user_page", {
 				need_login: false,
-				username: "Вася пупкин"
+				is_owner: true,
+				user: req.session.user
 			})
 		} else {
 			res.render("./pages/user_page", {
-				need_login: true,
-				username: "Вася пупкин"
+				need_login: true
 			});	
 		}
 	}
 	else {
 		//Берем пользователя по id
+		var user = {
 
+		}
+		var is_owner = req.session.user.id == user.id
 		res.render("./pages/user_page", {
 			need_login: false,
-			username: "Вася пупкин"
-		});
+			user: user,
+			is_owner: is_owner
+		});	
 	}
   	next();
 });

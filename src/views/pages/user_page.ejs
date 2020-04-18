@@ -1,124 +1,138 @@
 <!DOCTYPE html>
 <html>
-    <%- include("../parts/head.ejs", {title: username + " - страница пользователя", style_href: "/css/user_page.css"}) %>
+    <%if (need_login) {%>
+        <%- include("../parts/head.ejs", {title: "Войдите в аккаунт", style_href: "/css/user_page.css"}) %>
+    <%} else {%>
+        <%- include("../parts/head.ejs", {title: user.username + " - страница пользователя", style_href: "/css/user_page.css"}) %>
+    <%}%>
 <body>  
     <div class="page">
         <%- include("../parts/header.ejs") %>
         <main class="content">
             <% if (need_login) {%>
                 <%- include("../parts/authentication_form.ejs") %>     
-            <%}%>
-            <div class="content__author">
-                <div class="content__author__about">
-                    <img alt="Аватар" class="content__author__about__avatar" src="https://image.flaticon.com/icons/png/512/64/64572.png">  
-                    <h3 class="content__author__about__name">Вася Пупкин</h3>
-                    <ul class="content__author__about__statistics">
-                        <li class="content__author__about__statistics__item">Работы: <b>0</b></li>
-                        <li class="content__author__about__statistics__item">Подписчики: <b>0</b></li>
-                        <li class="content__author__about__statistics__item">Подписки: <b>0</b></li>
-                    </ul>
-                    <ul class="content__author__about__buttons">
-                        <li class="content__author__about__buttons__item">
-                            <button class="content__author__about__buttons__item__button button button_subscribe">Подписаться</button>                           
-                        </li>
-                        <li class="content__author__about__buttons__item">
-                            <button class="content__author__about__buttons__item__button button button_contact">Связаться</button>                           
-                        </li>
-                        <li class="content__author__about__buttons__item">
-                            <button class="content__author__about__buttons__item__button button button_report">Совершить донос</button>                           
-                        </li>                        
-                    </ul>
-                </div>
-                <div class="content__author__works">
-                    <ul class="content__author__works__list">
-                        <li class="content__author__works__list__item work-preview">            
+            <%} else {%>
+                <div class="content__author">
+                    <div class="content__author__about">
+                        <img alt="Аватар" class="content__author__about__avatar" src="https://image.flaticon.com/icons/png/512/64/64572.png">  
+                        <h3 class="content__author__about__name">
+                            <%if (user.first_name || user.last_name) {%>
+                                <%= user.first_name + " " + user.last_name + " (" + user.username + ")"%> 
+                            <%} else {%>
+                                <%= user.username%>
+                            <%}%></h3>
+                        <ul class="content__author__about__statistics">
+                            <li class="content__author__about__statistics__item">Работы: <b><%=user.works_counter%></b></li>
+                            <li class="content__author__about__statistics__item">Подписчики: <b><%=user.followers%></b></li>
+                            <li class="content__author__about__statistics__item">Подписки: <b><%=user.following%></b></li>
+                        </ul>
+                        <ul class="content__author__about__buttons">
+                            <%if (is_owner) {%>
+                                <button class="content__author__about__buttons__item__button button button_logout">Выйти</button>  
+                            <%} else {%>
+                                <li class="content__author__about__buttons__item">
+                                    <button class="content__author__about__buttons__item__button button button_subscribe">Подписаться</button>                           
+                                </li>
+                                <li class="content__author__about__buttons__item">
+                                    <button class="content__author__about__buttons__item__button button button_contact">Связаться</button>                           
+                                </li>
+                                <li class="content__author__about__buttons__item">
+                                    <button class="content__author__about__buttons__item__button button button_report">Совершить донос</button>                           
+                                </li>
+                            <%}%>                        
+                        </ul>
+                    </div>
+                    <div class="content__author__works">
+                        <ul class="content__author__works__list">
+                            <li class="content__author__works__list__item work-preview">            
+                                <div class="work-preview__content">
+                                    <a href="">
+                                        <img class="work-preview__content__preview-img" src="/img/site-bonpass-temp.jpg">                               
+                                        <header class="work-preview__header">
+                                            <h4 class="work-preview__header__title">Название работы</h4>                                   
+                                        </header>
+                                    </a>
+                                </div>                        
+                            </li>
+                            <li class="content__author__works__list__item work-preview">            
+                                <div class="work-preview__content">
+                                    <a href="">
+                                        <img class="work-preview__content__preview-img" src="/img/site-bonpass-temp.jpg">                               
+                                        <header class="work-preview__header">
+                                            <h4 class="work-preview__header__title">Название работы</h4>                                   
+                                        </header>
+                                    </a>
+                                </div>                        
+                            </li>
+                            <li class="content__author__works__list__item work-preview">            
+                                <div class="work-preview__content">
+                                    <a href="">
+                                        <img class="work-preview__content__preview-img" src="/img/site-bonpass-temp.jpg">                               
+                                        <header class="work-preview__header">
+                                            <h4 class="work-preview__header__title">Название работы</h4>                                   
+                                        </header>
+                                    </a>
+                                </div>                        
+                            </li>
+                            <li class="content__author__works__list__item work-preview">            
+                                <div class="work-preview__content">
+                                    <a href="">
+                                        <img class="work-preview__content__preview-img" src="/img/site-bonpass-temp.jpg">                               
+                                        <header class="work-preview__header">
+                                            <h4 class="work-preview__header__title">Название работы</h4>                                   
+                                        </header>
+                                    </a>
+                                </div>                        
+                            </li>
+                            <li class="content__author__works__list__item work-preview">            
+                                <div class="work-preview__content">
+                                    <a href="">
+                                        <img class="work-preview__content__preview-img" src="/img/site-bonpass-temp.jpg">                               
+                                        <header class="work-preview__header">
+                                            <h4 class="work-preview__header__title">Название работы</h4>                                   
+                                        </header>
+                                    </a>
+                                </div>                        
+                            </li>
+                            <li class="content__author__works__list__item work-preview">            
+                                <div class="work-preview__content">
+                                    <a href="">
+                                        <img class="work-preview__content__preview-img" src="/img/site-bonpass-temp.jpg">                               
+                                        <header class="work-preview__header">
+                                            <h4 class="work-preview__header__title">Название работы</h4>                                   
+                                        </header>
+                                    </a>
+                                </div>                        
+                            </li>
+                            <li class="content__author__works__list__item work-preview">            
+                                <div class="work-preview__content">
+                                    <a href="">
+                                        <img class="work-preview__content__preview-img" src="/img/site-bonpass-temp.jpg">                               
+                                        <header class="work-preview__header">
+                                            <h4 class="work-preview__header__title">Название работы</h4>                                   
+                                        </header>
+                                    </a>
+                                </div>                       
+                            </li>
+                            <li class="content__author__works__list__item work-preview">            
+                                <div class="work-preview__content">
+                                    <a href="">
+                                        <img class="work-preview__content__preview-img" src="/img/site-bonpass-temp.jpg">                               
+                                        <header class="work-preview__header">
+                                            <h4 class="work-preview__header__title">Название работы</h4>                                   
+                                        </header>
+                                    </a>
+                                </div>                        
+                            </li>         
                             <div class="work-preview__content">
-                                <a href="">
-                                    <img class="work-preview__content__preview-img" src="/img/site-bonpass-temp.jpg">                               
-                                    <header class="work-preview__header">
-                                        <h4 class="work-preview__header__title">Название работы</h4>                                   
-                                    </header>
-                                </a>
+                                <%if (is_owner) {%>
+                                    <a href='' class="work-preview__content__plus"><h3 class="work-preview__content__plus__text">+</h3></a>  
+                                <%}%>
                             </div>                        
-                        </li>
-                        <li class="content__author__works__list__item work-preview">            
-                            <div class="work-preview__content">
-                                <a href="">
-                                    <img class="work-preview__content__preview-img" src="/img/site-bonpass-temp.jpg">                               
-                                    <header class="work-preview__header">
-                                        <h4 class="work-preview__header__title">Название работы</h4>                                   
-                                    </header>
-                                </a>
-                            </div>                        
-                        </li>
-                        <li class="content__author__works__list__item work-preview">            
-                            <div class="work-preview__content">
-                                <a href="">
-                                    <img class="work-preview__content__preview-img" src="/img/site-bonpass-temp.jpg">                               
-                                    <header class="work-preview__header">
-                                        <h4 class="work-preview__header__title">Название работы</h4>                                   
-                                    </header>
-                                </a>
-                            </div>                        
-                        </li>
-                        <li class="content__author__works__list__item work-preview">            
-                            <div class="work-preview__content">
-                                <a href="">
-                                    <img class="work-preview__content__preview-img" src="/img/site-bonpass-temp.jpg">                               
-                                    <header class="work-preview__header">
-                                        <h4 class="work-preview__header__title">Название работы</h4>                                   
-                                    </header>
-                                </a>
-                            </div>                        
-                        </li>
-                        <li class="content__author__works__list__item work-preview">            
-                            <div class="work-preview__content">
-                                <a href="">
-                                    <img class="work-preview__content__preview-img" src="/img/site-bonpass-temp.jpg">                               
-                                    <header class="work-preview__header">
-                                        <h4 class="work-preview__header__title">Название работы</h4>                                   
-                                    </header>
-                                </a>
-                            </div>                        
-                        </li>
-                        <li class="content__author__works__list__item work-preview">            
-                            <div class="work-preview__content">
-                                <a href="">
-                                    <img class="work-preview__content__preview-img" src="/img/site-bonpass-temp.jpg">                               
-                                    <header class="work-preview__header">
-                                        <h4 class="work-preview__header__title">Название работы</h4>                                   
-                                    </header>
-                                </a>
-                            </div>                        
-                        </li>
-                        <li class="content__author__works__list__item work-preview">            
-                            <div class="work-preview__content">
-                                <a href="">
-                                    <img class="work-preview__content__preview-img" src="/img/site-bonpass-temp.jpg">                               
-                                    <header class="work-preview__header">
-                                        <h4 class="work-preview__header__title">Название работы</h4>                                   
-                                    </header>
-                                </a>
-                            </div>                       
-                        </li>
-                        <li class="content__author__works__list__item work-preview">            
-                            <div class="work-preview__content">
-                                <a href="">
-                                    <img class="work-preview__content__preview-img" src="/img/site-bonpass-temp.jpg">                               
-                                    <header class="work-preview__header">
-                                        <h4 class="work-preview__header__title">Название работы</h4>                                   
-                                    </header>
-                                </a>
-                            </div>                        
-                        </li>         
-                            <div class="work-preview__content">
-                                <a href='' class="work-preview__content__plus"><h3 class="work-preview__content__plus__text">+</h3></a>  
-                            </div>                        
-                        </li>
-                        
-                    </ul>
-                </div>                    
-            </div>   
+                        </ul>
+                    </div>                    
+                </div> 
+            <%}%>  
         </main>
         <%- include("../parts/footer.ejs") %>
     </div>
