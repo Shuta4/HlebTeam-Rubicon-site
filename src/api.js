@@ -35,7 +35,7 @@ router.post("/user/register", async (req, res, next) => {
 			console.log(result.error)
 			res.json({
 				"ok": false,
-				error: "ERRVALIDATEUSER"
+				"error": "ERRVALIDATEUSER"
 			})
 			return
 		}
