@@ -11,6 +11,15 @@ router.get("/", (req, res, next) => {
   next();
 });
 
+/*
+	Errors codes:
+		ERRVALIDATEUSER - Error with validating user,
+		ERRDBCONNECTION - Error with db,
+		USEREXIST - User is already exist,
+		UNKNOWNERROR - Unknown error,
+		USERNOTEXIST - User is not exist
+*/	
+
 const registerValidation = Joi.object().keys({
   email: Joi.string().email().required(),
   username: Joi.string().required(),
@@ -25,7 +34,7 @@ router.post("/user/register", async (req, res, next) => {
 			console.log(result.error)
 			res.json({
 				"ok": false,
-				error: result.error
+				error: "ERRVALIDATEUSER"
 			})
 			return
 		}
@@ -42,7 +51,7 @@ router.post("/user/register", async (req, res, next) => {
 				console.log("Error: \n" + err + "\n");
 				res.json({
 					"ok": false,
-					"error": err
+					"error": "ERRDBCONNECTION"
 				});
 				return
 			}
@@ -61,7 +70,7 @@ router.post("/user/register", async (req, res, next) => {
 								console.log("Error: \n" + err + "\n");
 								res.json({
 									"ok": false,
-									"error": err
+									"error": "ERRDBCONNECTION"
 								});
 							}
 							console.log("Succesfully created user " + username);
@@ -72,14 +81,14 @@ router.post("/user/register", async (req, res, next) => {
 					console.log("Tried to create existing user in registration with username: " + user.username);
 					res.json({
 						"ok": false,
-						"error": "There are somebody with this username: " + user.username + "or email: " + user.email
+						"error": "USEREXIST"
 					});
 					return
 				}
 			} catch (err) {
 				res.json({
 					"ok": false,
-					"error": err
+					"error": "UNKNOWNERROR"
 				});
 				return
 			}
@@ -88,7 +97,7 @@ router.post("/user/register", async (req, res, next) => {
 	} catch (error) {
 		res.json({
 			"ok": false,
-			"error": error
+			"error": "UNKNOWNERROR"
 		});
 		console.log(error)
 		next(error)
@@ -106,7 +115,7 @@ router.post("/user/login", async (req, res, next) => {
 				console.log("Error: \n" + err + "\n");
 				res.json({
 					"ok": false,
-					"error": err
+					"error": "ERRDBCONNECTION"
 				});
 				return
 			}
@@ -132,7 +141,7 @@ router.post("/user/login", async (req, res, next) => {
 							console.log("Error: \n" + err + "\n");
 							res.json({
 								"ok": false,
-								"error": err
+								"error": "ERRDBCONNECTION"
 							})
 							return false
 						} 
@@ -154,7 +163,7 @@ router.post("/user/login", async (req, res, next) => {
 			} catch (err) {
 				res.json({
 					"ok": false,
-					"error": err
+					"error": "UNKNOWNERROR"
 				});
 				return
 			}
@@ -163,7 +172,7 @@ router.post("/user/login", async (req, res, next) => {
 	} catch (error) {
 		res.json({
 			"ok": false,
-			"error": error
+			"error": "UNKNOWNERROR"
 		});
 		console.log(error)
 		next(error)
@@ -175,7 +184,7 @@ router.post("/user/logout"), (req, res, next) => {
 			console.log("error!");	
 			res.json({
 				"ok": false,
-				"error": err
+				"error": "ERRLOGOUTFAILED"
 			})
 		} 
 		res.json({

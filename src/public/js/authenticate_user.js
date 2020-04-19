@@ -6,10 +6,10 @@ var register_handler = function(event) {
 	event.preventDefault();
 	form = registerForm;
 	if (form.username.value == "") form.querySelector(messageBoxClass).innerText = "Введите имя пользователя!";
-	else if (form.email.value == "") console.log("Can't register because email field is empty!"); 
-	else if (form.password.value == "") console.log("Can't register because password field is empty!");
-	else if (form.confirm_password.value == "") console.log("Can't register because confirm password field is empty!");
-	else if (form.password.value != form.confirm_password.value) console.log("Can't register because password and confirm password don't match");
+	else if (form.email.value == "") form.querySelector(messageBoxClass).innerText = "Введите электронную почту!"; 
+	else if (form.password.value == "") form.querySelector(messageBoxClass).innerText = "Введите пароль!";
+	else if (form.confirm_password.value == "") form.querySelector(messageBoxClass).innerText = "Подтвердите пароль!";
+	else if (form.password.value != form.confirm_password.value) form.querySelector(messageBoxClass).innerText = "Пароль и его подтверждение не совпадают!";
 	else register(form);
 }
 var register = function(form) {
@@ -24,14 +24,33 @@ var register = function(form) {
 	    headers: {
 	      'Content-Type': 'application/json'
 	    },
-	    body: JSON.stringify(new_user) // body data type must match "Content-Type" header
-  	}).then((res)=> res.json()).then((res) => console.log(res));
+	    body: JSON.stringify(new_user)
+  	}).then((res)=> res.json()).then((res) => {
+  		if (res.ok) {
+  			form.querySelector(messageBoxClass).innerText = "Успешная регистрация, перезагрузите страницу!"
+  		} else {
+  			switch (res.error) {
+  				case "ERRVALIDATEUSER": 
+  					form.querySelector(messageBoxClass).innerText = "Ошибка ввода! (Пароль должен содержать от 6 до 100 символов латинского алфавита, почта должны быть настоящей.)"
+  					break
+  				case "ERRDBCONNECTION":
+  					form.querySelector(messageBoxClass).innerText = "Ошибка сервера! Повторите попытку позже." 
+  					break
+  				case "USEREXIST": 
+  					form.querySelector(messageBoxClass).innerText = "Пользователь с такими почтой и/или именем уже существует!"
+  					break
+  				case "UNKNOWNERROR": 
+  					form.querySelector(messageBoxClass).innerText = "Неизвестная ошибка! Попробуйте позже или обратитесь к поддержке"
+  					break 
+  			}
+  		}
+  	});
 }
 var login_handler = function(event) {
 	event.preventDefault();
 	form = loginForm;
-	if (form.username.value == "") console.log("Can't login because username field is empty!");
-	else if (form.password.value == "") console.log("Can't login because password field is empty!");
+	if (form.username.value == "") form.querySelector(messageBoxClass).innerText = "Введите имя пользователя!";
+	else if (form.password.value == "") form.querySelector(messageBoxClass).innerText = "Введите пароль!";
 	else login(form);
 }
 var login = function(form) {
@@ -44,8 +63,24 @@ var login = function(form) {
 	    headers: {
 	      'Content-Type': 'application/json'
 	    },
-	    body: JSON.stringify(user) // body data type must match "Content-Type" header
-  	}).then((res)=> res.json()).then((res) => console.log(res));
+	    body: JSON.stringify(user)
+  	}).then((res)=> res.json()).then((res) => {
+  		if (res.ok) {
+  			form.querySelector(messageBoxClass).innerText = "Успешный вход, перезагрузите страницу!"
+  		} else {
+  			switch (res.error) {
+  				case "ERRDBCONNECTION":
+  					form.querySelector(messageBoxClass).innerText = "Ошибка сервера! Повторите попытку позже." 
+  					break
+  				case "USERNOTEXIST": 
+  					form.querySelector(messageBoxClass).innerText = "Пользователь с такими почтой и/или именем не существует!"
+  					break
+  				case "UNKNOWNERROR": 
+  					form.querySelector(messageBoxClass).innerText = "Неизвестная ошибка! Попробуйте позже или обратитесь к поддержке"
+  					break 
+  			}
+  		}
+  	});
 }
 var formClick_handler = function(event) {
 	event.preventDefault();
