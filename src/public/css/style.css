@@ -355,6 +355,9 @@ margin: 0px;
   }
 }
 @media (max-height: 690px) {
+  .authentication-form {
+    height: 120vh;
+  }
   .register-form {
     left: 50%;
     top: calc(50% + 225px);
