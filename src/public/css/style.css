@@ -355,21 +355,18 @@ margin: 0px;
   }
 }
 @media (max-height: 690px) {
-  .authentication-form {
-    height: 120vh;
-  }
   .register-form {
     left: 50%;
-    top: calc(50% + 225px);
+    top: calc(50% + 215px);
   }
   .login-form {
     left: 50%;
-    top: calc(50% - 200px);
+    top: calc(50% - 175px);
   }
   .active {
     top: calc(50% + 25px);
     left: 50%;
-    height: 400px;
+    height: 360px;
     width: 350px;
     border-radius: 20px;
     transition: all 700ms;
