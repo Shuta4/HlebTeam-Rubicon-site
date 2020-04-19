@@ -361,10 +361,10 @@ margin: 0px;
   }
   .login-form {
     left: 50%;
-    top: calc(50% - 225px);
+    top: calc(50% - 200px);
   }
   .active {
-    top: 50%;
+    top: calc(50% + 25px);
     left: 50%;
     height: 400px;
     width: 350px;
