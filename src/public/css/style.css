@@ -67,9 +67,6 @@ right: 50px;
 .input-text:active,:focus{
   outline:none;
 }
-.input-text:hover {
-  
-}
 /* Header main */
 .header-main{
   width: 100%;

@@ -1,0 +1,32 @@
+@import url("./style.css");
+body{
+    background: rgb(7, 6, 49);
+}
+.work-form-blok{
+    background: rgba(0, 0, 0, 0.315);
+    width: 30%;
+    height: 700px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    color: #00ff88;
+    top: 170px;
+    border: 2px solid #00ff88;
+    box-shadow: 0 0 15px #00ff88;
+}
+.work-form-blok-text{
+    position: relative;
+    margin-top: -50px;
+    text-align: center;
+    font-size: 25px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-decoration: underline #00ff88;
+}
+.work-form-blok-foto{
+    text-align: center;
+    margin: 7px;
+    width: 97%;
+    height: 300px;
+    margin-top: 30px;
+    border: 2px solid #00ff88;
+}
