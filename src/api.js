@@ -182,20 +182,21 @@ router.post("/user/login", async (req, res, next) => {
 		next(error)
 	}
 });
-router.post("/user/logout"), (req, res, next) => {
+router.post("/user/logout", (req, res, next) => {
 	req.session.destroy(function(err) {
 		if (err) {
 			console.log("error!");	
 			res.json({
 				"ok": false,
 				"error": "ERRLOGOUTFAILED"
-			})
+			});
 		} 
 		res.json({
 			"ok": true
-		})
-  	})
-}
+		});
+		next();
+  	});
+});
 router.get("/user/search/:name", (req, res, next)=> {
 	res.send("Поиск пользователей по имени (дает краткую инфу (user-preview))");
 	next();
