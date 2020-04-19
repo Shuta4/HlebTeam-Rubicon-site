@@ -27,7 +27,8 @@ var register = function(form) {
 	    body: JSON.stringify(new_user)
   	}).then((res)=> res.json()).then((res) => {
   		if (res.ok) {
-  			form.querySelector(messageBoxClass).innerText = "Успешная регистрация, перезагрузите страницу!"
+  			form.querySelector(messageBoxClass).innerText = "Успешная регистрация, перезагрузите страницу!";
+  			window.location.reload();
   		} else {
   			switch (res.error) {
   				case "ERRVALIDATEUSER": 
@@ -66,7 +67,8 @@ var login = function(form) {
 	    body: JSON.stringify(user)
   	}).then((res)=> res.json()).then((res) => {
   		if (res.ok) {
-  			form.querySelector(messageBoxClass).innerText = "Успешный вход, перезагрузите страницу!"
+  			form.querySelector(messageBoxClass).innerText = "Успешный вход, перезагрузите страницу!";
+  			window.location.reload();
   		} else {
   			switch (res.error) {
   				case "ERRDBCONNECTION":

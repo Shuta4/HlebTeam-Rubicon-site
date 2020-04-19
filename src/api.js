@@ -75,7 +75,10 @@ router.post("/user/register", async (req, res, next) => {
 								});
 							}
 							console.log("Succesfully created user " + user.username);
-							res.redirect('back');
+							res.json({
+								"ok": true
+							});
+							req.session.user = user;
 						});
 						sql.end(connection);
 				} else {
@@ -148,7 +151,9 @@ router.post("/user/login", async (req, res, next) => {
 						}
 						if (rows[0].password == user.password) {
 							req.session.user = rows[0];
-							res.redirect('back');
+							res.json({
+								"ok": true
+							});
 						} else {
 							console.log("Password for user " + user.username + " is incorrect!");
 							res.json({
