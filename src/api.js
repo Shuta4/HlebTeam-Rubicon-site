@@ -125,7 +125,7 @@ router.post("/user/login", async (req, res, next) => {
 					console.log("Tried to login non existing user in login with username: " + user.username);
 					res.json({
 						"ok": false,
-						"error": "There are no users with this username: " + user.username + " or email: " + user.email
+						"error": "USERNOTEXIST"
 					});
 					return
 				} else {
@@ -144,23 +144,16 @@ router.post("/user/login", async (req, res, next) => {
 								"error": "ERRDBCONNECTION"
 							})
 							return false
-						} 
-						if (rows[0] != undefined) {
-							if (rows[0].password == user.password) {
-								req.session.user = rows[0];
-								res.redirect('back');
-							} else {
-								console.log("Password for user " + user.username + " is incorrect!");
-								res.json({
-									"ok": false,
-									"error": "ERRINCORRECTPASSWORD"
-								});
-							}
+						}
+						if (rows[0].password == user.password) {
+							req.session.user = rows[0];
+							res.redirect('back');
 						} else {
+							console.log("Password for user " + user.username + " is incorrect!");
 							res.json({
 								"ok": false,
-								"error": "USERNOTEXIST"
-							})
+								"error": "ERRINCORRECTPASSWORD"
+							});
 						}
 					});
 					sql.end(connection);
