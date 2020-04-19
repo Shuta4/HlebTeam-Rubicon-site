@@ -357,6 +357,7 @@ margin: 0px;
 @media (max-height: 690px) {
   .authentication-form {
     height: 120vh;
+    overflow: unset;
   }
   .register-form {
     left: 50%;
