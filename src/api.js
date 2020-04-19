@@ -11,6 +11,16 @@ router.get("/", (req, res, next) => {
   next();
 });
 
+/*
+	Errors codes:
+		ERRVALIDATEUSER - Error with validating user,
+		ERRDBCONNECTION - Error with db,
+		USEREXIST - User is already exist,
+		UNKNOWNERROR - Unknown error,
+		USERNOTEXIST - User is not exist,
+		ERRINCORRECTPASSWORD - password for user is incorrect
+*/	
+
 const registerValidation = Joi.object().keys({
   email: Joi.string().email().required(),
   username: Joi.string().required(),
@@ -25,7 +35,7 @@ router.post("/user/register", async (req, res, next) => {
 			console.log(result.error)
 			res.json({
 				"ok": false,
-				error: result.error
+				"error": "ERRVALIDATEUSER"
 			})
 			return
 		}
@@ -42,7 +52,7 @@ router.post("/user/register", async (req, res, next) => {
 				console.log("Error: \n" + err + "\n");
 				res.json({
 					"ok": false,
-					"error": err
+					"error": "ERRDBCONNECTION"
 				});
 				return
 			}
@@ -55,31 +65,35 @@ router.post("/user/register", async (req, res, next) => {
 					// Если все ок, то регистрируем пользователя в бд
 					connection = sql.connection();
 						sql.connect(connection);
-						connection.query("INSERT INTO `users`(`username`, `email`, `password`) VALUES ('" + username + "', '" + email + "', '" + password + "')", function(err) {
+						connection.query("INSERT INTO `users`(`username`, `email`, `password`) VALUES ('" + user.username + "', '" + user.email + "', '" + user.password + "')", function(err) {
 						if (err) {
-								console.log("Error has occured during creation of user " + username);
+								console.log("Error has occured during creation of user " + user.username);
 								console.log("Error: \n" + err + "\n");
 								res.json({
 									"ok": false,
-									"error": err
+									"error": "ERRDBCONNECTION"
 								});
 							}
-							console.log("Succesfully created user " + username);
-							res.redirect('back');
+							console.log("Succesfully created user " + user.username);
+							res.json({
+								"ok": true
+							});
+							req.session.user = user;
 						});
 						sql.end(connection);
 				} else {
 					console.log("Tried to create existing user in registration with username: " + user.username);
 					res.json({
 						"ok": false,
-						"error": "There are somebody with this username: " + user.username + "or email: " + user.email
+						"error": "USEREXIST"
 					});
 					return
 				}
 			} catch (err) {
+				console.log(err);
 				res.json({
 					"ok": false,
-					"error": err
+					"error": "UNKNOWNERROR"
 				});
 				return
 			}
@@ -88,7 +102,7 @@ router.post("/user/register", async (req, res, next) => {
 	} catch (error) {
 		res.json({
 			"ok": false,
-			"error": error
+			"error": "UNKNOWNERROR"
 		});
 		console.log(error)
 		next(error)
@@ -106,7 +120,7 @@ router.post("/user/login", async (req, res, next) => {
 				console.log("Error: \n" + err + "\n");
 				res.json({
 					"ok": false,
-					"error": err
+					"error": "ERRDBCONNECTION"
 				});
 				return
 			}
@@ -115,7 +129,7 @@ router.post("/user/login", async (req, res, next) => {
 					console.log("Tried to login non existing user in login with username: " + user.username);
 					res.json({
 						"ok": false,
-						"error": "There are no users with this username: " + user.username + " or email: " + user.email
+						"error": "USERNOTEXIST"
 					});
 					return
 				} else {
@@ -123,7 +137,6 @@ router.post("/user/login", async (req, res, next) => {
 					const hash = user.password;
 
 					user.password = hash;
-					// Если все ок, то регистрируем пользователя в бд
 					connection = sql.connection();
 					sql.connect(connection);
 					connection.query('SELECT * FROM users WHERE users.email = "' + user.username + '" OR users.username = "' + user.username + '"', function(err, rows, fields) {
@@ -132,21 +145,21 @@ router.post("/user/login", async (req, res, next) => {
 							console.log("Error: \n" + err + "\n");
 							res.json({
 								"ok": false,
-								"error": err
+								"error": "ERRDBCONNECTION"
 							})
 							return false
-						} 
-						if (rows[0] != undefined) {
-							if (rows[0].password == user.password) {
-								req.session.user = rows[0];
-								res.redirect('back');
-							} else {
-								console.log("Password for user " + user.username + " is incorrect!");
-								res.json({
-									"ok": false,
-									"error": "Password is incorrect"
-								});
-							}
+						}
+						if (rows[0].password == user.password) {
+							req.session.user = rows[0];
+							res.json({
+								"ok": true
+							});
+						} else {
+							console.log("Password for user " + user.username + " is incorrect!");
+							res.json({
+								"ok": false,
+								"error": "ERRINCORRECTPASSWORD"
+							});
 						}
 					});
 					sql.end(connection);
@@ -154,7 +167,7 @@ router.post("/user/login", async (req, res, next) => {
 			} catch (err) {
 				res.json({
 					"ok": false,
-					"error": err
+					"error": "UNKNOWNERROR"
 				});
 				return
 			}
@@ -163,7 +176,7 @@ router.post("/user/login", async (req, res, next) => {
 	} catch (error) {
 		res.json({
 			"ok": false,
-			"error": error
+			"error": "UNKNOWNERROR"
 		});
 		console.log(error)
 		next(error)
@@ -175,7 +188,7 @@ router.post("/user/logout"), (req, res, next) => {
 			console.log("error!");	
 			res.json({
 				"ok": false,
-				"error": err
+				"error": "ERRLOGOUTFAILED"
 			})
 		} 
 		res.json({
