@@ -1,10 +1,11 @@
 const registerForm = document.querySelector(".register-form");
 const loginForm = document.querySelector(".login-form");
+const messageBoxClass = ".message_box";
 
 var register_handler = function(event) {
 	event.preventDefault();
 	form = registerForm;
-	if (form.username.value == "") console.log("Can't register because username field is empty!");
+	if (form.username.value == "") form.querySelector(messageBoxClass).innerText = "Введите имя пользователя!";
 	else if (form.email.value == "") console.log("Can't register because email field is empty!"); 
 	else if (form.password.value == "") console.log("Can't register because password field is empty!");
 	else if (form.confirm_password.value == "") console.log("Can't register because confirm password field is empty!");

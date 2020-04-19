@@ -15,7 +15,7 @@ router.get("/", (req, res, next) => {
 const registerValidation = Joi.object().keys({
   email: Joi.string().email().required(),
   username: Joi.string().required(),
-  password: Joi.string().regex(/^[a-zA-Z0-9]{6,30}$/).required(),
+  password: Joi.string().regex(/^[a-zA-Z0-9]{6,100}$/).required(),
   password_confirmation: Joi.any().valid(Joi.ref('password')).required()
 });
 // Registration of a new user
@@ -54,11 +54,21 @@ router.post("/user/register", async (req, res, next) => {
 
 					user.password = hash
 					// Если все ок, то регистрируем пользователя в бд
-					register(user.username, user.email, user.password);
-					res.json({
-						"ok": true
-					})
-					next();
+					connection = sql.connection();
+						sql.connect(connection);
+						connection.query("INSERT INTO `users`(`username`, `email`, `password`) VALUES ('" + username + "', '" + email + "', '" + password + "')", function(err) {
+						if (err) {
+								console.log("Error has occured during creation of user " + username);
+								console.log("Error: \n" + err + "\n");
+								res.json({
+									"ok": false,
+									"error": err
+								});
+							}
+							console.log("Succesfully created user " + username);
+							res.redirect('back');
+						});
+						sql.end(connection);
 				} else {
 					console.log("Tried to create existing user in registration with username: " + user.username);
 					res.json({
@@ -130,9 +140,7 @@ router.post("/user/login", async (req, res, next) => {
 						if (rows[0] != undefined) {
 							if (rows[0].password == user.password) {
 								req.session.user = rows[0];
-								res.json({
-									"ok": true
-								})
+								res.redirect('back');
 							} else {
 								console.log("Password for user " + user.username + " is incorrect!");
 								res.json({
@@ -143,7 +151,6 @@ router.post("/user/login", async (req, res, next) => {
 						}
 					});
 					sql.end(connection);
-					//login(user.username, user.password);
 				}
 			} catch (err) {
 				res.json({
@@ -163,6 +170,20 @@ router.post("/user/login", async (req, res, next) => {
 		next(error)
 	}
 });
+router.post("/user/logout"), (req, res, next) => {
+	req.session.destroy(function(err) {
+		if (err) {
+			console.log("error!");	
+			res.json({
+				"ok": false,
+				"error": err
+			})
+		} 
+		res.json({
+			"ok": true
+		})
+  	})
+}
 router.get("/user/search/:name", (req, res, next)=> {
 	res.send("Поиск пользователей по имени (дает краткую инфу (user-preview))");
 	next();
