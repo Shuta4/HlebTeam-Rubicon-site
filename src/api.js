@@ -17,7 +17,8 @@ router.get("/", (req, res, next) => {
 		ERRDBCONNECTION - Error with db,
 		USEREXIST - User is already exist,
 		UNKNOWNERROR - Unknown error,
-		USERNOTEXIST - User is not exist
+		USERNOTEXIST - User is not exist,
+		ERRINCORRECTPASSWORD - password for user is incorrect
 */	
 
 const registerValidation = Joi.object().keys({
@@ -132,7 +133,6 @@ router.post("/user/login", async (req, res, next) => {
 					const hash = user.password;
 
 					user.password = hash;
-					// Если все ок, то регистрируем пользователя в бд
 					connection = sql.connection();
 					sql.connect(connection);
 					connection.query('SELECT * FROM users WHERE users.email = "' + user.username + '" OR users.username = "' + user.username + '"', function(err, rows, fields) {
@@ -153,9 +153,14 @@ router.post("/user/login", async (req, res, next) => {
 								console.log("Password for user " + user.username + " is incorrect!");
 								res.json({
 									"ok": false,
-									"error": "Password is incorrect"
+									"error": "ERRINCORRECTPASSWORD"
 								});
 							}
+						} else {
+							res.json({
+								"ok": false,
+								"error": "USERNOTEXIST"
+							})
 						}
 					});
 					sql.end(connection);

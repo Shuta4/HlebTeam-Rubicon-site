@@ -77,6 +77,9 @@ var login = function(form) {
   					break
   				case "UNKNOWNERROR": 
   					form.querySelector(messageBoxClass).innerText = "Неизвестная ошибка! Попробуйте позже или обратитесь к поддержке"
+  					break
+  				case "ERRINCORRECTPASSWORD":
+  					form.querySelector(messageBoxClass).innerText = "Неправильный пароль!"
   					break 
   			}
   		}
