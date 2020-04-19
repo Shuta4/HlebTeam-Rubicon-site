@@ -29,32 +29,179 @@ body{
     height: 300px;
     margin-top: 30px;
     border: 2px solid #00ff88;
+    border-radius: 20px;
 }
 .demo-swiper .swiper-slide {
+  font-size: 25px;
+  font-weight: 300;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+}
+.demo-swiper .swiper-slide {
+  box-sizing: border-box;
+}
+.demo-swiper {
+  margin: 0px 0 35px;
+  font-size: 18px;
+  height: 120px;
+}
+.demo-swiper.demo-swiper-auto .swiper-slide {
+  width: 85%;
+}
+.demo-swiper.demo-swiper-auto .swiper-slide:nth-child(2n) {
+  width: 70%;
+}
+.demo-swiper.demo-swiper-auto .swiper-slide:nth-child(3n) {
+  width: 30%;
+}
+.work-form-blok-opisanie-text{
+  color: white;
+  text-align: center;
+  font-size: 25px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #00ff88;
+}
+.textarea_text{
+  background: rgba(0, 0, 0, 0);
+  border: 2px solid #00ff88;
+  width: 96%;
+  margin: 5px;
+  height: 150px;
+  overflow: hidden;
+  color: white;
+}
+.work-form-blok-opisanie-rabota{
+  background: rgba(255, 255, 255, 0);
+  color: #00ff88;
+  border: 2px solid #00ff8800;
+  margin-left: 1%;
+  margin-top: 10px;
+  text-decoration: underline #00ff88;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.work-form-blok-opisanie-ssulka{
+  background: rgba(255, 255, 255, 0);
+  width: 94%;
+  height: 40px;
+  border-radius: 50px;
+  border: 2px solid #00ff88;
+  color: #00ff88;
+  margin-left: 1%;
+  text-decoration: underline #00ff88;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 10px;
+  margin-top: -15px;
+}
+.swiper-wrapper-download{
+  width: 300px;
+  height: 300px;
+  border: 2px solid #00ff88;
+  border-radius: 200px;
+  margin-left: 135px;
+  text-align: center;
+  color: white;
+  font-size: 250px;
+  background: #00ff88;;
+  margin-top: 40px;
+  transition: all 400ms;
+}
+.swiper-wrapper-download:hover{
+  background: url('/img/add-img.svg') no-repeat center  #00ff88;
+  cursor: pointer;
+  width: 97%;
+  height: 300px;
+  border: 2px solid  #00ff88;
+  border-radius: 20px;
+  margin-left: 8px;
+  color: rgba(255, 255, 255, 0);
+  transition: all 400ms;
+}
+
+@media(max-width: 400px) {
+  .work-form-blok{
+    background: rgba(0, 0, 0, 0.315);
+    width: 80%;
+    height: 620px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    color: #00ff88;
+    top: 170px;
+    border: 2px solid #00ff88;
+    box-shadow: 0 0 15px #00ff88;
+}
+.work-form-blok-text{
+    position: relative;
+    margin-top: -50px;
+    text-align: center;
     font-size: 25px;
-    font-weight: 300;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #000;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-decoration: underline #00ff88;
+}
+.work-form-blok-foto{
+    text-align: center;
+    margin: 7px;
+    width: 97%;
+    height: 300px;
+    margin-top: 30px;
+    border: 2px solid #00ff88;
+    border-radius: 20px;
+}
+  .textarea_text{
+    background: rgba(0, 0, 0, 0);
+    border: 2px solid #00ff88;
+    width: 96%;
+    margin: 2px;
+    height: 150px;
+    overflow: hidden;
+    color: white;
   }
-  .demo-swiper .swiper-slide {
-    box-sizing: border-box;
+  .work-form-blok-opisanie-rabota{
+    background: rgba(255, 255, 255, 0);
+    color: #00ff88;
+    border: 2px solid #00ff8800;
+    margin-left: 1%;
+    margin-top: 10px;
+    text-decoration: underline #00ff88;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
-  .demo-swiper {
-    margin: 0px 0 35px;
-    font-size: 18px;
-    height: 120px;
+  .work-form-blok-opisanie-ssulka{
+    background: rgba(255, 255, 255, 0);
+    width: 90%;
+    height: 20px;
+    border-radius: 50px;
+    border: 2px solid #00ff88;
+    color: #00ff88;
+    margin-left: 1%;
+    text-decoration: underline #00ff88;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 10px;
+    margin-top: -15px;
   }
-  .demo-swiper.demo-swiper-auto .swiper-slide {
-    width: 85%;
+  .swiper-wrapper-download{
+    width: 200px;
+    height: 200px;
+    border: 2px solid #00ff88;
+    border-radius: 100px;
+    margin-left: 50px;
+    text-align: center;
+    color: white;
+    font-size: 170px;
+    background: #00ff88;;
+    margin-top: 40px;
+    transition: all 400ms;
   }
-  .demo-swiper.demo-swiper-auto .swiper-slide:nth-child(2n) {
-    width: 70%;
+  .swiper-wrapper-download:hover{
+    background: url('/img/add-img.svg') no-repeat center  #00ff88;
+    cursor: pointer;
+    width: 97%;
+    height: 200px;
+    border: 2px solid  #00ff88;
+    border-radius: 20px;
+    margin-left: 2px;
+    color: rgba(255, 255, 255, 0);
+    transition: all 400ms;
   }
-  .demo-swiper.demo-swiper-auto .swiper-slide:nth-child(3n) {
-    width: 30%;
-  }
-  .work-form-blok-opisanie-text{
-   text-align: center;
-  }
+}
