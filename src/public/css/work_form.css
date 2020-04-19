@@ -3,7 +3,7 @@ body{
     background: rgb(7, 6, 49);
 }
 .work-form-blok{
-    background: rgba(0, 0, 0, 0.315);
+    background: black;
     width: 30%;
     height: 700px;
     position: relative;
@@ -120,8 +120,11 @@ body{
 }
 
 @media(max-width: 400px) {
+  content{
+    height: 950px;
+  }
   .work-form-blok{
-    background: rgba(0, 0, 0, 0.315);
+    background: black;
     width: 80%;
     height: 620px;
     position: relative;

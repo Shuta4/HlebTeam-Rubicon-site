@@ -56,7 +56,23 @@ body{
         margin: 10px;
     }
 }
-@media(max-width: 550px) {
+@media(max-width: 400px) {
+    .authentication-form__form {
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 30px;
+        height: 450px;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: column; 
+        justify-content: center;
+        align-items: center;
+        border-radius: 20px;
+        transition: all 400ms;
+        overflow: hidden;
+        z-index: 5;
+      }
     .content__about__links__list__item__image{
         width: 80px;
         height: 80px;
