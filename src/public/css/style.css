@@ -149,7 +149,7 @@ margin: 0px;
   }
 /*Footer styles*/
 .footer-main {
-  background: rgba(0, 255, 136, 0.226);
+  background: rgb(0, 255, 136);
   padding-bottom: 120px;
 }
 .footer-main__bottom-wrapper__container {

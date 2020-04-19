@@ -21,6 +21,7 @@
     font-size: 100px;
     color: #000000;
     -webkit-text-stroke-width: 2px;
+    top: 50px;
 }
 .content__donate__text {
     position: relative;
