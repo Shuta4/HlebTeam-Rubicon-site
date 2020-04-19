@@ -73,7 +73,7 @@ var login = function(form) {
   					form.querySelector(messageBoxClass).innerText = "Ошибка сервера! Повторите попытку позже." 
   					break
   				case "USERNOTEXIST": 
-  					form.querySelector(messageBoxClass).innerText = "Пользователь с такими почтой и/или именем не существует!"
+  					form.querySelector(messageBoxClass).innerText = "Пользователь с такими почтой или именем не существует!"
   					break
   				case "UNKNOWNERROR": 
   					form.querySelector(messageBoxClass).innerText = "Неизвестная ошибка! Попробуйте позже или обратитесь к поддержке"

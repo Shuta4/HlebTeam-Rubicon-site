@@ -87,6 +87,7 @@ router.post("/user/register", async (req, res, next) => {
 					return
 				}
 			} catch (err) {
+				console.log(err);
 				res.json({
 					"ok": false,
 					"error": "UNKNOWNERROR"
