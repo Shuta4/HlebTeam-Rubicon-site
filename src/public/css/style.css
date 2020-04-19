@@ -354,3 +354,22 @@ margin: 0px;
     transition: all 400ms;
   }
 }
+@media (max-height: 600px) {
+  .register-form {
+    left: 50%;
+    top: calc(50% + 225px);
+  }
+  .login-form {
+    left: 50%;
+    top: calc(50% - 225px);
+  }
+  .active {
+    top: 50%;
+    left: 50%;
+    height: 400px;
+    width: 350px;
+    border-radius: 20px;
+    transition: all 700ms;
+    z-index: 3;
+  }
+}
