@@ -1,7 +1,6 @@
 /* Файл, где будут все обращения к базе данных и т.п. */
 const express = require('express');
 const router = express.Router();
-const register = require("./db/actions/register.js");
 const Joi = require("joi");
 const sql = require("./db/connection.js");
 const createWork = require("./db/actions/createWork.js");
