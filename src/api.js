@@ -65,16 +65,16 @@ router.post("/user/register", async (req, res, next) => {
 					// Если все ок, то регистрируем пользователя в бд
 					connection = sql.connection();
 						sql.connect(connection);
-						connection.query("INSERT INTO `users`(`username`, `email`, `password`) VALUES ('" + username + "', '" + email + "', '" + password + "')", function(err) {
+						connection.query("INSERT INTO `users`(`username`, `email`, `password`) VALUES ('" + user.username + "', '" + user.email + "', '" + user.password + "')", function(err) {
 						if (err) {
-								console.log("Error has occured during creation of user " + username);
+								console.log("Error has occured during creation of user " + user.username);
 								console.log("Error: \n" + err + "\n");
 								res.json({
 									"ok": false,
 									"error": "ERRDBCONNECTION"
 								});
 							}
-							console.log("Succesfully created user " + username);
+							console.log("Succesfully created user " + user.username);
 							res.redirect('back');
 						});
 						sql.end(connection);
