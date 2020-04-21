@@ -1,132 +1,106 @@
 @import url("./style.css");
 body{
-    background: rgb(7, 6, 49);
+  background: rgb(7, 6, 49);
 }
 .work-form{
-  height: 850px;
-}
-.work-form-blok{
-    background: black;
-    width: 30%;
-    height: 700px;
-    position: relative;
-    margin-left: auto;
-    margin-right: auto;
-    color: #00ff88;
-    top: 170px;
-    border: 2px solid #00ff88;
-    box-shadow: 0 0 15px #00ff88;
-}
-.work-form-blok-text{
-    position: relative;
-    margin-top: -50px;
-    text-align: center;
-    font-size: 25px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    text-decoration: underline #00ff88;
-}
-.work-form-blok-foto{
-    text-align: center;
-    margin: 7px;
-    width: 97%;
-    height: 300px;
-    margin-top: 30px;
-    border: 2px solid #00ff88;
-    border-radius: 20px;
-}
-.demo-swiper .swiper-slide {
-  font-size: 25px;
-  font-weight: 300;
+  margin-top: 30px;
+  min-height: 850px;
+  width: 100%;
   display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
-  color: #000;
 }
-.demo-swiper .swiper-slide {
-  box-sizing: border-box;
-}
-.demo-swiper {
-  margin: 0px 0 35px;
-  font-size: 18px;
-  height: 120px;
-}
-.demo-swiper.demo-swiper-auto .swiper-slide {
-  width: 85%;
-}
-.demo-swiper.demo-swiper-auto .swiper-slide:nth-child(2n) {
-  width: 70%;
-}
-.demo-swiper.demo-swiper-auto .swiper-slide:nth-child(3n) {
-  width: 30%;
-}
-.work-form-blok-opisanie-text{
-  color: white;
+.work-form__title {
+  position: relative;
+  color: #00ff88;
   text-align: center;
+  font-weight: 300;
   font-size: 25px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #00ff88;
+  text-decoration: underline #00ff88;
 }
-.textarea_text{
-  background: rgba(0, 0, 0, 0);
+.work-form__form {
+  background: black;
+  width: 600px;
+  height: 700px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  color: #000;
   border: 2px solid #00ff88;
-  width: 96%;
+  box-shadow: 0 0 15px #00ff88;
+  box-sizing: border-box;
+  font-size: 18px;
+  font-weight: 300;
+}
+.work-form__form>* {
+  width: 500px;
   margin: 5px;
-  height: 150px;
-  overflow: hidden;
-  color: white;
 }
-.work-form-blok-opisanie-rabota{
-  background: rgba(255, 255, 255, 0);
-  color: #00ff88;
-  border: 2px solid #00ff8800;
-  margin-left: 1%;
-  margin-top: 10px;
-  text-decoration: underline #00ff88;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.work-form__form__preview-image {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
 }
-.work-form-blok-opisanie-ssulka{
-  background: rgba(255, 255, 255, 0);
-  width: 94%;
-  height: 40px;
-  border-radius: 50px;
-  border: 2px solid #00ff88;
-  color: #00ff88;
-  margin-left: 1%;
-  text-decoration: underline #00ff88;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  padding: 10px;
-  margin-top: -15px;
-}
-.swiper-wrapper-download{
+.work-form__form__preview-image__add {
   width: 300px;
   height: 300px;
   border: 2px solid #00ff88;
   border-radius: 200px;
-  margin-left: 135px;
   text-align: center;
   color: white;
   font-size: 250px;
   background: #00ff88;;
-  margin-top: 40px;
   transition: all 400ms;
 }
-.swiper-wrapper-download:hover{
+.work-form__form__preview-image__add:hover {
   background: url('/img/add-img.svg') no-repeat center  #00ff88;
   cursor: pointer;
-  width: 97%;
   height: 300px;
+  width: 450px;
   border: 2px solid  #00ff88;
   border-radius: 20px;
   margin-left: 8px;
   color: rgba(255, 255, 255, 0);
   transition: all 400ms;
 }
+.work-form__form__title {
+  background: rgba(255, 255, 255, 0);
+  color: #00ff88;
+  border: 2px solid #00ff8800;
+  text-decoration: underline #00ff88;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.work-form__form__description {
+  background: none;
+  border: 2px solid #00ff88;
+  margin: 5px;
+  height: 150px;
+  color: white;
+  resize: none;
+}
+.work-form__form__link {
+  background: rgba(255, 255, 255, 0);
+  height: 40px;
+  border-radius: 50px;
+  border: 2px solid #00ff88;
+  color: #00ff88;
+  text-decoration: underline #00ff88;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 10px;
+}
 
-@media(max-width: 400px) {
-  .work-form9{
+/*@media(max-width: 400px) {
+  .work-form{
     height: 650px;
   }
-  .work-form-blok{
+  .work-form__form {
     background: black;
     width: 80%;
     height: 480px;
@@ -138,7 +112,7 @@ body{
     border: 2px solid #00ff88;
     box-shadow: 0 0 15px #00ff88;
 }
-.work-form-blok-text{
+.work-form__form__title {
     position: relative;
     margin-top: -50px;
     text-align: center;
@@ -146,7 +120,7 @@ body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-decoration: underline #00ff88;
 }
-.work-form-blok-foto{
+.work-form__form__preview-image__image {
     text-align: center;
     margin: 7px;
     width: 97%;
@@ -155,7 +129,7 @@ body{
     border: 2px solid #00ff88;
     border-radius: 20px;
 }
-  .textarea_text{
+  .work-form__form__description {
     background: rgba(0, 0, 0, 0);
     border: 2px solid #00ff88;
     width: 96%;
@@ -165,7 +139,7 @@ body{
     overflow: hidden;
     color: white;
   }
-  .work-form-blok-opisanie-rabota{
+  .work-form__form__title {
     background: rgba(255, 255, 255, 0);
     color: #00ff88;
     border: 2px solid #00ff8800;
@@ -174,7 +148,7 @@ body{
     text-decoration: underline #00ff88;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
-  .work-form-blok-opisanie-ssulka{
+  .work-form__form__link {
     background: rgba(255, 255, 255, 0);
     width: 90%;
     height: 20px;
@@ -187,7 +161,7 @@ body{
     padding: 10px;
     margin-top: -15px;
   }
-  .swiper-wrapper-download{
+  .work-form__form__preview-image__add {
     width: 150px;
     height: 150px;
     border: 2px solid #00ff88;
@@ -201,7 +175,7 @@ body{
     margin-top: 40px;
     transition: all 400ms;
   }
-  .swiper-wrapper-download:hover{
+  .work-form__form__preview-image__add:hover {
     background: url('/img/add-img.svg') no-repeat center  #00ff88;
     cursor: pointer;
     width: 97%;
@@ -212,4 +186,4 @@ body{
     color: rgba(255, 255, 255, 0);
     transition: all 400ms;
   }
-}
+}*/

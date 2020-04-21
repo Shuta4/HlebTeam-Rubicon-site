@@ -1,21 +1,19 @@
 <div class="work-form">
-	<div class="work-form-blok">
-        <div class="work-form-blok-text">
-            Создание работы...
-        </div>
-            <div data-pagination='{"el": ".swiper-pagination"}' data-space-between="50" class="swiper-container swiper-init demo-swiper">
-                <div class="swiper-pagination"></div>
-                <div class="swiper-wrapper">
-                    <div class="swiper-wrapper-download">+</div>
-                  <!-- <div class="swiper-slide"><img class="work-form-blok-foto" src="/img/site-bonpass-temp.jpg" alt="Фото работы"></div> -->
-                </div>
-              <div class="work-form-blok-opisanie">
-                  <p class="work-form-blok-opisanie-text">Описание</p>
-                  <input type="text" name="title" class="work-form-blok-opisanie-rabota" placeholder="Название работы">
-                  <p><textarea class="textarea_text"></textarea></p>
-                  <input type="text" name="title" class="work-form-blok-opisanie-ssulka" placeholder="Ссылка на скачивание">
-              </div>
-            </div>
+  <h3 class="work-form__title">
+    <%if (create_new) {%>
+      Создание работы...
+    <%} else {%>
+      Редактирование...
+    <%}%>
+  </h3>
+	<form class="work-form__form">
+    <div class="work-form__form__preview-image">
+        <div class="work-form__form__preview-image__add">+</div>
+      <!-- <div class="swiper-slide"><img class="work-form__form__preview-image__image" src="/img/site-bonpass-temp.jpg" alt="Фото работы"></div> -->
     </div>
+    <input type="text" name="title" class="work-form__form__title" placeholder="Название работы">
+    <textarea class="work-form__form__description" placeholder="Описание"></textarea>
+    <input type="text" name="download_link" class="work-form__form__link" placeholder="Ссылка на скачивание">
+    </form>
 </div>
 <script src="/js/create_work.js"></script>
