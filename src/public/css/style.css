@@ -403,7 +403,7 @@ margin: 0px;
   @media (max-width: 500px) {
     .register-form {
       left: 50%;
-      top: calc(50% + 200px);
+      top: calc(50% + 190px);
       width: 320px;
     }
     .login-form {
