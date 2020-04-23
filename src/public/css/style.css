@@ -229,6 +229,8 @@ margin: 0px;
 }
 .active>.authentication-form__form__input {
   display: block;
+  width: 300px;
+  margin: 5px;
 }
 .register-form {
   left: calc(50% - 300px);
@@ -371,7 +373,7 @@ margin: 0px;
     width: 330px;
     padding: 5px;
     background: #ffffff;
-    border: 2.5px solid #00ff6a;
+    border: 2.5px solid rgba(0, 0, 0, 0);
     color: black;
     border-radius: 50px;
     transition: all 400ms;
@@ -380,17 +382,17 @@ margin: 0px;
 @media (max-height: 690px) {
   .register-form {
     left: 50%;
-    top: calc(50% + 215px);
+    top: calc(54% + 190px);
   }
   .login-form {
     left: 50%;
-    top: calc(50% - 175px);
+    top: calc(130% - 190px);
   }
   .active {
-    top: calc(50% + 25px);
+    top: calc(53% + 25px);
     left: 50%;
-    height: 360px;
-    width: 350px;
+    height: 380px;
+    width: 345px;
     border-radius: 20px;
     transition: all 700ms;
     z-index: 3;
