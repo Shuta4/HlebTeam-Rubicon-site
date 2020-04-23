@@ -3,12 +3,7 @@ container = document.querySelector(".search_result_container");
 
 form.addEventListener("submit", (event) => {
 	event.preventDefault();
-	fetch("/api/user/search/" + form.username.value, {
-	    method: 'GET',
-	    headers: {
-	      'Content-Type': 'application/json'
-	    }
-  	}).then((res)=> res.json()).then((res) => {
+	fetch("/api/user/search/" + form.username.value).then((res)=> res.json()).then((res) => {
   		if (res.ok) {
   			container.innerHTML = "";
   			res.result.forEach((el) => {

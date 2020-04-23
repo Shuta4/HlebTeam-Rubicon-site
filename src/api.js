@@ -198,31 +198,25 @@ router.post("/user/logout", (req, res, next) => {
   	});
 });
 router.get("/user/search/:name", (req, res, next) => {
-	try {
-		connection = sql.connection();
-		const name = req.params.name;
-		sql.connect(connection);
-		connection.query("SELECT * FROM `users` WHERE 'username' LIKE '%" + name + "%' OR 'name' LIKE '%" + name + "%' OR 'surname' LIKE '%" + name + "%'", function(err, rows, fields) {
-			if (err) {
-				console.log("Error has occured during searching user: " + name);
-				console.log("Error: \n" + err + "\n");
-				res.json({
-					"ok": false,
-					"error": "ERRDBCONNECTION"
-				});
-				return
-			}
-			console.log("OKKOKOKOKOKOKO")
+	connection = sql.connection();
+	const name = req.params.name;
+	sql.connect(connection);
+	connection.query("SELECT * FROM `users` WHERE 'username' LIKE '%" + name + "%' OR 'name' LIKE '%" + name + "%' OR 'surname' LIKE '%" + name + "%'", function(err, rows, fields) {
+		if (err) {
+			console.log("Error has occured during searching user: " + name);
+			console.log("Error: \n" + err + "\n");
 			res.json({
-				"ok": true,
-				"result": JSON.stringify(rows)
+				"ok": false,
+				"error": "ERRDBCONNECTION"
 			});
+			return
+		}
+		res.json({
+			"ok": true,
+			"result": JSON.stringify(rows)
 		});
-		sql.end(connection);
-		next();		
-	} catch (err) {
-		console.log(err);
-	}
+	});
+	sql.end(connection);
 });
 router.get("/user/get/:id", (req, res, next)=> {
 	res.send("Получение информации о 1 пользователе по id. Дает полную информацию (user-page)");
