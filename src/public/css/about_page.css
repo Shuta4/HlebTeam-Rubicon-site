@@ -26,8 +26,8 @@ body{
     margin: 10px;
 }
 .content__about__links__list__item__image{
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     border: 2px solid rgb(0, 255, 136);
     transition: all 300ms ease;
@@ -35,7 +35,8 @@ body{
 }
 .content__about__links__list__item__image:hover{
     border-radius: 20%;
-    border: 2px solid rgb(255, 208, 0);
+    box-shadow: 0 0 25px #00ff88;
+    border: 2px solid white;
 }
 @media(max-width: 700px) {
     .content__about__title{
@@ -50,6 +51,27 @@ body{
         border: 3px solid #ffd000;
         border-radius: 10px;
         transition: all 400ms;
+    }
+    .content__about__text{
+        font-size: 24px;
+        margin: 10px;
+    }
+}
+@media(max-width: 450px) {
+    .content__about__links__list__item__image{
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        border: 2px solid rgb(0, 255, 136);
+        transition: all 300ms ease;
+        margin: 10px;
+    }
+    .content__about__links__list__item__image:hover{
+        border-radius: 20%;
+        border: 2px solid rgb(255, 208, 0);
+    }
+    .content__about__title{
+        font-size: 55px;
     }
     .content__about__text{
         font-size: 24px;
@@ -74,8 +96,8 @@ body{
         z-index: 5;
       }
     .content__about__links__list__item__image{
-        width: 80px;
-        height: 80px;
+        width: 60px;
+        height: 60px;
         border: 3px solid #00ff88;
     }
     .content__about__links__list__item__image:hover{
