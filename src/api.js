@@ -201,7 +201,7 @@ router.get("/user/search/:name", (req, res, next) => {
 	connection = sql.connection();
 	const name = req.params.name;
 	sql.connect(connection);
-	connection.query("SELECT * FROM `users` WHERE 'username' LIKE '%" + name + "%' OR 'name' LIKE '%" + name + "%' OR 'surname' LIKE '%" + name + "%'", function(err, rows, fields) {
+	connection.query("SELECT * FROM `users` WHERE `username` LIKE '%" + name + "%' OR `name` LIKE '%" + name + "%' OR `surname` LIKE '%" + name + "%'", function(err, rows, fields) {
 		if (err) {
 			console.log("Error has occured during searching user: " + name);
 			console.log("Error: \n" + err + "\n");
