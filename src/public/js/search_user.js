@@ -7,7 +7,6 @@ form.addEventListener("submit", (event) => {
   		if (res.ok) {
   			container.innerHTML = "";
         var result = JSON.parse(res.result);
-        console.log(typeof result)
   			for (var i = 0; i < result.length; i++) {
           el = result[i]
           if (el.name || el.surname) var name = (el.name + " " + el.surname + " ("+ el.username +")").trim();
