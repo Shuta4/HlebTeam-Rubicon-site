@@ -12,8 +12,8 @@ form.addEventListener("submit", (event) => {
   		if (res.ok) {
   			container.innerHTML = "";
   			res.result.forEach((el) => {
-          if (el.name || el.surname) name = (el.name + " " el.surname + " ("+ el.username +")").trim();
-          else name = el.username;
+          if (el.name || el.surname) var name = (el.name + " " + el.surname + " ("+ el.username +")").trim();
+          else var name = el.username;
   				container.insertAdjacentHTML("beforeend", `                
             <li class="content__results__item user-preview">
               <img alt="Аватар" class="user-preview__avatar" src="https://image.flaticon.com/icons/png/512/64/64572.png">  
