@@ -379,20 +379,43 @@ margin: 0px;
     transition: all 400ms;
   }
 }
-@media (max-height: 690px) {
+@media (max-height: 650px) {
   .register-form {
     left: 50%;
-    top: calc(54% + 190px);
+    top: calc(50% + 210px);
+    width: 330px;
   }
   .login-form {
     left: 50%;
-    top: calc(130% - 190px);
+    top: calc(128% - 210px);
+    width: 330px;
   }
   .active {
-    top: calc(53% + 25px);
+    top: calc(50% + 25px);
+    left: 50%;
+    height: 420px;
+    width: 330px;
+    border-radius: 20px;
+    transition: all 700ms;
+    z-index: 3;
+  }
+}
+@media (max-height: 500px) {
+  .register-form {
+    left: 50%;
+    top: calc(48% + 210px);
+    width: 310px;
+  }
+  .login-form {
+    left: 50%;
+    top: calc(134% - 210px);
+    width: 310px;
+  }
+  .active {
+    top: calc(50% + 25px);
     left: 50%;
     height: 380px;
-    width: 345px;
+    width: 310px;
     border-radius: 20px;
     transition: all 700ms;
     z-index: 3;
