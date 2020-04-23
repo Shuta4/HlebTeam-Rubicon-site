@@ -31,7 +31,7 @@ form.addEventListener("submit", (event) => {
               </ul>
             </li>`)
 
-  			})
+  			}
 
   		} else {
   			console.log("Search failed!");
