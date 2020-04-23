@@ -387,7 +387,7 @@ margin: 0px;
   }
   .login-form {
     left: 50%;
-    top: calc(128% - 210px);
+    top: calc(50% - 210px);
     width: 330px;
   }
   .active {
@@ -399,16 +399,39 @@ margin: 0px;
     transition: all 700ms;
     z-index: 3;
   }
+
+  @media (max-width: 500px) {
+    .register-form {
+      left: 50%;
+      top: calc(50% + 200px);
+      width: 320px;
+    }
+    .login-form {
+      position: fixed;
+      left: 50%;
+      top: calc(50% + 210px);
+      width: 320px;
+    }
+    .active {
+      top: calc(50% + 25px);
+      left: 50%;
+      height: 380px;
+      width: 320px;
+      border-radius: 20px;
+      transition: all 700ms;
+      z-index: 3;
+    }
+  }
 }
-@media (max-height: 500px) {
+@media (max-width: 250px) {
   .register-form {
     left: 50%;
-    top: calc(48% + 210px);
+    top: calc(50% + 210px);
     width: 310px;
   }
   .login-form {
     left: 50%;
-    top: calc(134% - 210px);
+    top: calc(50% - 200px);
     width: 310px;
   }
   .active {
