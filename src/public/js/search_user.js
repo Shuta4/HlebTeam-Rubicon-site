@@ -6,9 +6,10 @@ form.addEventListener("submit", (event) => {
 	fetch("/api/user/search/" + form.username.value).then((res)=> res.json()).then((res) => {
   		if (res.ok) {
   			container.innerHTML = "";
-        console.log(typeof res.result)
-  			for (var i = 0; i < res.result.length; i++) {
-          el = res.result[i]
+        var result = JSON.parse(res.result);
+        console.log(typeof result)
+  			for (var i = 0; i < result.length; i++) {
+          el = result[i]
           if (el.name || el.surname) var name = (el.name + " " + el.surname + " ("+ el.username +")").trim();
           else var name = el.username;
   				container.insertAdjacentHTML("beforeend", `                
