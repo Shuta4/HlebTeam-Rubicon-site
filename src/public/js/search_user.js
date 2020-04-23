@@ -20,21 +20,17 @@ form.addEventListener("submit", (event) => {
               <div class="user-preview__wrapper">
                   <h3 class="user-preview__name">${name}</h3>
                   <ul class="user-preview__statistics">
-                      <li class="user-preview__statistics__item">Работы: <b>0</b></li>
-                      <li class="user-preview__statistics__item">Подписчики: <b>0</b></li>
-                      <li class="user-preview__statistics__item">Подписки: <b>0</b></li>
+                      <li class="user-preview__statistics__item">Работы: <b>${el.works_counter}</b></li>
+                      <li class="user-preview__statistics__item">Подписчики: <b>${el.followers}</b></li>
                   </ul>                       
               </div>
               <ul class="user-preview__buttons">
-                  <li class="user-preview__buttons__item">
-                      <button class="user-preview__buttons__item__button button button_subscribe">Подписаться</button>                           
-                  </li>
-                  <li class="user-preview__buttons__item">
-                      <button class="user-preview__buttons__item__button button button_contact">Связаться</button>                           
-                  </li>
-                  <li class="user-preview__buttons__item">
-                      <button class="user-preview__buttons__item__button button button_report">Пожаловаться</button>                           
-                  </li>                        
+                <li class="user-preview__buttons__item">
+                    <button class="user-preview__buttons__item__button button button_subscribe">Подписаться</button>                           
+                </li>
+                <li class="user-preview__buttons__item">
+                    <button class="user-preview__buttons__item__button button button_report">Пожаловаться</button>                           
+                </li>                        
               </ul>
             </li>`)
 
