@@ -5,13 +5,13 @@
     <div class="page">
         <%- include("../parts/header.ejs") %>
         <main class="content">
-            <form class="content__form-find-users form">
+            <form class="content__form-find-users form search_user_form">
                 <div class="content__form-find-users__wrapper">
                     <input class="content__form-find-users__input-name input-text" type="text" name="username" placeholder="Имя пользователя">
                     <input class="content__form-find-users__find-button button" type="submit" value="Найти!">                        
                 </div>
             </form>
-            <ul class="content__results">
+            <ul class="content__results search_result_container">
                 <li class="content__results__item user-preview">
                     <img alt="Аватар" class="user-preview__avatar" src="https://image.flaticon.com/icons/png/512/64/64572.png">  
                     <div class="user-preview__wrapper">

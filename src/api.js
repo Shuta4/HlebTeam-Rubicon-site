@@ -198,7 +198,24 @@ router.post("/user/logout", (req, res, next) => {
   	});
 });
 router.get("/user/search/:name", (req, res, next)=> {
-	res.send("Поиск пользователей по имени (дает краткую инфу (user-preview))");
+	connection = sql.connection();
+	sql.connect(connection);
+	connection.query("SELECT * FROM `users` WHERE 'username' LIKE '%" + req.params.name + "%' OR 'name' LIKE '%" + req.params.name + "%' OR 'surname' LIKE '%" + req.params.name + "%'", function(err, rows, fields) {
+		if (err) {
+			console.log("Error has occured during searching user: " + req.params.name);
+			console.log("Error: \n" + err + "\n");
+			res.json({
+				"ok": false,
+				"error": "ERRDBCONNECTION"
+			});
+			return
+		}
+		res.json({
+			"ok": true,
+			"result": JSON.stringify(rows)
+		});
+	});
+	sql.end(connection);
 	next();
 });
 router.get("/user/get/:id", (req, res, next)=> {
