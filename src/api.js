@@ -14,6 +14,8 @@ router.get("/", (req, res, next) => {
 /*
 	Errors codes:
 		ERRVALIDATEUSER - Error with validating user,
+		ERRNOTLOGGEDIN - To proceed, user needs to login,
+		ERRACCESSDENIED - No access,
 		ERRDBCONNECTION - Error with db,
 		USEREXIST - User is already exist,
 		UNKNOWNERROR - Unknown error,
@@ -219,11 +221,45 @@ router.get("/user/search/:name", (req, res, next) => {
 	sql.end(connection);
 });
 router.get("/user/get/:id", (req, res, next)=> {
-	res.send("Получение информации о 1 пользователе по id. Дает полную информацию (user-page)");
-	next();
+	connection = sql.connection();
+	sql.connect(connection);
+	var id = req.params.id;
+	if (id == "im") {
+		if (req.session.user.id == undefined || req.session.user.id == null) {
+			req.json({
+				"ok": false,
+				"error": "ERRNOTLOGGEDIN"
+			})
+			return
+		}
+		id = req.session.user.id;
+	}
+	connection.query("SELECT * FROM `users` WHERE `id` = " + id + "", function(err, rows, fields) {
+		if (err) {
+			console.log("Error has occured during getting user by id: " + id);
+			console.log("Error: \n" + err + "\n");
+			res.json({
+				"ok": false,
+				"error": "ERRDBCONNECTION"
+			});
+			return
+		}
+		if (rows[0] != undefined) res.json({
+			"ok": true,
+			"result": JSON.stringify(rows[0])
+		});			
+		else res.json({
+			"ok": false,
+			"error": "USERNOTEXIST"
+		}); 
+	});
+	sql.end(connection);
 });
 router.put("/user/update/:id", (req, res, next)=> {
-	res.send("Изменение информации о пользователе (в req.body дается объект с информацией которую нужно изменить!)");
+	res.json({
+		"ok": false,
+		"error": "NOTAVAILABLEYET"
+	});
 	next();
 });
 router.delete("/user/delete/:id", (req, res, next)=> {
@@ -236,7 +272,7 @@ router.post("/work/", (req, res, next)=> {
 	if (work.owner_id != req.session.user.id) {
 		res.json({
 			"ok": false,
-			"error": "Access denied because user not matches"
+			"error": "ERRACCESSDENIED"
 		});
 		return;
 	}

@@ -39,6 +39,10 @@ router.get("/userpage/:id", (req, res, next) => {
 	}
   	next();
 });
+router.get("/userpage/im/edit", (req, res, next) => {
+	res.render("./pages/edit_user");
+	next();
+});
 router.get("/donate", (req, res, next) => {
   res.render("./pages/donate");
   next();
