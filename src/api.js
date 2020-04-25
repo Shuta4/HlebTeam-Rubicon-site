@@ -225,7 +225,7 @@ router.get("/user/get/:id", (req, res, next)=> {
 	sql.connect(connection);
 	var id = req.params.id;
 	if (id == "im") {
-		if (req.session.user.id == undefined || req.session.user.id == null) {
+		if (req.session.user == undefined) {
 			req.json({
 				"ok": false,
 				"error": "ERRNOTLOGGEDIN"
