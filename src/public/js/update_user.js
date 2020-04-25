@@ -5,7 +5,7 @@ fetch("/api/user/get/im").then((res)=> res.json()).then((res) => {
 		console.log(res.error);
 		return;
 	}
-	var user = res.result;
+	var user = JSON.parse(res.result);
 	form.username.value = user.username;
 	form.email.value = user.email;
 	form.name.value = user.name;
