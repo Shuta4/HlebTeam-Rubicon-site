@@ -244,10 +244,16 @@ router.get("/user/get/:id", (req, res, next)=> {
 			});
 			return
 		}
-		if (rows[0].id != undefined) res.json({
-			"ok": true,
-			"result": JSON.stringify(rows[0])
-		});			
+		if (rows[0] != undefined) {
+			if (rows[0].id != undefined || rows[0].id != null) res.json({
+				"ok": true,
+				"result": JSON.stringify(rows[0])
+			});	
+			else res.json({
+				"ok": false,
+				"error": "USERNOTEXIST"
+			});
+		}	
 		else res.json({
 			"ok": false,
 			"error": "USERNOTEXIST"
