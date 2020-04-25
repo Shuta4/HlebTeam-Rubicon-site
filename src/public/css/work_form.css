@@ -3,7 +3,7 @@ body{
   background: rgb(7, 6, 49);
 }
 .work-form{
-  margin-top: 30px;
+  margin-top: 70px;
   min-height: 850px;
   width: 100%;
   display: flex;
@@ -23,7 +23,7 @@ body{
 }
 .work-form__form {
   background: black;
-  width: 600px;
+  width: 550px;
   height: 700px;
   position: relative;
   display: flex;
@@ -32,6 +32,7 @@ body{
   align-items: center;
   color: #000;
   border: 2px solid #00ff88;
+  border-radius: 25px;
   box-shadow: 0 0 15px #00ff88;
   box-sizing: border-box;
   font-size: 18px;
@@ -49,103 +50,101 @@ body{
   align-items: center;
 }
 .work-form__form__preview-image__add {
-  width: 300px;
-  height: 300px;
+  width: 250px;
+  height: 250px;
   border: 2px solid #00ff88;
   border-radius: 200px;
   text-align: center;
   color: white;
-  font-size: 250px;
+  font-size: 200px;
   background: #00ff88;;
-  transition: all 400ms;
+  transition: all 500ms;
 }
 .work-form__form__preview-image__add:hover {
   background: url('/img/add-img.svg') no-repeat center  #00ff88;
   cursor: pointer;
   height: 300px;
-  width: 450px;
+  width: 100%;
   border: 2px solid  #00ff88;
-  border-radius: 20px;
+  border-radius: 0px;
   margin-left: 8px;
+  margin: 0px;
+  margin-top: -11px;
   color: rgba(255, 255, 255, 0);
-  transition: all 400ms;
+  transition: all 500ms;
 }
 .work-form__form__title {
+  margin-top: 20px;
   background: rgba(255, 255, 255, 0);
   color: #00ff88;
   border: 2px solid #00ff8800;
-  text-decoration: underline #00ff88;
+  text-align: 20px;
+  /* text-decoration: underline #00ff88; */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .work-form__form__description {
   background: none;
-  border: 2px solid #00ff88;
-  margin: 5px;
+  border: 2px solid black;
+  margin: 10px;
   height: 150px;
-  color: white;
+  color: #00ff88;
   resize: none;
+  margin-top: 30px;
+  transition: all 400ms;
+}
+.work-form__form__description:hover {
+  border: 2px solid #00ff88;
+  transition: all 400ms;
 }
 .work-form__form__link {
+  margin-top: 30px;
   background: rgba(255, 255, 255, 0);
   height: 40px;
   border-radius: 50px;
   border: 2px solid #00ff88;
   color: #00ff88;
-  text-decoration: underline #00ff88;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   padding: 10px;
 }
 
-/*@media(max-width: 400px) {
+@media(max-width: 900px) {
   .work-form{
     height: 650px;
   }
   .work-form__form {
     background: black;
     width: 80%;
-    height: 480px;
+    height:650px;
     position: relative;
     margin-left: auto;
     margin-right: auto;
     color: #00ff88;
-    top: 130px;
     border: 2px solid #00ff88;
     box-shadow: 0 0 15px #00ff88;
 }
 .work-form__form__title {
     position: relative;
-    margin-top: -50px;
+    margin-top: 50px;
     text-align: center;
     font-size: 25px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    text-decoration: underline #00ff88;
-}
-.work-form__form__preview-image__image {
-    text-align: center;
-    margin: 7px;
-    width: 97%;
-    height: 300px;
-    margin-top: 30px;
-    border: 2px solid #00ff88;
-    border-radius: 20px;
 }
   .work-form__form__description {
     background: rgba(0, 0, 0, 0);
     border: 2px solid #00ff88;
     width: 96%;
-    margin: 2px;
-    height: 100px;
-    font-size: 12px;
+    margin: 30px;
+    height: 200px;
+    font-size: 16px;
     overflow: hidden;
-    color: white;
+    color: #00ff88;
   }
   .work-form__form__title {
     background: rgba(255, 255, 255, 0);
     color: #00ff88;
     border: 2px solid #00ff8800;
     margin-left: 1%;
-    margin-top: 10px;
-    text-decoration: underline #00ff88;
+    margin-top: 0px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
   .work-form__form__link {
@@ -156,21 +155,20 @@ body{
     border: 2px solid #00ff88;
     color: #00ff88;
     margin-left: 1%;
-    text-decoration: underline #00ff88;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding: 10px;
-    margin-top: -15px;
+    margin-top: 0px;
   }
   .work-form__form__preview-image__add {
-    width: 150px;
-    height: 150px;
+    width: 200;
+    height: 200px;
     border: 2px solid #00ff88;
-    border-radius: 100px;
+    border-radius: 150px;
     margin-left: 25%;
     margin-right: 25%;
     text-align: center;
     color: white;
-    font-size: 120px;
+    font-size: 160px;
     background: #00ff88;;
     margin-top: 40px;
     transition: all 400ms;
@@ -178,12 +176,85 @@ body{
   .work-form__form__preview-image__add:hover {
     background: url('/img/add-img.svg') no-repeat center  #00ff88;
     cursor: pointer;
-    width: 97%;
-    height: 150px;
-    border: 2px solid  #00ff88;
-    border-radius: 20px;
-    margin-left: 2px;
+    width: 100%;
+    height: 300px;
+    border: 0px solid  #00ff88;
+    border-radius: 0px;
     color: rgba(255, 255, 255, 0);
     transition: all 400ms;
   }
-}*/
+}
+@media(max-height: 600px) {
+  .work-form{
+    margin-top: -125px;
+    height: 400px;
+  }
+  .work-form__form {
+    background: black;
+    width: 90%;
+    height: 450px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    color: #00ff88;
+    border: 2px solid #00ff88;
+    box-shadow: 0 0 15px #00ff88;
+}
+  .work-form__form__description {
+    background: rgba(0, 0, 0, 0);
+    border: 2px solid #00ff88;
+    width: 96%;
+    margin: 20px;
+    height: 140px;
+    font-size: 14px;
+    overflow: hidden;
+    color: #00ff88;
+  }
+  .work-form__form__title {
+    background: rgba(255, 255, 255, 0);
+    color: #00ff88;
+    border: 2px solid #00ff8800;
+    margin-left: 1%;
+    margin-top: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+  }
+  .work-form__form__link {
+    background: rgba(255, 255, 255, 0);
+    width: 90%;
+    height: 20px;
+    border-radius: 50px;
+    border: 2px solid #00ff88;
+    color: #00ff88;
+    margin-left: 1%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 10px;
+    margin: -10px;
+    font-size: 14px;
+  }
+  .work-form__form__preview-image__add {
+    width: 100px;
+    height: 100px;
+    border: 2px solid #00ff88;
+    border-radius: 50px;
+    margin-left: 25%;
+    margin-right: 25%;
+    text-align: center;
+    color: white;
+    font-size: 80px;
+    background: #00ff88;;
+    margin-top: 10px;
+    transition: all 400ms;
+  }
+  .work-form__form__preview-image__add:hover {
+    background: url('/img/add-img.svg') no-repeat center  #00ff88;
+    cursor: pointer;
+    margin-top: -6px;
+    width: 100%;
+    height: 150px;
+    border: 2px solid  #00ff88;
+    border-radius: 20px;
+    color: rgba(255, 255, 255, 0);
+    transition: all 400ms;
+  }
+}
