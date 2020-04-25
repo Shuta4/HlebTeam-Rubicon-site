@@ -244,7 +244,7 @@ router.get("/user/get/:id", (req, res, next)=> {
 			});
 			return
 		}
-		if (rows[0] != undefined) res.json({
+		if (rows[0].id != undefined) res.json({
 			"ok": true,
 			"result": JSON.stringify(rows[0])
 		});			
