@@ -2,12 +2,12 @@ body{
   background: rgb(5, 0, 46); 
 }
 .work-preview {
-  background: rgb(0, 140, 255);
+  background: white;
   color: hsl(0, 0%, 0%);
   max-width: 550px;
   margin: 25px;
   transition: all 400ms ease;
-  border: 3px solid rgb(0, 140, 255);
+  border: 3px solid white;
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
@@ -15,8 +15,8 @@ body{
   align-items: center;
 }
 .work-preview:hover {
-  border: 3px solid #ffd000;
-  background: #ffd000;
+  border: 3px solid black;
+  background: black;
   color: white;
 }
 .work-preview__header__title {
