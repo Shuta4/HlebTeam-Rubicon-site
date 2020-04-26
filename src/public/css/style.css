@@ -31,14 +31,14 @@ ul {
   min-height: 40px;
   padding: 5px;
   background: #000000;
-  border: 2px solid white;
+  border: 2px solid gray;
   border-radius: 10px;
-  color: white;
+  color: gray;
   transition: border-radius 0.25s ease-in;
 }
 .button:hover {
-  color: rgb(163, 162, 162);
-  border: 2px solid rgb(163, 162, 162);
+  color: white;
+  border: 2px solid white;
   border-radius: 0px;
   cursor: pointer;
   transition: border-radius 0.25s ease-out;
