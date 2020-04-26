@@ -280,8 +280,8 @@ router.put("/user/update/:id", (req, res, next)=> {
 	var password = "";
 	var id;
 	if (req.params.id == "im") id = req.session.user.id;
-	console.log(password != "" ? "`password` = '" + password + "', " : "");
 	else return;
+	console.log(password != "" ? "`password` = '" + password + "', " : "");
 	connection = sql.connection();
 	sql.connect(connection);
 	connection.query("UPDATE `users` SET " + 
