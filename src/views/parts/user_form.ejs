@@ -4,13 +4,16 @@
 		<input type="email" name="email" class="user-form__form__input input-text" placeholder="Email">
 		<input type="text" name="name" class="user-form__form__input input-text" placeholder="Ваше имя">
 		<input type="text" name="surname" class="user-form__form__input input-text" placeholder="Ваша фамилия">
+		<div class="user-form__form__date-wrapper">
+			<input type="date" name="birthday" class="user-form__form__input">Дата рождения
+			</div>
 		<textarea name="about" class="user-form__form__about" placeholder="Опишите себя"></textarea>
-		<p class="user-form__form__text">День рождения</p>
-		<input type="date" name="birthday" class="user-form__form__input">
+		<div class="user-form__form__password-wrapper">
 		<input type="password" name="old_password" class="user-form__form__input input-text" placeholder="Старый пароль">
 		<input type="password" name="new_password" class="user-form__form__input input-text" placeholder="Новый пароль">
-		<input type="password" name="confirm_password" class="user-form__form__input input-text" placeholder="Подтвердите новый пароль">
-		<input type="submit" name="submit" class="input-text user-form__form__input button" value="Отправить">
+		<input type="password" name="confirm_password" class="user-form__form__input input-text" placeholder="Повторите пароль">
+		<input type="submit" name="submit" class="input-text user-form__form__input button" value="Изменить">
+		</div>
 	</form>
 	<script src="/js/update_user.js" type="text/javascript"></script>	
 </div>
