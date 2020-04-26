@@ -86,24 +86,24 @@ body{
   flex-wrap: wrap;
 }
 .work-preview__content__plus{
-background: black;
+background: rgba(128, 128, 128, 0.404);
 color: white;
 text-align: center;
 width: 200px;
 height: 200px;
-border: 4px solid black;
+border: 4px solid rgba(128, 128, 128, 0.404);
 border-radius: 50%;
 font-size: 70px;
 transition: all 400ms;
 margin: 50px;
 }
 .work-preview__content__plus:hover{
-  background: gray;
-  border: 4px solid gray;
+  background: black;
+  border: 4px solid black;
   border-radius: 20%;
   font-size: 70px;
   transition: all 400ms;
-  color: black;
+  color: white;
   }
   .work-preview__content__plus__text{
     position: relative;
