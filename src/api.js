@@ -278,11 +278,11 @@ router.put("/user/update/:id", (req, res, next)=> {
 	connection.query("UPDATE `users` SET " + 
 		"`username` = '" + user.username + "', " +
 		"`email` = '" + user.email + "', " + 
-		//"`password` = '" + user.password + "', " + 
+		user.password != "" ? "`password` = '" + user.password + "', " : "" + 
 		"`name` = '" + user.name + "', " + 
 		"`surname` = '" + user.surname + "', " + 
 		"`about` = '" + user.about + "', " + 
-		"`birthday` = '" + user.birthday + "' " + 
+		user.birthday != "" ? "`birthday` = '" + user.birthday + "', " : "" +
 		"WHERE `users`.`id` = " + id, function(err, rows, fields) {
 		if (err) {
 			console.log("Error has occured during updating user with id: " + id);
