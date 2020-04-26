@@ -179,8 +179,8 @@ margin: 50px;
     padding: 5px;
     font-size: 15px;
     background: #000000;
-    border: 2px solid rgb(0, 140, 255);
-    color: rgb(0, 140, 255);
+    border: 2px solid black;
+    color: black;
   }
   .content__author__about__buttons{
     position: relative;
