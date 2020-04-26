@@ -40,6 +40,7 @@ width: 10vw;
 border: 3px solid #00ff88;
 border-radius: 15px;
 transition: all 400ms;
+padding-left: 10px;
 }
 .content__form-find-users__input-name:hover{
 	border: 3px solid #ffd000;
@@ -105,6 +106,7 @@ transition: all 400ms;
 		border: 3px solid #00ff88;
 		border-radius: 15px;
 		transition: all 400ms;
+		padding-left: 0px;
 		}
 		.content__form-find-users__input-name:hover{
 			border: 3px solid #ffd000;
