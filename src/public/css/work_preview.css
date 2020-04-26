@@ -1,6 +1,5 @@
 body{
   background: rgb(5, 0, 46); 
-  color: black;
 }
 .work-preview {
   background: white;
@@ -19,7 +18,7 @@ body{
   border: 3px solid black;
   background: black;
 }
-.work-preview__header__title {
+.work-preview__header__title:hover {
   color: white;
   font-size: 20px;
   margin: 5px;
