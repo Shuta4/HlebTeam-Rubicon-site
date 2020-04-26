@@ -2,12 +2,12 @@ body{
   background: rgb(5, 0, 46); 
 }
 .work-preview {
-  background: #00ff88;
+  background: rgb(0, 140, 255);
   color: hsl(0, 0%, 0%);
   max-width: 550px;
   margin: 25px;
   transition: all 400ms ease;
-  border: 3px solid #00ff88;
+  border: 3px solid rgb(0, 140, 255);
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;

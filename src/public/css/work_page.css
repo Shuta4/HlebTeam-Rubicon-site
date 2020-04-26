@@ -1,6 +1,21 @@
 @import url("./style.css");
-
+body{
+	background: rgb(19, 0, 37);
+}
+.content__work__form{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	margin-top: 60px;
+	border: 2px solid rgb(0, 140, 255);
+	box-shadow: 0 0 20px rgb(0, 140, 255);
+	border-radius: 20px;
+	width: 40%;
+	margin: 50px;
+}
 .content__work {
+	color: rgb(0, 140, 255);
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -9,10 +24,18 @@
 	width: 100%;
 }
 .content__work__title {
-	font-size: 60px;
+	font-size: 25px;
+	color: rgb(19, 0, 37);
+	background: rgb(0, 140, 255);
+	width: 100%;
+	text-align: center;
+	margin: 20px;
+	margin-top: -20px;
 }
 .content__work__preview-img {
-	width: 720px;
+	width: 100%;
+	max-height: 500px;
+	border-radius: 20px;
 }
 .content__work__description {
 	background: rgba(0, 0, 0, 0.541);
@@ -23,8 +46,19 @@
 	align-self: center;
 	text-align: center;
 }
-.content__work__links__item {
+.content__work__links__item__img{
 	margin: 5px;
+	width: 100px;
+	height: 100px;
+	border: 2px solid #00ff8800;
+	border-radius: 50px;
+	margin-left: 40%;
+	margin-right: 25%;
+}
+.content__work__links__item__img:hover{
+	border: 2px solid rgb(0, 140, 255);
+	box-shadow: 0 0 20px rgb(0, 140, 255);
+	border-radius: 50px;
 }
 .content__work__images {
 	display: flex;
@@ -34,11 +68,11 @@
 	align-items: center;
 }
 .content__work__images__item {
-	width: 450px;
+	width: 200px;
+	height: 100px;
 	margin: 20px;
 	transition: all 400ms ease;
-	border: 2px solid rgb(255, 208, 0);
-	-moz-box-shadow: 0 0 15px rgba(255, 255, 255, 0.507);
+	border: 2px solid rgb(0, 140, 255);
 	box-shadow: 0 0 10px #000000;
 	text-align: center;
 	position: relative;
@@ -49,10 +83,10 @@
 }
 .content__work__images__item__description {
 	position: absolute;
-	top: 70%;
+	margin-top: -21px;
 	display: none;
 	width: 100%;
-	background: #ffffff;
+	background: black;
 }
 .content__work__images__item:hover>.content__work__images__item__description {
 	display: block;
@@ -70,6 +104,25 @@
 .content__work__buttons__item {
 	margin: 5px;
 }
+.work-form__form__link {
+	text-align: center;
+	width: 400px;
+	margin-top: 30px;
+	background: rgba(255, 255, 255, 0);
+	height: 40px;
+	border-radius: 50px;
+	border: 2px solid #00ff8800;
+	color: rgb(0, 140, 255);
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	padding: 10px;
+	transition: all 500ms;
+  }
+  .work-form__form__link:hover {
+	border-radius: 50px;
+	border: 2px solid rgb(0, 140, 255);
+	box-shadow: 0 0 20px rgb(0, 140, 255);
+	transition: all 500ms;
+  }
 
 @media (max-width: 720px) {
 	.content__work__preview-img {

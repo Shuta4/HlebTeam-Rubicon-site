@@ -14,12 +14,12 @@ body{
 }
 .work-form__title {
   position: relative;
-  color: #00ff88;
+  color: rgb(0, 140, 255);
   text-align: center;
   font-weight: 300;
   font-size: 25px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  text-decoration: underline #00ff88;
+  text-decoration: underline rgb(0, 140, 255);
 }
 .work-form__form {
   background: black;
@@ -31,9 +31,9 @@ body{
   flex-wrap: nowrap;
   align-items: center;
   color: #000;
-  border: 2px solid #00ff88;
+  border: 2px solid rgb(0, 140, 255);
   border-radius: 25px;
-  box-shadow: 0 0 15px #00ff88;
+  box-shadow: 0 0 15px rgb(0, 140, 255);
   box-sizing: border-box;
   font-size: 18px;
   font-weight: 300;
@@ -52,20 +52,20 @@ body{
 .work-form__form__preview-image__add {
   width: 250px;
   height: 250px;
-  border: 2px solid #00ff88;
+  border: 2px solid rgb(0, 140, 255);
   border-radius: 200px;
   text-align: center;
   color: white;
   font-size: 200px;
-  background: #00ff88;;
+  background: rgb(0, 140, 255);
   transition: all 500ms;
 }
 .work-form__form__preview-image__add:hover {
-  background: url('/img/add-img.svg') no-repeat center  #00ff88;
+  background: url('/img/add-img.svg') no-repeat center  rgb(0, 140, 255);
   cursor: pointer;
   height: 300px;
   width: 100%;
-  border: 2px solid  #00ff88;
+  border: 2px solid  rgb(0, 140, 255);
   border-radius: 0px;
   margin-left: 8px;
   margin: 0px;
@@ -76,7 +76,7 @@ body{
 .work-form__form__title {
   margin-top: 20px;
   background: rgba(255, 255, 255, 0);
-  color: #00ff88;
+  color: rgb(0, 140, 255);
   border: 2px solid #00ff8800;
   text-align: 20px;
   /* text-decoration: underline #00ff88; */
@@ -85,7 +85,7 @@ body{
   transition: all 500ms;
 }
 .work-form__form__title:hover{
-  text-decoration: underline #00ff88;
+  text-decoration: underline rgb(0, 140, 255);
   transition: all 500ms;
 }
 .work-form__form__description {
@@ -93,14 +93,14 @@ body{
   border: 2px solid black;
   margin: 10px;
   height: 150px;
-  color: #00ff88;
+  color: rgb(0, 140, 255);
   resize: none;
   margin-top: 30px;
   transition: all 500ms;
   padding-left: 10px;
 }
 .work-form__form__description:hover {
-  border: 2px solid #00ff88;
+  border: 2px solid rgb(0, 140, 255);
   transition: all 500ms;
 }
 .work-form__form__link {
@@ -109,7 +109,7 @@ body{
   height: 40px;
   border-radius: 50px;
   border: 2px solid #00ff8800;
-  color: #00ff88;
+  color: rgb(0, 140, 255);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   padding: 10px;
   transition: all 500ms;
@@ -117,7 +117,7 @@ body{
 }
 .work-form__form__link:hover {
   border-radius: 50px;
-  border: 2px solid #00ff88;
+  border: 2px solid rgb(0, 140, 255);
   transition: all 500ms;
 }
 @media(max-width: 900px) {
@@ -131,9 +131,9 @@ body{
     position: relative;
     margin-left: auto;
     margin-right: auto;
-    color: #00ff88;
-    border: 2px solid #00ff88;
-    box-shadow: 0 0 15px #00ff88;
+    color: rgb(0, 140, 255);
+    border: 2px solid rgb(0, 140, 255);
+    box-shadow: 0 0 15px rgb(0, 140, 255);
 }
 .work-form__form__title {
     position: relative;
@@ -144,17 +144,17 @@ body{
 }
   .work-form__form__description {
     background: rgba(0, 0, 0, 0);
-    border: 2px solid #00ff88;
+    border: 2px solid rgb(0, 140, 255);
     width: 96%;
     margin: 30px;
     height: 200px;
     font-size: 16px;
     overflow: hidden;
-    color: #00ff88;
+    color: rgb(0, 140, 255);
   }
   .work-form__form__title {
     background: rgba(255, 255, 255, 0);
-    color: #00ff88;
+    color: rgb(0, 140, 255);
     border: 2px solid #00ff8800;
     margin-left: 1%;
     margin-top: 0px;
@@ -165,8 +165,8 @@ body{
     width: 90%;
     height: 20px;
     border-radius: 50px;
-    border: 2px solid #00ff88;
-    color: #00ff88;
+    border: 2px solid rgb(0, 140, 255);
+    color: rgb(0, 140, 255);
     margin-left: 1%;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding: 10px;
@@ -175,23 +175,23 @@ body{
   .work-form__form__preview-image__add {
     width: 200;
     height: 200px;
-    border: 2px solid #00ff88;
+    border: 2px solid rgb(0, 140, 255);
     border-radius: 150px;
     margin-left: 25%;
     margin-right: 25%;
     text-align: center;
     color: white;
     font-size: 160px;
-    background: #00ff88;;
+    background: rgb(0, 140, 255);
     margin-top: 40px;
     transition: all 400ms;
   }
   .work-form__form__preview-image__add:hover {
-    background: url('/img/add-img.svg') no-repeat center  #00ff88;
+    background: url('/img/add-img.svg') no-repeat center  rgb(0, 140, 255);
     cursor: pointer;
     width: 100%;
     height: 300px;
-    border: 0px solid  #00ff88;
+    border: 0px solid  rgb(0, 140, 255);
     border-radius: 0px;
     color: rgba(255, 255, 255, 0);
     transition: all 400ms;
@@ -209,23 +209,23 @@ body{
     position: relative;
     margin-left: auto;
     margin-right: auto;
-    color: #00ff88;
-    border: 2px solid #00ff88;
-    box-shadow: 0 0 15px #00ff88;
+    color: rgb(0, 140, 255);
+    border: 2px solid rgb(0, 140, 255);
+    box-shadow: 0 0 15px rgb(0, 140, 255);
 }
   .work-form__form__description {
     background: rgba(0, 0, 0, 0);
-    border: 2px solid #00ff88;
+    border: 2px solid rgb(0, 140, 255);
     width: 96%;
     margin: 20px;
     height: 140px;
     font-size: 14px;
     overflow: hidden;
-    color: #00ff88;
+    color: rgb(0, 140, 255);
   }
   .work-form__form__title {
     background: rgba(255, 255, 255, 0);
-    color: #00ff88;
+    color: rgb(0, 140, 255);
     border: 2px solid #00ff8800;
     margin-left: 1%;
     margin-top: 10px;
@@ -237,8 +237,8 @@ body{
     width: 90%;
     height: 20px;
     border-radius: 50px;
-    border: 2px solid #00ff88;
-    color: #00ff88;
+    border: 2px solid rgb(0, 140, 255);
+    color: rgb(0, 140, 255);
     margin-left: 1%;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding: 10px;
@@ -248,24 +248,24 @@ body{
   .work-form__form__preview-image__add {
     width: 100px;
     height: 100px;
-    border: 2px solid #00ff88;
+    border: 2px solid rgb(0, 140, 255);
     border-radius: 50px;
     margin-left: 25%;
     margin-right: 25%;
     text-align: center;
     color: white;
     font-size: 80px;
-    background: #00ff88;;
+    background: rgb(0, 140, 255);
     margin-top: 10px;
     transition: all 400ms;
   }
   .work-form__form__preview-image__add:hover {
-    background: url('/img/add-img.svg') no-repeat center  #00ff88;
+    background: url('/img/add-img.svg') no-repeat center  rgb(0, 140, 255);
     cursor: pointer;
     margin-top: -6px;
     width: 100%;
     height: 150px;
-    border: 2px solid  #00ff88;
+    border: 2px solid  rgb(0, 140, 255);
     border-radius: 20px;
     color: rgba(255, 255, 255, 0);
     transition: all 400ms;

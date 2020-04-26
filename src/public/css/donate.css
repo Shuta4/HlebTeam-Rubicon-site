@@ -15,7 +15,7 @@
     margin: 0px;
     text-align: center;
     font-family: var(--header-text-font);
-    -webkit-text-stroke-color: rgb(0, 255, 136);
+    -webkit-text-stroke-color: rgb(0, 140, 255);
     display: block;
     font-size: 100px;
     color: #000000;
@@ -40,7 +40,7 @@
 .footer-main__bottom-wrapper__container__list__item__images{
     width: 100px;
     height: 100px;
-    border: 3px solid #00ff88;
+    border: 3px solid rgb(0, 140, 255);
     border-radius: 100px;
     margin: 30px;
     transition: all 400ms;
@@ -48,7 +48,8 @@
 .footer-main__bottom-wrapper__container__list__item__images:hover{
     width: 100px;
     height: 100px;
-    border: 3px solid #ffd000;
+    border: 3px solid rgb(0, 140, 255);
+    box-shadow: 0 0 20px rgb(0, 140, 255);
     border-radius: 10px;
     margin: 30px;
     transition: all 400ms;
@@ -85,7 +86,7 @@
     top: 20px;
     text-align: center;
     font-family: var(--header-text-font);
-    -webkit-text-stroke-color: rgb(0, 255, 136);
+    -webkit-text-stroke-color: rgb(0, 140, 255);
     display: block;
     font-size: 35px;
     color: #000000;
@@ -97,7 +98,7 @@
         top: 60px;
         width: 80px;
         height: 80px;
-        border: 3px solid #00ff88;
+        border: 3px solid rgb(0, 140, 255);
         border-radius: 100px;
         margin: 15px;
         transition: all 400ms;

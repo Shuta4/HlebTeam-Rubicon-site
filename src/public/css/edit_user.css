@@ -1,7 +1,7 @@
 @import url(/css/style.css);
 body{
     background: black;
-    color: #00ff88;
+    color: rgb(0, 140, 255);
 }
 .content{
     display: flex;
@@ -14,9 +14,9 @@ body{
     width: 400px;
     height: 500px;
     background: rgb(7, 0, 19);
-    border: 2px solid #00ff88;
+    border: 2px solid rgb(0, 140, 255);
     border-radius: 20px;
-    box-shadow: 0 0 15px #00ff88;
+    box-shadow: 0 0 15px rgb(0, 140, 255);
     font-size: 14px;
 }
 .user-form__form__input{
@@ -25,16 +25,16 @@ body{
     border-radius: 30px;
     margin: 10px;
     width: 160px;
-    color: #00ff88;
+    color: rgb(0, 140, 255);
     padding-left: 10px;
     transition: all 400ms;
 }
 .user-form__form__input:hover,.user-form__form__input:active,.user-form__form__input:focus{
-    border: 2px solid #00ff88;
+    border: 2px solid rgb(0, 140, 255);
     border-radius: 30px;
     margin: 10px;
     width: 160px;
-    color: #00ff88;
+    color: rgb(0, 140, 255);
     padding-left: 10px;
     transition: all 400ms;
     box-shadow: 0 0 10px rgb(95, 0, 190);
@@ -47,13 +47,13 @@ body{
     width: 91%;
     margin-left: 5px;
     height: 120px;
-    color: #00ff88;
+    color: rgb(0, 140, 255);
     resize: none;
     font-size: 14px;
     transition: all 400ms;
 }
 .user-form__form__about:hover{
-    border: 2px solid #00ff88;
+    border: 2px solid rgb(0, 140, 255);
     transition: all 400ms;
     box-shadow: 0 0 10px rgb(95, 0, 190);
 }
