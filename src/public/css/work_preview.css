@@ -17,10 +17,9 @@ body{
 .work-preview:hover {
   border: 3px solid black;
   background: black;
-  color: red;
 }
 .work-preview__header__title {
-  color: rgb(0, 0, 0);
+  color: white;
   font-size: 20px;
   margin: 5px;
   position: relative;
