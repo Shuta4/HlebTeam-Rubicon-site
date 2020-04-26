@@ -262,8 +262,6 @@ router.get("/user/get/:id", (req, res, next)=> {
 	sql.end(connection);
 });
 router.put("/user/update/:id", (req, res, next)=> {
-	user = req.body;
-	var id;
 	if (req.session.user == undefined) {
 		res.json({
 			"ok": false,
@@ -271,6 +269,16 @@ router.put("/user/update/:id", (req, res, next)=> {
 		});
 		return
 	}
+	var user = req.body;
+	if (user.new_password != user.confirm_password && user.new_password != "") {
+		res.json({
+			"ok": false,
+			"error": "ERRVALIDATEUSER"
+		});
+		return
+	}
+	var password = "";
+	var id;
 	if (req.params.id == "im") id = req.session.user.id;
 	else return;
 	connection = sql.connection();
@@ -278,7 +286,7 @@ router.put("/user/update/:id", (req, res, next)=> {
 	connection.query("UPDATE `users` SET " + 
 		"`username` = '" + user.username + "', " +
 		"`email` = '" + user.email + "', " + 
-		//user.password != "" ? "`password` = '" + user.password + "', " : "" + 
+		password != "" ? "`password` = '" + password + "', " : "" + 
 		"`name` = '" + user.name + "', " + 
 		"`surname` = '" + user.surname + "', " + 
 		"`about` = '" + user.about + "', " + 

@@ -23,7 +23,10 @@ form.addEventListener("submit", (event) => {
 		name: form.name.value,
 		surname: form.surname.value,
 		about: form.about.value,
-		birthday: form.birthday.value
+		birthday: form.birthday.value,
+		old_password: form.old_password.value,
+		new_password: form.new_password.value,
+		confirm_password: form.confirm_password.value
 	}
 	fetch("/api/user/update/im", {
 	    method: 'PUT',
@@ -40,6 +43,12 @@ form.addEventListener("submit", (event) => {
 					break
 				case "ERRDBCONNECTION":
 					form.querySelector(messageBoxClass).innerHTML = "Ошибка доступа к базе данных";
+					break
+				case "ERRINCORRECTPASSWORD":
+					form.querySelector(messageBoxClass).innerHTML = "Неправильный старый пароль";
+					break
+				case "ERRVALIDATEUSER":
+					form.querySelector(messageBoxClass).innerHTML = "Неправильный ввод";
 					break
 				default:
 					form.querySelector(messageBoxClass).innerHTML = "Неизвестная ошибка";
