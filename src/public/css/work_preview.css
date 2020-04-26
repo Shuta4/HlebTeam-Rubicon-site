@@ -2,12 +2,12 @@ body{
   background: rgb(5, 0, 46); 
 }
 .work-preview {
-  background: white;
-  color: hsl(0, 0%, 0%);
+  background: black;
+  color: white;
   max-width: 550px;
   margin: 25px;
   transition: all 400ms ease;
-  border: 3px solid white;
+  border: 3px solid black;
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
@@ -17,9 +17,10 @@ body{
 .work-preview:hover {
   border: 3px solid black;
   background: black;
-}
-.work-preview__header__title:hover {
   color: white;
+}
+.work-preview__header__title {
+  color: rgb(0, 140, 255);
   font-size: 20px;
   margin: 5px;
   position: relative;
