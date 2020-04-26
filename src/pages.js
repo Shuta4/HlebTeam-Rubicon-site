@@ -10,6 +10,14 @@ router.get("/userpage", (req, res, next) => {
 	res.render("./pages/find_user");
 	next();
 });
+router.get("/userpage/creatework", (req, res, next) => {
+	res.render("./pages/temp_new_work");
+	next();
+});
+router.get("/userpage/im/edit", (req, res, next) => {
+	res.render("./pages/edit_user");
+	next();
+});
 router.get("/userpage/:id", (req, res, next) => {
 	if (req.params.id == "im") {
 		// Берем из бд пользователя сессии (если нету сессии, то )
@@ -39,10 +47,6 @@ router.get("/userpage/:id", (req, res, next) => {
 	}
   	next();
 });
-router.get("/userpage/im/edit", (req, res, next) => {
-	res.render("./pages/edit_user");
-	next();
-});
 router.get("/donate", (req, res, next) => {
   res.render("./pages/donate");
   next();
@@ -53,10 +57,6 @@ router.get("/twork", (req, res, next) => {
 });
 router.get("/about", (req, res, next) => {
 	res.render("./pages/about");
-	next();
-});
-router.get("/userpage/creatework", (req, res, next) => {
-	res.render("./pages/temp_new_work");
 	next();
 });
 
