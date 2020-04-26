@@ -3,7 +3,14 @@ const messageBoxClass = ".message_box";
 
 fetch("/api/user/get/im").then((res)=> res.json()).then((res) => {
 	if (!res.ok) {
-		console.log(res.error);
+		switch (res.error) {
+			case "ERRNOTLOGGEDIN":
+				form.querySelector(messageBoxClass).innerHTML = "Требуется войти в аккаунт";
+				window.location.href = "/userpage/im";
+				break
+			default:
+				form.querySelector(messageBoxClass).innerHTML = "Неизвестная ошибка";
+		}
 		return;
 	}
 	var user = JSON.parse(res.result);
