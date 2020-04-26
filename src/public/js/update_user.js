@@ -25,8 +25,12 @@ form.addEventListener("submit", (event) => {
 		birthday: form.birthday.value
 	}
 	fetch("/api/user/update/im", {
-
-	}).then(res => res.json()).then(res => {
+	    method: 'PUT',
+	    headers: {
+	      'Content-Type': 'application/json'
+	    },
+	    body: JSON.stringify(new_user)
+  	}).then(res => res.json()).then(res => {
 		if (!res.ok) {
 			console.log(res.error);
 			return
