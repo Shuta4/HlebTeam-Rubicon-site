@@ -1,4 +1,5 @@
 var form = document.querySelector(".user-form__form");
+const messageBoxClass = ".message_box";
 
 fetch("/api/user/get/im").then((res)=> res.json()).then((res) => {
 	if (!res.ok) {
@@ -29,10 +30,20 @@ form.addEventListener("submit", (event) => {
 	    headers: {
 	      'Content-Type': 'application/json'
 	    },
-	    body: JSON.stringify(new_user)
+	    body: JSON.stringify(user)
   	}).then(res => res.json()).then(res => {
 		if (!res.ok) {
-			console.log(res.error);
+			switch (res.error) {
+				case "ERRNOTLOGGEDIN":
+					form.querySelector(messageBoxClass).innerHTML = "Требуется войти в аккаунт";
+					window.location.href = "/userpage/im";
+					break
+				case "ERRDBCONNECTION":
+					form.querySelector(messageBoxClass).innerHTML = "Ошибка доступа к базе данных";
+					break
+				default:
+					form.querySelector(messageBoxClass).innerHTML = "Неизвестная ошибка";
+			}
 			return
 		}
 		window.location.href = "/userpage/im";
