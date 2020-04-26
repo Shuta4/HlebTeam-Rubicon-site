@@ -284,6 +284,15 @@ router.put("/user/update/:id", (req, res, next)=> {
 	console.log(password != "" ? "`password` = '" + password + "', " : "");
 	connection = sql.connection();
 	sql.connect(connection);
+	console.log("UPDATE `users` SET " + 
+		"`username` = '" + user.username + "', " +
+		"`email` = '" + user.email + "', " + 
+		//password != "" ? "`password` = '" + password + "', " : "" + 
+		"`name` = '" + user.name + "', " + 
+		"`surname` = '" + user.surname + "', " + 
+		"`about` = '" + user.about + "', " + 
+		user.birthday != "" ? "`birthday` = '" + user.birthday + "', " : "" +
+		"WHERE `users`.`id` = " + id)
 	connection.query("UPDATE `users` SET " + 
 		"`username` = '" + user.username + "', " +
 		"`email` = '" + user.email + "', " + 
