@@ -55,7 +55,7 @@ router.get("/about", (req, res, next) => {
 	res.render("./pages/about");
 	next();
 });
-router.get("/tcw", (req, res, next) => {
+router.get("/userpage/creatework", (req, res, next) => {
 	res.render("./pages/temp_new_work");
 	next();
 });
