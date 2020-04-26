@@ -281,26 +281,18 @@ router.put("/user/update/:id", (req, res, next)=> {
 	var id;
 	if (req.params.id == "im") id = req.session.user.id;
 	else return;
-	console.log(password != "" ? "`password` = '" + password + "', " : "");
+	var password_req = password.trim() != "" ? "`password` = '" + password + "', " : "";
+	var birthday_req = user.birthday.trim() != "" ? "`birthday` = '" + user.birthday + "', " : "`birthday` = NULL, "; 
 	connection = sql.connection();
 	sql.connect(connection);
-	console.log("UPDATE `users` SET " + 
-		"`username` = '" + user.username + "', " +
-		"`email` = '" + user.email + "', " + 
-		//password != "" ? "`password` = '" + password + "', " : "" + 
-		"`name` = '" + user.name + "', " + 
-		"`surname` = '" + user.surname + "', " + 
-		"`about` = '" + user.about + "', " + 
-		user.birthday != "" ? "`birthday` = '" + user.birthday + "', " : "" +
-		"WHERE `users`.`id` = " + id)
 	connection.query("UPDATE `users` SET " + 
 		"`username` = '" + user.username + "', " +
 		"`email` = '" + user.email + "', " + 
-		//password != "" ? "`password` = '" + password + "', " : "" + 
+		password_req + 
 		"`name` = '" + user.name + "', " + 
 		"`surname` = '" + user.surname + "', " + 
 		"`about` = '" + user.about + "', " + 
-		user.birthday != "" ? "`birthday` = '" + user.birthday + "', " : "" +
+		birthday_req +
 		"WHERE `users`.`id` = " + id, function(err, rows, fields) {
 		if (err) {
 			console.log("Error has occured during updating user with id: " + id);
