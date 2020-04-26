@@ -278,7 +278,7 @@ router.put("/user/update/:id", (req, res, next)=> {
 	connection.query("UPDATE `users` SET " + 
 		"`username` = '" + user.username + "', " +
 		"`email` = '" + user.email + "', " + 
-		user.password != "" ? "`password` = '" + user.password + "', " : "" + 
+		//user.password != "" ? "`password` = '" + user.password + "', " : "" + 
 		"`name` = '" + user.name + "', " + 
 		"`surname` = '" + user.surname + "', " + 
 		"`about` = '" + user.about + "', " + 
