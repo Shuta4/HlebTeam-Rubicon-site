@@ -282,7 +282,7 @@ router.put("/user/update/:id", (req, res, next)=> {
 	if (req.params.id == "im") id = req.session.user.id;
 	else return;
 	var password_req = password.trim() != "" ? "`password` = '" + password + "', " : "";
-	var birthday_req = user.birthday.trim() != "" ? "`birthday` = '" + user.birthday + "', " : "`birthday` = NULL, "; 
+	var birthday_req = user.birthday.trim() != "" ? "`birthday` = '" + user.birthday + "', " : "`birthday` = NULL "; 
 	connection = sql.connection();
 	sql.connect(connection);
 	connection.query("UPDATE `users` SET " + 
