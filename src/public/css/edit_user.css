@@ -1,13 +1,62 @@
 @import url(/css/style.css);
 body{
     background: black;
+    color: #00ff88;
 }
-.user-form__form{
-    margin-top: 100px;
-    width: 50%;
-    height: 950px;
-    margin-left: 25%;
-    margin-right: 25%;
-    background: black;
+.content{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+.user-form{
+    width: 400px;
+    height: 500px;
+    background: rgb(7, 0, 19);
     border: 2px solid #00ff88;
+    border-radius: 20px;
+    box-shadow: 0 0 15px #00ff88;
+    font-size: 14px;
+}
+.user-form__form__input{
+    background: rgba(0, 0, 0, 0);
+    border: 2px solid #00ff8800;
+    border-radius: 30px;
+    margin: 10px;
+    width: 160px;
+    color: #00ff88;
+    padding-left: 10px;
+    transition: all 400ms;
+}
+.user-form__form__input:hover,.user-form__form__input:active,.user-form__form__input:focus{
+    border: 2px solid #00ff88;
+    border-radius: 30px;
+    margin: 10px;
+    width: 160px;
+    color: #00ff88;
+    padding-left: 10px;
+    transition: all 400ms;
+    box-shadow: 0 0 10px rgb(95, 0, 190);
+}
+.user-form__form__about{
+    background: rgba(0, 0, 0, 0);
+    border: 2px solid #00ff8800;
+    border-radius: 5px;
+    padding: 10px;
+    width: 91%;
+    margin-left: 5px;
+    height: 120px;
+    color: #00ff88;
+    resize: none;
+    font-size: 14px;
+    transition: all 400ms;
+}
+.user-form__form__about:hover{
+    border: 2px solid #00ff88;
+    transition: all 400ms;
+    box-shadow: 0 0 10px rgb(95, 0, 190);
+}
+.user-form__form__date-wrapper{
+    background: #00000000;
 }
