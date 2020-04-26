@@ -262,11 +262,39 @@ router.get("/user/get/:id", (req, res, next)=> {
 	sql.end(connection);
 });
 router.put("/user/update/:id", (req, res, next)=> {
-	res.json({
-		"ok": false,
-		"error": "NOTAVAILABLEYET"
+	user = req.body;
+	var id;
+	if (req.session.user == undefined) {
+		res.json({
+			"ok": false,
+			"error": "ERRNOTLOGGEDIN"
+		});
+		return
+	}
+	if (req.params.id == "im") id = req.session.user.id;
+	else return;
+	connection = sql.connection();
+	sql.connect(connection);
+	connection.query("UPDATE `users` SET " + 
+		"`username` = '" + user.username + "', " +
+		"`email` = '" + user.email + "', " + 
+		//"`password` = '" + user.password + "', " + 
+		"`name` = '" + user.name + "', " + 
+		"`surname` = '" + user.surname + "', " + 
+		"`about` = '" + user.about + "', " + 
+		"`birthday` = '" + user.birthday + "' " + 
+		"WHERE `users`.`id` = " + id, function(err, rows, fields) {
+		if (err) {
+			console.log("Error has occured during updating user with id: " + id);
+			console.log("Error: \n" + err + "\n");
+			res.json({
+				"ok": false,
+				"error": "ERRDBCONNECTION"
+			});
+			return
+		}
 	});
-	next();
+	sql.end(connection);
 });
 router.delete("/user/delete/:id", (req, res, next)=> {
 	res.send("Удаление пользователя (только по id)");
