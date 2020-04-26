@@ -86,20 +86,20 @@ body{
   flex-wrap: wrap;
 }
 .work-preview__content__plus{
-background: gray;
+background: black;
 color: white;
 text-align: center;
 width: 200px;
 height: 200px;
-border: 4px solid gray;
+border: 4px solid black;
 border-radius: 50%;
 font-size: 70px;
 transition: all 400ms;
 margin: 50px;
 }
 .work-preview__content__plus:hover{
-  background: white;
-  border: 4px solid white;
+  background: gray;
+  border: 4px solid gray;
   border-radius: 20%;
   font-size: 70px;
   transition: all 400ms;
