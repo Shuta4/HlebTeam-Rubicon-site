@@ -118,7 +118,7 @@ router.post("/user/login", async (req, res, next) => {
 		sql.connect(connection);
 		connection.query('SELECT * FROM users WHERE users.email = "' + user.username + '" OR users.username = "' + user.username + '"', function(err, rows, fields) {
 			if (err) {
-				console.log("Error has occured during checking of user " + user.username);
+				console.log("Error has occured during checking/logging of user " + user.username);
 				console.log("Error: \n" + err + "\n");
 				res.json({
 					"ok": false,
@@ -126,55 +126,32 @@ router.post("/user/login", async (req, res, next) => {
 				});
 				return
 			}
-			try {
-				if (rows[0] == undefined) {
-					console.log("Tried to login non existing user in login with username: " + user.username);
-					res.json({
-						"ok": false,
-						"error": "USERNOTEXIST"
-					});
-					return
-				} else {
-					// Хеширование пароля
-					const hash = user.password;
-
-					user.password = hash;
-					connection = sql.connection();
-					sql.connect(connection);
-					connection.query('SELECT * FROM users WHERE users.email = "' + user.username + '" OR users.username = "' + user.username + '"', function(err, rows, fields) {
-						if (err) {
-							console.log("Error has occured during loginning of user " + user.username);
-							console.log("Error: \n" + err + "\n");
-							res.json({
-								"ok": false,
-								"error": "ERRDBCONNECTION"
-							})
-							return false
-						}
-						if (rows[0].password == user.password) {
-							req.session.user = rows[0];
-							res.json({
-								"ok": true
-							});
-						} else {
-							console.log("Password for user " + user.username + " is incorrect!");
-							res.json({
-								"ok": false,
-								"error": "ERRINCORRECTPASSWORD"
-							});
-						}
-					});
-					sql.end(connection);
-				}
-			} catch (err) {
+			if (rows[0] == undefined) {
+				console.log("Tried to login non existing user in login with username: " + user.username);
 				res.json({
 					"ok": false,
-					"error": "UNKNOWNERROR"
+					"error": "USERNOTEXIST"
 				});
 				return
+			} else {
+				// Хеширование пароля
+				const hash = user.password;
+
+				user.password = hash;
+				if (rows[0].password == user.password) {
+					req.session.user = rows[0];
+					res.json({
+						"ok": true
+					});
+				} else {
+					console.log("Password for user " + user.username + " is incorrect!");
+					res.json({
+						"ok": false,
+						"error": "ERRINCORRECTPASSWORD"
+					});
+				}
 			}
 		});
-		sql.end(connection);
 	} catch (error) {
 		res.json({
 			"ok": false,
@@ -313,6 +290,13 @@ router.delete("/user/delete/:id", (req, res, next)=> {
 
 router.post("/work/", (req, res, next)=> {
 	var work = req.body;
+	if (req.session.user == undefined) {
+		res.json({
+			"ok": false,
+			"error": "ERRNOTLOGGEDIN"
+		});
+		return;
+	}
 	if (work.owner_id != req.session.user.id) {
 		res.json({
 			"ok": false,
@@ -320,11 +304,24 @@ router.post("/work/", (req, res, next)=> {
 		});
 		return;
 	}
-	createWork(work.owner_id, work.title, work.description, work.preview_img, work.download_link);
-	res.json({
-		"ok": true
+	connection = sql.connection();
+	sql.connect(connection);
+	connection.query('INSERT INTO `works`(`owner_id`, `title`, `description`, `preview_img`, `download_link`) VALUES (' + work.owner_id + ',"' + work.title + '","' + work.description + '","' + work.preview_img + '","' + work.download_link + '")', function(err) {
+		if (err) {
+			console.log("Error has occured during creation of user " + username);
+			console.log("Error: \n" + err + "\n");
+			res.json({
+				"ok": false,
+				"error": "ERRDBCONNECTION"
+			})
+			return
+		}
+		console.log("Succesfully created work " + owner_id + " - " + title);
+		res.json({
+			"ok": true
+		});
 	});
-	next();
+	sql.end(connection);
 });
 //Возможно нужны альтернативные способы поиска работ
 router.get("/work/get/:id", (req, res, next)=> {

@@ -24,6 +24,30 @@ app.use(session({
   resave: false
 }));
 
+app.get("/", (req, res, next) => {
+	if (req.session.user == undefined) {
+		next();
+		return	
+	}
+	connection = sql.connection();
+	sql.connect(connection);
+	var id = req.session.user.id;
+	connection.query("SELECT * FROM `users` WHERE `id` = " + id + "", function(err, rows, fields) {
+		if (err) {
+			console.log("Error has occured during checking user: " + id);
+			console.log("Error: \n" + err + "\n");
+			next();
+			return
+		}
+		if (rows[0] != undefined) {
+			if (rows[0].id != undefined || rows[0].id != null) 
+				req.session.user = rows[0];
+			else req.session.destroy();
+			next();
+		} 
+	});
+	sql.end(connection);
+});
 app.use("/api", require("./api.js"));
 app.use("/", require("./pages.js"));
 
