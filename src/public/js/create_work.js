@@ -7,7 +7,7 @@ form.addEventListener("submit", (event) => {
 		description: form.description.value,
 		download_link: form.download_link.value
 	}
-	fetch("/work/", {
+	fetch("api/work/", {
 		method: "POST",
 		headers: {
 	    	'Content-Type': 'application/json'

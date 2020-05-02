@@ -43,7 +43,7 @@ app.get("/", (req, res, next) => {
 			if (rows[0].id != undefined || rows[0].id != null) 
 				req.session.user = rows[0];
 			else req.session.destroy();
-			next();
+			next();	
 		} 
 	});
 	sql.end(connection);

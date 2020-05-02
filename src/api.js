@@ -265,11 +265,11 @@ router.put("/user/update/:id", (req, res, next)=> {
 	connection.query("UPDATE `users` SET " + 
 		"`username` = '" + user.username + "', " +
 		"`email` = '" + user.email + "', " + 
-		password_req + 
+		//password_req + 
 		"`name` = '" + user.name + "', " + 
 		"`surname` = '" + user.surname + "', " + 
 		"`about` = '" + user.about + "', " + 
-		birthday_req +
+		//birthday_req +
 		"WHERE `users`.`id` = " + id, function(err, rows, fields) {
 		if (err) {
 			console.log("Error has occured during updating user with id: " + id);
@@ -329,12 +329,60 @@ router.get("/work/get/:id", (req, res, next)=> {
 	next();
 });
 router.get("/work/user/:id", (req, res, next)=> {
-	res.send("Получение информации о работах которые принадлежат пользователю. (work-preview)");
-	next();
+	connection = sql.connection();
+	const id = req.params.id;
+	sql.connect(connection);
+	connection.query("SELECT * FROM `works` WHERE `owner_id` = " + id, function(err, rows, fields) {
+		if (err) {
+			console.log("Error has occured during searching works by user-id: " + id);
+			console.log("Error: \n" + err + "\n");
+			res.json({
+				"ok": false,
+				"error": "ERRDBCONNECTION"
+			});
+			return
+		}
+		res.json({
+			"ok": true,
+			"result": JSON.stringify(rows)
+		});
+	});
+	sql.end(connection);
 });
 router.put("/work/update/:id", (req, res, next)=> {
-	res.send("Изменение информации о работе (в req.body дается объект с информацией которую нужно изменить!)");
-	next();
+	if (req.session.user == undefined) {
+		res.json({
+			"ok": false,
+			"error": "ERRNOTLOGGEDIN"
+		});
+		return
+	}
+	var work = req.body;
+	const work_id = req.params.id; 
+	const user_id = req.session.user.id;
+	connection = sql.connection();
+	sql.connect(connection);
+	connection.query("UPDATE `works` SET " + 
+		"`username` = '" + user.username + "', " +
+		"`email` = '" + user.email + "', " +  
+		"`name` = '" + user.name + "', " + 
+		"`surname` = '" + user.surname + "', " + 
+		"`about` = '" + user.about + "', " + 
+		"WHERE `works`.`id` = " + work_id + " AND `works`.`owner_id` = " + user_id, function(err, rows, fields) {
+		if (err) {
+			console.log("Error has occured during updating work with id: " + work_id);
+			console.log("Error: \n" + err + "\n");
+			res.json({
+				"ok": false,
+				"error": "ERRDBCONNECTION"
+			});
+			return
+		}
+		res.json({
+			"ok": true
+		});
+	});
+	sql.end(connection);
 });
 router.delete("/work/delete/:id", (req, res, next)=> {
 	res.send("Удаление работы (только по id)");
