@@ -36,6 +36,10 @@ form.addEventListener("submit", (event) => {
 		new_password: form.new_password.value,
 		confirm_password: form.confirm_password.value
 	}
+	if (user.new_password != user.confirm_password) {
+		form.querySelector(messageBoxClass).innerHTML = "Введенные пароли не совпадают!";
+		return;
+	}
 	fetch("/api/user/update/im", {
 	    method: 'PUT',
 	    headers: {
