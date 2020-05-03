@@ -3,7 +3,6 @@ const express = require('express');
 const router = express.Router();
 const Joi = require("joi");
 const sql = require("./db/connection.js");
-const createWork = require("./db/actions/createWork.js");
 
 
 router.get("/", (req, res, next) => {
