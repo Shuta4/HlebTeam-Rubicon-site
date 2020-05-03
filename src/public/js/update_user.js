@@ -16,7 +16,7 @@ window.onload = () => {
 			return;
 		}
 		var user = JSON.parse(res.result);
-		birthday = user.birthday.split("T")[0];
+		var birthday = user.birthday.split("T")[0];
 		form.username.value = user.username;
 		form.email.value = user.email;
 		form.name.value = user.name;
