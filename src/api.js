@@ -269,7 +269,7 @@ router.put("/user/update/:id", (req, res, next)=> {
 		"`surname` = '" + user.surname + "', " + 
 		"`about` = '" + user.about + "', " + 
 		//birthday_req +
-		"WHERE `users`.`id` = " + id, function(err, rows, fields) {
+		"WHERE users.id = " + id, function(err, rows, fields) {
 		if (err) {
 			console.log("Error has occured during updating user with id: " + id);
 			console.log("Error: \n" + err + "\n");
@@ -367,7 +367,7 @@ router.put("/work/update/:id", (req, res, next)=> {
 		"`name` = '" + user.name + "', " + 
 		"`surname` = '" + user.surname + "', " + 
 		"`about` = '" + user.about + "', " + 
-		"WHERE `works`.`id` = " + work_id + " AND `works`.`owner_id` = " + user_id, function(err, rows, fields) {
+		"WHERE works.id = " + work_id + " AND works.owner_id = " + user_id, function(err, rows, fields) {
 		if (err) {
 			console.log("Error has occured during updating work with id: " + work_id);
 			console.log("Error: \n" + err + "\n");
