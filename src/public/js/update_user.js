@@ -14,12 +14,13 @@ fetch("/api/user/get/im").then((res)=> res.json()).then((res) => {
 		return;
 	}
 	var user = JSON.parse(res.result);
+	birthday = user.birthday.split("T")[0];
 	form.username.value = user.username;
 	form.email.value = user.email;
 	form.name.value = user.name;
 	form.surname.value = user.surname;
 	form.about.value = user.about;
-	form.birthday.value = user.birthday;
+	form.birthday.value = birthday;
 });
 
 form.addEventListener("submit", (event) => {
