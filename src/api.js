@@ -253,9 +253,15 @@ router.put("/user/update/:id", (req, res, next)=> {
 		});
 		return
 	}
-	var password = "";
-	var id;
-	if (req.params.id == "im") id = req.session.user.id;
+	if (user.new_password && user.old_password != req.session.user.password) {
+		res.json({
+			"ok": false,
+			"error": "ERRINCORRECTPASSWORD"
+		});
+		return		
+	}
+	var password = user.new_password;
+	if (req.params.id == "im") var id = req.session.user.id;
 	else return;
 	var password_req = password.trim() != "" ? "`password` = '" + password + "', " : "";
 	var birthday_req = user.birthday.trim() != "" ? "`birthday` = '" + user.birthday + "' " : "`birthday` = NULL "; 
