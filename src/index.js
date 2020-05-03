@@ -25,6 +25,7 @@ app.use(session({
 }));
 
 app.get("/", (req, res, next) => {
+	console.log("=====11!!1!1!111!1111!====")
 	if (req.session.user == undefined) {
 		next();
 		return	
