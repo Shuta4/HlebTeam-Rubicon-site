@@ -2,7 +2,7 @@
 var form = document.querySelector(".user-form__form");
 const messageBoxClass = ".message_box";
 
-window.onload = () => {
+document.onload = () => {
 	fetch("/api/user/get/im").then((res)=> res.json()).then((res) => {
 		if (!res.ok) {
 			switch (res.error) {
