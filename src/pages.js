@@ -36,6 +36,7 @@ router.get("/userpage/:id", (req, res, next) => {
 	}
 	else {
 		//Берем пользователя по id
+		
 		var user = {
 
 		}
