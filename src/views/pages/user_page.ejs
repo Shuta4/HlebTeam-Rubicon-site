@@ -16,8 +16,8 @@
                     <div class="content__author__about">
                         <img alt="Аватар" class="content__author__about__avatar" src="https://image.flaticon.com/icons/png/512/64/64572.png">  
                         <h3 class="content__author__about__name">
-                            <%if (user.first_name || user.last_name) {%>
-                                <%= user.first_name + " " + user.last_name + " (" + user.username + ")"%> 
+                            <%if (user.name || user.surname) {%>
+                                <%= user.name + " " + user.surname + " (" + user.username + ")"%> 
                             <%} else {%>
                                 <%= user.username%>
                             <%}%></h3>
