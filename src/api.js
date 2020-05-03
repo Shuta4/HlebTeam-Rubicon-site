@@ -258,17 +258,17 @@ router.put("/user/update/:id", (req, res, next)=> {
 	if (req.params.id == "im") id = req.session.user.id;
 	else return;
 	var password_req = password.trim() != "" ? "`password` = '" + password + "', " : "";
-	var birthday_req = user.birthday.trim() != "" ? "`birthday` = '" + user.birthday + "', " : "`birthday` = NULL "; 
+	var birthday_req = user.birthday.trim() != "" ? "`birthday` = '" + user.birthday + "' " : "`birthday` = NULL "; 
 	connection = sql.connection();
 	sql.connect(connection);
 	connection.query("UPDATE `users` SET " + 
 		"`username` = '" + user.username + "', " +
 		"`email` = '" + user.email + "', " + 
-		//password_req + 
+		password_req + 
 		"`name` = '" + user.name + "', " + 
 		"`surname` = '" + user.surname + "', " + 
 		"`about` = '" + user.about + "', " + 
-		//birthday_req +
+		birthday_req +
 		"WHERE `id` = " + id + "", function(err, rows, fields) {
 		if (err) {
 			console.log("Error has occured during updating user with id: " + id);
@@ -366,7 +366,7 @@ router.put("/work/update/:id", (req, res, next)=> {
 		"`email` = '" + user.email + "', " +  
 		"`name` = '" + user.name + "', " + 
 		"`surname` = '" + user.surname + "', " + 
-		"`about` = '" + user.about + "', " + 
+		"`about` = '" + user.about + "' " + 
 		"WHERE `id` = " + work_id + " AND `owner_id` = " + user_id, function(err, rows, fields) {
 		if (err) {
 			console.log("Error has occured during updating work with id: " + work_id);
