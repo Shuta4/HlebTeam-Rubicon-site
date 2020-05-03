@@ -2,7 +2,7 @@
 var form = document.querySelector(".user-form__form");
 const messageBoxClass = ".message_box";
 
-window.onload(() => {
+window.onload = () => {
 	fetch("/api/user/get/im").then((res)=> res.json()).then((res) => {
 		if (!res.ok) {
 			switch (res.error) {
@@ -24,7 +24,7 @@ window.onload(() => {
 		form.about.value = user.about;
 		form.birthday.value = birthday;
 	});
-})
+}
 form.addEventListener("submit", (event) => {
 	event.preventDefault();
 	var user = {
