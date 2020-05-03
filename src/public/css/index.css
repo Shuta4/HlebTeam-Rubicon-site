@@ -3,12 +3,13 @@ body{
   background: rgb(5, 0, 46);
 }
 .content{
-  margin-top: 100px;
+  margin-top: 110px;
+  display: flex;
+  padding: 30px;
 }
 .content_blok_1{
   background: white;
   width: 65%;
-  min-height: 800px;
   margin-left: 18%;
   margin-right: 18%;
 }
