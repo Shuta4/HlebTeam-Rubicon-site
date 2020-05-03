@@ -2,28 +2,29 @@
 var form = document.querySelector(".user-form__form");
 const messageBoxClass = ".message_box";
 
-fetch("/api/user/get/im").then((res)=> res.json()).then((res) => {
-	if (!res.ok) {
-		switch (res.error) {
-			case "ERRNOTLOGGEDIN":
-				form.querySelector(messageBoxClass).innerHTML = "Требуется войти в аккаунт";
-				window.location.href = "/userpage/im";
-				break
-			default:
-				form.querySelector(messageBoxClass).innerHTML = "Неизвестная ошибка";
+window.onload(() => {
+	fetch("/api/user/get/im").then((res)=> res.json()).then((res) => {
+		if (!res.ok) {
+			switch (res.error) {
+				case "ERRNOTLOGGEDIN":
+					form.querySelector(messageBoxClass).innerHTML = "Требуется войти в аккаунт";
+					window.location.href = "/userpage/im";
+					break
+				default:
+					form.querySelector(messageBoxClass).innerHTML = "Неизвестная ошибка";
+			}
+			return;
 		}
-		return;
-	}
-	var user = JSON.parse(res.result);
-	birthday = user.birthday.split("T")[0];
-	form.username.value = user.username;
-	form.email.value = user.email;
-	form.name.value = user.name;
-	form.surname.value = user.surname;
-	form.about.value = user.about;
-	form.birthday.value = birthday;
-});
-
+		var user = JSON.parse(res.result);
+		birthday = user.birthday.split("T")[0];
+		form.username.value = user.username;
+		form.email.value = user.email;
+		form.name.value = user.name;
+		form.surname.value = user.surname;
+		form.about.value = user.about;
+		form.birthday.value = birthday;
+	});
+})
 form.addEventListener("submit", (event) => {
 	event.preventDefault();
 	var user = {
