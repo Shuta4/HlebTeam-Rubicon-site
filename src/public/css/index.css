@@ -1,23 +1,24 @@
 @import url("./style.css");
+@import url("./work_preview.css");
 body{
   background: rgb(5, 0, 46);
 }
 .content{
-  margin-top: 110px;
+  margin-top: 50px;
   display: flex;
-  padding: 30px;
+  justify-content: center;
+  align-items: center;
 }
 .content_blok_1{
   background: white;
   width: 65%;
-  margin-left: 18%;
-  margin-right: 18%;
 }
 .content_blok_2{
  background: #292929;
  width: 100%;
- max-height: 9000px;
- float: left;
+ height: auto;
+ justify-content: center;
+ align-items: center;
  display: flex;
  flex-wrap: wrap;
 }
@@ -40,5 +41,25 @@ body{
   }
   100% {
     transform: rotate(-360deg);
+  }
+}
+@media (max-width: 1600px) {
+  .content_blok_1{
+    background: white;
+    width: 65%;
+    height: 100px;
+    margin-top: -550px;
+  }
+  .content__author__works__list__item{
+    width: 380px;
+    height: 250px;
+  }
+  .work-preview__content{
+    width: 200px;
+    height: 200px;
+  }
+  .work-preview__content__preview-img{
+    width: 380px;
+    height: 220px;
   }
 }
