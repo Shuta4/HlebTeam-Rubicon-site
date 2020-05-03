@@ -5,7 +5,11 @@
     <div class="page">
         <%- include("../parts/header.ejs") %>
         <main class="content">
-            <%- include("../parts/work_form.ejs", {create_new: true}) %>    
+            <%- include("../parts/work_form.ejs", {create_new: true, work: {
+            description: "",
+            title: "",
+            download_link: ""
+        }}) %>    
         </main>        
         <%- include("../parts/footer.ejs") %>
     </div>
