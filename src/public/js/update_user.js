@@ -1,3 +1,4 @@
+'use strict'
 var form = document.querySelector(".user-form__form");
 const messageBoxClass = ".message_box";
 
