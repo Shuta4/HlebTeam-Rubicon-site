@@ -5,15 +5,16 @@ const sql = require("./db/connection.js")
 router.get("/", (req, res, next) => {
   res.render("./pages/index");
   next();
-});
+}); 
 router.get("/userpage", (req, res, next) => {
 	res.render("./pages/find_user");
 	next();
 });
 router.get("/userpage/creatework", (req, res, next) => {
-	res.render("./pages/update_work");
+	res.render("./pages/update_work", {create_new: true});
 	next();
 });
+
 router.get("/userpage/im/edit", (req, res, next) => {
 	res.render("./pages/edit_user");
 	next();
