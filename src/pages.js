@@ -11,7 +11,7 @@ router.get("/userpage", (req, res, next) => {
 	next();
 });
 router.get("/userpage/creatework", (req, res, next) => {
-	res.render("./pages/update_work");
+	res.render("./pages/update_work", {create_new: true});
 	next();
 });
 router.get("/userpage/im/edit", (req, res, next) => {
