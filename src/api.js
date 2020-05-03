@@ -269,7 +269,7 @@ router.put("/user/update/:id", (req, res, next)=> {
 		"`surname` = '" + user.surname + "', " + 
 		"`about` = '" + user.about + "', " + 
 		//birthday_req +
-		"WHERE users.id = " + id, function(err, rows, fields) {
+		"WHERE id = " + id, function(err, rows, fields) {
 		if (err) {
 			console.log("Error has occured during updating user with id: " + id);
 			console.log("Error: \n" + err + "\n");
