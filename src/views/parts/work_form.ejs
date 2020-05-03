@@ -11,9 +11,9 @@
         <div class="work-form__form__preview-image__add">+</div>
         <!-- <div class="swiper-slide"><img class="work-form__form__preview-image__image" src="/img/site-bonpass-temp.jpg" alt="Фото работы"></div> -->
       </div>
-      <input type="text" name="title" required class="work-form__form__title" placeholder="Название работы" value=work.title>
+      <input type="text" name="title" required class="work-form__form__title" placeholder="Название работы" value="<%=work.title %>">
       <textarea name="description" class="work-form__form__description" placeholder="Описание"><%=work.description %></textarea>
-      <input type="text" name="download_link" class="work-form__form__link" value=work.download_link placeholder="Ссылка на скачивание">
+      <input type="text" name="download_link" class="work-form__form__link" value="<%=work.download_link %>" placeholder="Ссылка на скачивание">
     </form>
 </div>
 <script src="/js/create_work.js"></script>
