@@ -3,7 +3,6 @@ const express = require('express');
 const router = express.Router();
 const Joi = require("joi");
 const sql = require("./db/connection.js");
-const createWork = require("./db/actions/createWork.js");
 
 
 router.get("/", (req, res, next) => {
@@ -254,23 +253,29 @@ router.put("/user/update/:id", (req, res, next)=> {
 		});
 		return
 	}
-	var password = "";
-	var id;
-	if (req.params.id == "im") id = req.session.user.id;
+	if (user.new_password && user.old_password != req.session.user.password) {
+		res.json({
+			"ok": false,
+			"error": "ERRINCORRECTPASSWORD"
+		});
+		return		
+	}
+	var password = user.new_password;
+	if (req.params.id == "im") var id = req.session.user.id;
 	else return;
 	var password_req = password.trim() != "" ? "`password` = '" + password + "', " : "";
-	var birthday_req = user.birthday.trim() != "" ? "`birthday` = '" + user.birthday + "', " : "`birthday` = NULL "; 
+	var birthday_req = user.birthday.trim() != "" ? "`birthday` = '" + user.birthday + "' " : "`birthday` = NULL "; 
 	connection = sql.connection();
 	sql.connect(connection);
 	connection.query("UPDATE `users` SET " + 
 		"`username` = '" + user.username + "', " +
 		"`email` = '" + user.email + "', " + 
-		//password_req + 
+		password_req + 
 		"`name` = '" + user.name + "', " + 
 		"`surname` = '" + user.surname + "', " + 
 		"`about` = '" + user.about + "', " + 
-		//birthday_req +
-		"WHERE `users`.`id` = " + id, function(err, rows, fields) {
+		birthday_req +
+		"WHERE `id` = " + id + "", function(err, rows, fields) {
 		if (err) {
 			console.log("Error has occured during updating user with id: " + id);
 			console.log("Error: \n" + err + "\n");
@@ -384,8 +389,8 @@ router.put("/work/update/:id", (req, res, next)=> {
 		"`email` = '" + user.email + "', " +  
 		"`name` = '" + user.name + "', " + 
 		"`surname` = '" + user.surname + "', " + 
-		"`about` = '" + user.about + "', " + 
-		"WHERE `works`.`id` = " + work_id + " AND `works`.`owner_id` = " + user_id, function(err, rows, fields) {
+		"`about` = '" + user.about + "' " + 
+		"WHERE `id` = " + work_id + " AND `owner_id` = " + user_id, function(err, rows, fields) {
 		if (err) {
 			console.log("Error has occured during updating work with id: " + work_id);
 			console.log("Error: \n" + err + "\n");
