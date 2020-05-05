@@ -325,8 +325,25 @@ router.post("/work/", (req, res, next)=> {
 });
 //Возможно нужны альтернативные способы поиска работ
 router.get("/work/get/:id", (req, res, next)=> {
-	res.send("Получение информации о 1 работе по id. Дает полную информацию (work-page)");
-	next();
+	connection = sql.connection();
+	const id = req.params.id;
+	sql.connect(connection);
+	connection.query("SELECT * FROM `works` WHERE `id` = " + id, function(err, rows, fields) {
+		if (err) {
+			console.log("Error has occured during finding work with id: " + id);
+			console.log("Error: \n" + err + "\n");
+			res.json({
+				"ok": false,
+				"error": "ERRDBCONNECTION"
+			});
+			return
+		}
+		res.json({
+			"ok": true,
+			"result": JSON.stringify(rows)
+		});
+	});
+	sql.end(connection);
 });
 router.get("/work/user/:id", (req, res, next)=> {
 	connection = sql.connection();
