@@ -15,7 +15,7 @@ var sql = {
 				console.log("Error with connecting to db!");
 				console.log("ERROR: " + err);
 			}
-			else console.log("Successfully connected!")
+			//else console.log("Successfully connected!")
 		})
 	},
 	end: function(connection) {
@@ -24,7 +24,7 @@ var sql = {
 				console.log("Error with ending connection to db!");
 				console.log("ERROR: " + err);
 			}
-			else console.log("Successfully ended connection!")
+			//else console.log("Successfully ended connection!")
 		})
 	}
 }
