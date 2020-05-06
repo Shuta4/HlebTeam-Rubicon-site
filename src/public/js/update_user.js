@@ -15,14 +15,14 @@ document.addEventListener("DOMContentLoaded", () => {
 			return;
 		}
 		var user = JSON.parse(res.result);
-		console.log(user.birthday)
-		var birthday = user.birthday.split("T")[0];
+		var birthday_arr = user.birthday.split("T")[0].split("-");
+		birthday_arr[birthday_arr.length - 1] = int(birthday_arr[birthday_arr.length - 1]) + 1;
+		var birthday = birthday_arr.join("-");
 		form.username.value = user.username;
 		form.email.value = user.email;
 		form.name.value = user.name;
 		form.surname.value = user.surname;
 		form.about.value = user.about;
-		console.log(birthday);
 		form.birthday.value = birthday;
 	});
 	form.addEventListener("submit", (event) => {
