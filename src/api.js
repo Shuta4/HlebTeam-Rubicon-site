@@ -302,7 +302,7 @@ router.put("/user/update/:id", upload.single('avatar'), (req, res, next) => {
 		var password_req = password.trim() != "" ? "`password` = '" + password + "', " : "";
 		var birthday_req = user.birthday.trim() != "" ? "`birthday` = '" + user.birthday + "' " : "`birthday` = NULL "; 
 		var avatar_req = "";
-		if (user.delete_avatar) {
+		if (user.delete_avatar == "true") {
 			if (req.session.user.avatar) {
 				avatar_req = "`avatar` = 0, ";
 				fs.unlink('./public/img/uploads/avatars/' + id + ".jpg", function (err) {
