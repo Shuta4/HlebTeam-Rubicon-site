@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			var month = birthday_arr[1];
 			var day = (parseInt(birthday_arr[2]) + 1).toString();
 			if (day.length == 1) day = "0" + day;
-			var birthday = `${day}-${month}-${year}`;
+			var birthday = `${year}-${month}-${day}`;
 			console.log(birthday)	
 		} else var birthday = null;
 		form.username.value = user.username;
