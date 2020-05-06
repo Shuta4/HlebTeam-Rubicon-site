@@ -1,21 +1,24 @@
 @import url("./style.css");
-body{
-    background: rgb(5, 0, 46); 
+.content {
+	display: flex;
+	justify-content: top;
+	flex-direction: column;
+	background: url('/img/info-back.jpg') rgb(7, 6, 49) no-repeat;
 }
 .content__about {
     width: 100%;
     height: 100vh;
-    background: rgb(5, 0, 46);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: center; 
+    background-image: ("/img/info-back.jpg");
 }
 .content__about__title{
     color: rgb(5, 0, 46);
     text-align: center;
     font-size: 80px;
-    margin: -20px 0 0 0;
+    margin-top: 100px;
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: rgb(0, 140, 255);
 }
@@ -31,6 +34,7 @@ body{
     border: 3px solid rgb(0, 140, 255);
     border-radius: 20px;
     margin: 30px;
+    margin-top: 120px;
     transition: all 400ms;
 }
 .content__about__links__list__item__image:hover{

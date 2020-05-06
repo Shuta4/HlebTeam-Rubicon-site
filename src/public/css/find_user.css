@@ -5,7 +5,7 @@
 	display: flex;
 	justify-content: top;
 	flex-direction: column;
-	background: url('') rgb(7, 6, 49) no-repeat;
+	background: url('/img/poisk.jpg') rgb(7, 6, 49) no-repeat;
 }
 .content__form-find-users {
 	margin-top: 100px;
