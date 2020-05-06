@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const Joi = require("joi");
 const sql = require("./db/connection.js");
+const fs = require("fs");
 
 
 router.get("/", (req, res, next) => {
@@ -296,6 +297,31 @@ router.put("/user/update/:id", (req, res, next)=> {
 		else return;
 		var password_req = password.trim() != "" ? "`password` = '" + password + "', " : "";
 		var birthday_req = user.birthday.trim() != "" ? "`birthday` = '" + user.birthday + "' " : "`birthday` = NULL "; 
+		var avatar_req = "";
+		if (user.avatar.delete) {
+			if (req.session.user.avatar) {
+				avatar_req = "`avatar` = 0, ";
+				fs.unlink('./public/img/users/' + id + ".jpg", function (err) {
+					if (err) console.log(err);
+				});
+			}
+		}  
+		else {
+			if (user.avatar.value) {
+				if (user.avatar.type == "image/jpg" && user.avatar.size <= 5242880) {
+					avatar_req = "`avatar` = 1, ";
+					fs.rename(user.avatar.value, './public/img/users/' + id + ".jpg", function (err) {
+					    if (err) console.log(err);
+					}); 
+				} else {
+					res.json({
+						"ok": false,
+						"error": "INCORRECTIMAGE"
+					})
+					return;
+				}
+			} 
+		}
 		connection = sql.connection();
 		sql.connect(connection);
 		connection.query("UPDATE `users` SET " + 
@@ -305,6 +331,7 @@ router.put("/user/update/:id", (req, res, next)=> {
 			"`name` = '" + user.name + "', " + 
 			"`surname` = '" + user.surname + "', " + 
 			"`about` = '" + user.about + "', " + 
+			avatar_req +
 			birthday_req +
 			"WHERE `id` = " + id + "", function(err, rows, fields) {
 			if (err) {

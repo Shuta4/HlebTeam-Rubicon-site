@@ -36,7 +36,13 @@ document.addEventListener("DOMContentLoaded", () => {
 			birthday: form.birthday.value,
 			old_password: form.old_password.value,
 			new_password: form.new_password.value,
-			confirm_password: form.confirm_password.value
+			confirm_password: form.confirm_password.value,
+			avatar: {
+				delete: form.avatar_delete.value,
+				value: form.avatar.value,
+				type: form.avatar.files[0].type,
+				size: form.avatar.files[0].size
+			}
 		}
 		if (user.new_password != user.confirm_password) {
 			form.querySelector(messageBoxClass).innerHTML = "Введенные пароли не совпадают!";
@@ -63,6 +69,9 @@ document.addEventListener("DOMContentLoaded", () => {
 						break
 					case "ERRVALIDATEUSER":
 						form.querySelector(messageBoxClass).innerHTML = "Неправильный ввод";
+						break
+					case "INCORRECTIMAGE":
+						form.querySelector(messageBoxClass).innerHTML = "Аватар должен быть в формате .jpg и размером не более 5 МБ";
 						break
 					default:
 						form.querySelector(messageBoxClass).innerHTML = "Неизвестная ошибка";

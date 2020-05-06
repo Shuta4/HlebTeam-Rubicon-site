@@ -26,7 +26,6 @@ app.use(session({
 
 app.use((req, res, next) => {
 	try {
-		console.log("Middleware")
 		if (req.session.user == undefined) {
 			next();
 			return	
