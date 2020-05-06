@@ -5,7 +5,7 @@ const Joi = require("joi");
 const sql = require("./db/connection.js");
 const fs = require("fs");
 const multer  = require('multer')
-upload = multer({ dest: 'uploads/' });
+upload = multer({ dest: '.uploads/' });
 
 router.get("/", (req, res, next) => {
   res.send("API of HlebTeam site!")
