@@ -40,8 +40,8 @@ document.addEventListener("DOMContentLoaded", () => {
 			avatar: {
 				delete: form.avatar_delete.value,
 				value: form.avatar.value,
-				type: form.avatar.files[0].type,
-				size: form.avatar.files[0].size
+				type: form.avatar.files[0] != undefined ? form.avatar.files[0].type : "",
+				size: form.avatar.files[0] != undefined ? form.avatar.files[0].size : ""
 			}
 		}
 		if (user.new_password != user.confirm_password) {
