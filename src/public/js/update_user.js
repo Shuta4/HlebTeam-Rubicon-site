@@ -27,6 +27,11 @@ document.addEventListener("DOMContentLoaded", () => {
 	});
 	form.addEventListener("submit", (event) => {
 		event.preventDefault();
+		if (form.avatar.files[0] != undefined) {
+			var avatar = new FormData();
+			avatar.append('file', form.avatar.files[0]);	
+		}
+		else var avatar = null;
 		var user = {
 			username: form.username.value,
 			email: form.email.value,
@@ -37,12 +42,8 @@ document.addEventListener("DOMContentLoaded", () => {
 			old_password: form.old_password.value,
 			new_password: form.new_password.value,
 			confirm_password: form.confirm_password.value,
-			avatar: {
-				delete: form.avatar_delete.checked,
-				value: form.avatar.value,
-				type: form.avatar.files[0] != undefined ? form.avatar.files[0].type : "",
-				size: form.avatar.files[0] != undefined ? form.avatar.files[0].size : ""
-			}
+			delete_avatar: form.avatar_delete.checked,
+			avatar: avatar
 		}
 		if (user.new_password != user.confirm_password) {
 			form.querySelector(messageBoxClass).innerHTML = "Введенные пароли не совпадают!";

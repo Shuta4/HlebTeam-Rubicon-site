@@ -298,7 +298,7 @@ router.put("/user/update/:id", (req, res, next)=> {
 		var password_req = password.trim() != "" ? "`password` = '" + password + "', " : "";
 		var birthday_req = user.birthday.trim() != "" ? "`birthday` = '" + user.birthday + "' " : "`birthday` = NULL "; 
 		var avatar_req = "";
-		if (user.avatar.delete) {
+		if (user.delete_avatar) {
 			if (req.session.user.avatar) {
 				avatar_req = "`avatar` = 0, ";
 				fs.unlink('./public/img/users/' + id + ".jpg", function (err) {
@@ -307,20 +307,21 @@ router.put("/user/update/:id", (req, res, next)=> {
 			}
 		}  
 		else {
-			if (user.avatar.value) {
-				if (user.avatar.type == "image/jpeg" && user.avatar.size <= 5242880) {
-					avatar_req = "`avatar` = 1, ";
-					fs.rename(user.avatar.value, './public/img/users/' + id + ".jpg", function (err) {
-					    if (err) console.log(err);
-					    console.log("UPLOADED");
-					}); 
-				} else {
-					res.json({
-						"ok": false,
-						"error": "INCORRECTIMAGE"
-					})
-					return;
-				}
+			if (user.avatar) {
+				// if (user.avatar.type == "image/jpeg" && user.avatar.size <= 5242880) {
+				// 	avatar_req = "`avatar` = 1, ";
+				// 	fs.rename(user.avatar.value, './public/img/users/' + id + ".jpg", function (err) {
+				// 	    if (err) console.log(err);
+				// 	    console.log("UPLOADED");
+				// 	}); 
+				// } else {
+				// 	res.json({
+				// 		"ok": false,
+				// 		"error": "INCORRECTIMAGE"
+				// 	})
+				// 	return;
+				// }
+				console.log(user.avatar);
 			} 
 		}
 		connection = sql.connection();
