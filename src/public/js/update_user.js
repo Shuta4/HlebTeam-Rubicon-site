@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			new_password: form.new_password.value,
 			confirm_password: form.confirm_password.value,
 			avatar: {
-				delete: form.avatar_delete.value,
+				delete: form.avatar_delete.checked,
 				value: form.avatar.value,
 				type: form.avatar.files[0] != undefined ? form.avatar.files[0].type : "",
 				size: form.avatar.files[0] != undefined ? form.avatar.files[0].size : ""
