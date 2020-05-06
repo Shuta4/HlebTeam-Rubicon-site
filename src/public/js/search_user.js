@@ -11,9 +11,11 @@ form.addEventListener("submit", (event) => {
           el = result[i]
           if (el.name || el.surname) var name = (el.name + " " + el.surname + " ("+ el.username +")").trim();
           else var name = el.username;
+          if (el.avatar) var avatar = "/img/uploads/avatars/" + el.id + ".jpg";
+          else var avatar = "/img/profile_no_avatar.png";
   				container.insertAdjacentHTML("beforeend", `                
             <li class="content__results__item user-preview">
-              <img alt="Аватар" class="user-preview__avatar" src="https://image.flaticon.com/icons/png/512/64/64572.png">  
+              <img alt="Аватар" class="user-preview__avatar" src="${avatar}">  
               <div class="user-preview__wrapper">
                   <h3 class="user-preview__name">${name}</h3>
                   <ul class="user-preview__statistics">
