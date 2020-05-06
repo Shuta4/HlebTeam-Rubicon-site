@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 		var user = JSON.parse(res.result);
 		var birthday_arr = user.birthday.split("T")[0].split("-");
-		birthday_arr[birthday_arr.length - 1] = int(birthday_arr[birthday_arr.length - 1]) + 1;
+		birthday_arr[birthday_arr.length - 1] = parseInt(birthday_arr[birthday_arr.length - 1]) + 1;
 		var birthday = birthday_arr.join("-");
 		form.username.value = user.username;
 		form.email.value = user.email;
