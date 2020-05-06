@@ -20,7 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
 			var birthday_arr = user.birthday.split("T")[0].split("-");
 			var year = birthday_arr[0];
 			var month = birthday_arr[1];
-			var day = toString(parseInt(birthday_arr[2]) + 1).lenght == 1 ? "0" + toString(parseInt(birthday_arr[2]) + 1) : toString(parseInt(birthday_arr[2]) + 1);
+			var day = (parseInt(birthday_arr[2]) + 1).toString().lenght == 1 ? "0" + (parseInt(birthday_arr[2]) + 1).toString() 
+				: (parseInt(birthday_arr[2]) + 1).toString();
 			var birthday = `${day}-${month}-${year}`;
 			console.log(birthday)	
 		} else var birthday = null;
