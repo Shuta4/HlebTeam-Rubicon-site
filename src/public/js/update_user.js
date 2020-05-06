@@ -46,9 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 		fetch("/api/user/update/im", {
 		    method: 'PUT',
-		    headers: {
-		      'Content-Type': 'multipart/form-data'
-		    },
 		    body: user
 	  	}).then(res => res.json()).then(res => {
 			if (!res.ok) {
