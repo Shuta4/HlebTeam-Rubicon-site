@@ -21,7 +21,8 @@ document.addEventListener("DOMContentLoaded", () => {
 			var year = birthday_arr[0];
 			var month = birthday_arr[1];
 			var day = parseInt(birthday_arr[2]) + 1;
-			var birthday = `${day}-${month}-${year}`;	
+			var birthday = `${day}-${month}-${year}`;
+			console.log(birthday)	
 		} else var birthday = null;
 		form.username.value = user.username;
 		form.email.value = user.email;
