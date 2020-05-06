@@ -305,7 +305,7 @@ router.put("/user/update/:id", upload.single('avatar'), (req, res, next) => {
 		if (user.delete_avatar == "true") {
 			if (req.session.user.avatar) {
 				avatar_req = "`avatar` = 0, ";
-				fs.unlink('./public/img/uploads/avatars/' + id + ".jpg", function (err) {
+				fs.unlink('src/public/img/uploads/avatars/' + id + ".jpg", function (err) {
 					if (err) console.log(err);
 				});
 			}
@@ -314,7 +314,7 @@ router.put("/user/update/:id", upload.single('avatar'), (req, res, next) => {
 			if (avatar) {
 				if (avatar.mimetype == "image/jpeg" && avatar.size <= 5242880) {
 					avatar_req = "`avatar` = 1, ";
-					fs.rename(avatar.path, './public/img/uploads/avatars/' + id + ".jpg", function (err) {
+					fs.rename(avatar.path, 'src/public/img/uploads/avatars/' + id + ".jpg", function (err) {
 					    if (err) console.log(err);
 					}); 
 				} else {
