@@ -4,7 +4,8 @@ const router = express.Router();
 const Joi = require("joi");
 const sql = require("./db/connection.js");
 const fs = require("fs");
-
+const multer  = require('multer')
+upload = multer({ dest: 'uploads/' });
 
 router.get("/", (req, res, next) => {
   res.send("API of HlebTeam site!")
@@ -268,7 +269,7 @@ router.get("/user/get/:id", (req, res, next)=> {
 		next(error)	
 	}
 });
-router.put("/user/update/:id", (req, res, next)=> {
+router.put("/user/update/:id", upload.single('avatar'), (req, res, next) => {
 	try {
 		if (req.session.user == undefined) {
 			res.json({
@@ -278,6 +279,9 @@ router.put("/user/update/:id", (req, res, next)=> {
 			return
 		}
 		var user = req.body;
+		var file = req.file;
+		console.log(user);
+		console.log(file);
 		if (user.new_password != user.confirm_password && user.new_password != "") {
 			res.json({
 				"ok": false,

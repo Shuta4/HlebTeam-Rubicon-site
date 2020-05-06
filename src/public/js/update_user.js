@@ -27,24 +27,19 @@ document.addEventListener("DOMContentLoaded", () => {
 	});
 	form.addEventListener("submit", (event) => {
 		event.preventDefault();
-		if (form.avatar.files[0] != undefined) {
-			var avatar = new FormData();
-			avatar.append('file', form.avatar.files[0]);	
-		}
-		else var avatar = null;
-		var user = {
-			username: form.username.value,
-			email: form.email.value,
-			name: form.name.value,
-			surname: form.surname.value,
-			about: form.about.value,
-			birthday: form.birthday.value,
-			old_password: form.old_password.value,
-			new_password: form.new_password.value,
-			confirm_password: form.confirm_password.value,
-			delete_avatar: form.avatar_delete.checked,
-			avatar: avatar
-		}
+		var user = new FormData();
+		user.append("username", form.username.value);
+		user.append("email", form.email.value);
+		user.append("name", form.name.value);
+		user.append("surname", form.surname.value);
+		user.append("about", form.about.value);
+		user.append("birthday", form.birthday.value);
+		user.append("old_password", form.old_password.value);
+		user.append("new_password", form.new_password.value);
+		user.append("confirm_password", form.confirm_password.value);
+		if (form.avatar.files[0] != undefined) user.append("avatar", form.avatar.files[0]);
+		else user.append("avatar", null);
+		console.log(user);
 		if (user.new_password != user.confirm_password) {
 			form.querySelector(messageBoxClass).innerHTML = "Введенные пароли не совпадают!";
 			return;
@@ -52,9 +47,9 @@ document.addEventListener("DOMContentLoaded", () => {
 		fetch("/api/user/update/im", {
 		    method: 'PUT',
 		    headers: {
-		      'Content-Type': 'application/json'
+		      'Content-Type': 'multipart/form-data'
 		    },
-		    body: JSON.stringify(user)
+		    body: user
 	  	}).then(res => res.json()).then(res => {
 			if (!res.ok) {
 				switch (res.error) {
