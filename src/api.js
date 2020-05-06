@@ -279,9 +279,9 @@ router.put("/user/update/:id", upload.single('avatar'), (req, res, next) => {
 			return
 		}
 		var user = req.body;
-		var file = req.file;
+		var avatar = req.file;
 		console.log(user);
-		console.log(file);
+		console.log(avatar);
 		if (user.new_password != user.confirm_password && user.new_password != "") {
 			res.json({
 				"ok": false,
@@ -305,27 +305,28 @@ router.put("/user/update/:id", upload.single('avatar'), (req, res, next) => {
 		if (user.delete_avatar) {
 			if (req.session.user.avatar) {
 				avatar_req = "`avatar` = 0, ";
-				fs.unlink('./public/img/users/' + id + ".jpg", function (err) {
+				fs.unlink('./public/img/uploads/avatars/' + id + ".jpg", function (err) {
 					if (err) console.log(err);
 				});
 			}
 		}  
 		else {
-			if (user.avatar) {
-				// if (user.avatar.type == "image/jpeg" && user.avatar.size <= 5242880) {
-				// 	avatar_req = "`avatar` = 1, ";
-				// 	fs.rename(user.avatar.value, './public/img/users/' + id + ".jpg", function (err) {
-				// 	    if (err) console.log(err);
-				// 	    console.log("UPLOADED");
-				// 	}); 
-				// } else {
-				// 	res.json({
-				// 		"ok": false,
-				// 		"error": "INCORRECTIMAGE"
-				// 	})
-				// 	return;
-				// }
-				console.log(user.avatar.file);
+			if (avatar) {
+				if (avatar.mimetype == "image/jpeg" && avatar.size <= 5242880) {
+					avatar_req = "`avatar` = 1, ";
+					fs.rename(avatar.path, './public/img/uploads/avatars/' + id + ".jpg", function (err) {
+					    if (err) console.log(err);
+					}); 
+				} else {
+					fs.unlink(avatar.path, (err) => {
+						if (err) console.log(err);
+					})
+					res.json({
+						"ok": false,
+						"error": "INCORRECTIMAGE"
+					})
+					return;
+				}
 			} 
 		}
 		connection = sql.connection();

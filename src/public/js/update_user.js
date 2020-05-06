@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		user.append("old_password", form.old_password.value);
 		user.append("new_password", form.new_password.value);
 		user.append("confirm_password", form.confirm_password.value);
+		user.append("delete_avatar", form.avatar_delete.checked);
 		if (form.avatar.files[0] != undefined) user.append("avatar", form.avatar.files[0]);
 		else user.append("avatar", null);
 		console.log(user);
