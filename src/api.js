@@ -321,7 +321,7 @@ router.put("/user/update/:id", (req, res, next)=> {
 				// 	})
 				// 	return;
 				// }
-				console.log(user.avatar);
+				console.log(user.avatar.file);
 			} 
 		}
 		connection = sql.connection();
