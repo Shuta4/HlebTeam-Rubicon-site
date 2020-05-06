@@ -42,7 +42,6 @@ document.addEventListener("DOMContentLoaded", () => {
 		user.append("delete_avatar", form.avatar_delete.checked);
 		if (form.avatar.files[0] != undefined) user.append("avatar", form.avatar.files[0]);
 		else user.append("avatar", null);
-		console.log(user);
 		if (user.new_password != user.confirm_password) {
 			form.querySelector(messageBoxClass).innerHTML = "Введенные пароли не совпадают!";
 			return;
