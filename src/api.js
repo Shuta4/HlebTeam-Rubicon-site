@@ -280,8 +280,6 @@ router.put("/user/update/:id", upload.single('avatar'), (req, res, next) => {
 		}
 		var user = req.body;
 		var avatar = req.file;
-		console.log(user);
-		console.log(avatar);
 		if (user.new_password != user.confirm_password && user.new_password != "") {
 			res.json({
 				"ok": false,

@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			return;
 		}
 		var user = JSON.parse(res.result);
+		console.log(user.birthday);
 		if (user.birthday) {
 			var birthday_arr = user.birthday.split("T")[0].split("-");
 			birthday_arr[birthday_arr.length - 1] = parseInt(birthday_arr[birthday_arr.length - 1]) + 1;
