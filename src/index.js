@@ -24,9 +24,9 @@ app.use(session({
   resave: false
 }));
 
-app.get("*", (req, res, next) => {
+app.use("*", (req, res, next) => {
 	try {
-		console.log("=====11!!1!1!111!1111!====")
+		console.log("Middleware")
 		if (req.session.user == undefined) {
 			next();
 			return	
