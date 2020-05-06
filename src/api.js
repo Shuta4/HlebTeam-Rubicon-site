@@ -312,6 +312,7 @@ router.put("/user/update/:id", (req, res, next)=> {
 					avatar_req = "`avatar` = 1, ";
 					fs.rename(user.avatar.value, './public/img/users/' + id + ".jpg", function (err) {
 					    if (err) console.log(err);
+					    console.log("UPLOADED");
 					}); 
 				} else {
 					res.json({
