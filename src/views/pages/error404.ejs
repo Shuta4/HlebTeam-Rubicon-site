@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<%- include("../parts/head.ejs", {title: "Ошибка 404", style_href: "/css/error.css"}) %>
+<body>
+    <div class="page">
+        <%- include("../parts/header.ejs") %>
+        <main class="content">
+            <div class="content__error">
+                <h1 class="content__error__title">404 ERROR</h1>
+                <p class="content__error__message">Страница не найдена!</p>
+            </div>
+        </main>        
+        <%- include("../parts/footer.ejs") %>
+    </div>
+</body>
+</html>

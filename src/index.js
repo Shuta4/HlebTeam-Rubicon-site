@@ -24,35 +24,51 @@ app.use(session({
   resave: false
 }));
 
-app.get("/", (req, res, next) => {
-	console.log("=====11!!1!1!111!1111!====")
-	if (req.session.user == undefined) {
-		next();
-		return	
-	}
-	connection = sql.connection();
-	sql.connect(connection);
-	var id = req.session.user.id;
-	connection.query("SELECT * FROM `users` WHERE `id` = " + id + "", function(err, rows, fields) {
-		if (err) {
-			console.log("Error has occured during checking user: " + id);
-			console.log("Error: \n" + err + "\n");
+app.get((req, res, next) => {
+	try {
+		console.log("=====11!!1!1!111!1111!====")
+		if (req.session.user == undefined) {
 			next();
-			return
+			return	
 		}
-		if (rows[0] != undefined) {
-			if (rows[0].id != undefined || rows[0].id != null) 
-				req.session.user = rows[0];
-			else req.session.destroy();
-			next();	
-		} 
-	});
-	sql.end(connection);
+		connection = sql.connection();
+		sql.connect(connection);
+		var id = req.session.user.id;
+		connection.query("SELECT * FROM `users` WHERE `id` = " + id + "", function(err, rows, fields) {
+			if (err) {
+				console.log("Error has occured during checking user: " + id);
+				console.log("Error: \n" + err + "\n");
+				next();
+				return
+			}
+			if (rows[0] != undefined) {
+				if (rows[0].id != undefined || rows[0].id != null) 
+					req.session.user = rows[0];
+				else req.session.destroy();
+				next();	
+			} 
+		});
+		sql.end(connection);
+	} catch (error) {
+		console.log(error);
+		next(error);
+	}
 });
 app.use("/api", require("./api.js"));
 app.use("/", require("./pages.js"));
 
 // Обработка 404
+app.get("*", (req, res, next) => {
+	if (!res.headersSent) {
+		res.status(404).render('./pages/error404');
+		console.log("404 Error");
+	}
+    return;
+});
+// Обработка 500
+app.use((err, req, res, next) => {
+	console.log(err);
+	if (!res.headersSent) res.status(500).render('./pages/error500');
+});
 
 app.listen(port, () => console.log("Server are running on port: " + port));
-
