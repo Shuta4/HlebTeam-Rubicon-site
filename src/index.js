@@ -24,7 +24,7 @@ app.use(session({
   resave: false
 }));
 
-app.use("*", (req, res, next) => {
+app.use((req, res, next) => {
 	try {
 		console.log("Middleware")
 		if (req.session.user == undefined) {
@@ -58,11 +58,8 @@ app.use("/api", require("./api.js"));
 app.use("/", require("./pages.js"));
 
 // Обработка 404
-app.get("*", (req, res, next) => {
-	if (!res.headersSent) {
-		res.status(404).render('./pages/error404');
-		console.log("404 Error");
-	}
+app.use((req, res, next) => {
+	if (!res.headersSent) res.status(404).render('./pages/error404');
     return;
 });
 // Обработка 500

@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		form.name.value = user.name;
 		form.surname.value = user.surname;
 		form.about.value = user.about;
+		console.log(birthday);
 		form.birthday.value = birthday;
 	});
 	form.addEventListener("submit", (event) => {

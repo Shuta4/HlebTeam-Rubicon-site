@@ -66,7 +66,10 @@ router.post("/user/register", async (req, res, next) => {
 					// Если все ок, то регистрируем пользователя в бд
 					connection = sql.connection();
 						sql.connect(connection);
-						connection.query("INSERT INTO `users`(`username`, `email`, `password`) VALUES ('" + user.username + "', '" + user.email + "', '" + user.password + "')", function(err) {
+						connection.query("INSERT INTO `users`(`username`, `email`, `password`) VALUES ('" 
+							+ user.username + "', '" 
+							+ user.email + "', '" 
+							+ user.password + "')", function(err) {
 						if (err) {
 								console.log("Error has occured during creation of user " + user.username);
 								console.log("Error: \n" + err + "\n");
@@ -106,7 +109,7 @@ router.post("/user/register", async (req, res, next) => {
 			"error": "UNKNOWNERROR"
 		});
 		console.log(error)
-		next(error)
+		next(error);
 	}
 });
 // Login
@@ -338,7 +341,7 @@ router.delete("/user/delete/:id", (req, res, next)=> {
 	}
 });
 
-router.post("/work/", (req, res, next)=> {
+router.post("/work", (req, res, next)=> {
 	try {
 		var work = req.body;
 		if (req.session.user == undefined) {
@@ -501,7 +504,7 @@ router.delete("/work/delete/:id", (req, res, next)=> {
 	}
 });
 
-router.post("/img/", (req, res, next)=> {
+router.post("/img/upload", (req, res, next)=> {
 	try {
 		res.send("Загрузка фотографии на сервер");
 		next();	
