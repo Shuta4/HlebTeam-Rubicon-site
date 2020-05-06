@@ -15,9 +15,11 @@ document.addEventListener("DOMContentLoaded", () => {
 			return;
 		}
 		var user = JSON.parse(res.result);
-		var birthday_arr = user.birthday.split("T")[0].split("-");
-		birthday_arr[birthday_arr.length - 1] = parseInt(birthday_arr[birthday_arr.length - 1]) + 1;
-		var birthday = birthday_arr.join("-");
+		if (user.birthday) {
+			var birthday_arr = user.birthday.split("T")[0].split("-");
+			birthday_arr[birthday_arr.length - 1] = parseInt(birthday_arr[birthday_arr.length - 1]) + 1;
+			var birthday = birthday_arr.join("-");	
+		} else var birthday = null;
 		form.username.value = user.username;
 		form.email.value = user.email;
 		form.name.value = user.name;
