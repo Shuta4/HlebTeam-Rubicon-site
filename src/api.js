@@ -308,7 +308,7 @@ router.put("/user/update/:id", (req, res, next)=> {
 		}  
 		else {
 			if (user.avatar.value) {
-				if (user.avatar.type == "image/jpg" && user.avatar.size <= 5242880) {
+				if (user.avatar.type == "image/jpeg" && user.avatar.size <= 5242880) {
 					avatar_req = "`avatar` = 1, ";
 					fs.rename(user.avatar.value, './public/img/users/' + id + ".jpg", function (err) {
 					    if (err) console.log(err);
