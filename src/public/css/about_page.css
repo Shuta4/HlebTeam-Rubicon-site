@@ -31,7 +31,7 @@
 .content__about__links__list__item__image{
     width: 100px;
     height: 100px;
-    border: 3px solid rgb(0, 140, 255);
+    border: 5px solid rgb(0, 140, 255);
     border-radius: 20px;
     margin: 30px;
     margin-top: 120px;
@@ -40,8 +40,7 @@
 .content__about__links__list__item__image:hover{
     width: 100px;
     height: 100px;
-    border: 3px solid rgb(0, 140, 255);
-    box-shadow: 0 0 40px rgb(0, 140, 255);
+    border: 5px solid rgb(0, 140, 255);
     border-radius: 100px;
     margin: 30px;
     transition: all 400ms;

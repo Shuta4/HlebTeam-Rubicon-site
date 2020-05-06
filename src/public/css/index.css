@@ -3,16 +3,45 @@
 body{
   background: rgb(5, 0, 46);
 }
+.content__form-find-users__input-name{
+  background: #cecece;
+  border: 2px solid #0044ff00;
+  border-radius: 50px;
+  margin: 10px;
+  width: 90%;
+  padding: 5px;
+  height: 40px;
+  transition: all 400ms;
+}
+.content__form-find-users__input-name:hover{
+  border: 2px solid #008cff;
+  transition: all 400ms;
+}
+.content__form-find-users__find-button{ 
+  border: 2px solid #008cff;
+  border-radius: 50px;
+  width: 140px;
+  height: 55px;
+  transition: all 400ms;
+  margin-left: -10px;
+}
+.content__form-find-users__find-button:hover{ 
+  border: 2px solid #008cff;
+  border-radius: 0px;
+  transition: all 400ms;
+}
 .content{
-  margin-top: 110px;
+  position: relative;
+  top: 100px;
+  margin: 0px;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  width: 100%;
 }
 .content_blok_1{
   background: white;
-  width: 65%;
+  width: 99.5%;
 }
 .content_blok_2{
  background: #292929;
@@ -44,11 +73,46 @@ body{
     transform: rotate(-360deg);
   }
 }
-@media (max-width: 1600px) {
+@media (max-width: 1700px) {
+  .content__form-find-users__input-name{
+  background: #cecece;
+  border: 2px solid #0044ff00;
+  border-radius: 50px;
+  margin: 10px;
+  width: 80%;
+  padding: 5px;
+  height: 40px;
+  transition: all 400ms;
+}
+.content__form-find-users__input-name:hover{
+  border: 2px solid #008cff;
+  transition: all 400ms;
+}
+.content__form-find-users__find-button{ 
+  border: 2px solid #008cff;
+  border-radius: 50px;
+  width: 140px;
+  height: 55px;
+  transition: all 400ms;
+  margin-left: -10px;
+}
+.content__form-find-users__find-button:hover{ 
+  border: 2px solid #008cff;
+  border-radius: 0px;
+  transition: all 400ms;
+}
+.content{
+  position: relative;
+  top: -50px;
+  margin: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
   .content_blok_1{
     background: white;
-    width: 65%;
-    height: 100px;
+    width: 100%;
+    height: 120px;
     margin-top: -550px;
   }
   .content__author__works__list__item{
@@ -65,9 +129,9 @@ body{
   }
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 900px) {
   .content{
-    margin-top: -18px;
+    margin-top: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -87,21 +151,50 @@ body{
     flex-wrap: wrap;
    }
   .content__author__works__list__item{
-    width: 290px;
-    height: 200px;
+    width: 300px;
+    height: 185px;
   }
   .work-preview__content{
-    width: 200px;
-    height: 200px;
+    width: 220px;
+    height: 220px;
   }
   .work-preview__content__preview-img{
     width: 300px;
     height: 150px;
   }
 }
-@media (max-width:  750px) {
+@media (max-width:  720px) {
+  .content__form-find-users__input-name{
+    background: #cecece;
+    border: 2px solid #0044ff00;
+    border-radius: 50px;
+    margin: 10px;
+    width: 75%;
+    padding: 5px;
+    height: 40px;
+    transition: all 400ms;
+    font-size: 14px;
+  }
+  .content__form-find-users__input-name:hover{
+    border: 2px solid #008cff;
+    transition: all 400ms;
+  }
+  .content__form-find-users__find-button{ 
+    border: 2px solid #008cff;
+    border-radius: 50px;
+    width: 100px;
+    height: 55px;
+    transition: all 400ms;
+    margin-left: -10px;
+    font-size: 14px;
+  }
+  .content__form-find-users__find-button:hover{ 
+    border: 2px solid #008cff;
+    border-radius: 0px;
+    transition: all 400ms;
+  }
   .content{
-    margin-top: 20px;
+    margin-top: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -114,22 +207,123 @@ body{
   .content_blok_2{
     background: #292929;
     width: 100%;
-    height: 950;
+     max-height: 9050px;
     justify-content: center;
     align-items: center;
     display: flex;
     flex-wrap: wrap;
    }
   .content__author__works__list__item{
-    width: 302px;
-    height: 190px;
+    width: 70%;
+    height: 250px;
+    font-size: 14px;
   }
   .work-preview__content{
-    width: 200px;
+    width: 100%;
     height: 200px;
+    font-size: 14px;
   }
   .work-preview__content__preview-img{
-    width: 300px;
-    height: 150px;
+    width: 100%;
+    height: 230px;
+    font-size: 14px;
   }
 }
+@media (max-width:  530px) {
+  .content__form-find-users__input-name{
+    background: #cecece;
+    border: 2px solid #0044ff00;
+    border-radius: 50px;
+    margin: 10px;
+    width: 50%;
+    padding: 5px;
+    height: 30px;
+    transition: all 400ms;
+    font-size: 14px;
+  }
+  .content__form-find-users__input-name:hover{
+    border: 2px solid #008cff;
+    transition: all 400ms;
+  }
+  .content__form-find-users__find-button{ 
+    border: 2px solid #008cff;
+    border-radius: 50px;
+    width: 100px;
+    height: 55px;
+    transition: all 400ms;
+    margin-left: -10px;
+    font-size: 14px;
+  }
+  .content__form-find-users__find-button:hover{ 
+    border: 2px solid #008cff;
+    border-radius: 0px;
+    transition: all 400ms;
+  }
+  .content{
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .content_blok_1{
+    background: white;
+    width: 100%;
+    height: 200px;
+  }
+  .content_blok_2{
+    background: #292929;
+    width: 100%;
+    max-height: 9000px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+   }
+  .content__author__works__list__item{
+    width: 100%;
+    font-size: 14px;
+  }
+  .work-preview__content{
+    width: 100%;
+    height: 200px;
+    font-size: 14px;
+  }
+  .work-preview__content__preview-img{
+    width: 100%;
+    height: 230px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width:  350px) {
+  .content__form-find-users__input-name{
+    background: #cecece;
+    border: 2px solid #0044ff00;
+    border-radius: 50px;
+    margin: 10px;
+    width: 62%;
+    padding: 5px;
+    height: 30px;
+    transition: all 400ms;
+    font-size: 14px;
+  }
+  .content__form-find-users__input-name:hover{
+    border: 2px solid #008cff;
+    transition: all 400ms;
+  }
+  .content__form-find-users__find-button{ 
+    border: 2px solid #008cff;
+    border-radius: 50px;
+    width: 80px;
+    height: 55px;
+    transition: all 400ms;
+    margin-left: -10px;
+    font-size: 14px;
+  }
+  .content__form-find-users__find-button:hover{ 
+    border: 2px solid #008cff;
+    border-radius: 0px;
+    transition: all 400ms;
+  }
+}
+
