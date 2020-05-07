@@ -17,7 +17,7 @@
                         <img alt="Аватар" class="content__author__about__avatar" src="<%if (user.avatar) {%>/img/uploads/avatars/<%=user.id %>.jpg<%} else {%>/img/profile_no_background.png<%}%>">  
                         <h3 class="content__author__about__name">
                             <%if (user.name || user.surname) {%>
-                                <%= user.name + " " + user.surname + " (" + user.username + ")"%> 
+                                <%= (user.name + " " + user.surname + " (" + user.username + ")").trim()%> 
                             <%} else {%>
                                 <%= user.username%>
                             <%}%></h3>
@@ -46,86 +46,18 @@
                     </div>
                     <div class="content__author__works">
                         <ul class="content__author__works__list">
-                            <li class="content__author__works__list__item work-preview">            
-                                <div class="work-preview__content">
-                                    <a href="">
-                                        <img class="work-preview__content__preview-img" src="/img/site-bonpass-temp.jpg">                               
-                                        <header class="work-preview__header">
-                                            <h4 class="work-preview__header__title">Название работы</h4>                                   
-                                        </header>
-                                    </a>
-                                </div>                        
-                            </li>
-                            <li class="content__author__works__list__item work-preview">            
-                                <div class="work-preview__content">
-                                    <a href="">
-                                        <img class="work-preview__content__preview-img" src="/img/site-bonpass-temp.jpg">                               
-                                        <header class="work-preview__header">
-                                            <h4 class="work-preview__header__title">Название работы</h4>                                   
-                                        </header>
-                                    </a>
-                                </div>                        
-                            </li>
-                            <li class="content__author__works__list__item work-preview">            
-                                <div class="work-preview__content">
-                                    <a href="">
-                                        <img class="work-preview__content__preview-img" src="/img/site-bonpass-temp.jpg">                               
-                                        <header class="work-preview__header">
-                                            <h4 class="work-preview__header__title">Название работы</h4>                                   
-                                        </header>
-                                    </a>
-                                </div>                        
-                            </li>
-                            <li class="content__author__works__list__item work-preview">            
-                                <div class="work-preview__content">
-                                    <a href="">
-                                        <img class="work-preview__content__preview-img" src="/img/site-bonpass-temp.jpg">                               
-                                        <header class="work-preview__header">
-                                            <h4 class="work-preview__header__title">Название работы</h4>                                   
-                                        </header>
-                                    </a>
-                                </div>                        
-                            </li>
-                            <li class="content__author__works__list__item work-preview">            
-                                <div class="work-preview__content">
-                                    <a href="">
-                                        <img class="work-preview__content__preview-img" src="/img/site-bonpass-temp.jpg">                               
-                                        <header class="work-preview__header">
-                                            <h4 class="work-preview__header__title">Название работы</h4>                                   
-                                        </header>
-                                    </a>
-                                </div>                        
-                            </li>
-                            <li class="content__author__works__list__item work-preview">            
-                                <div class="work-preview__content">
-                                    <a href="">
-                                        <img class="work-preview__content__preview-img" src="/img/site-bonpass-temp.jpg">                               
-                                        <header class="work-preview__header">
-                                            <h4 class="work-preview__header__title">Название работы</h4>                                   
-                                        </header>
-                                    </a>
-                                </div>                        
-                            </li>
-                            <li class="content__author__works__list__item work-preview">            
-                                <div class="work-preview__content">
-                                    <a href="">
-                                        <img class="work-preview__content__preview-img" src="/img/site-bonpass-temp.jpg">                               
-                                        <header class="work-preview__header">
-                                            <h4 class="work-preview__header__title">Название работы</h4>                                   
-                                        </header>
-                                    </a>
-                                </div>                       
-                            </li>
-                            <li class="content__author__works__list__item work-preview">            
-                                <div class="work-preview__content">
-                                    <a href="">
-                                        <img class="work-preview__content__preview-img" src="/img/site-bonpass-temp.jpg">                               
-                                        <header class="work-preview__header">
-                                            <h4 class="work-preview__header__title">Название работы</h4>                                   
-                                        </header>
-                                    </a>
-                                </div>                        
-                            </li>         
+                            <% works.forEach(el => {%>
+                                <li class="content__author__works__list__item work-preview">            
+                                    <div class="work-preview__content">
+                                        <a href="/works/<%=el.id%>">
+                                            <img class="work-preview__content__preview-img" src="<%if (el.preview_img) {%><%='/img/uploads/previews/' + el.preview_img%><%} else {%>/img/preview-img-not-available.jpg<%}%>">                               
+                                            <header class="work-preview__header">
+                                                <h4 class="work-preview__header__title"><%=el.title%></h4>                                   
+                                            </header>
+                                        </a>
+                                    </div>                        
+                                </li> 
+                            <%}) %>
                             <div class="work-preview__content">
                                 <%if (is_owner) {%>
                                     <a href='/userpage/creatework' class="work-preview__content__plus"><h3 class="work-preview__content__plus__text">+</h3></a>  

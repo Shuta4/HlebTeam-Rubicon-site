@@ -7,7 +7,7 @@ var sql = {
 		  user: 'hlebteam',
 		  password: 'password',
 		  database: 'hlebteam'
-		});
+		}).promise();
 	},
 	connect: function(connection) {
 		connection.connect((err) => {

@@ -34,12 +34,13 @@ router.get("/userpage/im/edit", (req, res, next) => {
 router.get("/userpage/:id", (req, res, next) => {
 	try {
 		if (req.params.id == "im") {
-			// Берем из бд пользователя сессии (если нету сессии, то )
+			// Берем из бд пользователя сессии (если нету сессии, то отправляем пользователя логиниться)
 			if(req.session.user) {
 				res.render("./pages/user_page", {
 					need_login: false,
 					is_owner: true,
-					user: req.session.user
+					user: req.session.user,
+					works: []
 				})
 			} else {
 				res.render("./pages/user_page", {
@@ -50,15 +51,35 @@ router.get("/userpage/:id", (req, res, next) => {
 		else {
 			//Берем пользователя по id
 			
-			var user = {
-
-			}
-			var is_owner = req.session.user.id == user.id
-			res.render("./pages/user_page", {
-				need_login: false,
-				user: user,
-				is_owner: is_owner
-			});	
+			connection = sql.connection();
+			connection.query("SELECT * FROM `users` WHERE `id` = " + req.params.id + "", function(err, rows, fields) {
+				if (err) {
+					console.log("Error has occured during getting user: " + req.params.id);
+					console.log("Error: \n" + err + "\n");
+					return
+				}
+				if (rows[0] != undefined) {
+					if (rows[0].id != undefined || rows[0].id != null) {
+						var user = rows[0];
+						if (req.session.user == undefined) var is_owner = false;
+						else var is_owner = req.session.user.id == user.id;
+						connection.query("SELECT * FROM `works` WHERE `owner_id` = " + user.id + "", (err, rows, fields) => {
+							if (err) {
+								console.log("Error in getting works by user id: " + user.id);
+								console.log("Error: \n" + err + "\n");
+								return;
+							}
+							res.render("./pages/user_page", {
+								need_login: false,
+								user: user,
+								works: rows,
+								is_owner: is_owner
+							});							
+						});
+					}
+					else res.render("./pages/error404");
+				} 
+			}).then(sql.end(connection));
 		}
 	} catch (error) {
 		next(error);
