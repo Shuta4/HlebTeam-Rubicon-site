@@ -1,4 +1,4 @@
-const mysql = require("mysql");
+const mysql = require("mysql2");
 
 var sql = {
 	connection: function() {
@@ -7,7 +7,16 @@ var sql = {
 		  user: 'hlebteam',
 		  password: 'password',
 		  database: 'hlebteam'
-		});
+		}).promise()
+	},
+	pool: function() {
+		return mysql.createPool({
+			connectionLimit: 10,
+			host: 'localhost',
+			user: 'hlebteam',
+			password: 'password',
+			database: 'hlebteam'
+		}).promise()
 	},
 	connect: function(connection) {
 		connection.connect((err) => {
@@ -29,4 +38,4 @@ var sql = {
 	}
 }
 
-module.exports = sql;
+module.exports = pool;
