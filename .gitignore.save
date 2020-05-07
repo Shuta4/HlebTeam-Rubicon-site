@@ -1,0 +1,6 @@
+node_modules/
+build/
+.npm/
+*.ps1
+w*.bat
+
