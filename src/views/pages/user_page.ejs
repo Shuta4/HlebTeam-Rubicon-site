@@ -14,7 +14,7 @@
             <%} else {%>
                 <div class="content__author">
                     <div class="content__author__about">
-                        <img alt="Аватар" class="content__author__about__avatar" src="<%if (user.avatar) {%>/img/uploads/avatars/<%=user.id %>.jpg<%} else {%>/img/profile_no_background.png<%}%>">  
+                        <img alt="Аватар" class="content__author__about__avatar" src="<%if (user.avatar) {%>/img/uploads/avatars/<%=user.id %>.jpg<%} else {%>/img/profile_no_avatar.png<%}%>">  
                         <h3 class="content__author__about__name">
                             <%if (user.name || user.surname) {%>
                                 <%= (user.name + " " + user.surname + " (" + user.username + ")").trim()%> 
