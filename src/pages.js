@@ -32,14 +32,22 @@ router.get("/userpage/im/edit", (req, res, next) => {
 });
 router.get("/userpage/:id", (req, res, next) => {
 	try {
-		if (req.params.id == "im") {
+		if (req.params.id == "im" || req.params.id == req.session.user.id) {
 			// Берем из бд пользователя сессии (если нету сессии, то отправляем пользователя логиниться)
 			if(req.session.user) {
-				res.render("./pages/user_page", {
-					need_login: false,
-					is_owner: true,
-					user: req.session.user,
-					works: []
+				global.pool.query("SELECT * FROM `works` WHERE `owner_id` = " + req.session.user.id, (err, rows, fields) => {
+					if (err) {
+						console.log("Error in getting work with owner id: " + req.session.user.id);
+						console.log("Error: \n" + err + "\n");
+						next(error);
+						return;
+					}
+					res.render("./pages/user_page", {
+						need_login: false,
+						is_owner: true,
+						user: req.session.user,
+						works: rows
+					})
 				})
 			} else {
 				res.render("./pages/user_page", {
@@ -48,7 +56,33 @@ router.get("/userpage/:id", (req, res, next) => {
 			}
 		}
 		else {
-						
+			global.pool.query("SELECT * FROM `users` WHERE `id` = " + req.params.id, (err, rows, fields) => {
+				if (err) {
+					console.log("Error in getting user info with id: " + req.params.id);
+					console.log("Error: \n" + err + "\n");
+					next(error);
+					return
+				}
+				if (rows[0] == undefined) {
+					res.render("./pages/error404");
+					return
+				}
+				var user = rows[0];
+				global.pool.query("SELECT * FROM `works` WHERE `owner_id` = " + user.id, (err, rows, fields) => {
+					if (err) {
+						console.log("Error in getting work with owner id: " + user.id);
+						console.log("Error: \n" + err + "\n");
+						next(error);
+						return;
+					}
+					res.render("./pages/user_page", {
+						need_login: false,
+						is_owner: false,
+						user: user,
+						works: rows
+					})
+				})
+			})	
 		}
 	} catch (error) {
 		next(error);
