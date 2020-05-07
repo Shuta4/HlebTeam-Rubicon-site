@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const sql = require("./db/connection.js")
 
 router.get("/", (req, res, next) => {
 	try {

@@ -2,7 +2,6 @@
 const express = require('express');
 const router = express.Router();
 const Joi = require("joi");
-const sql = require("./db/connection.js");
 const fs = require("fs");
 const multer  = require('multer')
 upload = multer({ dest: './uploads/' });
@@ -47,9 +46,7 @@ router.post("/user/register", async (req, res, next) => {
 			email: result.value.email,
 			password: result.value.password
 		}
-		connection = sql.connection();
-		sql.connect(connection);
-		connection.query('SELECT * FROM users WHERE users.email = "' + user.email + '" OR users.username = "' + user.username + '"', function(err, rows, fields) {
+		global.pool.query('SELECT * FROM users WHERE users.email = "' + user.email + '" OR users.username = "' + user.username + '"', function(err, rows, fields) {
 			if (err) {
 				console.log("Error has occured during checking of user " + user.username + " - " + user.email);
 				console.log("Error: \n" + err + "\n");
@@ -66,9 +63,7 @@ router.post("/user/register", async (req, res, next) => {
 
 					user.password = hash
 					// Если все ок, то регистрируем пользователя в бд
-					connection = sql.connection();
-						sql.connect(connection);
-						connection.query("INSERT INTO `users`(`username`, `email`, `password`) VALUES ('" 
+					global.pool.query("INSERT INTO `users`(`username`, `email`, `password`) VALUES ('" 
 							+ user.username + "', '" 
 							+ user.email + "', '" 
 							+ user.password + "')", function(err) {
@@ -86,7 +81,6 @@ router.post("/user/register", async (req, res, next) => {
 							});
 							req.session.user = user;
 						});
-						sql.end(connection);
 				} else {
 					console.log("Tried to create existing user in registration with username: " + user.username);
 					res.json({
@@ -104,7 +98,6 @@ router.post("/user/register", async (req, res, next) => {
 				return
 			}
 		});
-		sql.end(connection);
 	} catch (error) {
 		res.json({
 			"ok": false,
@@ -118,9 +111,7 @@ router.post("/user/register", async (req, res, next) => {
 router.post("/user/login", async (req, res, next) => {
 	try {
 		var user = req.body;
-		connection = sql.connection();
-		sql.connect(connection);
-		connection.query('SELECT * FROM users WHERE users.email = "' + user.username + '" OR users.username = "' + user.username + '"', function(err, rows, fields) {
+		global.pool.query('SELECT * FROM users WHERE users.email = "' + user.username + '" OR users.username = "' + user.username + '"', function(err, rows, fields) {
 			if (err) {
 				console.log("Error has occured during checking/logging of user " + user.username);
 				console.log("Error: \n" + err + "\n");
@@ -191,10 +182,8 @@ router.post("/user/logout", (req, res, next) => {
 });
 router.get("/user/search/:name", (req, res, next) => {
 	try {
-		connection = sql.connection();
 		const name = req.params.name;
-		sql.connect(connection);
-		connection.query("SELECT * FROM `users` WHERE `username` LIKE '%" + name + "%' OR `name` LIKE '%" + name + "%' OR `surname` LIKE '%" + name + "%'", function(err, rows, fields) {
+		global.pool.query("SELECT * FROM `users` WHERE `username` LIKE '%" + name + "%' OR `name` LIKE '%" + name + "%' OR `surname` LIKE '%" + name + "%'", function(err, rows, fields) {
 			if (err) {
 				console.log("Error has occured during searching user: " + name);
 				console.log("Error: \n" + err + "\n");
@@ -209,7 +198,6 @@ router.get("/user/search/:name", (req, res, next) => {
 				"result": JSON.stringify(rows)
 			});
 		});
-		sql.end(connection);
 	} catch (error) {
 		res.json({
 			"ok": false,
@@ -221,8 +209,6 @@ router.get("/user/search/:name", (req, res, next) => {
 });
 router.get("/user/get/:id", (req, res, next)=> {
 	try {
-		connection = sql.connection();
-		sql.connect(connection);
 		var id = req.params.id;
 		if (id == "im") {
 			if (req.session.user == undefined) {
@@ -234,7 +220,7 @@ router.get("/user/get/:id", (req, res, next)=> {
 			}
 			id = req.session.user.id;
 		}
-		connection.query("SELECT * FROM `users` WHERE `id` = " + id + "", function(err, rows, fields) {
+		global.pool.query("SELECT * FROM `users` WHERE `id` = " + id + "", function(err, rows, fields) {
 			if (err) {
 				console.log("Error has occured during getting user by id: " + id);
 				console.log("Error: \n" + err + "\n");
@@ -259,7 +245,6 @@ router.get("/user/get/:id", (req, res, next)=> {
 				"error": "USERNOTEXIST"
 			}); 
 		});
-		sql.end(connection);		
 	} catch (error) {
 		res.json({
 			"ok": false,
@@ -327,9 +312,7 @@ router.put("/user/update/:id", upload.single('avatar'), (req, res, next) => {
 				}
 			} 
 		}
-		connection = sql.connection();
-		sql.connect(connection);
-		connection.query("UPDATE `users` SET " + 
+		global.pool.query("UPDATE `users` SET " + 
 			"`username` = '" + user.username + "', " +
 			"`email` = '" + user.email + "', " + 
 			password_req + 
@@ -348,8 +331,7 @@ router.put("/user/update/:id", upload.single('avatar'), (req, res, next) => {
 				});
 				return
 			}
-		});
-		sql.end(connection);		
+		});	
 	} catch (error) {
 		res.json({
 			"ok": false,
@@ -390,9 +372,7 @@ router.post("/work", (req, res, next)=> {
 			});
 			return;
 		}
-		connection = sql.connection();
-		sql.connect(connection);
-		connection.query('INSERT INTO `works`(`owner_id`, `title`, `description`, `preview_img`, `download_link`) VALUES (' + work.owner_id + ',"' + work.title + '","' + work.description + '","' + work.preview_img + '","' + work.download_link + '")', function(err) {
+		global.pool.query('INSERT INTO `works`(`owner_id`, `title`, `description`, `preview_img`, `download_link`) VALUES (' + work.owner_id + ',"' + work.title + '","' + work.description + '","' + work.preview_img + '","' + work.download_link + '")', function(err) {
 			if (err) {
 				console.log("Error has occured during creation of user " + username);
 				console.log("Error: \n" + err + "\n");
@@ -407,7 +387,6 @@ router.post("/work", (req, res, next)=> {
 				"ok": true
 			});
 		});
-		sql.end(connection);	
 	} catch (error) {
 		res.json({
 			"ok": false,
@@ -420,10 +399,8 @@ router.post("/work", (req, res, next)=> {
 //Возможно нужны альтернативные способы поиска работ
 router.get("/work/get/:id", (req, res, next)=> {
 	try {
-		connection = sql.connection();
 		const id = req.params.id;
-		sql.connect(connection);
-		connection.query("SELECT * FROM `works` WHERE `id` = " + id, function(err, rows, fields) {
+		global.pool.query("SELECT * FROM `works` WHERE `id` = " + id, function(err, rows, fields) {
 			if (err) {
 				console.log("Error has occured during finding work with id: " + id);
 				console.log("Error: \n" + err + "\n");
@@ -438,7 +415,6 @@ router.get("/work/get/:id", (req, res, next)=> {
 				"result": JSON.stringify(rows)
 			});
 		});
-		sql.end(connection);	
 	} catch (error) {
 		res.json({
 			"ok": false,
@@ -450,10 +426,8 @@ router.get("/work/get/:id", (req, res, next)=> {
 });
 router.get("/work/user/:id", (req, res, next)=> {
 	try {
-		connection = sql.connection();
 		const id = req.params.id;
-		sql.connect(connection);
-		connection.query("SELECT * FROM `works` WHERE `owner_id` = " + id, function(err, rows, fields) {
+		global.pool.query("SELECT * FROM `works` WHERE `owner_id` = " + id, function(err, rows, fields) {
 			if (err) {
 				console.log("Error has occured during searching works by user-id: " + id);
 				console.log("Error: \n" + err + "\n");
@@ -468,7 +442,6 @@ router.get("/work/user/:id", (req, res, next)=> {
 				"result": JSON.stringify(rows)
 			});
 		});
-		sql.end(connection);
 	} catch (error) {
 		res.json({
 			"ok": false,
@@ -490,9 +463,7 @@ router.put("/work/update/:id", (req, res, next)=> {
 		var work = req.body;
 		const work_id = req.params.id; 
 		const user_id = req.session.user.id;
-		connection = sql.connection();
-		sql.connect(connection);
-		connection.query("UPDATE `works` SET " + 
+		global.pool.query("UPDATE `works` SET " + 
 			"`username` = '" + user.username + "', " +
 			"`email` = '" + user.email + "', " +  
 			"`name` = '" + user.name + "', " + 
@@ -512,7 +483,6 @@ router.put("/work/update/:id", (req, res, next)=> {
 				"ok": true
 			});
 		});
-		sql.end(connection);	
 	} catch (error) {
 		res.json({
 			"ok": false,
