@@ -38,4 +38,4 @@ var sql = {
 	}
 }
 
-module.exports = pool;
+module.exports = sql;
