@@ -4,11 +4,18 @@ const cookie = require('express-session');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const path = require('path');
+const mysql = require('mysql2');
 
 const port = 4000;
 const app = express();
 
-const sql = require('./db/connection');
+global.pool = mysql.createPool({
+	connectionLimit: 100,
+	host: 'localhost',
+	user: 'hlebteam',
+	password: 'password',
+	database: 'hlebteam'
+})
 
 app.set("view engine", "ejs");
 app.set('views', __dirname + '/views');
@@ -30,10 +37,8 @@ app.use((req, res, next) => {
 			next();
 			return	
 		}
-		connection = sql.connection();
-		sql.connect(connection);
 		var id = req.session.user.id;
-		connection.query("SELECT * FROM `users` WHERE `id` = " + id + "", function(err, rows, fields) {
+		global.pool.query("SELECT * FROM `users` WHERE `id` = " + id + "", function(err, rows, fields) {
 			if (err) {
 				console.log("Error has occured during checking user: " + id);
 				console.log("Error: \n" + err + "\n");
@@ -47,7 +52,6 @@ app.use((req, res, next) => {
 				next();	
 			} 
 		});
-		sql.end(connection);
 	} catch (error) {
 		console.log(error);
 		next(error);
