@@ -79,7 +79,8 @@ router.get("/userpage/:id", (req, res, next) => {
 					}
 					else res.render("./pages/error404");
 				} 
-			}).then(sql.end(connection));
+			});
+			sql.end(connection);
 		}
 	} catch (error) {
 		next(error);
