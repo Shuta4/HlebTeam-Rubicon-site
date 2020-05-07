@@ -331,6 +331,9 @@ router.put("/user/update/:id", upload.single('avatar'), (req, res, next) => {
 				});
 				return
 			}
+			res.json({
+				"ok": true
+			})
 		});	
 	} catch (error) {
 		res.json({
