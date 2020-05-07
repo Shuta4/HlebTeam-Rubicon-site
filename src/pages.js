@@ -52,6 +52,7 @@ router.get("/userpage/:id", (req, res, next) => {
 			//Берем пользователя по id
 			
 			connection = sql.connection();
+			sql.connect(connection);
 			connection.query("SELECT * FROM `users` WHERE `id` = " + req.params.id + "", function(err, rows, fields) {
 				if (err) {
 					console.log("Error has occured during getting user: " + req.params.id);
@@ -63,7 +64,9 @@ router.get("/userpage/:id", (req, res, next) => {
 						var user = rows[0];
 						if (req.session.user == undefined) var is_owner = false;
 						else var is_owner = req.session.user.id == user.id;
-						connection.query("SELECT * FROM `works` WHERE `owner_id` = " + user.id + "", (err, rows, fields) => {
+						connection2 = sql.connection();
+						sql.connect(connection2);
+						connection2.query("SELECT * FROM `works` WHERE `owner_id` = " + user.id + "", (err, rows, fields) => {
 							if (err) {
 								console.log("Error in getting works by user id: " + user.id);
 								console.log("Error: \n" + err + "\n");
@@ -76,6 +79,7 @@ router.get("/userpage/:id", (req, res, next) => {
 								is_owner: is_owner
 							});							
 						});
+						sql.end(connection2);
 					}
 					else res.render("./pages/error404");
 				} 
