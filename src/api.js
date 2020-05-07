@@ -183,7 +183,7 @@ router.post("/user/logout", (req, res, next) => {
 router.get("/user/search/:name", (req, res, next) => {
 	try {
 		const name = req.params.name;
-		global.pool.query("SELECT * FROM `users` WHERE `username` LIKE '%" + name + "%' OR `name` LIKE '%" + name + "%' OR `surname` LIKE '%" + name + "%'", function(err, rows, fields) {
+		global.pool.query("SELECT * FROM `users` WHERE `username` LIKE '%" + name + "%' OR `name` LIKE '%" + name + "%' OR `surname` LIKE '%" + name + "%' OR `name` + ' ' + `surname` LIKE '%"+ name +"%'", function(err, rows, fields) {
 			if (err) {
 				console.log("Error has occured during searching user: " + name);
 				console.log("Error: \n" + err + "\n");
