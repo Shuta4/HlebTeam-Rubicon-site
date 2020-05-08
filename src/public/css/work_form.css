@@ -2,6 +2,38 @@
 body{
   background: rgb(7, 6, 49);
 }
+
+.save_form{
+  background: #008cff00;
+  border: 2px solid #008cff;
+  color: white; 
+  width: 300px;
+  height: 50px;
+  font-size: 20px;
+  border-radius: 50px; 
+  cursor: pointer; 
+  overflow: hidden;
+}
+.save_form:before,
+  .save_form:after{
+  position: absolute;
+  content: '';
+  width: 48px;
+  height: 46px;
+  background: #008cff;
+  margin-top: -12px;
+  left: 4.7%;
+  border-radius: 50px;
+  transition: .3s;
+}
+.save_form:after{
+  opacity: 1;
+}
+ .save_form:hover::before,
+ .save_form:hover::after{
+   opacity: .3;
+   width: 91%;  
+  }
 .work-form{
   margin-top: 70px;
   min-height: 850px;
@@ -14,12 +46,12 @@ body{
 }
 .work-form__title {
   position: relative;
-  color: rgb(0, 140, 255);
+  color: #008cff;
   text-align: center;
   font-weight: 300;
   font-size: 25px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  text-decoration: underline rgb(0, 140, 255);
+  text-decoration: underline #008cff;
 }
 .work-form__form {
   background: black;
@@ -31,9 +63,9 @@ body{
   flex-wrap: nowrap;
   align-items: center;
   color: #000;
-  border: 2px solid rgb(0, 140, 255);
+  border: 2px solid #008cff;
   border-radius: 25px;
-  box-shadow: 0 0 15px rgb(0, 140, 255);
+  box-shadow: 0 0 15px #008cff;
   box-sizing: border-box;
   font-size: 18px;
   font-weight: 300;
