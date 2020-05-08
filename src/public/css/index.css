@@ -39,26 +39,33 @@ body{
   height: auto;
   box-shadow:  0 0 25px black;
 }
+.content__block__list{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
 .content__block{
   background: rgb(255, 255, 255);
-  width: 70%;
+  width: 65%;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   box-shadow: 0 0 25px black;
   margin: 40px;
+  border-radius: 10px;
 }
 .class_blok_button{
   background: url('/img/refresh.svg');
   width: 30px;
   height: 30px;
-  margin: 10px;
-  margin-top: 5px;
+  margin-top: 60px;
   border-radius: 50%;
   border: 0px solid #ffffff00;
   cursor: pointer;
   position: fixed;
-  left: -1px;
+
 }
 .class_blok_button:focus{
   background: url('/img/refresh-hover.svg');
@@ -73,6 +80,21 @@ body{
   }
 }
 @media (max-width: 1700px) {
+  .class_blok_button{
+    background: url('/img/refresh.svg');
+    width: 30px;
+    height: 30px;
+    margin-top: 20px;
+    border-radius: 50%;
+    border: 0px solid #ffffff00;
+    cursor: pointer;
+    position: fixed;
+  
+  }
+  .class_blok_button:focus{
+    background: url('/img/refresh-hover.svg');
+    animation: 0.5s linear 0s normal none infinite running rotate;
+  }
   .content__form-find-users__input-name{
   background: #cecece;
   border: 2px solid #0044ff00;
@@ -115,6 +137,21 @@ body{
 }
 
 @media (max-width: 900px) {
+  .class_blok_button{
+    background: url('/img/refresh.svg');
+    width: 30px;
+    height: 30px;
+    margin-top: 20px;
+    border-radius: 50%;
+    border: 0px solid #ffffff00;
+    cursor: pointer;
+    position: fixed;
+  
+  }
+  .class_blok_button:focus{
+    background: url('/img/refresh-hover.svg');
+    animation: 0.5s linear 0s normal none infinite running rotate;
+  }
   .content_blok_2{
     background: #292929;
     width: 100%;
@@ -138,6 +175,21 @@ body{
   }
 }
 @media (max-width:  720px) {
+  .class_blok_button{
+    background: url('/img/refresh.svg');
+    width: 30px;
+    height: 30px;
+    margin-top: 20px;
+    border-radius: 50%;
+    border: 0px solid #ffffff00;
+    cursor: pointer;
+    position: fixed;
+  
+  }
+  .class_blok_button:focus{
+    background: url('/img/refresh-hover.svg');
+    animation: 0.5s linear 0s normal none infinite running rotate;
+  }
   .content__form-find-users__input-name{
     background: #cecece;
     border: 2px solid #0044ff00;
@@ -183,103 +235,115 @@ body{
     font-size: 14px;
   }
 }
-@media (max-width:  530px) {
-  .class_blok_button{
-    background: url('/img/refresh.svg') rgba(255, 255, 255, 0.356);
-    width: 50px;
-    height: 50px;
-    margin: 10px;
-    border-radius: 50%;
-    cursor: pointer;
-    position: fixed;
-    left: -1px;
+  @media (max-width:  730px) {
+    .class_blok_button{
+      background: url('/img/refresh.svg');
+      width: 30px;
+      height: 30px;
+      margin-top: 20px;
+      border-radius: 50%;
+      border: 0px solid #ffffff00;
+      cursor: pointer;
+      position: fixed;
+    
+    }
+    .class_blok_button:focus{
+      background: url('/img/refresh-hover.svg');
+      animation: 0.5s linear 0s normal none infinite running rotate;
+    }
+    .content__author__works__list__item{
+      width: 70%;
+      height: 250px;
+      font-size: 14px;
+    }
+    .work-preview__content{
+      width: 100%;
+      height: 200px;
+      font-size: 14px;
+    }
+    .work-preview__content__preview-img{
+      width: 100%;
+      height: 218px;
+      font-size: 14px;
+    }
   }
-  .class_blok_button:hover{
-    border: 2px solid #ff000000;
+  @media (max-width:  600px) {
+    .class_blok_button{
+      background: url('/img/refresh.svg');
+      width: 30px;
+      height: 30px;
+      margin-top: 20px;
+      border-radius: 50%;
+      border: 0px solid #ffffff00;
+      cursor: pointer;
+      position: fixed;
+    
+    }
+    .class_blok_button:focus{
+      background: url('/img/refresh-hover.svg');
+      animation: 0.5s linear 0s normal none infinite running rotate;
+    }
+    .content__author__works__list__item{
+      width: 90%;
+      height: 250px;
+      font-size: 14px;
+    }
+    .work-preview__content{
+      width: 100%;
+      height: 200px;
+      font-size: 14px;
+    }
+    .work-preview__content__preview-img{
+      width: 100%;
+      height: 218px;
+      font-size: 14px;
+    }
   }
-  .content__form-find-users__input-name{
-    background: #cecece;
-    border: 2px solid #0044ff00;
-    border-radius: 50px;
-    margin: 10px;
-    width: 50%;
-    padding: 5px;
-    height: 30px;
-    transition: all 400ms;
-    font-size: 14px;
-  }
-  .content__form-find-users__input-name:hover{
-    border: 2px solid #008cff;
-    transition: all 400ms;
-  }
-  .content__form-find-users__find-button{ 
-    border: 2px solid #008cff;
-    border-radius: 50px;
-    width: 100px;
-    height: 55px;
-    transition: all 400ms;
-    margin-left: -10px;
-    font-size: 14px;
-  }
-  .content__form-find-users__find-button:hover{ 
-    border: 2px solid #008cff;
-    border-radius: 0px;
-    transition: all 400ms;
-  }
-  .content_blok_2{
-    background: #292929;
-    width: 100%;
-    max-height: 9000px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    flex-wrap: wrap;
-   }
-  .content__author__works__list__item{
-    width: 100%;
-    font-size: 14px;
-  }
-  .work-preview__content{
-    width: 100%;
-    height: 200px;
-    font-size: 14px;
-  }
-  .work-preview__content__preview-img{
-    width: 100%;
-    height: 230px;
-    font-size: 14px;
-  }
-}
+  @media (max-width:  400px) {
+    .class_blok_button{
+      background: url('/img/refresh.svg');
+      width: 30px;
+      height: 30px;
+      margin-top: 20px;
+      border-radius: 50%;
+      border: 0px solid #ffffff00;
+      cursor: pointer;
+      position: fixed;
+    
+    }
+    .class_blok_button:focus{
+      background: url('/img/refresh-hover.svg');
+      animation: 0.5s linear 0s normal none infinite running rotate;
+    }
 
-@media (max-width:  350px) {
-  .content__form-find-users__input-name{
-    background: #cecece;
-    border: 2px solid #0044ff00;
-    border-radius: 50px;
-    margin: 10px;
-    width: 62%;
-    padding: 5px;
-    height: 30px;
-    transition: all 400ms;
-    font-size: 14px;
+    .content__block{
+      background: rgb(255, 255, 255);
+      width: 100% ;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 0 25px rgb(0, 0, 0);
+      margin: 5px;
+      border-radius: 0px;
+    }
+
+    .content__author__works__list__item{
+      width: 90%;
+      height: 250px;
+      font-size: 14px;
+    }
+    .work-preview__content{
+      width: 100%;
+      height: 280px;
+      font-size: 14px;
+    }
+    .work-preview__content__preview-img{
+      width: 100%;
+      height: 280px;
+      font-size: 14px;
+    }
   }
-  .content__form-find-users__input-name:hover{
-    border: 2px solid #008cff;
-    transition: all 400ms;
-  }
-  .content__form-find-users__find-button{ 
-    border: 2px solid #008cff;
-    border-radius: 50px;
-    width: 80px;
-    height: 55px;
-    transition: all 400ms;
-    margin-left: -10px;
-    font-size: 14px;
-  }
-  .content__form-find-users__find-button:hover{ 
-    border: 2px solid #008cff;
-    border-radius: 0px;
-    transition: all 400ms;
-  }
-}
+
+
 
