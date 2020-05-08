@@ -3,3 +3,4 @@ build/
 *.ps1
 *.bat
 .npm/
+src/public/img/uploads/
