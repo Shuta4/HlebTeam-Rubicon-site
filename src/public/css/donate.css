@@ -1,7 +1,7 @@
 @import url("./style.css");
 
 .content__donate {
-    background: url('/img/donat-back.jpg') no-repeat;
+    background: url('/img/donat-back.png') #070631 no-repeat;
     widows: 100%;
     display: flex;
     flex-wrap: nowrap;
@@ -9,6 +9,7 @@
     align-content: center;
     justify-content: center;
     height: 100vh;
+    background-position: bottom right;
 }
 .content__donate__title {
     position: relative;
@@ -58,6 +59,12 @@
     position: relative;
     border: 2px solid #ffd000;
 }
+@media(max-width: 1580px) {
+    .content__donate {
+        background: #070631 none;
+    }
+}
+
 @media(max-width: 1080px) {
     .content__donate__title {
         font-size: 80px;
