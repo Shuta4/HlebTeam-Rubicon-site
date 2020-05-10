@@ -32,7 +32,7 @@ router.get("/userpage/im/edit", (req, res, next) => {
 });
 router.get("/userpage/:id", (req, res, next) => {
 	try {
-		if (req.params.id == "im" || req.params.id == req.session.user.id) {
+		if (req.params.id == "im") {
 			// Берем из бд пользователя сессии (если нету сессии, то отправляем пользователя логиниться)
 			if(req.session.user) {
 				global.pool.query("SELECT * FROM `works` WHERE `owner_id` = " + req.session.user.id, (err, rows, fields) => {
@@ -75,6 +75,8 @@ router.get("/userpage/:id", (req, res, next) => {
 						next(error);
 						return;
 					}
+					var is_owner = false;
+					if(req.session.user != undefined) is_owner = req.session.user.id == user.id
 					res.render("./pages/user_page", {
 						need_login: false,
 						is_owner: false,
