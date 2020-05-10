@@ -94,7 +94,7 @@ body{
   }
 }
 
-@media (max-width: 1870px) {
+@media (max-width: 1890px) {
   .class_blok_button{
     background: url('/img/refresh.svg');
     width: 30px;
