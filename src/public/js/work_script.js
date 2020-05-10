@@ -52,10 +52,12 @@ document.querySelectorAll(".delete_link").forEach(el => {
 	el.addEventListener("click", deleteLink);
 });
 var deleteLink = function(event) {
+	event.preventDefault();
 	i = event.target.getAttribute("data");
 	document.querySelectorAll(".work_link")[i].remove();
 }
-var createLink = function() {
+var createLink = function(event) {
+	event.preventDefault();
 	i = document.querySelectorAll(".work_link").length;
 	document.querySelector(".work_links").insertAdjacentHTML("beforeend", 
 		`<div class="work-form__form__links__link work_link">
@@ -65,6 +67,7 @@ var createLink = function() {
         </div>`)
 }
 var deleteImage = function(event) {
+	event.preventDefault();
 	i = event.target.getAttribute("data-i");
 	id = event.target.getAttribute("data-id");
 	document.querySelectorAll(".work_image")[i].remove();
@@ -74,3 +77,5 @@ var deleteImage = function(event) {
 		if (!res.ok) console.log(res.error);
 	})
 }
+document.querySelector(".add_image").addEventListener("click", createLink);
+document.querySelector(".delete_image").addEventListener("click", deleteImage);
