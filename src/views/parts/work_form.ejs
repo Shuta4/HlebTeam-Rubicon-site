@@ -17,23 +17,24 @@
       <textarea name="description" class="work-form__form__description" placeholder="Описание"><%=work.description %></textarea>
       <input type="text" name="download_link" class="work-form__form__link" value="<%=work.download_link %>" placeholder="Ссылка на скачивание">
       <div class="work-form__form__wrapper">
-        <div class="work-form__form__links">
+        <div class="work-form__form__links work_links">
           <h5 class="work-form__form__links__title">Добавьте ссылку</h5>
           <button class="button work-form__form__links__button add_link">Добавить</button>
           <%work.links.forEach((el, i) => {%>
-          <div class="work-form__form__links__link">
+          <div class="work-form__form__links__link work_link">
             <input type="text" name="link_title<%=i%>" value="<%=el.title%>" class="work-form__form__links__link__title">
             <input type="url" name="link_url<%=i%>" value="<%=el.link%>" class="work-form__form__links__link__link"> 
+            <button data="<%=i%>" class="work-form__form__links__link work_link_delete">Удалить</button>
           </div>
           <%})%>
         </div>
-        <div class="work-form__form__images">
+        <div class="work-form__form__images work_images">
           <h5 class="work-form__form__images__title">Добавьте изображение</h5>
-          <button class="button work-form__form__images__button add_image">Добавить</button>
+          <input name="images" multiple type="file" accept="image/jpeg" class="button work-form__form__images__button add_image">Добавить</button>
           <%work.images.forEach((el, i) => {%>
           <div class="work-form__form__images__image">
-            <img class="work-form__form__images__image__image image<%=i%>" src="/img/uploads/works_images/<%=el%>.jpg">
-            <button class="work-form__form__images__image__button delete_image<%=i%>">Удалить</button> 
+            <img class="work-form__form__images__image__image image<%=i%>" src="/img/uploads/works_images/<%=el.id%>.jpg">
+            <button class="work-form__form__images__image__button delete_image<%=i%>" data="<%=el.id%>">Удалить</button> 
           </div>
           <%})%>
         </div>
@@ -41,8 +42,4 @@
       <input type="submit" name="submit" class="save_form">Сохранить</input>
     </form>
 </div>
-<%if (create_new) {%>
-  <script src="/js/create_work.js"></script>
-<%} else {%>
-  <script src="/js/edit_work.js"></script>
-<%}%>
+<script src="/js/work_script.js"></script>

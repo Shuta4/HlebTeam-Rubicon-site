@@ -21,6 +21,7 @@ router.get("/", (req, res, next) => {
 		UNKNOWNERROR - Unknown error,
 		USERNOTEXIST - User is not exist,
 		ERRINCORRECTPASSWORD - password for user is incorrect
+		IMGNOTEXIST - There is no image
 */	
 
 const registerValidation = Joi.object().keys({
@@ -358,7 +359,7 @@ router.delete("/user/delete/:id", (req, res, next)=> {
 	}
 });
 
-router.post("/work", (req, res, next)=> {
+router.post("/work", upload.fields([{ name: 'preview', maxCount: 1 }, { name: 'images', maxCount: 100 }]), (req, res, next)=> {
 	try {
 		var work = req.body;
 		if (req.session.user == undefined) {
@@ -375,7 +376,12 @@ router.post("/work", (req, res, next)=> {
 			});
 			return;
 		}
-		global.pool.query('INSERT INTO `works`(`owner_id`, `title`, `description`, `preview_img`, `download_link`) VALUES (' + work.owner_id + ',"' + work.title + '","' + work.description + '","' + work.preview_img + '","' + work.download_link + '")', function(err) {
+		var preview = req.files.preview[0];
+		global.pool.query('INSERT INTO `works`(`owner_id`, `title`, `description`, `preview_img`, `download_link`) VALUES (' + work.owner_id + ',"' 
+			+ work.title + '","' 
+			+ work.description + '",' 
+			+ preview ? 1 : 0 + ',"' 
+			+ work.download_link + '")', function(err, result) {
 			if (err) {
 				console.log("Error has occured during creation of user " + username);
 				console.log("Error: \n" + err + "\n");
@@ -385,6 +391,41 @@ router.post("/work", (req, res, next)=> {
 				})
 				return
 			}
+			var id = result.insertId;
+			if (preview) {
+				if (preview.mimetype == "image/jpeg" && preview.size <= 5242880) {
+					fs.rename(preview.path, 'src/public/img/uploads/previews/' + id + ".jpg", function (err) {
+						if (err) console.log(err);
+					}); 
+				} else {
+					fs.unlink(preview.path, (err) => {
+						if (err) console.log(err);
+					})
+					res.json({
+						"ok": false,
+						"error": "INCORRECTIMAGE"
+					})
+					return;
+				}
+			}
+			req.files.images.forEach(el => {
+				if (el.mimetype == "image/jpeg" && el.size <= 5242880) {
+					pool.query("INSERT INTO `images`(`owner_type`, `owner_id`) VALUES ('work', " + id + ")", (err, result) => {
+						fs.rename(el.path, 'src/public/img/uploads/images/' + result.insertId + ".jpg", function (err) {
+							if (err) console.log(err);
+						});
+					}) 
+				} else {
+					fs.unlink(el.path, (err) => {
+						if (err) console.log(err);
+					})
+					res.json({
+						"ok": false,
+						"error": "INCORRECTIMAGE"
+					})
+					return;
+				}
+			});
 			console.log("Succesfully created work " + owner_id + " - " + title);
 			res.json({
 				"ok": true
@@ -508,24 +549,40 @@ router.delete("/work/delete/:id", (req, res, next)=> {
 		next(error)	
 	}
 });
-
-router.post("/img/upload", (req, res, next)=> {
+router.get("/img/delete/:id", (req, res, next)=> {
 	try {
-		res.send("Загрузка фотографии на сервер");
-		next();	
-	} catch (error) {
-		res.json({
-			"ok": false,
-			"error": "UNKNOWNERROR"
-		});
-		console.log(error)
-		next(error)	
-	}
-});
-router.get("/img/:id", (req, res, next)=> {
-	try {
-		res.send("Получение картинки"); // Возможно нужно больше способов получения
-		next();		
+		global.pool.query("SELECT * FROM `works` WHERE `id` = " + req.params.id, (err, rows, fields) => {
+			if (err) {
+				console.log("Error has occured during deleting img with id: " + req.params.id);
+				console.log("Error: \n" + err + "\n");
+				res.json({
+					"ok": false,
+					"error": "ERRDBCONNECTION"
+				});
+				return
+			}
+			if (rows[0] = undefined) {
+				res.json({
+					"ok": false,
+					"error": "IMGNOTEXIST"
+				});
+				return	
+			} 
+			global.pool.query("DELETE FROM `images` WHERE `id` = " + req.params.id, (err) => {
+				if (err) {
+					console.log("Error has occured during deleting img with id: " + req.params.id);
+					console.log("Error: \n" + err + "\n");
+					res.json({
+						"ok": false,
+						"error": "ERRDBCONNECTION"
+					});
+					return
+				}	
+				res.json({
+					"ok": true
+				});	
+			});
+		})
 	} catch (error) {
 		res.json({
 			"ok": false,
