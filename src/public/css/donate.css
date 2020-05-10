@@ -1,5 +1,7 @@
 @import url("./style.css");
-
+body{
+    background: #070631;
+}
 .content__donate {
     background: url('/img/donat-back.png') #070631 no-repeat;
     widows: 100%;
@@ -103,11 +105,21 @@
     .footer-main__bottom-wrapper__container__list__item__images{
         position: relative;
         top: 60px;
-        width: 80px;
-        height: 80px;
+        width: 50px;
+        height: 50px;
+        border: 3px solid rgba(0, 0, 0, 0);
+        border-radius: 100px;
+        margin: 10px;
+        transition: all 400ms;
+    }
+    .footer-main__bottom-wrapper__container__list__item__images:hover{
+        position: relative;
+        top: 60px;
+        width: 50px;
+        height: 50px;
         border: 3px solid rgb(0, 140, 255);
         border-radius: 100px;
-        margin: 15px;
+        margin: 10px;
         transition: all 400ms;
     }
 }
