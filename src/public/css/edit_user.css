@@ -129,14 +129,27 @@ body{
     }
 }
 @media (max-width: 380px) {
+    .user-form__form__avatar-upload{
+        flex-direction: column;
+        width: 85px;
+        height: 17px;
+        outline: 2px dashed #008cff;
+        margin: 13px;
+        margin-left: 20px;
+        outline-offset: 5px;
+        background-color: #e0f2f700;
+        font-family: 'Segoe UI';
+        color: #ff000000;
+        background: url('/img/upload.svg') rgba(0, 0, 0, 0);
+   }
     .user-form{
         width: 90%;
-        height: 650px;
+        height: 500px;
         background: rgb(7, 0, 19);
         border: 2px solid #008cff;
         border-radius: 20px;
         box-shadow: 0 0 15px #008cff;
-        font-size: 14px;
+        font-size: 10px;
     }
     .user-form__form__input{
         background: rgba(0, 0, 0, 0);
@@ -150,12 +163,12 @@ body{
         transition: all 400ms;
     }
     .user-form__form__avatar-delete{
-        width: 20px;
-        height: 20px;
-        margin-left: 20px;
-        outline: 2px dashed #008cff;
+        width: 15px;
+        height: 15px;
+        margin-left: 25px;
+        outline: 0px dashed #008cff;
         outline-offset: 1px;
-        margin: 30px;
+        margin: 2px;
     }
     .user-form__form__about{
         background: rgba(0, 0, 0, 0);
