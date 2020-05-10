@@ -185,4 +185,12 @@ body{
         font-size: 12px;
         transition: all 400ms;
     }
+    .content{
+        height: 1000px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+    }
 }
