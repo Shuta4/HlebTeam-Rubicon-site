@@ -144,7 +144,7 @@ body{
    }
     .user-form{
         position: relative;
-        top: 70px;
+        top: -50px;
         width: 95%;
         height: 500px;
         background: rgb(7, 0, 19);
@@ -186,7 +186,7 @@ body{
         transition: all 400ms;
     }
     .content{
-        height: 1000px;
+        height: 850px;
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
