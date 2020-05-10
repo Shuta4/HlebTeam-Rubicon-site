@@ -111,5 +111,8 @@ router.get("/about", (req, res, next) => {
 		next(error);
 	}
 });
-
+//TEMP
+router.get("/tuseredit", (req, res, next)=>{
+	res.render("./pages/edit_user");
+})
 module.exports = router;

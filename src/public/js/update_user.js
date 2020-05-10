@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			switch (res.error) {
 				case "ERRNOTLOGGEDIN":
 					form.querySelector(messageBoxClass).innerHTML = "Требуется войти в аккаунт";
-					window.location.href = "/userpage/im";
+					// window.location.href = "/userpage/im";
 					break
 				default:
 					form.querySelector(messageBoxClass).innerHTML = "Неизвестная ошибка";

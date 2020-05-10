@@ -1,7 +1,9 @@
 @import url("./style.css");
-
+body{
+    background: #070631;
+}
 .content__donate {
-    background: url('/img/donat-back.jpg') no-repeat;
+    background: url('/img/donat-back.png') #070631 no-repeat;
     widows: 100%;
     display: flex;
     flex-wrap: nowrap;
@@ -9,6 +11,7 @@
     align-content: center;
     justify-content: center;
     height: 100vh;
+    background-position: bottom right;
 }
 .content__donate__title {
     position: relative;
@@ -58,6 +61,12 @@
     position: relative;
     border: 2px solid #ffd000;
 }
+@media(max-width: 1580px) {
+    .content__donate {
+        background: #070631 none;
+    }
+}
+
 @media(max-width: 1080px) {
     .content__donate__title {
         font-size: 80px;
@@ -96,11 +105,21 @@
     .footer-main__bottom-wrapper__container__list__item__images{
         position: relative;
         top: 60px;
-        width: 80px;
-        height: 80px;
+        width: 50px;
+        height: 50px;
+        border: 3px solid rgba(0, 0, 0, 0);
+        border-radius: 100px;
+        margin: 10px;
+        transition: all 400ms;
+    }
+    .footer-main__bottom-wrapper__container__list__item__images:hover{
+        position: relative;
+        top: 60px;
+        width: 50px;
+        height: 50px;
         border: 3px solid rgb(0, 140, 255);
         border-radius: 100px;
-        margin: 15px;
+        margin: 10px;
         transition: all 400ms;
     }
 }
