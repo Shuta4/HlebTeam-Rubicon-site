@@ -143,6 +143,8 @@ body{
         background: url('/img/upload.svg') rgba(0, 0, 0, 0);
    }
     .user-form{
+        position: relative;
+        top: 70px;
         width: 95%;
         height: 500px;
         background: rgb(7, 0, 19);
