@@ -810,3 +810,97 @@ screen -x server
 git pull
 #1588868421
 screen -r server 
+#1588928429
+ls src/uploads
+#1588928438
+ls src/public/img/uploads/
+#1588928453
+ls uploads/
+#1588928477
+ls uploads/
+#1588928507
+nano .gitignore
+#1588928519
+git pull
+#1588928525
+git add .gitignore
+#1588928541
+git commit -m "update .gitignore"
+#1588928543
+git push
+#1588928554
+git pull
+#1588928558
+git push
+#1588928573
+git push
+#1588928597
+git add .
+#1588928603
+git commit -m "upd"
+#1588928636
+cat .gitignore
+#1588928639
+ls
+#1588928643
+ls -a
+#1588928662
+git fetch --all
+#1588928674
+git reset --hard origin/master 
+#1588928684
+ls src/public/img/uploads/
+#1588928687
+ls src/public/img/uploads/avatars/
+#1588928712
+ls
+#1588928726
+git pull
+#1588931244
+git pull origin master
+#1588931485
+git pull origin master
+#1588932575
+git pull origin master
+#1588941435
+nano src/views/pages/index.ejs 
+#1588941489
+git add src/views/pages/index.ejs 
+#1588941511
+git commit -m "done reload button"
+#1588941518
+git push
+#1589054415
+git pull
+#1589054426
+screen -r server 
+#1589085505
+screen -r server 
+#1589085792
+git pull
+#1589101438
+git pull origin master
+#1589093906
+git pull origin master
+#1589101884
+git pull origin master
+#1589096036
+git pull origin master
+#1589102057
+git pull
+#1589102067
+screen -r server 
+#1589102006
+git pull origin master
+#1589102140
+git pull origin mastergit pull origin master\
+#1589102218
+git pull origin master
+#1589102390
+git pull origin master
+#1589102518
+git pull origin master
+#1589102627
+git pull origin master
+#1589096787
+git pull origin master
