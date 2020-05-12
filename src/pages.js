@@ -115,4 +115,9 @@ router.get("/about", (req, res, next) => {
 router.get("/tuseredit", (req, res, next)=>{
 	res.render("./pages/edit_user");
 })
+router.get("/tcw", (req, res, next)=>{
+	res.render("./pages/update_work",{
+		create_new: true
+	});
+})
 module.exports = router;

@@ -8,18 +8,16 @@
   </h3>
 	<form class="work-form__form">
       <div class="work-form__form__preview-image">
-        <div class="work-form__form__preview-image__add">+</div>
         <!-- <div class="swiper-slide"><img class="work-form__form__preview-image__image" src="/img/site-bonpass-temp.jpg" alt="Фото работы"></div> -->
       </div>
       <input type="file" name="preview" class="work-form__form__preview" placeholder="Добавьте превью">
-      <input type="checkbox" name="delete_preview" class="work-form__form__delete-preview"> Удалить превью
+      <input type="checkbox" name="delete_preview" class="work-form__form__delete-preview"> Удалить превью?
       <input type="text" name="title" required class="work-form__form__title" placeholder="Название работы" value="<%=work.title %>">
       <textarea name="description" class="work-form__form__description" placeholder="Описание"><%=work.description %></textarea>
       <input type="text" name="download_link" class="work-form__form__link" value="<%=work.download_link %>" placeholder="Ссылка на скачивание">
       <div class="work-form__form__wrapper">
         <div class="work-form__form__links work_links">
-          <h5 class="work-form__form__links__title">Добавьте ссылку</h5>
-          <button class="button work-form__form__links__button add_link">Добавить</button>
+          <button class="button work-form__form__links__button add_link">+</button>
           <%work.links.forEach((el, i) => {%>
           <div class="work-form__form__links__link work_link">
             <input type="text" name="link_title<%=i%>" value="<%=el.title%>" class="work-form__form__links__link__title">
@@ -29,8 +27,9 @@
           <%})%>
         </div>
         <div class="work-form__form__images work_images">
-          <h5 class="work-form__form__images__title">Добавьте изображение</h5>
-          <input name="images" multiple type="file" accept="image/jpeg" class="button work-form__form__images__button add_image">Добавить</button>
+          <input name="images" multiple type="file" accept="image/jpeg" class="work-form__form__images__button add_image">Добавить картинки?</button>
+          <br>
+          <input type="checkbox" name="delete_preview" class="work-form__form__delete-preview"> Удалить картинки?
           <%work.images.forEach((el, i) => {%>
           <div class="work-form__form__images__image">
             <img class="work-form__form__images__image__image image<%=i%>" src="/img/uploads/works_images/<%=el.id%>.jpg">
@@ -39,7 +38,7 @@
           <%})%>
         </div>
       </div>
-      <input type="submit" name="submit" class="save_form">Сохранить</input>
+      <input type="submit" name="submit" class="save_form"></input>
     </form>
 </div>
 <script src="/js/work_script.js"></script>

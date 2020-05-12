@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+**<!DOCTYPE html>
 <html>
 <%- include("../parts/head.ejs", {title: (create_new ? "Создание работы" : "Редактирование работы"), style_href: "/css/work_form.css"}) %>
 <body>
@@ -8,7 +8,9 @@
             <%- include("../parts/work_form.ejs", {create_new: true, work: {
             description: "",
             title: "",
-            download_link: ""
+            download_link: "", 
+            images: [],
+            links: []
         }}) %>    
         </main>        
         <%- include("../parts/footer.ejs") %>
