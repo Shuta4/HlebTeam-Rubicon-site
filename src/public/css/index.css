@@ -1,7 +1,7 @@
 @import url("./style.css");
 @import url("./work_preview.css");
 body{
-  background: rgb(5, 0, 46);
+  background: #05002e;
 }
 .content__form-find-users__input-name{
   background: #cecece;
@@ -31,7 +31,8 @@ body{
   transition: all 400ms;
 }
 .content{
-  background: rgb(255, 255, 255);
+  background: url('/img/baton.png') #cecece;
+  background-attachment: fixed;
   margin-top: 100px;
   display: flex;
   justify-content: center;
@@ -81,6 +82,16 @@ body{
 }
 
 @media (max-width: 1400px){
+  .content{
+    background: none #cecece;
+    background-attachment: fixed;
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    box-shadow:  0 0 25px black;
+  }
   .class_blok_button{
     background: url('/img/refresh.svg');
     width: 30px;
@@ -315,6 +326,9 @@ body{
     }
   }
   @media (max-width:  520px) {
+    .content{
+      background: url('/img/baton.png') #cecece;
+    }
     .class_blok_button{
       background: none;  
     }
