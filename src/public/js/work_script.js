@@ -8,14 +8,14 @@ form.addEventListener("submit", (event) => {
 	user.append("download_link", form.download_link.value);
 	user.append("delete_preview", form.delete_preview.checked);
 	var links = [];
-	document.querySelectorAll(".work_link").forEach(el) => {
+	document.querySelectorAll(".work_link").forEach((el) => {
 		title = el.querySelector(".work_link_title").value;
 		url = el.querySelector(".work_link_url").value;
 		links.push({
 			title: title,
 			link: url
 		});
-	};
+	});
 	user.append("links", links);
 	if (form.preview.files[0] != undefined) user.append("preview", form.preview.files[0]);
 	else user.append("preview", null);
