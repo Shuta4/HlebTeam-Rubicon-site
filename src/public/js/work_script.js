@@ -48,9 +48,6 @@ form.addEventListener("submit", (event) => {
 		window.location.href = "/userpage/im";
 	});
 });
-document.querySelectorAll(".delete_link").forEach(el => {
-	el.addEventListener("click", deleteLink);
-});
 var deleteLink = function(event) {
 	event.preventDefault();
 	i = event.target.getAttribute("data");
@@ -77,5 +74,11 @@ var deleteImage = function(event) {
 		if (!res.ok) console.log(res.error);
 	})
 }
-document.querySelector(".add_image").addEventListener("click", createLink);
-document.querySelector(".delete_image").addEventListener("click", deleteImage);
+document.querySelector(".add_link").addEventListener("click", createLink);
+document.querySelectorAll(".delete_image").forEach(el => {
+	el.addEventListener("click", deleteImage);
+});
+
+document.querySelectorAll(".delete_link").forEach(el => {
+	el.addEventListener("click", deleteLink);
+});
