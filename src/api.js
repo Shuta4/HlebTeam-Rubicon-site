@@ -435,7 +435,7 @@ router.post("/work", upload.fields([{ name: 'preview', maxCount: 1 }, { name: 'i
 					}
 				});	
 			}
-			console.log("Succesfully created work " + insertId);
+			console.log("Succesfully created work " + result.insertId);
 			res.json({
 				"ok": true
 			});
