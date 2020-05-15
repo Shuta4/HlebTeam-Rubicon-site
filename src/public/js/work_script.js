@@ -59,8 +59,8 @@ var createLink = function(event) {
 	i = document.querySelectorAll(".work_link").length;
 	document.querySelector(".work_links").insertAdjacentHTML("beforeend", 
 		`<div class="work-form__form__links__link work_link">
-            <input type="text" name="link_title${i}" value="" class="work-form__form__links__link__title">
-            <input type="url" name="link_url${i}" value="" class="work-form__form__links__link__link"> 
+            <input type="text" name="link_title${i}" value="" class="work-form__form__links__link__title work_link_title" placeholder="Заголовок">
+            <input type="url" name="link_url${i}" value="" class="work-form__form__links__link__link work_link_url" placeholder="Ссылка"> 
             <button type="button" data="${i}" class="work-form__form__links__link work_link_delete">Удалить</button>
         </div>`)
 	document.querySelectorAll(".work_link_delete")[i].addEventListener("click", deleteLink);
