@@ -4,9 +4,9 @@ form.addEventListener("submit", (event) => {
 	event.preventDefault();
 	var work = new FormData();
 	work.append("title", form.title.value);
-	user.append("description", form.description.value);
-	user.append("download_link", form.download_link.value);
-	user.append("delete_preview", form.delete_preview.checked);
+	work.append("description", form.description.value);
+	work.append("download_link", form.download_link.value);
+	work.append("delete_preview", form.delete_preview.checked);
 	var links = [];
 	document.querySelectorAll(".work_link").forEach((el) => {
 		title = el.querySelector(".work_link_title").value;
@@ -16,11 +16,11 @@ form.addEventListener("submit", (event) => {
 			link: url
 		});
 	});
-	user.append("links", links);
-	if (form.preview.files[0] != undefined) user.append("preview", form.preview.files[0]);
-	else user.append("preview", null);
-	if (form.images.files[0] != undefined) user.append("images", form.images.files);
-	else user.append("images", null)
+	work.append("links", links);
+	if (form.preview.files[0] != undefined) work.append("preview", form.preview.files[0]);
+	else work.append("preview", null);
+	if (form.images.files[0] != undefined) work.append("images", form.images.files);
+	else work.append("images", null)
 	fetch("/api/work/", {
 	    method: 'POST',
 	    body: work
