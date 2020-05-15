@@ -383,21 +383,17 @@ router.post("/work", upload.fields([{ name: 'preview', maxCount: 1 }, { name: 'i
 		console.log("debugging...")
 		var preview = req.files.preview[0];
 		console.log("debugging...")
-		global.pool.query('INSERT INTO `works`(`owner_id`, `title`, `description`, `preview_img`, `download_link`) VALUES ("' + work.owner_id + '","' 
-			+ work.title + '","' 
-			+ work.description + '","' 
-			+ preview ? 1 : 0 + '","' 
-			+ work.download_link + '")', function(err, result) {
+		global.pool.query('INSERT INTO `works`(`owner_id`, `title`, `description`, `preview_img`, `download_link`) VALUES (?)', [work.owner_id, work.title, work.description, preview ? "1" : "0", work.download_link] function(err, result) {
 		console.log("debugging...")
 			if (err) {
-				console.log("Error has occured during creation of user " + username);
+				console.log("Error has occured during creation of work " + work.title);
 				console.log("Error: \n" + err + "\n");
 				res.json({
 					"ok": false,
 					"error": "ERRDBCONNECTION"
 				})
 				return
-			}
+			} 
 		console.log("debugging...")
 			var id = result.insertId;
 			if (preview) {
