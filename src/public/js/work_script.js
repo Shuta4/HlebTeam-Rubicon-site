@@ -1,4 +1,5 @@
 var form = document.querySelector(".work-form__form");
+var messageBoxClass = ".message_box";
 
 form.addEventListener("submit", (event) => {
 	event.preventDefault();
