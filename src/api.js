@@ -401,11 +401,13 @@ router.post("/work", upload.fields([{ name: 'preview', maxCount: 1 }, { name: 'i
 		console.log("debugging...")
 			var id = result.insertId;
 			if (preview) {
+		console.log("debugging...")
 				if (preview.mimetype == "image/jpeg" && preview.size <= 5242880) {
 					fs.rename(preview.path, 'src/public/img/uploads/previews/' + id + ".jpg", function (err) {
 						if (err) console.log(err);
 					}); 
 				} else {
+		console.log("debugging...")
 					fs.unlink(preview.path, (err) => {
 						if (err) console.log(err);
 					})
@@ -413,19 +415,34 @@ router.post("/work", upload.fields([{ name: 'preview', maxCount: 1 }, { name: 'i
 						"ok": false,
 						"error": "INCORRECTIMAGE"
 					})
+		console.log("debugging...")
 					return;
 				}
 			}
 			req.files.images.forEach(el => {
+		console.log("debugging...")
 				if (el.mimetype == "image/jpeg" && el.size <= 5242880) {
+		console.log("debugging...")
 					pool.query("INSERT INTO `images`(`owner_type`, `owner_id`) VALUES ('work', '" + id + "')", (err, result) => {
+						if (err) {
+							console.log(err);
+							res.json({
+								"ok": false,
+								"error": "UNKNOWNERROR"
+							})
+							return
+						}
+		console.log("debugging...1")
 						fs.rename(el.path, 'src/public/img/uploads/images/' + result.insertId + ".jpg", function (err) {
 							if (err) console.log(err);
 						});
+		console.log("debugging...")
 					}) 
 				} else {
 					fs.unlink(el.path, (err) => {
+		console.log("debugging...")
 						if (err) console.log(err);
+		console.log("debugging...")
 					})
 					res.json({
 						"ok": false,
