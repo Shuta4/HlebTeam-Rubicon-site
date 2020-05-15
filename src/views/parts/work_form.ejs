@@ -17,12 +17,12 @@
       <input type="text" name="download_link" class="work-form__form__link" value="<%=work.download_link %>" placeholder="Ссылка на скачивание">
       <div class="work-form__form__wrapper">
         <div class="work-form__form__links work_links">
-          <button class="button work-form__form__links__button add_link">+</button>
+          <button type="button" class="button work-form__form__links__button add_link">+</button>
           <%work.links.forEach((el, i) => {%>
           <div class="work-form__form__links__link work_link">
             <input type="text" name="link_title<%=i%>" value="<%=el.title%>" class="work-form__form__links__link__title">
             <input type="url" name="link_url<%=i%>" value="<%=el.link%>" class="work-form__form__links__link__link"> 
-            <button data="<%=i%>" class="work-form__form__links__link work_link_delete">Удалить</button>
+            <button type="button" data="<%=i%>" class="work-form__form__links__link work_link_delete">Удалить</button>
           </div>
           <%})%>
         </div>
@@ -31,7 +31,7 @@
           <%work.images.forEach((el, i) => {%>
           <div class="work-form__form__images__image">
             <img class="work-form__form__images__image__image image<%=i%>" src="/img/uploads/works_images/<%=el.id%>.jpg">
-            <button class="work-form__form__images__image__button delete_image<%=i%>" data="<%=el.id%>">Удалить</button> 
+            <button type="button" class="work-form__form__images__image__button delete_image<%=i%>" data="<%=el.id%>">Удалить</button> 
           </div>
           <%})%>
         </div>
