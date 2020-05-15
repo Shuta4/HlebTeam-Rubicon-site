@@ -50,7 +50,7 @@
                                 <li class="content__author__works__list__item work-preview">            
                                     <div class="work-preview__content">
                                         <a href="/works/<%=el.id%>">
-                                            <img class="work-preview__content__preview-img" src="<%if (el.preview_img) {%><%='/img/uploads/previews/' + el.preview_img%><%} else {%>/img/preview-img-not-available.jpg<%}%>">                               
+                                            <img class="work-preview__content__preview-img" src="<%if (el.preview_img) {%><%='/img/uploads/previews/' + el.id + '.jpg'%><%} else {%>/img/preview-img-not-available.jpg<%}%>">                               
                                             <header class="work-preview__header">
                                                 <h4 class="work-preview__header__title"><%=el.title%></h4>                                   
                                             </header>
