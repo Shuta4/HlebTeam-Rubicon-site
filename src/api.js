@@ -385,8 +385,8 @@ router.post("/work", upload.fields([{ name: 'preview', maxCount: 1 }, { name: 'i
 		console.log("debugging...")
 		global.pool.query('INSERT INTO `works`(`owner_id`, `title`, `description`, `preview_img`, `download_link`) VALUES ("' + work.owner_id + '","' 
 			+ work.title + '","' 
-			+ work.description + '",' 
-			+ preview ? 1 : 0 + ',"' 
+			+ work.description + '","' 
+			+ preview ? 1 : 0 + '","' 
 			+ work.download_link + '")', function(err, result) {
 		console.log("debugging...")
 			if (err) {
