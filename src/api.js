@@ -369,6 +369,7 @@ router.post("/work", upload.fields([{ name: 'preview', maxCount: 1 }, { name: 'i
 			});
 			return;
 		}
+		work.owner_id = work.owner_id == undefined || work.owner_id == null ? work.owner_id = req.session.user.id : work.owner_id;
 		if (work.owner_id != req.session.user.id) {
 			res.json({
 				"ok": false,
