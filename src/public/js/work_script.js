@@ -60,7 +60,7 @@ var createLink = function(event) {
 		`<div class="work-form__form__links__link work_link">
             <input type="text" name="link_title${i}" value="" class="work-form__form__links__link__title">
             <input type="url" name="link_url${i}" value="" class="work-form__form__links__link__link"> 
-            <button data="${i}" class="work-form__form__links__link work_link_delete">Удалить</button>
+            <button type="button" data="${i}" class="work-form__form__links__link work_link_delete">Удалить</button>
         </div>`)
 }
 var deleteImage = function(event) {
