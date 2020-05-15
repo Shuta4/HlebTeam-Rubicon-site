@@ -418,7 +418,7 @@ router.post("/work", upload.fields([{ name: 'preview', maxCount: 1 }, { name: 'i
 			}
 			req.files.images.forEach(el => {
 				if (el.mimetype == "image/jpeg" && el.size <= 5242880) {
-					pool.query("INSERT INTO `images`(`owner_type`, `owner_id`) VALUES ('work', " + id + ")", (err, result) => {
+					pool.query("INSERT INTO `images`(`owner_type`, `owner_id`) VALUES ('work', '" + id + "')", (err, result) => {
 						fs.rename(el.path, 'src/public/img/uploads/images/' + result.insertId + ".jpg", function (err) {
 							if (err) console.log(err);
 						});
