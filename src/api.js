@@ -406,32 +406,35 @@ router.post("/work", upload.fields([{ name: 'preview', maxCount: 1 }, { name: 'i
 				}
 			}
 			console.log(req.files)
-			req.files.images.forEach(el => {
-				if (el.mimetype == "image/jpeg" && el.size <= 5242880) {
-					pool.query("INSERT INTO `images`(`owner_type`, `owner_id`) VALUES ('work', '" + id + "')", (err, result) => {
-						if (err) {
-							console.log(err);
-							res.json({
-								"ok": false,
-								"error": "UNKNOWNERROR"
-							})
-							return
-						}
-						fs.rename(el.path, 'src/public/img/uploads/images/' + result.insertId + ".jpg", function (err) {
+			images = req.files.images;
+			if (images != undefined) {
+				images.forEach(el => {
+					if (el.mimetype == "image/jpeg" && el.size <= 5242880) {
+						pool.query("INSERT INTO `images`(`owner_type`, `owner_id`) VALUES ('work', '" + id + "')", (err, result) => {
+							if (err) {
+								console.log(err);
+								res.json({
+									"ok": false,
+									"error": "UNKNOWNERROR"
+								})
+								return
+							}
+							fs.rename(el.path, 'src/public/img/uploads/images/' + result.insertId + ".jpg", function (err) {
+								if (err) console.log(err);
+							});
+						}) 
+					} else {
+						fs.unlink(el.path, (err) => {
 							if (err) console.log(err);
-						});
-					}) 
-				} else {
-					fs.unlink(el.path, (err) => {
-						if (err) console.log(err);
-					})
-					res.json({
-						"ok": false,
-						"error": "INCORRECTIMAGE"
-					})
-					return;
-				}
-			});
+						})
+						res.json({
+							"ok": false,
+							"error": "INCORRECTIMAGE"
+						})
+						return;
+					}
+				});	
+			}
 			console.log("Succesfully created work " + owner_id + " - " + title);
 			res.json({
 				"ok": true
