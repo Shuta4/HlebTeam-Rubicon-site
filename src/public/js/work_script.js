@@ -9,6 +9,7 @@ form.addEventListener("submit", (event) => {
 	work.append("delete_preview", form.delete_preview.checked);
 	var links = [];
 	document.querySelectorAll(".work_link").forEach((el) => {
+		console.log(el);
 		title = el.querySelector(".work_link_title").value;
 		url = el.querySelector(".work_link_url").value;
 		links.push({
