@@ -362,6 +362,7 @@ router.delete("/user/delete/:id", (req, res, next)=> {
 router.post("/work", upload.fields([{ name: 'preview', maxCount: 1 }, { name: 'images', maxCount: 100 }]), (req, res, next)=> {
 	try {
 		var work = req.body;
+		console.log("debugging...")
 		if (req.session.user == undefined) {
 			res.json({
 				"ok": false,
@@ -369,7 +370,9 @@ router.post("/work", upload.fields([{ name: 'preview', maxCount: 1 }, { name: 'i
 			});
 			return;
 		}
+		console.log("debugging...")
 		work.owner_id = work.owner_id == undefined || work.owner_id == null ? work.owner_id = req.session.user.id : work.owner_id;
+		console.log("debugging...")
 		if (work.owner_id != req.session.user.id) {
 			res.json({
 				"ok": false,
@@ -377,12 +380,15 @@ router.post("/work", upload.fields([{ name: 'preview', maxCount: 1 }, { name: 'i
 			});
 			return;
 		}
+		console.log("debugging...")
 		var preview = req.files.preview[0];
-		global.pool.query('INSERT INTO `works`(`owner_id`, `title`, `description`, `preview_img`, `download_link`) VALUES (' + work.owner_id + ',"' 
+		console.log("debugging...")
+		global.pool.query('INSERT INTO `works`(`owner_id`, `title`, `description`, `preview_img`, `download_link`) VALUES ("' + work.owner_id + '","' 
 			+ work.title + '","' 
 			+ work.description + '",' 
 			+ preview ? 1 : 0 + ',"' 
 			+ work.download_link + '")', function(err, result) {
+		console.log("debugging...")
 			if (err) {
 				console.log("Error has occured during creation of user " + username);
 				console.log("Error: \n" + err + "\n");
@@ -392,6 +398,7 @@ router.post("/work", upload.fields([{ name: 'preview', maxCount: 1 }, { name: 'i
 				})
 				return
 			}
+		console.log("debugging...")
 			var id = result.insertId;
 			if (preview) {
 				if (preview.mimetype == "image/jpeg" && preview.size <= 5242880) {
