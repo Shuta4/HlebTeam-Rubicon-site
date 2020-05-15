@@ -362,7 +362,6 @@ router.delete("/user/delete/:id", (req, res, next)=> {
 router.post("/work", upload.fields([{ name: 'preview', maxCount: 1 }, { name: 'images', maxCount: 100 }]), (req, res, next)=> {
 	try {
 		var work = req.body;
-		console.log("debugging...")
 		if (req.session.user == undefined) {
 			res.json({
 				"ok": false,
@@ -370,9 +369,7 @@ router.post("/work", upload.fields([{ name: 'preview', maxCount: 1 }, { name: 'i
 			});
 			return;
 		}
-		console.log("debugging...")
 		work.owner_id = work.owner_id == undefined || work.owner_id == null ? work.owner_id = req.session.user.id : work.owner_id;
-		console.log("debugging...")
 		if (work.owner_id != req.session.user.id) {
 			res.json({
 				"ok": false,
@@ -380,11 +377,8 @@ router.post("/work", upload.fields([{ name: 'preview', maxCount: 1 }, { name: 'i
 			});
 			return;
 		}
-		console.log("debugging...")
 		var preview = req.files.preview[0];
-		console.log("debugging...")
 		global.pool.query('INSERT INTO `works`(`owner_id`, `title`, `description`, `preview_img`, `download_link`) VALUES (?,?,?,?,?)', [work.owner_id, work.title, work.description, preview ? "1" : "0", work.download_link], function(err, result) {
-		console.log("debugging...")
 			if (err) {
 				console.log("Error has occured during creation of work " + work.title);
 				console.log("Error: \n" + err + "\n");
@@ -394,16 +388,13 @@ router.post("/work", upload.fields([{ name: 'preview', maxCount: 1 }, { name: 'i
 				})
 				return
 			} 
-		console.log("debugging...")
 			var id = result.insertId;
 			if (preview) {
-		console.log("debugging...")
 				if (preview.mimetype == "image/jpeg" && preview.size <= 5242880) {
 					fs.rename(preview.path, 'src/public/img/uploads/previews/' + id + ".jpg", function (err) {
 						if (err) console.log(err);
 					}); 
 				} else {
-		console.log("debugging...")
 					fs.unlink(preview.path, (err) => {
 						if (err) console.log(err);
 					})
@@ -411,14 +402,12 @@ router.post("/work", upload.fields([{ name: 'preview', maxCount: 1 }, { name: 'i
 						"ok": false,
 						"error": "INCORRECTIMAGE"
 					})
-		console.log("debugging...")
 					return;
 				}
 			}
+			console.log(req.files)
 			req.files.images.forEach(el => {
-		console.log("debugging...")
 				if (el.mimetype == "image/jpeg" && el.size <= 5242880) {
-		console.log("debugging...")
 					pool.query("INSERT INTO `images`(`owner_type`, `owner_id`) VALUES ('work', '" + id + "')", (err, result) => {
 						if (err) {
 							console.log(err);
@@ -428,17 +417,13 @@ router.post("/work", upload.fields([{ name: 'preview', maxCount: 1 }, { name: 'i
 							})
 							return
 						}
-		console.log("debugging...1")
 						fs.rename(el.path, 'src/public/img/uploads/images/' + result.insertId + ".jpg", function (err) {
 							if (err) console.log(err);
 						});
-		console.log("debugging...")
 					}) 
 				} else {
 					fs.unlink(el.path, (err) => {
-		console.log("debugging...")
 						if (err) console.log(err);
-		console.log("debugging...")
 					})
 					res.json({
 						"ok": false,
