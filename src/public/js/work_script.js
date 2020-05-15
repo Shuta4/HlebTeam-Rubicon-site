@@ -62,6 +62,7 @@ var createLink = function(event) {
             <input type="url" name="link_url${i}" value="" class="work-form__form__links__link__link"> 
             <button type="button" data="${i}" class="work-form__form__links__link work_link_delete">Удалить</button>
         </div>`)
+	document.querySelectorAll(".work_link_delete")[i].addEventListener("click", deleteLink);
 }
 var deleteImage = function(event) {
 	event.preventDefault();
