@@ -406,18 +406,20 @@ router.post("/work", upload.fields([{ name: 'preview', maxCount: 1 }, { name: 'i
 				}
 			}
 			query_text = "";
-			work.links.forEach((el, i)=> {
-				query_text = query_text + `(${id}, "work", "${el.link}", "${el.title}")`;
-				if (i != work.links.length - 1) query_text = query_text + ",";
-			});
-			pool.query("INSERT INTO `works`(`owner_id`,`owner_type`,`link`,`title`) VALUES " + query_text, (err) => {
-				console.log(err);
-				res.json({
-					"ok": false,
-					"error": "ERRDBCONNECTION"
-				})
-				return
-			})
+			if (work.links) {
+				work.links.forEach((el, i)=> {
+					query_text = query_text + `(${id}, "work", "${el.link}", "${el.title}")`;
+					if (i != work.links.length - 1) query_text = query_text + ",";
+				});
+				pool.query("INSERT INTO `links`(`owner_id`,`owner_type`,`link`,`title`) VALUES " + query_text, (err) => {
+					console.log(err);
+					res.json({
+						"ok": false,
+						"error": "ERRDBCONNECTION"
+					})
+					return
+				})	
+			}
 			images = req.files.images;
 			if (images != undefined) {
 				images.forEach(el => {
