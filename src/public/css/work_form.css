@@ -4,7 +4,7 @@ body{
 }
 .downlod{
   background: black;
-  border: 2px solid #008cff;
+  border: 2px solid #00ff73;
   border-radius: 20px;
   width: 120px;
   color: white;
@@ -12,7 +12,7 @@ body{
 .save_form{
   position: relative;
   background: #008cff00;
-  border: 2px solid #008cff;
+  border: 2px solid #00ff73;
   color: white; 
   width: 300px;
   height: 50px;
@@ -44,7 +44,7 @@ body{
   font-weight: 300;
   font-size: 25px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  text-decoration: underline #008cff;
+  text-decoration: underline #00ff73;
 }
 .work-form__form {
   background: black;
@@ -55,10 +55,10 @@ body{
   flex-direction: column;
   flex-wrap: nowrap;
   align-items: center;
-  color: #008cff;
-  border: 2px solid #008cff;
+  color: #00ff73;
+  border: 2px solid #00ff73;
   border-radius: 25px;
-  box-shadow: 0 0 15px #008cff;
+  box-shadow: 0 0 15px #00ff73;
   box-sizing: border-box;
   font-size: 18px;
   font-weight: 300;
@@ -73,7 +73,7 @@ body{
   border-radius: 20px;
 }
 .work-form__form__preview:hover{
-  border: 3px solid #008cff;
+  border: 3px solid #00ff73;
   border-radius: 20px;
 }
 .work-form__form__images__button{
@@ -90,12 +90,12 @@ cursor: pointer;
 }
 .work-form__form__images__button:hover{
   border-radius: 50px;
-  border: 3px solid #008cff;
+  border: 3px solid #00ff73;
   transition: all 200ms;
   }
 
 .work-form__form__links__button{
-color: #008cff;
+color: #00ff73;
 border: 2px solid #008cff00;
 width: 30px;
 height: 30px;
@@ -124,12 +124,12 @@ margin-left: 0px;
   align-items: center;
 }
 .work-form__form__links__title{
-  color: #008cff;
+  color: #00ff73;
 }
 .work-form__form__title {
   margin-top: 20px;
   background: rgba(255, 255, 255, 0);
-  color: #008cff;
+  color: #00ff73;
   border: 2px solid #00ff8800;
   text-align: 20px;
   /* text-decoration: underline #00ff88; */
@@ -138,7 +138,7 @@ margin-left: 0px;
   transition: all 500ms;
 }
 .work-form__form__title:hover{
-  text-decoration: underline #008cff;
+  text-decoration: underline #00ff73;
   transition: all 500ms;
 }
 .work-form__form__description {
@@ -146,14 +146,14 @@ margin-left: 0px;
   border: 2px solid black;
   margin: 10px;
   height: 170px;
-  color: #008cff;
+  color: #00ff73;
   resize: none;
   margin-top: 30px;
   transition: all 500ms;
   padding-left: 10px;
 }
 .work-form__form__description:hover {
-  border: 2px solid rgb(0, 140, 255);
+  border: 2px solid #00ff73;
   transition: all 500ms;
 }
 .work-form__form__link {
@@ -162,7 +162,7 @@ margin-left: 0px;
   height: 50px;
   border-radius: 50px;
   border: 2px solid #00ff8800;
-  color: rgb(0, 140, 255);
+  color: #00ff73;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   padding: 10px;
   transition: all 500ms;
@@ -170,7 +170,7 @@ margin-left: 0px;
 }
 .work-form__form__link:hover {
   border-radius: 50px;
-  border: 2px solid rgb(0, 140, 255);
+  border: 2px solid #00ff73;
   transition: all 500ms;
 }
 @media(max-width: 560px) {
@@ -194,7 +194,7 @@ margin-left: 0px;
     width: 90%;
   }
   .work-form__form__links__button{
-    color: #008cff;
+    color: #00ff73;
     border: 2px solid #008cff00;
     width: 30px;
     height: 30px;
@@ -225,7 +225,7 @@ margin-left: 0px;
         }
         .work-form__form__images__button:hover{
           border-radius: 50px;
-          border: 3px solid #008cff;
+          border: 3px solid #00ff73;
           transition: all 200ms;
           }
           .work-form__form__delete-preview{

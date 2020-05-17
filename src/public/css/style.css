@@ -15,7 +15,7 @@ body,
 }
 a {
   text-decoration: none;
-  color: #008cff;
+  color: #00ff73;
 }
 a:hover {
   color: #ffd000;
@@ -50,7 +50,7 @@ ul {
   font-size: 100px;
   text-align: center;
   font-family: var(--header-text-font);
-  -webkit-text-stroke-color: #008cff;
+  -webkit-text-stroke-color: #00ff73;
   -webkit-text-stroke-width: 2px;
 }
 .content__form-find-users__find-button{
@@ -99,7 +99,7 @@ right: 50px;
   margin-left: 15px;
   margin-right: 15px;
   padding: 0px;
-  color: #008cff;
+  color: #00ff73;
   left: 0px;
   right: 0px;
   transition: all 200ms;
@@ -144,7 +144,7 @@ right: 50px;
 }
 .header-main__navigation_item_background-info{
 font-size: 90px;
-color: #008cff;
+color: #00ff73;
 margin: 0px;
 }
 .header-main__navigation_item_background-info:hover{
@@ -152,7 +152,7 @@ margin: 0px;
   }
 /*Footer styles*/
 .footer-main {
-  background: #008cff;
+  background: #00ff73;
   padding-bottom: 120px;
   height: 300px;
 }
@@ -168,7 +168,7 @@ margin: 0px;
   background: white;
   width: 80px;
   height: 80px;
-  border: 0px solid #008cff;
+  border: 0px solid #00ff73;
   border-radius: 100px;
   margin: 30px;
   transition: all 500ms;
@@ -246,8 +246,8 @@ margin: 0px;
 }
 .register-form {
   left: calc(50% - 300px);
-  background: #008cff;
-  border: 3px solid #008cff;
+  background: #00ff73;
+  border: 3px solid #00ff73;
 }
 .login-form {
   left: calc(50% + 300px);
@@ -343,7 +343,7 @@ margin: 0px;
     width: 60px;
     height: 60px;
     border-radius: 20%;
-    border: 2px solid #008cff;
+    border: 2px solid #00ff73;
     transition: all 200ms ease;
     margin: 10px;
     box-shadow: 0 0 15px black;
