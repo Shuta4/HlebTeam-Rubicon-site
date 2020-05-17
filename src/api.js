@@ -408,9 +408,9 @@ router.post("/work", upload.fields([{ name: 'preview', maxCount: 1 }, { name: 'i
 				}
 			}
 			query_text = "";
+			console.log(query_text)
 			if (work.links) {
 				links = JSON.parse(work.links);
-				console.log(links)
 				links.forEach((el, i)=> {
 					query_text = query_text + `(${id}, "work", "${el.link}", "${el.title}")`;
 					if (i != links.length - 1) query_text = query_text + ",";
@@ -424,41 +424,41 @@ router.post("/work", upload.fields([{ name: 'preview', maxCount: 1 }, { name: 'i
 						})
 						return	
 					}
-				})	
-			}
-			images = req.files.images;
-			if (images != undefined) {
-				images.forEach(el => {
-					if (el.mimetype == "image/jpeg" && el.size <= 5242880) {
-						pool.query("INSERT INTO `images`(`owner_type`, `owner_id`) VALUES ('work', '" + id + "')", (err, result) => {
-							if (err) {
-								console.log(err);
+					images = req.files.images;
+					if (images != undefined) {
+						images.forEach(el => {
+							if (el.mimetype == "image/jpeg" && el.size <= 5242880) {
+								pool.query("INSERT INTO `images`(`owner_type`, `owner_id`) VALUES ('work', '" + id + "')", (err, result) => {
+									if (err) {
+										console.log(err);
+										res.json({
+											"ok": false,
+											"error": "UNKNOWNERROR"
+										})
+										return
+									}
+									fs.rename(el.path, 'src/public/img/uploads/images/' + result.insertId + ".jpg", function (err) {
+										if (err) console.log(err);
+									});
+								}) 
+							} else {
+								fs.unlink(el.path, (err) => {
+									if (err) console.log(err);
+								})
 								res.json({
 									"ok": false,
-									"error": "UNKNOWNERROR"
+									"error": "INCORRECTIMAGE"
 								})
-								return
+								return;
 							}
-							fs.rename(el.path, 'src/public/img/uploads/images/' + result.insertId + ".jpg", function (err) {
-								if (err) console.log(err);
-							});
-						}) 
-					} else {
-						fs.unlink(el.path, (err) => {
-							if (err) console.log(err);
-						})
-						res.json({
-							"ok": false,
-							"error": "INCORRECTIMAGE"
-						})
-						return;
+						});	
 					}
-				});	
+					console.log("Succesfully created work " + result.insertId);
+					res.json({
+						"ok": true
+					});
+				})	
 			}
-			console.log("Succesfully created work " + result.insertId);
-			res.json({
-				"ok": true
-			});
 		});
 	} catch (error) {
 		res.json({
