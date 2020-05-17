@@ -101,7 +101,7 @@ router.get("/works/:id", (req, res, next) => {
 				next(err);
 				return
 			}
-			if (rows[0] = undefined) {
+			if (rows[0] == undefined) {
 				res.status(404).render("./pages/error404");
 				return
 			}	
