@@ -17,7 +17,7 @@ form.addEventListener("submit", (event) => {
             <li class="content__results__item user-preview">
               <img alt="Аватар" class="user-preview__avatar" src="${avatar}">  
               <div class="user-preview__wrapper">
-                  <h3 class="user-preview__name">${name}</h3>
+                  <h3 class="user-preview__name"><a class="user-preview__name__link" href=${"/userpage/" + el.id}>${name}</a></h3>
                   <ul class="user-preview__statistics">
                       <li class="user-preview__statistics__item">Работы: <b>${el.works_counter}</b></li>
                       <li class="user-preview__statistics__item">Подписчики: <b>${el.followers}</b></li>
