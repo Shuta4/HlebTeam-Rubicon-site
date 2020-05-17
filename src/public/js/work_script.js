@@ -21,7 +21,10 @@ form.addEventListener("submit", (event) => {
 	work.append("links", JSON.stringify(links));
 	if (form.preview.files[0] != undefined) work.append("preview", form.preview.files[0]);
 	else work.append("preview", null);
-	if (form.images.files[0] != undefined) work.append("images", form.images.files);
+
+	if (form.images.files[0] != undefined) {
+		form.images.forEach(el => work.append("images", el));
+	}
 	else work.append("images", null)
 	fetch("/api/work/", {
 	    method: 'POST',
