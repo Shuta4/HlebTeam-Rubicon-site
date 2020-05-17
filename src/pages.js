@@ -3,7 +3,9 @@ const router = express.Router();
 
 router.get("/", (req, res, next) => {
 	try {
-		res.render("./pages/index");
+		global.pool.query("SELECT * FROM `works` ORDER BY RAND() LIMIT 30", (err, rows, fields) => {
+			res.render("./pages/index", {works: rows});
+		})		
 	} catch (error) {
 		next(error);
 	}
