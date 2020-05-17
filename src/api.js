@@ -369,6 +369,7 @@ router.post("/work", upload.fields([{ name: 'preview', maxCount: 1 }, { name: 'i
 			});
 			return;
 		}
+		work.owner_id = work.owner_id == undefined || work.owner_id == null ? work.owner_id = req.session.user.id : work.owner_id;
 		if (work.owner_id != req.session.user.id) {
 			res.json({
 				"ok": false,
@@ -377,20 +378,16 @@ router.post("/work", upload.fields([{ name: 'preview', maxCount: 1 }, { name: 'i
 			return;
 		}
 		var preview = req.files.preview[0];
-		global.pool.query('INSERT INTO `works`(`owner_id`, `title`, `description`, `preview_img`, `download_link`) VALUES (' + work.owner_id + ',"' 
-			+ work.title + '","' 
-			+ work.description + '",' 
-			+ preview ? 1 : 0 + ',"' 
-			+ work.download_link + '")', function(err, result) {
+		global.pool.query('INSERT INTO `works`(`owner_id`, `title`, `description`, `preview_img`, `download_link`) VALUES (?,?,?,?,?)', [work.owner_id, work.title, work.description, preview ? "1" : "0", work.download_link], function(err, result) {
 			if (err) {
-				console.log("Error has occured during creation of user " + username);
+				console.log("Error has occured during creation of work " + work.title);
 				console.log("Error: \n" + err + "\n");
 				res.json({
 					"ok": false,
 					"error": "ERRDBCONNECTION"
 				})
 				return
-			}
+			} 
 			var id = result.insertId;
 			if (preview) {
 				if (preview.mimetype == "image/jpeg" && preview.size <= 5242880) {
@@ -408,25 +405,37 @@ router.post("/work", upload.fields([{ name: 'preview', maxCount: 1 }, { name: 'i
 					return;
 				}
 			}
-			req.files.images.forEach(el => {
-				if (el.mimetype == "image/jpeg" && el.size <= 5242880) {
-					pool.query("INSERT INTO `images`(`owner_type`, `owner_id`) VALUES ('work', " + id + ")", (err, result) => {
-						fs.rename(el.path, 'src/public/img/uploads/images/' + result.insertId + ".jpg", function (err) {
+			console.log(req.files)
+			images = req.files.images;
+			if (images != undefined) {
+				images.forEach(el => {
+					if (el.mimetype == "image/jpeg" && el.size <= 5242880) {
+						pool.query("INSERT INTO `images`(`owner_type`, `owner_id`) VALUES ('work', '" + id + "')", (err, result) => {
+							if (err) {
+								console.log(err);
+								res.json({
+									"ok": false,
+									"error": "UNKNOWNERROR"
+								})
+								return
+							}
+							fs.rename(el.path, 'src/public/img/uploads/images/' + result.insertId + ".jpg", function (err) {
+								if (err) console.log(err);
+							});
+						}) 
+					} else {
+						fs.unlink(el.path, (err) => {
 							if (err) console.log(err);
-						});
-					}) 
-				} else {
-					fs.unlink(el.path, (err) => {
-						if (err) console.log(err);
-					})
-					res.json({
-						"ok": false,
-						"error": "INCORRECTIMAGE"
-					})
-					return;
-				}
-			});
-			console.log("Succesfully created work " + owner_id + " - " + title);
+						})
+						res.json({
+							"ok": false,
+							"error": "INCORRECTIMAGE"
+						})
+						return;
+					}
+				});	
+			}
+			console.log("Succesfully created work " + result.insertId);
 			res.json({
 				"ok": true
 			});

@@ -17,6 +17,10 @@ router.get("/userpage", (req, res, next) => {
 });
 router.get("/userpage/creatework", (req, res, next) => {
 	try {
+		if (req.session.user == undefined) {
+			res.redirect("/userpage/im");
+			return;
+		}
 		res.render("./pages/update_work", {create_new: true});
 	} catch (error) {
 		next(error);
