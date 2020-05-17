@@ -409,7 +409,7 @@ router.post("/work", upload.fields([{ name: 'preview', maxCount: 1 }, { name: 'i
 			}
 			query_text = "";
 			if (work.links) {
-				console.log(work.links);
+				console.log(work.links[0]);
 				work.links.forEach((el, i)=> {
 					query_text = query_text + `(${id}, "work", "${el.link}", "${el.title}")`;
 					if (i != work.links.length - 1) query_text = query_text + ",";
