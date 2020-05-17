@@ -416,12 +416,14 @@ router.post("/work", upload.fields([{ name: 'preview', maxCount: 1 }, { name: 'i
 					if (i != links.length - 1) query_text = query_text + ",";
 				});
 				pool.query("INSERT INTO `links`(`owner_id`,`owner_type`,`link`,`title`) VALUES " + query_text, (err) => {
-					console.log(err);
-					res.json({
-						"ok": false,
-						"error": "ERRDBCONNECTION"
-					})
-					return
+					if (err) {
+						console.log(err);
+						res.json({
+							"ok": false,
+							"error": "ERRDBCONNECTION"
+						})
+						return	
+					}
 				})	
 			}
 			images = req.files.images;
