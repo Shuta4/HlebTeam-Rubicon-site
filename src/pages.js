@@ -118,7 +118,7 @@ router.get("/works/:id", (req, res, next) => {
 						return
 					}
 					work.images = rows;
-					work.hr_created_at = work.created_at;
+					work.hr_created_at = work.created_at.split(" GMT")[0];
 					res.render("./pages/work_page", {work: work});
 				})
 			});
