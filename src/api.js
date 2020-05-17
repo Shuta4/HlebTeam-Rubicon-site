@@ -377,7 +377,9 @@ router.post("/work", upload.fields([{ name: 'preview', maxCount: 1 }, { name: 'i
 			});
 			return;
 		}
-		var preview = req.files.preview[0];
+		if (req.files.preview)
+			var preview = req.files.preview[0];
+		else var preview = null;
 		global.pool.query('INSERT INTO `works`(`owner_id`, `title`, `description`, `preview_img`, `download_link`) VALUES (?,?,?,?,?)', [work.owner_id, work.title, work.description, preview ? "1" : "0", work.download_link], function(err, result) {
 			if (err) {
 				console.log("Error has occured during creation of work " + work.title);
