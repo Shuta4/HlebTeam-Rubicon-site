@@ -103,6 +103,7 @@ router.get("/works/:id", (req, res, next) => {
 			}
 			if (rows[0] = undefined) {
 				res.status(404).render("./pages/error404");
+				return
 			}	
 			work = rows[0];
 			pool.query("SELECT * FROM `links` WHERE `owner_type` = 'work' AND `owner_id` = " + work.id, (err, rows, fields) => {
