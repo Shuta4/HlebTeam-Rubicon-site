@@ -15,7 +15,7 @@
                             <a class="work-form__form__link work_link" href="<%=work.download_link%>">Download</a>
                             <% work.links.forEach(el => {%>
                                 <li class="content__work__links__item">
-                                    <a class="content__work__links__item__href" href="<%=el.url%>">el.title</a>
+                                    <a class="content__work__links__item__href" href="<%=el.link%>"><%=el.title%></a>
                                 </li>
                             <%})%>
                         </ul>
