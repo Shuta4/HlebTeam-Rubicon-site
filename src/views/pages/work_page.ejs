@@ -7,56 +7,40 @@
         <main class="content">
             <div class="content__work">
                 <div class="content__work__form">
-                <img class="content__work__preview-img" src="/img/site-bonpass-temp.jpg">
-                <h3 class="content__work__title">Название работы</h3>
-                <div class="">
-                <ul class="content__work__links">
-                    <input type="text" name="download_link" class="work-form__form__link" placeholder="Ссылка на скачивание">
-                    <li class="content__work__links__item">
-                        <a class="content__work__links__item__href" href="#"><img class="content__work__links__item__img" src='https://icons.iconarchive.com/icons/dtafalonso/android-lollipop/512/Downloads-icon.png' alt="Скачать"></a>
-                    </li>
-                </ul>
+                    <img class="content__work__preview-img" src="<%if (work.preview_img) {%><%='/img/uploads/previews/' + work.id + '.jpg'%><%} else {%>/img/preview-img-not-available.jpg<%}%>">
+                    <h3 class="content__work__title"><%=work.title %></h3>
+                    <p class="content__work__description"><%=work.description%></p>
+                    <div class="content__work__links-wrapper">
+                        <ul class="content__work__links">
+                            <a class="work-form__form__link work_link" href="<%=work.download_link%>">Download</a>
+                            <% work.links.forEach(el => {%>
+                                <li class="content__work__links__item">
+                                    <a class="content__work__links__item__href" href="<%=el.url%>">el.title</a>
+                                </li>
+                            <%})%>
+                        </ul>
+                    </div>
+                    <ul class="content__work__images">
+                        <% work.images.forEach(el => {%>
+                            <li class="content__work__images__item">
+                                <img class="content__work__images__item__image" src="/img/uploads/images/<%=el.id%>.jpg">
+                            </li>
+                        <%});%>
+                    </ul>
+                    <ul class="content__work__buttons">
+                        <li class="content__work__buttons__item">
+                            <button class="content__work__buttons__item__button save_work button">
+                                Сохранить себе
+                            </button>
+                        </li>
+                        <li class="content__work__buttons__item">
+                            <button class="content__work__buttons__item__button report_work button">
+                                Пожаловаться
+                            </button>
+                        </li>
+                    </ul>
+                    <time class="content__work__creation-date" datetime="<%=work.created_at%>"><%=work.hr_created_at%></time>
                 </div>
-                <ul class="content__work__images">
-                    <li class="content__work__images__item">
-                        <img class="content__work__images__item__image" src="/img/site-apple-temp.jpg">
-                        <p class="content__work__images__item__description">Сайт Apple (типо)</p>
-                    </li>
-                    <li class="content__work__images__item">
-                        <img class="content__work__images__item__image" src="/img/site-apple-temp.jpg">
-                        <p class="content__work__images__item__description">Сайт Apple (типо)</p>
-                    </li>
-                    <li class="content__work__images__item">
-                        <img class="content__work__images__item__image" src="/img/site-apple-temp.jpg">
-                        <p class="content__work__images__item__description">Сайт Apple (типо)</p>
-                    </li>
-                    <li class="content__work__images__item">
-                        <img class="content__work__images__item__image" src="/img/site-apple-temp.jpg">
-                        <p class="content__work__images__item__description">Сайт Apple (типо)</p>
-                    </li>
-                    <li class="content__work__images__item">
-                        <img class="content__work__images__item__image" src="/img/site-apple-temp.jpg">
-                        <p class="content__work__images__item__description">Сайт Apple (типо)</p>
-                    </li>
-                    <li class="content__work__images__item">
-                        <img class="content__work__images__item__image" src="/img/site-apple-temp.jpg">
-                        <p class="content__work__images__item__description">Сайт Apple (типо)</p>
-                    </li>
-
-                </ul>
-                <ul class="content__work__buttons">
-                    <li class="content__work__buttons__item">
-                        <button class="content__work__buttons__item__button save_work button">
-                            Сохранить себе-
-                        </button>
-                    </li>
-                    <li class="content__work__buttons__item">
-                        <button class="content__work__buttons__item__button report_work button">
-                            Пожаловаться
-                        </button>
-                    </li>
-                </ul>
-                <time class="content__work__creation-date" datetime="2011-01-12">January 12th, 2011</time>
             </div>
         </main>
         <%- include("../parts/footer.ejs") %>

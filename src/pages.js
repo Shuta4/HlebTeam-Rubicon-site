@@ -94,16 +94,41 @@ router.get("/userpage/:id", (req, res, next) => {
 		next(error);
 	}
 });
-router.get("/donate", (req, res, next) => {
+router.get("/works/:id", (req, res, next) => {
 	try {
-		res.render("./pages/donate");
+		pool.query("SELECT * FROM `works` WHERE `id` = " + req.params.id, (err, rows, fields) => {
+			if (err) {
+				next(err);
+				return
+			}
+			if (rows[0] = undefined) {
+				res.status(404).render("./pages/error404");
+			}	
+			work = rows[0];
+			pool.query("SELECT * FROM `links` WHERE `owner_type` = 'work' AND `owner_id` = " + work.id, (err, rows, fields) => {
+				if (err) {
+					next(err);
+					return
+				}
+				work.links = rows;
+				pool.query("SELECT * FROM `images` WHERE `owner_type` = 'work' AND `owner_id` = " + work.id, (err, rows, fields) => {
+					if (err) {
+						next(err);
+						return
+					}
+					work.images = rows;
+					work.hr_created_at = work.created_at;
+					res.render("./pages/work_page", {work: work});
+				})
+			});
+		})
 	} catch (error) {
 		next(error);
 	}
 });
-router.get("/twork", (req, res, next) => {
+router.get("/donate", (req, res, next) => {
 	try {
-		res.render("./pages/work_page");
+		res.render("./pages/donate");
 	} catch (error) {
 		next(error);
 	}
