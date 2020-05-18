@@ -1,7 +1,7 @@
 @import url(/css/style.css);
 body{
-    background: black;
-    color: #00ff73;
+    background: #070631;
+    color: #ffae00;
 }
 .content{
     display: flex;
@@ -14,7 +14,7 @@ body{
      flex-direction: column;
      width: 115px;
      height: 23px;
-     outline: 2px dashed #00ff73;
+     outline: 2px dashed #ffae00;
      margin: 13px;
      margin-left: 20px;
      outline-offset: 5px;
@@ -30,7 +30,7 @@ body{
     width: 20px;
     height: 20px;
     margin-left: 20px;
-    outline: 2px dashed #00ff73;
+    outline: 2px dashed #ffae00;
     outline-offset: 1px;
     margin: 20px;
 }
@@ -42,9 +42,9 @@ body{
     width: 500px;
     height: 630px;
     background: rgb(7, 0, 19);
-    border: 2px solid #00ff73;
+    border: 2px solid #ffae00;
     border-radius: 20px;
-    box-shadow: 0 0 15px #00ff73;
+    box-shadow: 0 0 15px #ffae00;
     font-size: 14px;
 }
 .user-form__form__input{
@@ -53,13 +53,13 @@ body{
     border-radius: 30px;
     margin: 15px;
     width: 200px;
-    color: #00ff73;
+    color: #ffae00;
     padding-left: 10px;
     transition: all 400ms;
 }
 .user-form__form__input:hover,.user-form__form__input:active,.user-form__form__input:focus{
-    border: 2px solid #00ff73;
-    color: #00ff73;
+    border: 2px solid #ffae00;
+    color: #ffae00;
     padding-left: 10px;
     transition: all 400ms;
     box-shadow: 0 0 10px rgb(95, 0, 190);
@@ -72,13 +72,13 @@ body{
     width: 91%;
     margin-left: 5px;
     height: 120px;
-    color: #00ff73;
+    color: #ffae00;
     resize: none;
     font-size: 14px;
     transition: all 400ms;
 }
 .user-form__form__about:hover{
-    border: 2px solid #00ff73;
+    border: 2px solid #ffae00;
     transition: all 400ms;
     box-shadow: 0 0 10px rgb(95, 0, 190);
 }
@@ -90,9 +90,9 @@ body{
         width: 90%;
         height: 620px;
         background: rgb(7, 0, 19);
-        border: 2px solid #00ff73;
+        border: 2px solid #ffae00;
         border-radius: 20px;
-        box-shadow: 0 0 15px #00ff73;
+        box-shadow: 0 0 15px #ffae00;
         font-size: 14px;
     }
     .user-form__form__input{
@@ -102,7 +102,7 @@ body{
         margin: 15px;
         width: 110px;
         font-size: 10px;
-        color: #00ff73;
+        color: #ffae00;
         padding-left: 10px;
         transition: all 400ms;
     }
@@ -110,7 +110,7 @@ body{
         width: 20px;
         height: 20px;
         margin-left: 20px;
-        outline: 2px dashed #00ff73;
+        outline: 2px dashed #ffae00;
         outline-offset: 1px;
         margin: 30px;
     }
@@ -122,7 +122,7 @@ body{
         width: 91%;
         margin-left: 5px;
         height: 80px;
-        color: #00ff73;
+        color: #ffae00;
         resize: none;
         font-size: 12px;
         transition: all 400ms;
@@ -133,7 +133,7 @@ body{
         flex-direction: column;
         width: 85px;
         height: 17px;
-        outline: 2px dashed #00ff73;
+        outline: 2px dashed #ffae00;
         margin: 13px;
         margin-left: 20px;
         outline-offset: 5px;
@@ -148,9 +148,9 @@ body{
         width: 95%;
         height: 500px;
         background: rgb(7, 0, 19);
-        border: 2px solid #00ff73;
+        border: 2px solid #ffae00;
         border-radius: 20px;
-        box-shadow: 0 0 15px #00ff73;
+        box-shadow: 0 0 15px #ffae00;
         font-size: 10px;
     }
     .user-form__form__input{
@@ -160,7 +160,7 @@ body{
         margin: 15px;
         width: 110px;
         font-size: 14px;
-        color: #00ff73;
+        color: #ffae00;
         padding-left: 10px;
         transition: all 400ms;
     }
@@ -168,7 +168,7 @@ body{
         width: 15px;
         height: 15px;
         margin-left: 25px;
-        outline: 0px dashed #00ff73;
+        outline: 0px dashed #ffae00;
         outline-offset: 1px;
         margin: 2px;
     }
@@ -180,7 +180,7 @@ body{
         width: 91%;
         margin-left: 5px;
         height: 80px;
-        color: #00ff73;
+        color: #ffae00;
         resize: none;
         font-size: 14px;
         transition: all 400ms;
