@@ -4,7 +4,7 @@ body{
   background: #05002e;
 }
 .content__form-find-users__input-name{
-  background: #cecece;
+  background: #ffffff;
   border: 2px solid #0044ff00;
   border-radius: 50px;
   margin: 10px;
@@ -31,7 +31,7 @@ body{
   transition: all 400ms;
 }
 .content{
-  background: #cecece;
+  background: #ffffff;
   background-attachment: fixed;
   margin-top: 100px;
   display: flex;
