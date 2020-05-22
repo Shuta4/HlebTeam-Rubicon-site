@@ -12,7 +12,7 @@
                     <p class="content__work__description"><%=work.description%></p>
                     <div class="content__work__links-wrapper">
                         <ul class="content__work__links">
-                            <a class="work-form__form__link work_link" href="<%=work.download_link%>">Download</a>
+                            <a href="<%=work.download_link%>"><img class='download-img' src='https://upload.wikimedia.org/wikipedia/commons/1/1e/Download-Icon.png' alt="Загрузить"></a>
                             <% work.links.forEach(el => {%>
                                 <li class="content__work__links__item">
                                     <a class="content__work__links__item__href" href="<%=el.link%>"><%=el.title%></a>
