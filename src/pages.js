@@ -129,6 +129,18 @@ router.get("/works/:id", (req, res, next) => {
 		next(error);
 	}
 });
+//TEMP
+router.get("/tempwork", (req, res, next) => {
+	res.render("./pages/work_page", {work: {
+		title: "Название работы",
+		description: "Описание работы много букав ааа букав ааа букав ааа букав ааа букав ааа букав ааа букав ааа букав ааа букав ааа букав ааа букав ааа букав ааа букав ааа букав ааа букав ааа букав ааа букав ааа букав ааа букав ааа букав ааа!",
+		preview_img: 0,
+		images: [],
+		links: [{title: "Ссылка 1", link: "http://hleb-team.kikoriki.space"}, {title: "Ссылка 2", link: "http://hleb-team.kikoriki.space"}, {title: "Ссылка 3", link: "http://hleb-team.kikoriki.space"}, {title: "Ссылка 4", link: "http://hleb-team.kikoriki.space"}],
+		download_link: "http://hleb-team.kikoriki.space"
+	}})
+});	
+//-TEMP
 router.get("/donate", (req, res, next) => {
 	try {
 		res.render("./pages/donate");
