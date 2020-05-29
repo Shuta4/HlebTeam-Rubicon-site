@@ -23,6 +23,17 @@
   display: block;
   font-size: 30px;
   color: #ffffff;
+  cursor: pointer;
+}
+.user-preview__name:hover {
+  position: relative;
+  margin: 5px;
+  text-align: center;
+  font-family: var(--header-text-font);
+  display: block;
+  font-size: 30px;
+  color: #ffffffb6;
+  text-decoration: overline;
 }
 .user-preview__buttons {
 	display: flex;
