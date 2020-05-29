@@ -79,7 +79,7 @@ right: 50px;
 /* Header main navigation */
 .header-main__navigation {
   height: 100%;
-  background: #ffffff;
+  background: #00000079;
   width: 100%;
   display: flex;
   flex-wrap: nowrap;
@@ -109,7 +109,7 @@ right: 50px;
   width: 100%;
   height: 100%;
 }
-.background-home {
+ .background-home {
   background: no-repeat center url("/img/house-green.svg");
 }
 .background-home:hover {
@@ -149,7 +149,7 @@ margin: 0px;
   }
 /*Footer styles*/
 .footer-main {
-  background: #ffdbed;
+  background: #ffffff;
   padding-bottom: 170px;
   height: 150px;
   justify-content: center;
@@ -255,11 +255,13 @@ margin: 0px;
   left: calc(50% - 300px);
   background: #ffd000;
   border: 3px solid #ffd000;
+  cursor: pointer;
 }
 .login-form {
   left: calc(50% + 300px);
-  background:  #a3a2a2;
+  background:  #ffffff;
   border: 3px solid  #00000000;
+  cursor: pointer;
 }
 .active {
   left: 50%;
@@ -271,7 +273,7 @@ margin: 0px;
 .authentication-form__form__input{
   display: none;
   position: relative;
-  border: 3px solid #ffffff;
+  border: 2.5px solid #d4d3d3;
   width: 450px;
   margin: 4px;
   padding-left: 10px;
@@ -283,9 +285,8 @@ margin: 0px;
 }
 .authentication-form__form__input:hover{
   border: 2.5px solid #000000;
-  border-radius: 5px;
   transition: all 400ms;
-  box-shadow: 0 0 5px black;
+  box-shadow: 0 3px black;
   color: #000000;
 }
 .login-form__text, .authentication-form_register_text{
