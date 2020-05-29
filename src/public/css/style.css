@@ -79,10 +79,8 @@ right: 50px;
 /* Header main navigation */
 .header-main__navigation {
   height: 100%;
-  background: #35353591;
-  margin: 0px;
+  background: #ffffff;
   width: 100%;
-  padding: 0;
   display: flex;
   flex-wrap: nowrap;
   flex-direction: row;
