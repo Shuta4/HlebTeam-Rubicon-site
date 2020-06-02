@@ -30,6 +30,36 @@ app.use(session({
   saveUninitialized: false,
   resave: false
 }));
+app.get("/temp", (req, res, next) => {
+	rows = [{
+		title: "Test",
+		id: 1,
+		preview_img: 0
+	}, {
+		title: "Test",
+		id: 1,
+		preview_img: 0
+	}, {
+		title: "Test",
+		id: 1,
+		preview_img: 0
+	}, {
+		title: "Test",
+		id: 1,
+		preview_img: 0
+	}, {
+		title: "Test",
+		id: 1,
+		preview_img: 0
+	}, {
+		title: "Test",
+		id: 1,
+		preview_img: 0
+	}]
+	res.render("./pages/index", {
+		works: rows
+	});
+})
 
 app.use((req, res, next) => {
 	try {
