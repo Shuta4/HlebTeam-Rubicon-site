@@ -7,3 +7,4 @@ src/public/img/uploads/
 .bash_history
 .config/
 .gitignore.save
+uploads/
