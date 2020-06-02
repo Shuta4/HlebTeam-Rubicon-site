@@ -54,7 +54,7 @@ body{
   justify-content: center;
   align-items: center;
   box-shadow: 0 0 25px black;
-  margin: 40px;
+  margin: 20px;
   border-radius: 10px;
 }
 .class_blok_button{
@@ -73,18 +73,96 @@ body{
   animation: 0.5s linear 0s normal none infinite running rotate;
 }
 
+
+
 /* Реклама */
 .content__block__reklama{
   display: flex;
   justify-content: center;
 }
 .content__block__reklama__form{
-  width: 200px;
-  height: 300px;
+  position: fixed;
+  left: 10px;
+  width: 270px;
   border: 2px solid black;
-  margin-top: 20px;
-  margin-left: 100px;
+  top:  120px;
+  margin: 0px;
+  border-radius: 5px;
+  opacity: 1;
+  transition: all 300ms;
+  color: black;
 }
+.content__block__reklama__form:hover{
+  border: 2px solid black;
+  box-shadow: 0 0 5px black;
+  opacity: 0.5;
+  transition: all 300ms;
+}
+.reklama__foto{
+  width: 100%;
+  height: 200px;
+}
+.content__block__reklama__form2{
+  position: fixed;
+  left: 10px;
+  width: 270px;
+  border: 2px solid black;
+  top:  520px;
+  margin: 0px;
+  border-radius: 5px;
+  opacity: 1;
+  transition: all 300ms;
+  color: black;
+}
+.content__block__reklama__form2:hover{
+  border: 2px solid black;
+  box-shadow: 0 0 5px black;
+  opacity: 0.5;
+  transition: all 300ms;
+}
+.content__block__reklama__form3{
+  position: fixed;
+  right: 30px;
+  width: 270px;
+  border: 2px solid black;
+  top:  120px;
+  margin: 0px;
+  border-radius: 5px;
+  opacity: 1;
+  transition: all 300ms;
+  color: black;
+}
+.content__block__reklama__form3:hover{
+  border: 2px solid black;
+  box-shadow: 0 0 5px black;
+  opacity: 0.5;
+  transition: all 300ms;
+}
+
+
+.content__block__reklama__form4{
+  position: fixed;
+  right: 30px;
+  width: 270px;
+  border: 2px solid black;
+  top:  520px;
+  margin: 0px;
+  border-radius: 5px;
+  opacity: 1;
+  transition: all 300ms;
+  color: black;
+}
+.content__block__reklama__form4:hover{
+  border: 2px solid black;
+  box-shadow: 0 0 5px black;
+  opacity: 0.5;
+  transition: all 300ms;
+}
+
+
+
+
+
 
 @keyframes rotate {
   0% {
