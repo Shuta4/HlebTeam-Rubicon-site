@@ -72,6 +72,20 @@ body{
   background: url('/img/refresh-hover.svg');
   animation: 0.5s linear 0s normal none infinite running rotate;
 }
+
+/* Реклама */
+.content__block__reklama{
+  display: flex;
+  justify-content: center;
+}
+.content__block__reklama__form{
+  width: 200px;
+  height: 300px;
+  border: 2px solid black;
+  margin-top: 20px;
+  margin-left: 100px;
+}
+
 @keyframes rotate {
   0% {
     transform: rotate(0deg);
