@@ -7,12 +7,15 @@
         <main class="content">
             <div class="content__work">
                 <div class="content__work__form">
+                    <p>
                     <img class="content__work__preview-img" src="<%if (work.preview_img) {%><%='/img/uploads/previews/' + work.id + '.jpg'%><%} else {%>/img/preview-img-not-available.jpg<%}%>">
+                    <img class="content__work__preview-img" src="<%if (work.preview_img) {%><%='/img/uploads/previews/' + work.id + '.jpg'%><%} else {%>/img/preview-img-not-available.jpg<%}%>">
+                    <img class="content__work__preview-img" src="<%if (work.preview_img) {%><%='/img/uploads/previews/' + work.id + '.jpg'%><%} else {%>/img/preview-img-not-available.jpg<%}%>">
+                    </p>
                     <h3 class="content__work__title"><%=work.title %></h3>
                     <p class="content__work__description"><%=work.description%></p>
                     <div class="content__work__links-wrapper">
                         <ul class="content__work__links">
-                            <a href="<%=work.download_link%>"><img class='download-img' src='https://upload.wikimedia.org/wikipedia/commons/1/1e/Download-Icon.png' alt="Загрузить"></a>
                             <% work.links.forEach(el => {%>
                                 <li class="content__work__links__item">
                                     <a class="content__work__links__item__href" href="<%=el.link%>"><%=el.title%></a>
@@ -27,6 +30,7 @@
                             </li>
                         <%});%>
                     </ul>
+                    <a href="<%=work.download_link%>"><img class='download-img' src='https://upload.wikimedia.org/wikipedia/commons/1/1e/Download-Icon.png' alt="Загрузить"></a>
                     <ul class="content__work__buttons">
                         <li class="content__work__buttons__item">
                             <button class="content__work__buttons__item__button save_work button">
