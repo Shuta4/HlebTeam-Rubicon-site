@@ -7,14 +7,13 @@ body{
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	background: rgba(0, 0, 0, 0.822);
+	background: #000000d2;
 	border: 2px solid black;
 	box-shadow: 0 0 20px #000000;
 	border-radius: 20px;
 	max-width: 1280px;
 	min-height: 800px;
-	margin-top: 80px;
-	margin: 50px;
+	margin-top: 60px;
 }
 .content__work {
 	color: #ffae00;
@@ -37,6 +36,12 @@ body{
 .content__work__preview-img {
 	max-width: 300px;
 	max-height: 320px;
+	margin-top: -100px;
+	cursor: pointer;
+	transition: 0.5s;
+}
+.content__work__preview-img:hover{
+	transform: scale(0.9);
 }
 .content__work__description {
 	background: rgba(0, 0, 0, 0);
