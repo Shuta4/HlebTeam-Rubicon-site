@@ -11,6 +11,8 @@
         <!-- <div class="swiper-slide"><img class="work-form__form__preview-image__image" src="/img/site-bonpass-temp.jpg" alt="Фото работы"></div> -->
       </div>
       <input type="file" name="preview" class="work-form__form__preview" placeholder="Добавьте превью">
+      <input type="file" name="preview" class="work-form__form__preview" placeholder="Добавьте превью2">
+      <input type="file" name="preview" class="work-form__form__preview" placeholder="Добавьте превью3">
       <input type="checkbox" name="delete_preview" class="work-form__form__delete-preview"> Удалить превью?
       <input type="text" name="title" required class="work-form__form__title" placeholder="Название работы" value="<%=work.title %>">
       <textarea name="description" class="work-form__form__description" placeholder="Описание"><%=work.description %></textarea>
@@ -28,8 +30,6 @@
         </div>
         <div class="work-form__form__images work_images">
           <input name="images" multiple type="file" accept="image/jpeg" class="work-form__form__images__button add_image">Добавить картинки?</button>
-          <input name="images" multiple type="file" accept="image/jpeg" class="work-form__form__images__button add_image">Добавить картинки2?</button>
-          <input name="images" multiple type="file" accept="image/jpeg" class="work-form__form__images__button add_image">Добавить картинки3?</button>
           <%work.images.forEach((el, i) => {%>
           <div class="work-form__form__images__image">
             <img class="work-form__form__images__image__image image<%=i%>" src="/img/uploads/works_images/<%=el.id%>.jpg">
