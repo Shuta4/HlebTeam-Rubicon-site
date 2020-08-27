@@ -21,18 +21,21 @@
                             <%} else {%>
                                 <%= user.username%>
                             <%}%></h3>
-                        <ul class="content__author__about__statistics">
+                        <p style="text-align: center; color: white;">
+                            <%=user.description%>
+                        </p>
+                        <!--<ul class="content__author__about__statistics">
                             <li class="content__author__about__statistics__item">Работы: <b><%=user.works_counter%></b></li>
                             <li class="content__author__about__statistics__item">Подписчики: <b><%=user.followers%></b></li>
                             <li class="content__author__about__statistics__item">Подписки: <b><%=user.following%></b></li>
-                        </ul>
+                        </ul>-->
                         <ul class="content__author__about__buttons">
                             <%if (is_owner) {%>
                                 <li class="content__author__about__buttons__item"><button class="content__author__about__buttons__item__button button button_logout">Выйти</button></li>
                                 <script src="/js/logout.js" type="text/javascript"></script> 
                                 <li class="content__author__about__buttons__item"><a class="content__author__about__buttons__item__button button" href="/userpage/im/edit">Настройки</a></li>
                             <%} else {%>
-                                <li class="content__author__about__buttons__item">
+                                <!--<li class="content__author__about__buttons__item">
                                     <button class="content__author__about__buttons__item__button button button_subscribe">Подписаться</button>                           
                                 </li>
                                 <li class="content__author__about__buttons__item">
@@ -40,8 +43,8 @@
                                 </li>
                                 <li class="content__author__about__buttons__item">
                                     <button class="content__author__about__buttons__item__button button button_report">Совершить донос</button>                           
-                                </li>
-                            <%}%>                        
+                                </li>-->
+                            <%}%>
                         </ul>
                     </div>
                     <div class="content__author__works">

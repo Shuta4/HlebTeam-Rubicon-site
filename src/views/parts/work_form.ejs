@@ -28,12 +28,12 @@
         </div>
         <div class="work-form__form__images work_images">
 <!--          <input name="images" multiple type="file" accept="image/jpeg" class="work-form__form__images__button add_image">Добавить картинки?</button>-->
-          <%work.images.forEach((el, i) => {%>
-          <div class="work-form__form__images__image">
-            <img class="work-form__form__images__image__image image<%=i%>" src="/img/uploads/works_images/<%=el.id%>.jpg">
-            <button type="button" class="work-form__form__images__image__button delete_image<%=i%>" data="<%=el.id%>">Удалить</button> 
-          </div>
-          <%})%>
+<!--          <%work.images.forEach((el, i) => {%>-->
+<!--          <div class="work-form__form__images__image">-->
+<!--            <img class="work-form__form__images__image__image image<%=i%>" src="/img/uploads/works_images/<%=el.id%>.jpg">-->
+<!--            <button type="button" class="work-form__form__images__image__button delete_image<%=i%>" data="<%=el.id%>">Удалить</button> -->
+<!--          </div>-->
+<!--          <%})%>-->
         </div>
       </div>
       <input type="submit" name="submit" class="save_form" value="<%=create_new ? 'Создать' : 'Изменить'%>">

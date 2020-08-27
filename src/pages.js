@@ -85,7 +85,7 @@ router.get("/userpage/:id", (req, res, next) => {
 					if(req.session.user != undefined) is_owner = req.session.user.id == user.id
 					res.render("./pages/user_page", {
 						need_login: false,
-						is_owner: false,
+						is_owner: is_owner,
 						user: user,
 						works: rows
 					})

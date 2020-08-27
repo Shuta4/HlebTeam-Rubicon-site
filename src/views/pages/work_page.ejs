@@ -9,8 +9,8 @@
                 <div class="content__work__form">
                     <p>
                     <img class="content__work__preview-img" src="<%if (work.preview_img) {%><%='/img/uploads/previews/' + work.id + '.jpg'%><%} else {%>/img/preview-img-not-available.jpg<%}%>">
-                    <img class="content__work__preview-img" src="<%if (work.preview_img) {%><%='/img/uploads/previews/' + work.id + '.jpg'%><%} else {%>/img/preview-img-not-available.jpg<%}%>">
-                    <img class="content__work__preview-img" src="<%if (work.preview_img) {%><%='/img/uploads/previews/' + work.id + '.jpg'%><%} else {%>/img/preview-img-not-available.jpg<%}%>">
+<!--                    <img class="content__work__preview-img" src="<%if (work.preview_img) {%><%='/img/uploads/previews/' + work.id + '.jpg'%><%} else {%>/img/preview-img-not-available.jpg<%}%>">-->
+<!--                    <img class="content__work__preview-img" src="<%if (work.preview_img) {%><%='/img/uploads/previews/' + work.id + '.jpg'%><%} else {%>/img/preview-img-not-available.jpg<%}%>">-->
                     </p>
                     <h3 class="content__work__title"><%=work.title %></h3>
                     <p class="content__work__description"><%=work.description%></p>
@@ -31,18 +31,18 @@
                         <%});%>
                     </ul>
                     <a href="<%=work.download_link%>"><img class='download-img' src='https://upload.wikimedia.org/wikipedia/commons/1/1e/Download-Icon.png' alt="Загрузить"></a>
-                    <ul class="content__work__buttons">
-                        <li class="content__work__buttons__item">
-                            <button class="content__work__buttons__item__button save_work button">
-                                Сохранить себе
-                            </button>
-                        </li>
-                        <li class="content__work__buttons__item">
-                            <button class="content__work__buttons__item__button report_work button">
-                                Пожаловаться
-                            </button>
-                        </li>
-                    </ul>
+<!--                    <ul class="content__work__buttons">-->
+<!--                        <li class="content__work__buttons__item">-->
+<!--                            <button class="content__work__buttons__item__button save_work button">-->
+<!--                                Сохранить себе-->
+<!--                            </button>-->
+<!--                        </li>-->
+<!--                        <li class="content__work__buttons__item">-->
+<!--                            <button class="content__work__buttons__item__button report_work button">-->
+<!--                                Пожаловаться-->
+<!--                            </button>-->
+<!--                        </li>-->
+<!--                    </ul>-->
                     <time class="content__work__creation-date" datetime="<%=work.created_at%>"><%=work.hr_created_at%></time>
                 </div>
             </div>

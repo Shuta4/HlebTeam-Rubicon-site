@@ -20,17 +20,8 @@ form.addEventListener("submit", (event) => {
                   <h3 class="user-preview__name"><a class="user-preview__name__link" href=${"/userpage/" + el.id}>${name}</a></h3>
                   <ul class="user-preview__statistics">
                       <li class="user-preview__statistics__item">Работы: <b>${el.works_counter}</b></li>
-                      <li class="user-preview__statistics__item">Подписчики: <b>${el.followers}</b></li>
                   </ul>                       
               </div>
-              <ul class="user-preview__buttons">
-                <li class="user-preview__buttons__item">
-                    <button class="user-preview__buttons__item__button button button_subscribe">Подписаться</button>                           
-                </li>
-                <li class="user-preview__buttons__item">
-                    <button class="user-preview__buttons__item__button button button_report">Пожаловаться</button>                           
-                </li>                        
-              </ul>
             </li>`)
 
   			}
