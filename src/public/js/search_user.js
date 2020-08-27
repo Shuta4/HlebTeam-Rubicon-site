@@ -19,7 +19,7 @@ form.addEventListener("submit", (event) => {
               <div class="user-preview__wrapper">
                   <h3 class="user-preview__name"><a class="user-preview__name__link" href=${"/userpage/" + el.id}>${name}</a></h3>
                   <ul class="user-preview__statistics">
-                      <li class="user-preview__statistics__item">Работы: <b>${el.works_counter}</b></li>
+                      <!--<li class="user-preview__statistics__item">Работы: <b>${el.works_counter}</b></li>-->
                   </ul>                       
               </div>
             </li>`)
